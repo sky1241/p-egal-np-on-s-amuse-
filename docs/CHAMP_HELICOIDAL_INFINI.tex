@@ -1,0 +1,350 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+% babel french removed (not installed)
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+
+\geometry{margin=2.2cm, top=2.5cm, bottom=2.5cm}
+
+% Colors
+\definecolor{alive}{RGB}{86,180,133}
+\definecolor{dead}{RGB}{140,150,180}
+\definecolor{both}{RGB}{180,120,200}
+\definecolor{accent}{RGB}{70,130,200}
+\definecolor{darkbg}{RGB}{245,245,250}
+
+% Section style
+\titleformat{\section}{\Large\bfseries\color{accent}}{}{0em}{}[\vspace{-0.5em}\color{accent}\rule{\textwidth}{0.4pt}]
+\titleformat{\subsection}{\large\bfseries}{}{0em}{}
+
+% Header
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\color{gray} Champ H\'elicoidal Infini --- Mod\`ele Cristal$\leftrightarrow$Mycelium}
+\fancyhead[R]{\small\color{gray} Sky --- F\'evrier 2026}
+\fancyfoot[C]{\small\color{gray}\thepage}
+
+% Shortcuts
+\newcommand{\vF}{\mathbf{F}}
+\newcommand{\ex}{\mathbf{e}_x}
+\newcommand{\er}{\mathbf{e}_r}
+\newcommand{\et}{\mathbf{e}_\theta}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+
+\begin{document}
+
+% ============================================================================
+% TITLE
+% ============================================================================
+\begin{center}
+{\Huge\bfseries Champ H\'elicoidal Infini}\\[0.6em]
+{\Large\color{accent} Mod\`ele Unifi\'e : Cristal $\leftrightarrow$ Mycelium}\\[1.2em]
+{\large Sky \quad---\quad 16 f\'evrier 2026}\\[0.3em]
+{\small\color{gray} ``Un pas d'homme. Tu avances toujours, mais tout est connect\'e.''}
+\end{center}
+
+\vspace{1.5em}
+
+% ============================================================================
+\section{G\'eom\'etrie : R\'eseau infini de sph\`eres}
+% ============================================================================
+
+Les sph\`eres ne sont pas 26. Elles sont infinies. Chaque sph\`ere est un pas,
+identique \`a tous les autres.
+
+\begin{tcolorbox}[colback=darkbg, colframe=accent, title={\textbf{D\'efinitions de base}}]
+\textbf{Index :} $\;i \in \Z$ \quad (infini dans les deux directions)
+
+\textbf{Espacement :} $\;\Delta > 0$ \quad (constant, identique partout)
+
+\textbf{Positions :}
+\[
+  x_i = i\,\Delta, \qquad \mathbf{p}_i = (x_i,\; 0,\; 0)
+\]
+
+\textbf{Sph\`ere $i$ :} rayon $R_s > 0$ constant
+\[
+  S_i = \bigl\{(x,y,z) \in \R^3 \;:\; (x - x_i)^2 + y^2 + z^2 = R_s^2 \bigr\}
+\]
+
+\textbf{Axe commun} (la ligne infinie) :
+\[
+  \ell = \bigl\{(x, 0, 0) \;:\; x \in \R \bigr\}
+\]
+\end{tcolorbox}
+
+\medskip
+
+\textbf{Propri\'et\'e fondamentale --- Invariance par translation :}
+\[
+  \boxed{\forall\, n \in \Z, \quad x \;\mapsto\; x + n\Delta \quad\text{laisse le syst\`eme identique.}}
+\]
+Tu peux \^etre sur n'importe quelle sph\`ere : c'est toujours pareil.
+
+% ============================================================================
+\section{Enveloppe continue : le poids local}
+% ============================================================================
+
+Chaque sph\`ere irradie autour d'elle. Les zones se chevauchent. Somme infinie
+de gaussiennes identiques.
+
+\textbf{Largeur d'influence :} $\lambda > 0$
+
+\textbf{Enveloppe :}
+\[
+  W(x) = \sum_{i=-\infty}^{+\infty} \exp\!\left(-\frac{(x - i\Delta)^2}{2\lambda^2}\right)
+\]
+
+Par p\'eriodicit\'e, cette somme converge et est $\Delta$-p\'eriodique :
+\[
+  W(x + \Delta) = W(x) \quad \forall\, x \in \R
+\]
+
+\textbf{Normalisation :}
+\[
+  Z = \sum_{k=-\infty}^{+\infty} \exp\!\left(-\frac{(k\Delta)^2}{2\lambda^2}\right), \qquad
+  w(x) = \frac{W(x)}{Z}
+\]
+Ainsi $0 < w(x) \leq 1$, et toutes les sph\`eres ont le m\^eme poids.
+
+% ============================================================================
+\section{Coordonn\'ees cylindriques et bases}
+% ============================================================================
+
+Autour de l'axe $x$, en tout point $(x, y, z)$ :
+\[
+  r = \sqrt{y^2 + z^2 + \varepsilon^2} \qquad (\varepsilon > 0 \;\text{\'evite la singularit\'e sur l'axe})
+\]
+
+\textbf{Vecteurs de base} (\'ecrits en cart\'esien) :
+\[
+  \ex = (1,\, 0,\, 0), \qquad
+  \er = \Bigl(0,\, \frac{y}{r},\, \frac{z}{r}\Bigr), \qquad
+  \et = \Bigl(0,\, -\frac{z}{r},\, \frac{y}{r}\Bigr)
+\]
+
+% ============================================================================
+\section{Le param\`etre $\alpha$ : mort $\leftrightarrow$ vivant}
+% ============================================================================
+
+\begin{tcolorbox}[colback=darkbg, colframe=both, title={\textbf{L'axe fondamental}}]
+\[
+  \alpha \in [0, 1], \qquad s(\alpha) = 2\alpha - 1 \in [-1, +1]
+\]
+
+\begin{center}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{c|c|c|l}
+  $\alpha$ & $s$ & Mode & Interpr\'etation \\
+  \hline
+  $0$ & $-1$ & \textcolor{dead}{\textbf{Cristal}} & Structure fig\'ee. Stable, morte, rigide. \\
+  $\tfrac{1}{2}$ & $0$ & \textcolor{both}{\textbf{Schr\"odinger}} & Les deux \`a la fois. Annulation du flux. \\
+  $1$ & $+1$ & \textcolor{alive}{\textbf{Mycelium}} & Flux vivant. Explore, reroute, fragile.
+\end{tabular}
+\end{center}
+\end{tcolorbox}
+
+% ============================================================================
+\section{Lois du champ : rayon cible et rotation}
+% ============================================================================
+
+\textbf{Rayon cible} (distance d'enroulement autour de l'axe) :
+\[
+  r^*(x) = r_{\min} + (r_{\max} - r_{\min})\, w(x)
+\]
+
+\textbf{Vitesse angulaire locale :}
+\[
+  \Omega(x) = \Omega_{\min} + (\Omega_{\max} - \Omega_{\min})\, w(x)
+\]
+
+% ============================================================================
+\section{Variante A --- $\alpha$ global (m\^eme partout)}
+% ============================================================================
+
+Un seul param\`etre $\alpha \in [0, 1]$ pour tout le r\'eseau.
+
+\begin{tcolorbox}[colback=darkbg, colframe=dead!70!accent, title={\textbf{Champ vectoriel --- Variante A (global)}}]
+\[
+  \boxed{
+    \vF_A(x,y,z) \;=\; v\,\ex
+    \;+\; \kappa\bigl(r^*(x) - r\bigr)\,\er
+    \;+\; s\;\Omega(x)\;r\;\et
+  }
+\]
+avec $s = 2\alpha - 1$, \quad $\alpha \in [0,1]$ constant.
+\end{tcolorbox}
+
+\textbf{Ligne de flux} (streamline unique sur $\R$) :
+
+Phase accumul\'ee :
+\[
+  \Theta(x) = \Theta_0 + \frac{s}{v} \int_{0}^{x} \Omega(u)\, du
+\]
+
+Courbe h\'elicoïdale infinie :
+\[
+  \boxed{
+    \gamma_A(x) = \Bigl(\, x,\;\; r^*(x)\cos\Theta(x),\;\; r^*(x)\sin\Theta(x) \,\Bigr),
+    \quad x \in \R
+  }
+\]
+
+\textbf{Propri\'et\'es :}
+\begin{itemize}[nosep]
+  \item $\alpha = 1$ : h\'elice qui tourne sens $+$ (mycelium explore)
+  \item $\alpha = 0$ : h\'elice qui tourne sens $-$ (cristal, sym\'etrique)
+  \item $\alpha = \tfrac{1}{2}$ : $s = 0$, pas de rotation $\Rightarrow$ le flux avance tout droit
+  \item Invariance : $\gamma_A(x + \Delta) = T_\Delta \circ \gamma_A(x)$ \`a une rotation pr\`es
+\end{itemize}
+
+% ============================================================================
+\section{Variante B --- $\alpha_i$ local (chaque sph\`ere choisit)}
+% ============================================================================
+
+Chaque sph\`ere $i \in \Z$ a son propre param\`etre $\alpha_i \in [0, 1]$.
+Le champ $\alpha$ est un \emph{champ continu} sur $\R$.
+
+\begin{tcolorbox}[colback=darkbg, colframe=alive!70!accent, title={\textbf{Champ $\alpha$ continu}}]
+\[
+  \alpha(x) = \frac{
+    \displaystyle\sum_{i=-\infty}^{+\infty} \alpha_i \;\exp\!\left(-\frac{(x-x_i)^2}{2\lambda^2}\right)
+  }{
+    \displaystyle\sum_{i=-\infty}^{+\infty} \exp\!\left(-\frac{(x-x_i)^2}{2\lambda^2}\right)
+  }
+\]
+\end{tcolorbox}
+
+C'est une \textbf{interpolation gaussienne} : entre deux sph\`eres, $\alpha(x)$ transite
+contin\^ument de $\alpha_i$ vers $\alpha_{i+1}$.
+
+\textbf{Param\`etre de sens local :}
+\[
+  s(x) = 2\,\alpha(x) - 1
+\]
+
+\begin{tcolorbox}[colback=darkbg, colframe=alive, title={\textbf{Champ vectoriel --- Variante B (local)}}]
+\[
+  \boxed{
+    \vF_B(x,y,z) \;=\; v\,\ex
+    \;+\; \kappa\bigl(r^*(x) - r\bigr)\,\er
+    \;+\; s(x)\;\Omega(x)\;r\;\et
+  }
+\]
+avec $s(x) = 2\,\alpha(x) - 1$, \quad chaque $\alpha_i \in [0,1]$ ind\'ependant.
+\end{tcolorbox}
+
+\textbf{Ligne de flux (variante B) :}
+
+\[
+  \Theta_B(x) = \Theta_0 + \frac{1}{v} \int_0^x s(u)\,\Omega(u)\, du
+\]
+
+\[
+  \boxed{
+    \gamma_B(x) = \Bigl(\, x,\;\; r^*(x)\cos\Theta_B(x),\;\; r^*(x)\sin\Theta_B(x) \,\Bigr),
+    \quad x \in \R
+  }
+\]
+
+\textbf{Propri\'et\'es :}
+\begin{itemize}[nosep]
+  \item Sph\`ere $i$ avec $\alpha_i = 1$ : zone mycelium, le flux tourne et explore
+  \item Sph\`ere $j$ avec $\alpha_j = 0$ : zone cristal, structure fig\'ee
+  \item Sph\`ere $k$ avec $\alpha_k = \tfrac{1}{2}$ : Schr\"odinger, point de neutralit\'e
+  \item La \textbf{transition} entre zones est \textbf{douce} (gaussienne), jamais brusque
+  \item L'invariance par translation est \textbf{bris\'ee} : chaque point est unique
+\end{itemize}
+
+% ============================================================================
+\section{Comparaison des deux variantes}
+% ============================================================================
+
+\begin{center}
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{l|c|c}
+  & \textbf{Variante A} (global) & \textbf{Variante B} (local) \\
+  \hline
+  Param\`etre & $\alpha \in [0,1]$ unique & $\{\alpha_i\}_{i\in\Z}$, un par sph\`ere \\
+  Sym\'etrie & Invariance par translation & Bris\'ee (chaque sph\`ere diff\`ere) \\
+  Champ $s$ & $s = 2\alpha - 1$ (constante) & $s(x) = 2\alpha(x) - 1$ (champ) \\
+  Streamline & H\'elice r\'eguli\`ere infinie & H\'elice \`a courbure variable \\
+  Analogie & Cristal pur / Mycelium pur & \textbf{Organisme vivant} \\
+  M\'etaphore & ``Loi universelle'' & ``Chaque pas d\'ecide'' \\
+\end{tabular}
+\end{center}
+
+% ============================================================================
+\section{Param\`etres \`a fixer}
+% ============================================================================
+
+\[
+  \underbrace{\Delta,\; R_s}_{\text{g\'eom\'etrie}}, \quad
+  \underbrace{\lambda}_{\text{influence}}, \quad
+  \underbrace{r_{\min},\; r_{\max}}_{\text{enroulement}}, \quad
+  \underbrace{\Omega_{\min},\; \Omega_{\max}}_{\text{rotation}}, \quad
+  \underbrace{v}_{\text{flux}}, \quad
+  \underbrace{\kappa}_{\text{rappel}}, \quad
+  \underbrace{\varepsilon}_{\text{r\'egul.}}, \quad
+  \underbrace{\alpha \;\text{ou}\; \{\alpha_i\}}_{\text{mort/vivant}}
+\]
+
+\medskip
+
+\begin{tcolorbox}[colback=darkbg, colframe=gray, title={\textbf{Cas simplifi\'e : ``tout \'egal, tout infini''}}]
+Si tu veux que la structure soit strictement identique partout :
+\[
+  r_{\min} = r_{\max} = r_0, \qquad \Omega_{\min} = 0, \quad \Omega_{\max} = \Omega_0
+\]
+Le rayon est constant $r^*(x) = r_0$. Seule la rotation est modul\'ee par $w(x)$.
+
+L'h\'elice devient :
+\[
+  \gamma(x) = \Bigl(x,\;\; r_0 \cos\Theta(x),\;\; r_0 \sin\Theta(x)\Bigr)
+\]
+avec $\Theta(x) = \Theta_0 + \frac{s}{v}\int_0^x \Omega_0\, w(u)\, du$.
+
+\medskip
+\textbf{Encore plus simple :} $w(x) = 1$ partout (influence uniforme) donne une h\'elice parfaite de pas constant $p = 2\pi v / (s\,\Omega_0)$.
+\end{tcolorbox}
+
+% ============================================================================
+\section{Note : pourquoi mycelium et pas cristal}
+% ============================================================================
+
+Le cristal r\'ep\`ete. Le mycelium \emph{connecte}.
+
+Le cristal est $W(x+\Delta) = W(x)$. Le mycelium est $\alpha_i \neq \alpha_j$ ---
+chaque point du r\'eseau d\'ecide s'il explore ou s'il se fige. La variante B
+est un organisme : des zones cristallines (os, structure) coexistent avec des
+zones vivantes (flux, croissance). Les deux sont n\'ecessaires.
+
+\vspace{0.5em}
+
+Le param\`etre $\alpha$ n'est pas un choix binaire. C'est un \textbf{gradient continu}
+entre la mort et la vie. Exactement comme Schr\"odinger : avant la mesure, c'est
+les deux. Apr\`es, c'est l'un ou l'autre. Mais le syst\`eme entier ---
+le r\'eseau infini --- est \textbf{toujours} les deux \`a la fois.
+
+\[
+  \boxed{
+    \text{Mort} \;\xleftrightarrow[\quad\alpha \in [0,1]\quad]{}\; \text{Vivant}
+  }
+\]
+
+\vfill
+\begin{center}
+\small\color{gray}
+``Faut imaginer que c'est infini.''
+\end{center}
+
+\end{document}
