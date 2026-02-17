@@ -1070,35 +1070,75 @@ SYMBOLES = [
     {"s": "Vaught","strate": 4, "from": "Conjecture Vaught (nombre modèles dénombrables: ω ou ≤ℵ₀)", "domain": "logique", "status": "conjecture"},
 
     # ================================================================
-    # STRATE 5 — CONJECTURES HYPERARITHMÉTIQUE
+    # STRATE 5 — CONJECTURES HYPERARITHMÉTIQUE / GRANDS CARDINAUX
     # ================================================================
 
-    {"s": "Large_c","strate": 5, "from": "Cardinaux larges (Woodin, non résolu dans ZFC)", "domain": "logique", "status": "open"},
+    # --- Programme Woodin / Ultimate L ---
+    {"s": "Large_c","strate": 5, "from": "Cardinaux larges (hiérarchie consistance, non résolu dans ZFC)", "domain": "logique", "status": "open"},
     {"s": "V=Ult", "strate": 5, "from": "V = Ultimate L (Woodin, programme en cours)", "domain": "logique", "status": "programme"},
-    {"s": "Ω-conj","strate": 5, "from": "Ω-conjecture (Woodin)", "domain": "logique", "status": "conjecture"},
+    {"s": "Ω-conj","strate": 5, "from": "Ω-conjecture (Woodin, base de Ω-logique)", "domain": "logique", "status": "conjecture"},
+    {"s": "HOD_conj","strate": 5, "from": "HOD conjecture (Woodin — V proche de HOD sous grands cardinaux?)", "domain": "logique", "status": "conjecture"},
     {"s": "InnerM","strate": 5, "from": "Inner Model Problem (modèle intérieur pour supercompact)", "domain": "logique", "status": "open"},
-    {"s": "PCF_conj","strate": 5, "from": "Conjectures PCF (Shelah, arithmétique cardinale singulière)", "domain": "logique", "status": "conjecture"},
-    {"s": "MM++",  "strate": 5, "from": "Martin's Maximum++ (extension axiomes de forcing)", "domain": "logique", "status": "conjecture"},
-    {"s": "Det_proj","strate": 5, "from": "Déterminance projective (PD, prouvé sous grands cardinaux)", "domain": "logique", "status": "conjecture"},
+
+    # --- Déterminance ---
+    {"s": "Det_proj","strate": 5, "from": "Déterminance projective (PD, prouvé sous grands cardinaux, force exacte?)", "domain": "logique", "status": "conjecture"},
     {"s": "Σ²₁_abs","strate": 5, "from": "Σ²₁-absoluteness (invariance modèles de forcing)", "domain": "logique", "status": "open"},
-    {"s": "Reinh", "strate": 5, "from": "Cardinal Reinhardt (inconsistant avec AC? ouvert sans AC)", "domain": "logique", "status": "open"},
-    {"s": "HOD_conj","strate": 5, "from": "HOD conjecture (Woodin, HOD proche de V?)", "domain": "logique", "status": "conjecture"},
+    {"s": "AD_UA", "strate": 5, "from": "AD implique Ultrapower Axiom? (Goldberg, ouvert au-delà ℵω)", "domain": "logique", "status": "conjecture"},
+
+    # --- Axiomes de forcing / Martin ---
+    {"s": "PCF_conj","strate": 5, "from": "Conjectures PCF (Shelah, arithmétique cardinale singulière)", "domain": "logique", "status": "conjecture"},
+    {"s": "MM++",  "strate": 5, "from": "Martin's Maximum++ (extension axiomes de forcing, implications?)", "domain": "logique", "status": "conjecture"},
+    {"s": "PFA_sc","strate": 5, "from": "PFA a force de consistance d'un supercompact? (problème majeur ouvert)", "domain": "logique", "status": "conjecture"},
+    {"s": "MSC",   "strate": 5, "from": "Mouse Set Conjecture — déf. ordinale → mouse? (Sargsyan, AD+)", "domain": "logique", "status": "conjecture"},
+
+    # --- Cardinaux extrêmes ---
+    {"s": "Reinh", "strate": 5, "from": "Cardinal Reinhardt — inconsistant avec AC? (ouvert sans AC, Berkeley)", "domain": "logique", "status": "open"},
+    {"s": "UltraExact","strate": 5, "from": "Cardinaux ultraexacting (Aguilera-Bagaria-Goldberg 2024, vs HOD conjecture)", "domain": "logique", "status": "open"},
+    {"s": "Kunen_bound","strate": 5, "from": "Seuil exact Kunen inconsistency — où commence l'inconsistance? (ouvert)", "domain": "logique", "status": "open"},
+
+    # --- Borel / hyperarithmétique ---
     {"s": "Borel_det∞","strate": 5, "from": "Déterminance Borélienne infinie (au-delà ZFC?)", "domain": "logique", "status": "open"},
+    {"s": "Martin_conj","strate": 5, "from": "Martin's conjecture — degrés Turing, fonctions régressives (Slaman-Steel, partiel 2024)", "domain": "logique", "status": "conjecture"},
 
     # ================================================================
-    # STRATE 6 — QUESTIONS INDÉCIDABLES / FRONTIÈRES
+    # STRATE 6 — INDÉCIDABLE / INDÉPENDANT DE ZFC / FRONTIÈRES
     # ================================================================
 
-    {"s": "BB5",   "strate": 6, "from": "BB(5) = 47176870 ? (bb5.org 2024, vérification en cours)", "domain": "calculabilité", "status": "open"},
-    {"s": "BB6",   "strate": 6, "from": "BB(6) — valeur inconnue, indépendant ZFC pour n≥7?", "domain": "calculabilité", "status": "open"},
-    {"s": "Friedman","strate": 6, "from": "Théorèmes de Friedman (énoncés finis indépendants de PA/ZFC)", "domain": "logique", "status": "open"},
-    {"s": "Con_ZFC","strate": 6, "from": "Con(ZFC) — consistance ZFC non prouvable dans ZFC (Gödel 2)", "domain": "logique", "status": "open"},
-    {"s": "CH_ind","strate": 6, "from": "CH indépendant de ZFC (Gödel/Cohen, quel axiome?)", "domain": "logique", "status": "open"},
-    {"s": "Σ¹₂_det","strate": 6, "from": "Déterminance Σ¹₂ sans grands cardinaux (ouvert)", "domain": "logique", "status": "open"},
-    {"s": "Skolem_pb","strate": 6, "from": "Problème de Skolem (récurrence linéaire = 0? lié à transcendance)", "domain": "calculabilité", "status": "open"},
-    {"s": "Mort_mat","strate": 6, "from": "Mortalité matrices (produit matrice → 0? indécidable dim≥3?)", "domain": "calculabilité", "status": "open"},
-    {"s": "PCPH",  "strate": 6, "from": "PCP sur Z (Post Correspondence sur entiers, décidabilité?)", "domain": "calculabilité", "status": "open"},
-]
+    # --- Busy Beaver : frontière absolue ---
+    {"s": "BB5",    "strate": 6, "from": "BB(5) = 47176870 ? (bb5.org 2024, vérification formelle en cours)", "domain": "calculabilité", "status": "open"},
+    {"s": "BB6",    "strate": 6, "from": "BB(6) — valeur inconnue, BB(n) indépendant ZFC pour n≥~7", "domain": "calculabilité", "status": "open"},
+
+    # --- Problèmes dont la DÉCIDABILITÉ est ouverte ---
+    {"s": "Skolem_pb","strate": 6, "from": "Problème de Skolem — suite récurrence linéaire atteint 0? (Skolem 1934, décidable ordre≤4 seulement)", "domain": "calculabilité", "status": "open"},
+    {"s": "Positivity","strate": 6, "from": "Positivity Problem — suite LRS toujours ≥0? (Ouaknine-Worrell, décidable ordre≤5)", "domain": "calculabilité", "status": "open"},
+    {"s": "Mort_mat","strate": 6, "from": "Mortalité matrices — produit→0? (indécidable dim≥3 Paterson 1970, dim 2 ouvert)", "domain": "calculabilité", "status": "open"},
+    {"s": "PCPH",   "strate": 6, "from": "PCP sur entiers — variante Post Correspondence Problem sur ℤ", "domain": "calculabilité", "status": "open"},
+    {"s": "Inf_chess","strate": 6, "from": "Infinite chess — mat forcé sur échiquier ℤ×ℤ? (Brumleve-Hamkins-Schlicht 2012, ouvert)", "domain": "calculabilité", "status": "open"},
+    {"s": "Free_mat","strate": 6, "from": "Freeness matrices 3×3 — semi-groupe engendré libre? (Klarner-Birget-Satterfield 1991, indéc dim≥3)", "domain": "calculabilité", "status": "open"},
+    {"s": "Orbit_gen","strate": 6, "from": "Orbit Problem généralisé — point atteint par itération matrice? (Kannan-Lipton partiel)", "domain": "calculabilité", "status": "open"},
+
+    # --- Statements indépendants de ZFC (prouvé indépendant, axiome inconnu) ---
+    {"s": "Con_ZFC","strate": 6, "from": "Con(ZFC) — consistance ZFC non prouvable dans ZFC (Gödel 1931)", "domain": "logique", "status": "open"},
+    {"s": "CH_ind", "strate": 6, "from": "CH indépendant ZFC (Gödel 1940/Cohen 1963, quel axiome adopter?)", "domain": "logique", "status": "open"},
+    {"s": "SH",     "strate": 6, "from": "Hypothèse de Suslin — caractérisation ℝ? (indépendant ZFC, Suslin 1920)", "domain": "logique", "status": "open"},
+    {"s": "Kaplansky_ZFC","strate": 6, "from": "Conjecture Kaplansky — homomorphisme Banach C(X) continu? (indépendant ZFC, Dales-Solovay 1976)", "domain": "analyse fonctionnelle", "status": "open"},
+    {"s": "Whitehead","strate": 6, "from": "Problème Whitehead — tout groupe abélien Whitehead libre? (indépendant ZFC, Shelah 1974)", "domain": "algèbre", "status": "open"},
+    {"s": "Borel_mz","strate": 6, "from": "Conjecture Borel mesure zéro — tout strong measure zero dénombrable? (indépendant ZFC)", "domain": "théorie mesure", "status": "open"},
+    {"s": "NormMoore","strate": 6, "from": "Normal Moore Space — tout espace Moore normal métrisable? (indépendant ZFC)", "domain": "topologie", "status": "open"},
+    {"s": "Calkin", "strate": 6, "from": "Automorphismes extérieurs algèbre Calkin (Farah/Phillips-Weaver, indépendant ZFC)", "domain": "analyse fonctionnelle", "status": "open"},
+
+    # --- Statements indépendants de PA (Peano) ---
+    {"s": "Friedman","strate": 6, "from": "Théorèmes de Friedman — énoncés finis indépendants PA/ZFC (TREE(3))", "domain": "logique", "status": "open"},
+    {"s": "ParisH", "strate": 6, "from": "Paris-Harrington — Ramsey renforcé indépendant PA (Paris-Harrington 1977)", "domain": "logique", "status": "open"},
+    {"s": "Goodstein","strate": 6, "from": "Goodstein theorem — suite→0 prouvable dans PA? (non, Kirby-Paris 1982)", "domain": "logique", "status": "open"},
+    {"s": "Kruskal_ind","strate": 6, "from": "Kruskal tree theorem — indépendant PA et prédicativisme (fini form)", "domain": "logique", "status": "open"},
+
+    # --- Frontières Chaitin / Information algorithmique ---
+    {"s": "Chaitin_Ω","strate": 6, "from": "Ω de Chaitin — probabilité arrêt, réel non calculable (Chaitin 1975, valeur exacte?)", "domain": "calculabilité", "status": "open"},
+    {"s": "K_bound","strate": 6, "from": "Borne Kolmogorov — complexité K(x) non calculable, quelle borne par théorie? (Chaitin)", "domain": "calculabilité", "status": "open"},
+
+    # --- Σ¹₂ et déterminance ---
+    {"s": "Σ¹₂_det","strate": 6, "from": "Déterminance Σ¹₂ sans grands cardinaux (ouvert)", "domain": "logique", "status": "open"},]
 
 
 # ============================================================================
