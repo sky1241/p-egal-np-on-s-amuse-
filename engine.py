@@ -804,6 +804,18 @@ SYMBOLES = [
     {"s": "COF",   "strate": 3, "from": "{e : Wₑ cofini} Σ₃-complet",  "domain": "calculabilité"},
     {"s": "REC",   "strate": 3, "from": "{e : Wₑ récursif} Σ₃-complet","domain": "calculabilité"},
 
+    # --- Strate 3 : grandes conjectures résolues (théorèmes) ---
+    {"s": "FermatWiles","strate": 3, "from": "Dernier théorème Fermat / modularité (Wiles 1995, BCDT 2001)", "domain": "nb théorie"},
+    {"s": "Milnor_K",  "strate": 3, "from": "Conjecture Milnor K-théorie — K^M_n(F)/2 ≅ H^n(F,ℤ/2) (Voevodsky 2003)", "domain": "algèbre"},
+    {"s": "BlochKato", "strate": 3, "from": "Conjecture Bloch-Kato norm residue — K^M_n(F)/ℓ ≅ H^n(F,μ_ℓ^⊗n) (Rost-Voevodsky 2011)", "domain": "algèbre"},
+    {"s": "SatoTate",  "strate": 3, "from": "Conjecture Sato-Tate — distribution Frobenius courbes elliptiques (Taylor et al. 2011)", "domain": "nb théorie"},
+    {"s": "KazhLusz",  "strate": 3, "from": "Conjecture Kazhdan-Lusztig — multiplicités modules Verma (Beilinson-Bernstein 1981)", "domain": "algèbre"},
+    {"s": "KadSinger", "strate": 3, "from": "Kadison-Singer — extension états purs B(H) (Marcus-Spielman-Srivastava 2013)", "domain": "analyse fonctionnelle"},
+    {"s": "VirtHaken", "strate": 3, "from": "Virtual Haken — 3-variétés hyperboliques (Agol 2012, Wise, Kahn-Markovic)", "domain": "topologie"},
+    {"s": "KakeyaFin", "strate": 3, "from": "Kakeya corps finis — Besicovitch sets F_q^n (Dvir 2008, méthode polynomiale)", "domain": "combinatoire"},
+    {"s": "Onsager_c", "strate": 3, "from": "Conjecture Onsager — Euler C^α conservation énergie ssi α>1/3 (Isett 2018, BDSV 2019)", "domain": "analyse"},
+    {"s": "GeomLang",  "strate": 3, "from": "Langlands géométrique catégorique unramified (Gaitsgory-Raskin et al. 2024)", "domain": "géom algébrique"},
+
     # ==================================================================
     # STRATE 4 — CIEL · AH
     # ==================================================================
