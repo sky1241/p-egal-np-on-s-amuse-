@@ -1287,6 +1287,63 @@ SYMBOLES = [
 
     # --- Prouvés : combinatoire algébrique ---
     {"s": "KakeyaFin","strate": 3, "from": "Kakeya conjecture corps finis (Wolff 1999) — Besicovitch set dans F_q^n a ≥ c_n·q^n éléments. Dvir 2008, méthode polynomiale. Preuve élégante en 1 page."},
+
+    # ═══════════════════════════════════════════════════════════════
+    #  RATISSAGE PASS 5 — grands théorèmes prouvés XXe-XXIe siècle
+    # ═══════════════════════════════════════════════════════════════
+
+    # --- Topologie : résolus ---
+    {"s": "Poinc3",   "strate": 3, "from": "Conjecture Poincaré dim 3 — toute 3-variété simplement connexe fermée ≅ S³ (Perelman 2003, flot de Ricci avec chirurgie). Millennium Problem."},
+    {"s": "Geomtrz",  "strate": 3, "from": "Géométrisation Thurston — toute 3-variété se décompose en 8 géométries modèles (Perelman 2003). Implique Poincaré."},
+    {"s": "hCobord",  "strate": 3, "from": "h-cobordism theorem dim ≥ 6 (Smale 1962, Fields Medal). Implique conjecture Poincaré généralisée dim ≥ 5."},
+    {"s": "Freed4",   "strate": 3, "from": "Freedman theorem — classification topologique 4-variétés simplement connexes fermées (1982, Fields Medal). Forme d'intersection détermine type topologique."},
+    {"s": "SmithConj","strate": 3, "from": "Smith conjecture — action Z/pZ sur S³ préservant orientation a ensemble fixe = nœud trivial (Morgan-Bass 1984)."},
+    {"s": "ExoticS7", "strate": 3, "from": "Sphères exotiques — S⁷ admet 28 structures différentielles non-standard (Milnor 1956, Kervaire-Milnor 1963)."},
+    {"s": "Surgery",  "strate": 3, "from": "Théorie chirurgie — classification variétés dim ≥ 5 via séquence exacte de Sullivan-Wall (Browder-Novikov-Sullivan-Wall 1960s)."},
+
+    # --- Théorie des nombres : résolus ---
+    {"s": "Mordell",  "strate": 3, "from": "Conjecture Mordell — courbe genre g ≥ 2 sur ℚ a nombre fini de points rationnels (Faltings 1983, Fields Medal)."},
+    {"s": "WeilConj", "strate": 3, "from": "Conjectures Weil — fonctions zêta variétés sur F_q: rationalité (Dwork 1960), fonctionnalité (Grothendieck 1965), RH (Deligne 1974, Fields Medal)."},
+    {"s": "CatalanM", "strate": 3, "from": "Conjecture Catalan — x^p - y^q = 1 seule solution en puissances parfaites: 3²-2³=1 (Mihailescu 2002)."},
+    {"s": "GoldWeak", "strate": 3, "from": "Goldbach faible/ternaire — tout impair > 5 est somme de 3 premiers (Helfgott 2013, inconditionnel)."},
+    {"s": "BddGaps",  "strate": 3, "from": "Bounded gaps between primes — lim inf(pₙ₊₁-pₙ) < ∞ (Zhang 2013: 7×10⁷, Maynard 2013: 600, Polymath8b: 246)."},
+    {"s": "GrossZag", "strate": 3, "from": "Formule Gross-Zagier — hauteur Néron-Tate point Heegner = dérivée L'(E,1) (1986). Clé pour BSD analytique rang 1."},
+    {"s": "HerbRibet","strate": 3, "from": "Herbrand-Ribet — p|Bₖ ⟺ p divise #classe idéale composante χ (Herbrand 1932 →, Ribet 1976 ←)."},
+    {"s": "IwasMain", "strate": 3, "from": "Iwasawa Main Conjecture — structure Λ-modules de Selmer sur tours cyclotomiques ℤₚ (Mazur-Wiles 1984)."},
+    {"s": "SerreMod", "strate": 3, "from": "Conjecture Serre modularité — repr. Galois irréductibles impaires mod p proviennent de formes modulaires (Khare-Wintenberger 2009)."},
+    {"s": "LaffFnF",  "strate": 3, "from": "Langlands pour GL_n corps de fonctions (Laurent Lafforgue 2002, Fields Medal). Correspondance automorphe ↔ Galois."},
+
+    # --- Algèbre : résolus ---
+    {"s": "CFSG",     "strate": 3, "from": "Classification groupes finis simples — 18 familles infinies + 26 sporadiques (~1983, ~10000 pages, programme Gorenstein)."},
+    {"s": "Moonshine","strate": 3, "from": "Monstrous Moonshine — coefficients j(τ) = dimensions repr. irréd. du Monster (Conway-Norton 1979, Borcherds 1992, Fields Medal). Vertex algebras."},
+    {"s": "QuilSusl", "strate": 3, "from": "Conjecture Serre/Quillen-Suslin — tout module projectif sur k[x₁,...,xₙ] est libre (Quillen 1976, Suslin 1976)."},
+
+    # --- Analyse : résolus ---
+    {"s": "Bieberbach","strate": 3, "from": "Conjecture Bieberbach — |aₙ| ≤ n pour fonctions univalentes sur disque (de Branges 1985)."},
+    {"s": "CarlesonL2","strate": 3, "from": "Convergence p.p. séries de Fourier dans L² (Carleson 1966). Étendu à Lᵖ p>1 (Hunt 1968)."},
+    {"s": "KatoSqrt", "strate": 3, "from": "Conjecture Kato racine carrée — dom(√(div·A·grad)) = H¹ (Auscher-Hofmann-Lacey-McIntosh-Tchamitchian 2001)."},
+    {"s": "CoronaTh", "strate": 3, "from": "Théorème Corona — spectre maximal de H^∞(𝔻) est dense dans spectre (Carleson 1962)."},
+
+    # --- Géométrie diff / géométrie : résolus ---
+    {"s": "CalabiYau","strate": 3, "from": "Conjecture Calabi — existence métrique Kähler Ricci-plate si c₁(M)=0 (Yau 1978, Fields Medal)."},
+    {"s": "PosMass",  "strate": 3, "from": "Positive mass theorem — masse ADM ≥ 0, = 0 ssi Minkowski (Schoen-Yau 1979, Witten 1981)."},
+    {"s": "Kepler",   "strate": 3, "from": "Conjecture Kepler — empilement sphères densité max π/(3√2) ≈ 0.7405 = FCC/HCP (Hales 1998/2005, Flyspeck 2014 vérifié Isabelle/HOL)."},
+    {"s": "Willmore", "strate": 3, "from": "Conjecture Willmore — min ∫H²dA pour tores immergés dans ℝ³ = 2π² atteint par tore Clifford (Marques-Neves 2014)."},
+    {"s": "AtiyahSing","strate": 3, "from": "Théorème index Atiyah-Singer — ind(D) = ∫ch(σ(D))·Td(M) (1963). Pont analyse↔topologie↔géom algébrique."},
+
+    # --- Combinatoire : résolus ---
+    {"s": "FourColor","strate": 3, "from": "Théorème 4 couleurs — tout graphe planaire est 4-coloriable (Appel-Haken 1976, Robertson et al. 1997, Gonthier 2005 vérifié Coq)."},
+    {"s": "RobSeym",  "strate": 3, "from": "Graph Minor Theorem — tout ensemble infini de graphes finis contient une paire liée par relation de mineur (Robertson-Seymour 1983-2004, 20 papers)."},
+    {"s": "GreenTao", "strate": 3, "from": "Green-Tao — les nombres premiers contiennent des progressions arithmétiques de longueur arbitraire (2004). Szemerédi + transference principle."},
+    {"s": "DensHJ",   "strate": 3, "from": "Density Hales-Jewett — version densité du théorème combinatoire de Hales-Jewett (Polymath1 2009/2012)."},
+    {"s": "Kneser",   "strate": 3, "from": "Conjecture Kneser — χ(KG(n,k)) = n-2k+2 (Lovász 1978). Première application topologie (Borsuk-Ulam) à la combinatoire."},
+
+    # --- Probabilités : résolus ---
+    {"s": "SLE_thm",  "strate": 3, "from": "Invariance conforme percolation critique réseau triangulaire (Smirnov 2001, Fields Medal 2010). SLE Schramm-Loewner evolution."},
+
+    # --- Logique : résolus ---
+    {"s": "ParisHarr","strate": 3, "from": "Paris-Harrington — variante combinatoire de Ramsey indépendante de l'arithmétique de Peano (1977). Premier exemple 'naturel' d'indépendance."},
+    {"s": "DPRM",     "strate": 3, "from": "Théorème DPRM — ensembles récursivement énumérables = ensembles diophantiens (Davis-Putnam-Robinson-Matiyasevich 1970). Résolution négative H10."},
 ]
 
 

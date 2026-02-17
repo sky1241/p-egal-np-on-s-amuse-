@@ -816,6 +816,59 @@ SYMBOLES = [
     {"s": "Onsager_c", "strate": 3, "from": "Conjecture Onsager — Euler C^α conservation énergie ssi α>1/3 (Isett 2018, BDSV 2019)", "domain": "analyse"},
     {"s": "GeomLang",  "strate": 3, "from": "Langlands géométrique catégorique unramified (Gaitsgory-Raskin et al. 2024)", "domain": "géom algébrique"},
 
+    # --- Strate 3 : TOPOLOGIE — grands théorèmes résolus ---
+    {"s": "Poinc3",    "strate": 3, "from": "Conjecture Poincaré dim 3 — toute 3-variété simplement connexe fermée ≅ S³ (Perelman 2003, flot de Ricci)", "domain": "topologie"},
+    {"s": "Geomtrz",   "strate": 3, "from": "Géométrisation Thurston — toute 3-variété se décompose en 8 géométries (Perelman 2003)", "domain": "topologie"},
+    {"s": "hCobord",   "strate": 3, "from": "h-cobordism theorem — dim ≥ 6 (Smale 1962, Fields Medal). Implique Poincaré généralisé dim ≥ 5.", "domain": "topologie"},
+    {"s": "Freed4",    "strate": 3, "from": "Freedman theorem — classification topologique 4-variétés simplement connexes fermées (1982, Fields Medal)", "domain": "topologie"},
+    {"s": "SmithConj", "strate": 3, "from": "Smith conjecture — action Zₚ sur S³ a point fixe = nœud trivial (Morgan-Bass 1984)", "domain": "topologie"},
+    {"s": "ExoticS7",  "strate": 3, "from": "Sphères exotiques Milnor — S⁷ admet 28 structures diff. non-standard (Milnor 1956, Kervaire-Milnor 1963)", "domain": "topologie"},
+    {"s": "Surgery",   "strate": 3, "from": "Théorie chirurgie — classification variétés dim ≥ 5 (Browder-Novikov-Sullivan-Wall 1960s)", "domain": "topologie"},
+
+    # --- Strate 3 : THÉORIE DES NOMBRES — grands théorèmes résolus ---
+    {"s": "Mordell",   "strate": 3, "from": "Conjecture Mordell — courbe genre ≥ 2 sur ℚ a nombre fini de points rationnels (Faltings 1983, Fields Medal)", "domain": "nb théorie"},
+    {"s": "WeilConj",  "strate": 3, "from": "Conjectures Weil — fonctions zêta variétés /F_q: rationalité (Dwork), fonctionnalité, RH (Deligne 1974, Fields Medal)", "domain": "nb théorie"},
+    {"s": "CatalanM",  "strate": 3, "from": "Conjecture Catalan — x^p - y^q = 1 ⟹ 3²-2³=1 seule solution (Mihailescu 2002)", "domain": "nb théorie"},
+    {"s": "GoldWeak",  "strate": 3, "from": "Goldbach faible (ternaire) — tout impair > 5 somme de 3 premiers (Helfgott 2013)", "domain": "nb théorie"},
+    {"s": "BddGaps",   "strate": 3, "from": "Bounded prime gaps — lim inf (pₙ₊₁-pₙ) < ∞ (Zhang 2013: 7×10⁷, Maynard 2013: 600, Polymath8: 246)", "domain": "nb théorie"},
+    {"s": "GrossZag",  "strate": 3, "from": "Formule Gross-Zagier — hauteur point Heegner = L'(E,1) (1986). Clé pour BSD rang 1.", "domain": "nb théorie"},
+    {"s": "HerbRibet", "strate": 3, "from": "Herbrand-Ribet — p|Bₖ ⟺ p|#Cl(ℚ(ζₚ))_χ (Herbrand 1932 →, Ribet 1976 ←). Lien Bernoulli/corps cyclotomiques.", "domain": "nb théorie"},
+    {"s": "IwasMain",  "strate": 3, "from": "Iwasawa Main Conjecture — structure Λ-modules sur tours cyclotomiques (Mazur-Wiles 1984)", "domain": "nb théorie"},
+    {"s": "SerreMod",  "strate": 3, "from": "Conjecture Serre modularité — repr. Galois irréd. impaires mod p sont modulaires (Khare-Wintenberger 2009)", "domain": "nb théorie"},
+    {"s": "LaffFnF",   "strate": 3, "from": "Langlands pour corps de fonctions GL_n (Laurent Lafforgue 2002, Fields Medal)", "domain": "nb théorie"},
+
+    # --- Strate 3 : ALGÈBRE — grands théorèmes résolus ---
+    {"s": "CFSG",      "strate": 3, "from": "Classification groupes finis simples — 18 familles + 26 sporadiques (~1983, ~10000 pages, Gorenstein program)", "domain": "algèbre"},
+    {"s": "Moonshine", "strate": 3, "from": "Monstrous Moonshine — j(τ) et Monster group (Conway-Norton 1979, prouvé Borcherds 1992, Fields Medal)", "domain": "algèbre"},
+    {"s": "QuilSusl",  "strate": 3, "from": "Conjecture Serre (Quillen-Suslin) — modules proj. sur k[x₁..xₙ] sont libres (Quillen, Suslin 1976)", "domain": "algèbre"},
+
+    # --- Strate 3 : ANALYSE — grands théorèmes résolus ---
+    {"s": "Bieberbach","strate": 3, "from": "Conjecture Bieberbach — |aₙ| ≤ n pour fonctions univalentes (de Branges 1985)", "domain": "analyse"},
+    {"s": "CarlesonL2","strate": 3, "from": "Convergence p.p. séries Fourier L² — (Carleson 1966, Fields Medal). Étendu Lᵖ p>1 (Hunt 1968).", "domain": "analyse"},
+    {"s": "KatoSqrt",  "strate": 3, "from": "Conjecture Kato racine carrée — √(div A grad) a domaine H¹ (Auscher-Hofmann-Lacey-McIntosh-Tchamitchian 2001)", "domain": "analyse"},
+    {"s": "CoronaTh",  "strate": 3, "from": "Théorème Corona — Spec maximal H^∞ dense dans le spectre (Carleson 1962)", "domain": "analyse"},
+
+    # --- Strate 3 : GÉOMÉTRIE — grands théorèmes résolus ---
+    {"s": "CalabiYau", "strate": 3, "from": "Conjecture Calabi — existence métrique Kähler Ricci-plate si c₁=0 (Yau 1978, Fields Medal)", "domain": "géom diff"},
+    {"s": "PosMass",   "strate": 3, "from": "Positive mass theorem — masse ADM ≥ 0 (Schoen-Yau 1979, Witten 1981). Fondamental en RG.", "domain": "géom diff"},
+    {"s": "Kepler",    "strate": 3, "from": "Conjecture Kepler — empilement sphères densité max π/(3√2) = FCC/HCP (Hales 2005, Flyspeck 2014 vérifié formellement)", "domain": "géométrie"},
+    {"s": "Willmore",  "strate": 3, "from": "Conjecture Willmore — min ∫H²dA pour tores immergés = 2π² (Marques-Neves 2014, min-max)", "domain": "géom diff"},
+    {"s": "AtiyahSing","strate": 3, "from": "Théorème index Atiyah-Singer — ind(D) = ∫ch(σ)Td(M) (1963, généralisé K-théorie). Pont analyse↔topologie.", "domain": "géom diff"},
+
+    # --- Strate 3 : COMBINATOIRE — grands théorèmes résolus ---
+    {"s": "FourColor", "strate": 3, "from": "Théorème 4 couleurs — tout graphe planaire 4-coloriable (Appel-Haken 1976, Robertson et al. 1997, Gonthier 2005 Coq)", "domain": "combinatoire"},
+    {"s": "RobSeym",   "strate": 3, "from": "Graph Minor Theorem — tout ensemble infini de graphes a mineur (Robertson-Seymour 1983-2004, 20 papers)", "domain": "combinatoire"},
+    {"s": "GreenTao",  "strate": 3, "from": "Green-Tao — les premiers contiennent des PA de longueur arbitraire (2004). Utilise Szemerédi + transference.", "domain": "combinatoire"},
+    {"s": "DensHJ",    "strate": 3, "from": "Density Hales-Jewett — version densité du théorème HJ (Polymath1, 2009/2012)", "domain": "combinatoire"},
+    {"s": "Kneser",    "strate": 3, "from": "Conjecture Kneser — χ(KG(n,k)) = n-2k+2 (Lovász 1978, topologie de Borsuk-Ulam appliquée aux graphes)", "domain": "combinatoire"},
+
+    # --- Strate 3 : PROBABILITÉS — grands théorèmes résolus ---
+    {"s": "SLE_thm",   "strate": 3, "from": "SLE/percolation — invariance conforme percolation critique sur réseau triangulaire (Smirnov 2001, Fields Medal 2010)", "domain": "probabilités"},
+
+    # --- Strate 3 : LOGIQUE/INDÉPENDANCE — résultats prouvés ---
+    {"s": "ParisHarr", "strate": 3, "from": "Paris-Harrington — variante Ramsey indépendante de PA (1977). Premier exemple 'naturel' d'indépendance.", "domain": "logique"},
+    {"s": "DPRM",      "strate": 3, "from": "Théorème DPRM — ensembles r.e. = ensembles diophantiens (Davis-Putnam-Robinson 1961, Matiyasevich 1970). H10 négatif.", "domain": "logique"},
+
     # ==================================================================
     # STRATE 4 — CIEL · AH
     # ==================================================================
