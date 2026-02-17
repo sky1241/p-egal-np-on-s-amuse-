@@ -1,0 +1,4265 @@
+{
+  "meta": {
+    "total_symbols": 138,
+    "total_edges": 258,
+    "total_formulas": 48,
+    "meshedness": 0.4465
+  },
+  "strates": [
+    {
+      "id": 0,
+      "name": "SOL · Δ⁰₀ · Décidable",
+      "short": "Δ⁰₀ SOL",
+      "formula": "R(x) — pas de quantificateur",
+      "desc": "Tout ce qu'une machine de Turing peut décider en temps fini. Le plancher.",
+      "color": [
+        74,
+        222,
+        128
+      ],
+      "yr": -0.44,
+      "opacity": 0.22,
+      "formal": {
+        "quantifiers": 0,
+        "class": "Δ⁰₀ = Σ⁰₀ = Π⁰₀",
+        "decidable": true,
+        "oracle": null
+      },
+      "symbols": [
+        {
+          "s": "e",
+          "from": "Euler e^iπ+1=0",
+          "domain": "analyse",
+          "year": 1748,
+          "degree": 7,
+          "px": -1.2633,
+          "pz": -1.2435
+        },
+        {
+          "s": "i",
+          "from": "Euler e^iπ+1=0",
+          "domain": "complexes",
+          "year": 1748,
+          "degree": 4,
+          "px": -0.9475,
+          "pz": -1.2435
+        },
+        {
+          "s": "π",
+          "from": "Euler / géométrie",
+          "domain": "géométrie",
+          "year": -250,
+          "degree": 4,
+          "px": -0.6316,
+          "pz": -1.2435
+        },
+        {
+          "s": "E",
+          "from": "Einstein E=mc²",
+          "domain": "physique",
+          "year": 1905,
+          "degree": 11,
+          "px": -0.3158,
+          "pz": -1.2435
+        },
+        {
+          "s": "m",
+          "from": "Einstein E=mc²",
+          "domain": "physique",
+          "year": 1905,
+          "degree": 5,
+          "px": 0.0,
+          "pz": -1.2435
+        },
+        {
+          "s": "c",
+          "from": "Einstein E=mc²",
+          "domain": "physique",
+          "year": 1905,
+          "degree": 6,
+          "px": 0.3158,
+          "pz": -1.2435
+        },
+        {
+          "s": "F",
+          "from": "Newton F=ma",
+          "domain": "mécanique",
+          "year": 1687,
+          "degree": 3,
+          "px": 0.6316,
+          "pz": -1.2435
+        },
+        {
+          "s": "a",
+          "from": "Newton F=ma",
+          "domain": "mécanique",
+          "year": 1687,
+          "degree": 3,
+          "px": 0.9475,
+          "pz": -1.2435
+        },
+        {
+          "s": "a²",
+          "from": "Pythagore a²+b²=c²",
+          "domain": "géométrie",
+          "year": -530,
+          "degree": 4,
+          "px": 1.2633,
+          "pz": -1.2435
+        },
+        {
+          "s": "b²",
+          "from": "Pythagore a²+b²=c²",
+          "domain": "géométrie",
+          "year": -530,
+          "degree": 4,
+          "px": -1.2633,
+          "pz": -0.8882
+        },
+        {
+          "s": "c²",
+          "from": "Pythagore a²+b²=c²",
+          "domain": "géométrie",
+          "year": -530,
+          "degree": 4,
+          "px": -0.9475,
+          "pz": -0.8882
+        },
+        {
+          "s": "∇×",
+          "from": "Maxwell rotationnel",
+          "domain": "électromagn",
+          "year": 1865,
+          "degree": 5,
+          "px": -0.6316,
+          "pz": -0.8882
+        },
+        {
+          "s": "∇·",
+          "from": "Maxwell divergence",
+          "domain": "électromagn",
+          "year": 1865,
+          "degree": 2,
+          "px": -0.3158,
+          "pz": -0.8882
+        },
+        {
+          "s": "B",
+          "from": "Maxwell champ magnétique",
+          "domain": "électromagn",
+          "year": 1865,
+          "degree": 7,
+          "px": 0.0,
+          "pz": -0.8882
+        },
+        {
+          "s": "ψ",
+          "from": "Schrödinger Hψ=Eψ",
+          "domain": "quantique",
+          "year": 1926,
+          "degree": 4,
+          "px": 0.3158,
+          "pz": -0.8882
+        },
+        {
+          "s": "ℏ",
+          "from": "Planck réduite h/2π",
+          "domain": "quantique",
+          "year": 1900,
+          "degree": 4,
+          "px": 0.6316,
+          "pz": -0.8882
+        },
+        {
+          "s": "Ĥ",
+          "from": "Hamiltonien quantique",
+          "domain": "quantique",
+          "year": 1926,
+          "degree": 4,
+          "px": 0.9475,
+          "pz": -0.8882
+        },
+        {
+          "s": "S",
+          "from": "Boltzmann S=k·ln(W)",
+          "domain": "thermo",
+          "year": 1877,
+          "degree": 4,
+          "px": 1.2633,
+          "pz": -0.8882
+        },
+        {
+          "s": "k",
+          "from": "Boltzmann constante",
+          "domain": "thermo",
+          "year": 1877,
+          "degree": 4,
+          "px": -1.2633,
+          "pz": -0.5329
+        },
+        {
+          "s": "W",
+          "from": "Boltzmann micro-états",
+          "domain": "thermo",
+          "year": 1877,
+          "degree": 4,
+          "px": -0.9475,
+          "pz": -0.5329
+        },
+        {
+          "s": "ln",
+          "from": "Logarithme naturel",
+          "domain": "analyse",
+          "year": 1614,
+          "degree": 4,
+          "px": -0.6316,
+          "pz": -0.5329
+        },
+        {
+          "s": "∫",
+          "from": "Leibniz intégrale",
+          "domain": "analyse",
+          "year": 1675,
+          "degree": 6,
+          "px": -0.3158,
+          "pz": -0.5329
+        },
+        {
+          "s": "∂",
+          "from": "Dérivée partielle",
+          "domain": "analyse",
+          "year": 1770,
+          "degree": 8,
+          "px": 0.0,
+          "pz": -0.5329
+        },
+        {
+          "s": "dx",
+          "from": "Leibniz différentielle",
+          "domain": "analyse",
+          "year": 1675,
+          "degree": 3,
+          "px": 0.3158,
+          "pz": -0.5329
+        },
+        {
+          "s": "∇",
+          "from": "Hamilton gradient/nabla",
+          "domain": "analyse",
+          "year": 1837,
+          "degree": 0,
+          "px": 0.6316,
+          "pz": -0.5329
+        },
+        {
+          "s": "Δ",
+          "from": "Laplacien",
+          "domain": "analyse",
+          "year": 1782,
+          "degree": 0,
+          "px": 0.9475,
+          "pz": -0.5329
+        },
+        {
+          "s": "lim",
+          "from": "Cauchy/Weierstrass limite",
+          "domain": "analyse",
+          "year": 1821,
+          "degree": 7,
+          "px": 1.2633,
+          "pz": -0.5329
+        },
+        {
+          "s": "Σ",
+          "from": "Sommation finie",
+          "domain": "algèbre",
+          "year": 1755,
+          "degree": 3,
+          "px": -1.2633,
+          "pz": -0.1776
+        },
+        {
+          "s": "Π",
+          "from": "Produit fini",
+          "domain": "algèbre",
+          "year": 1755,
+          "degree": 0,
+          "px": -0.9475,
+          "pz": -0.1776
+        },
+        {
+          "s": "Γ",
+          "from": "Fonction Gamma d'Euler",
+          "domain": "analyse",
+          "year": 1729,
+          "degree": 3,
+          "px": -0.6316,
+          "pz": -0.1776
+        },
+        {
+          "s": "ζ",
+          "from": "Riemann ζ(s)",
+          "domain": "nb premiers",
+          "year": 1859,
+          "degree": 3,
+          "px": -0.3158,
+          "pz": -0.1776
+        },
+        {
+          "s": "∈",
+          "from": "Cantor appartenance",
+          "domain": "ensembles",
+          "year": 1874,
+          "degree": 4,
+          "px": 0.0,
+          "pz": -0.1776
+        },
+        {
+          "s": "∅",
+          "from": "Ensemble vide",
+          "domain": "ensembles",
+          "year": 1939,
+          "degree": 4,
+          "px": 0.3158,
+          "pz": -0.1776
+        },
+        {
+          "s": "∪",
+          "from": "Union",
+          "domain": "ensembles",
+          "year": 1888,
+          "degree": 4,
+          "px": 0.6316,
+          "pz": -0.1776
+        },
+        {
+          "s": "∩",
+          "from": "Intersection",
+          "domain": "ensembles",
+          "year": 1888,
+          "degree": 4,
+          "px": 0.9475,
+          "pz": -0.1776
+        },
+        {
+          "s": "⊆",
+          "from": "Inclusion",
+          "domain": "ensembles",
+          "year": 1890,
+          "degree": 9,
+          "px": 1.2633,
+          "pz": -0.1776
+        },
+        {
+          "s": "ℕ",
+          "from": "Nombres naturels",
+          "domain": "nb",
+          "year": 1895,
+          "degree": 5,
+          "px": -1.2633,
+          "pz": 0.1777
+        },
+        {
+          "s": "ℤ",
+          "from": "Entiers relatifs",
+          "domain": "nb",
+          "year": 1895,
+          "degree": 5,
+          "px": -0.9475,
+          "pz": 0.1777
+        },
+        {
+          "s": "ℚ",
+          "from": "Rationnels",
+          "domain": "nb",
+          "year": 1895,
+          "degree": 5,
+          "px": -0.6316,
+          "pz": 0.1777
+        },
+        {
+          "s": "ℝ",
+          "from": "Réels",
+          "domain": "nb",
+          "year": 1895,
+          "degree": 5,
+          "px": -0.3158,
+          "pz": 0.1777
+        },
+        {
+          "s": "ℂ",
+          "from": "Complexes",
+          "domain": "nb",
+          "year": 1895,
+          "degree": 5,
+          "px": 0.0,
+          "pz": 0.1777
+        },
+        {
+          "s": "∧",
+          "from": "ET logique",
+          "domain": "logique",
+          "year": 1910,
+          "degree": 4,
+          "px": 0.3158,
+          "pz": 0.1777
+        },
+        {
+          "s": "∨",
+          "from": "OU logique",
+          "domain": "logique",
+          "year": 1910,
+          "degree": 4,
+          "px": 0.6316,
+          "pz": 0.1777
+        },
+        {
+          "s": "¬",
+          "from": "Négation",
+          "domain": "logique",
+          "year": 1910,
+          "degree": 4,
+          "px": 0.9475,
+          "pz": 0.1777
+        },
+        {
+          "s": "→",
+          "from": "Implication",
+          "domain": "logique",
+          "year": 1910,
+          "degree": 5,
+          "px": 1.2633,
+          "pz": 0.1777
+        },
+        {
+          "s": "↔",
+          "from": "Bi-implication",
+          "domain": "logique",
+          "year": 1910,
+          "degree": 4,
+          "px": -1.2633,
+          "pz": 0.533
+        },
+        {
+          "s": "α",
+          "from": "Constante structure fine",
+          "domain": "physique",
+          "year": 1916,
+          "degree": 0,
+          "px": -0.9475,
+          "pz": 0.533
+        },
+        {
+          "s": "β",
+          "from": "Vitesse relative v/c",
+          "domain": "relativité",
+          "year": 1905,
+          "degree": 3,
+          "px": -0.6316,
+          "pz": 0.533
+        },
+        {
+          "s": "γ",
+          "from": "Facteur Lorentz",
+          "domain": "relativité",
+          "year": 1905,
+          "degree": 3,
+          "px": -0.3158,
+          "pz": 0.533
+        },
+        {
+          "s": "δ",
+          "from": "Dirac delta δ(x)",
+          "domain": "distrib",
+          "year": 1927,
+          "degree": 2,
+          "px": 0.0,
+          "pz": 0.533
+        },
+        {
+          "s": "ε",
+          "from": "Epsilon voisinage",
+          "domain": "topologie",
+          "year": 1821,
+          "degree": 2,
+          "px": 0.3158,
+          "pz": 0.533
+        },
+        {
+          "s": "θ",
+          "from": "Angle trigonométrie",
+          "domain": "géométrie",
+          "year": -300,
+          "degree": 0,
+          "px": 0.6316,
+          "pz": 0.533
+        },
+        {
+          "s": "λ",
+          "from": "Lambda calcul Church",
+          "domain": "calculabilité",
+          "year": 1936,
+          "degree": 1,
+          "px": 0.9475,
+          "pz": 0.533
+        },
+        {
+          "s": "σ",
+          "from": "Écart-type / Boltzmann",
+          "domain": "stats",
+          "year": 1894,
+          "degree": 0,
+          "px": 1.2633,
+          "pz": 0.533
+        },
+        {
+          "s": "ρ",
+          "from": "Densité",
+          "domain": "physique",
+          "year": 1700,
+          "degree": 0,
+          "px": -1.2633,
+          "pz": 0.8883
+        },
+        {
+          "s": "τ",
+          "from": "Tau / couple",
+          "domain": "mécanique",
+          "year": 1700,
+          "degree": 0,
+          "px": -0.9475,
+          "pz": 0.8883
+        },
+        {
+          "s": "φ",
+          "from": "Nombre d'or (1+√5)/2",
+          "domain": "nb",
+          "year": -300,
+          "degree": 2,
+          "px": -0.6316,
+          "pz": 0.8883
+        },
+        {
+          "s": "ω",
+          "from": "Fréquence angulaire",
+          "domain": "physique",
+          "year": 1750,
+          "degree": 0,
+          "px": -0.3158,
+          "pz": 0.8883
+        },
+        {
+          "s": "sin",
+          "from": "Trigonométrie",
+          "domain": "géométrie",
+          "year": -300,
+          "degree": 0,
+          "px": 0.0,
+          "pz": 0.8883
+        },
+        {
+          "s": "cos",
+          "from": "Trigonométrie",
+          "domain": "géométrie",
+          "year": -300,
+          "degree": 0,
+          "px": 0.3158,
+          "pz": 0.8883
+        },
+        {
+          "s": "log",
+          "from": "Logarithme Napier",
+          "domain": "analyse",
+          "year": 1614,
+          "degree": 3,
+          "px": 0.6316,
+          "pz": 0.8883
+        },
+        {
+          "s": "det",
+          "from": "Déterminant matrice",
+          "domain": "algèbre lin",
+          "year": 1750,
+          "degree": 0,
+          "px": 0.9475,
+          "pz": 0.8883
+        },
+        {
+          "s": "√",
+          "from": "Racine carrée",
+          "domain": "arithm",
+          "year": -1800,
+          "degree": 5,
+          "px": 1.2633,
+          "pz": 0.8883
+        },
+        {
+          "s": "!",
+          "from": "Factorielle n!",
+          "domain": "combinatoire",
+          "year": 1808,
+          "degree": 0,
+          "px": -1.2633,
+          "pz": 1.2435
+        },
+        {
+          "s": "∞",
+          "from": "Infini potentiel Wallis",
+          "domain": "analyse",
+          "year": 1655,
+          "degree": 6,
+          "px": -0.9475,
+          "pz": 1.2435
+        },
+        {
+          "s": "=",
+          "from": "Égalité Recorde",
+          "domain": "fondements",
+          "year": 1557,
+          "degree": 21,
+          "px": -0.6316,
+          "pz": 1.2435
+        },
+        {
+          "s": "+",
+          "from": "Addition",
+          "domain": "arithm",
+          "year": 1489,
+          "degree": 9,
+          "px": -0.3158,
+          "pz": 1.2435
+        },
+        {
+          "s": "×",
+          "from": "Multiplication",
+          "domain": "arithm",
+          "year": 1631,
+          "degree": 0,
+          "px": 0.0,
+          "pz": 1.2435
+        },
+        {
+          "s": "P",
+          "from": "Classe P (temps poly)",
+          "domain": "complexité",
+          "year": 1971,
+          "degree": 9,
+          "px": 0.3158,
+          "pz": 1.2435
+        },
+        {
+          "s": "χ²",
+          "from": "Test chi-carré Pearson",
+          "domain": "stats",
+          "year": 1900,
+          "degree": 0,
+          "px": 0.6316,
+          "pz": 1.2435
+        },
+        {
+          "s": "μ₀",
+          "from": "Perméabilité vide",
+          "domain": "électromagn",
+          "year": 1865,
+          "degree": 5,
+          "px": 0.9475,
+          "pz": 1.2435
+        },
+        {
+          "s": "ε₀",
+          "from": "Permittivité vide",
+          "domain": "électromagn",
+          "year": 1865,
+          "degree": 5,
+          "px": 1.2633,
+          "pz": 1.2435
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "name": "NUAGE 1 · Σ⁰₁ · Halting Problem",
+      "short": "Σ⁰₁ HALTING",
+      "formula": "∃y R(x, y)",
+      "desc": "Semi-décidable. On peut dire oui, jamais non. Le Halting Problem.",
+      "color": [
+        96,
+        165,
+        250
+      ],
+      "yr": -0.26,
+      "opacity": 0.18,
+      "formal": {
+        "quantifiers": 1,
+        "class": "Σ⁰₁ (r.e.)",
+        "decidable": false,
+        "oracle": "∅'"
+      },
+      "symbols": [
+        {
+          "s": "∃",
+          "from": "Quantificateur existentiel",
+          "domain": "logique",
+          "year": 1897,
+          "degree": 5,
+          "px": -1.137,
+          "pz": -1.0659
+        },
+        {
+          "s": "K",
+          "from": "Halting set K={e:φₑ(e)↓}",
+          "domain": "calculabilité",
+          "year": 1936,
+          "degree": 15,
+          "px": -0.5685,
+          "pz": -1.0659
+        },
+        {
+          "s": "φₑ",
+          "from": "e-ième fonction partielle",
+          "domain": "calculabilité",
+          "year": 1936,
+          "degree": 3,
+          "px": 0.0,
+          "pz": -1.0659
+        },
+        {
+          "s": "↓",
+          "from": "Converge (s'arrête)",
+          "domain": "calculabilité",
+          "year": 1936,
+          "degree": 3,
+          "px": 0.5685,
+          "pz": -1.0659
+        },
+        {
+          "s": "↑",
+          "from": "Diverge (boucle infinie)",
+          "domain": "calculabilité",
+          "year": 1936,
+          "degree": 0,
+          "px": 1.137,
+          "pz": -1.0659
+        },
+        {
+          "s": "Wₑ",
+          "from": "e-ième ensemble r.e.",
+          "domain": "calculabilité",
+          "year": 1944,
+          "degree": 3,
+          "px": -1.137,
+          "pz": -0.3553
+        },
+        {
+          "s": "μy",
+          "from": "Opérateur μ recherche",
+          "domain": "calculabilité",
+          "year": 1936,
+          "degree": 0,
+          "px": -0.5685,
+          "pz": -0.3553
+        },
+        {
+          "s": "≤ₘ",
+          "from": "Réduction many-one",
+          "domain": "calculabilité",
+          "year": 1944,
+          "degree": 4,
+          "px": 0.0,
+          "pz": -0.3553
+        },
+        {
+          "s": "≤ₜ",
+          "from": "Réduction Turing",
+          "domain": "calculabilité",
+          "year": 1939,
+          "degree": 2,
+          "px": 0.5685,
+          "pz": -0.3553
+        },
+        {
+          "s": "NP",
+          "from": "Non-déterministe poly",
+          "domain": "complexité",
+          "year": 1971,
+          "degree": 12,
+          "px": 1.137,
+          "pz": -0.3553
+        },
+        {
+          "s": "coNP",
+          "from": "Complément de NP",
+          "domain": "complexité",
+          "year": 1971,
+          "degree": 4,
+          "px": -1.137,
+          "pz": 0.3553
+        },
+        {
+          "s": "RE",
+          "from": "Récursivement énumérable",
+          "domain": "calculabilité",
+          "year": 1936,
+          "degree": 4,
+          "px": -0.5685,
+          "pz": 0.3553
+        },
+        {
+          "s": "coRE",
+          "from": "Complément de RE",
+          "domain": "calculabilité",
+          "year": 1936,
+          "degree": 3,
+          "px": 0.0,
+          "pz": 0.3553
+        },
+        {
+          "s": "SAT",
+          "from": "Satisfiabilité Cook 1971",
+          "domain": "complexité",
+          "year": 1971,
+          "degree": 5,
+          "px": 0.5685,
+          "pz": 0.3553
+        },
+        {
+          "s": "3COL",
+          "from": "3-coloration graphe",
+          "domain": "complexité",
+          "year": 1972,
+          "degree": 3,
+          "px": 1.137,
+          "pz": 0.3553
+        },
+        {
+          "s": "TSP",
+          "from": "Voyageur de commerce",
+          "domain": "complexité",
+          "year": 1972,
+          "degree": 3,
+          "px": -1.137,
+          "pz": 1.0659
+        },
+        {
+          "s": "BQP",
+          "from": "Bounded-error Quantum Poly",
+          "domain": "quantique",
+          "year": 1993,
+          "degree": 4,
+          "px": -0.5685,
+          "pz": 1.0659
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "NUAGE 2 · Σ⁰₂ · Limite",
+      "short": "Σ⁰₂ LIMITE",
+      "formula": "∃y ∀z R(x,y,z)",
+      "desc": "Deviner, corriger, re-deviner… jamais sûr. Ensembles limites.",
+      "color": [
+        167,
+        139,
+        250
+      ],
+      "yr": -0.1,
+      "opacity": 0.15,
+      "formal": {
+        "quantifiers": 2,
+        "class": "Σ⁰₂",
+        "decidable": false,
+        "oracle": "∅''"
+      },
+      "symbols": [
+        {
+          "s": "∀",
+          "from": "Quantificateur universel",
+          "domain": "logique",
+          "year": 1897,
+          "degree": 3,
+          "px": -1.0659,
+          "pz": -0.9475
+        },
+        {
+          "s": "∃∀",
+          "from": "Alternance Σ⁰₂",
+          "domain": "calculabilité",
+          "year": 1944,
+          "degree": 3,
+          "px": -0.3553,
+          "pz": -0.9475
+        },
+        {
+          "s": "TOT",
+          "from": "{e : φₑ est totale}",
+          "domain": "calculabilité",
+          "year": 1944,
+          "degree": 3,
+          "px": 0.3553,
+          "pz": -0.9475
+        },
+        {
+          "s": "FIN",
+          "from": "{e : Wₑ est fini}",
+          "domain": "calculabilité",
+          "year": 1944,
+          "degree": 3,
+          "px": 1.0659,
+          "pz": -0.9475
+        },
+        {
+          "s": "COF",
+          "from": "{e : Wₑ est cofini}",
+          "domain": "calculabilité",
+          "year": 1944,
+          "degree": 0,
+          "px": -1.0659,
+          "pz": 0.0
+        },
+        {
+          "s": "REC",
+          "from": "{e : Wₑ est récursif}",
+          "domain": "calculabilité",
+          "year": 1944,
+          "degree": 0,
+          "px": -0.3553,
+          "pz": 0.0
+        },
+        {
+          "s": "∅'",
+          "from": "Turing jump premier saut",
+          "domain": "calculabilité",
+          "year": 1939,
+          "degree": 5,
+          "px": 0.3553,
+          "pz": 0.0
+        },
+        {
+          "s": "∅''",
+          "from": "Double saut de Turing",
+          "domain": "calculabilité",
+          "year": 1944,
+          "degree": 3,
+          "px": 1.0659,
+          "pz": 0.0
+        },
+        {
+          "s": "Δ⁰₂",
+          "from": "Intersection Σ⁰₂ ∩ Π⁰₂",
+          "domain": "calculabilité",
+          "year": 1944,
+          "degree": 2,
+          "px": -1.0659,
+          "pz": 0.9475
+        },
+        {
+          "s": "BPP",
+          "from": "Bounded-error probabiliste",
+          "domain": "complexité",
+          "year": 1977,
+          "degree": 3,
+          "px": -0.3553,
+          "pz": 0.9475
+        },
+        {
+          "s": "IP",
+          "from": "Interactive Proof",
+          "domain": "complexité",
+          "year": 1985,
+          "degree": 4,
+          "px": 0.3553,
+          "pz": 0.9475
+        },
+        {
+          "s": "SZK",
+          "from": "Statistical Zero Knowledge",
+          "domain": "crypto",
+          "year": 1986,
+          "degree": 0,
+          "px": 1.0659,
+          "pz": 0.9475
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "NUAGE n · Σ⁰ₙ · Motif Général",
+      "short": "Σ⁰ₙ MOTIF",
+      "formula": "∃∀∃∀… n alternances",
+      "desc": "Chaque alternance = un étage. Post 1944. Saut itéré de Turing.",
+      "color": [
+        244,
+        114,
+        182
+      ],
+      "yr": 0.06,
+      "opacity": 0.14,
+      "formal": {
+        "quantifiers": "n",
+        "class": "Σ⁰ₙ / Πⁿₙ / PH",
+        "decidable": false,
+        "oracle": "∅⁽ⁿ⁾"
+      },
+      "symbols": [
+        {
+          "s": "Σ⁰ₙ",
+          "from": "n-ième existentiel",
+          "domain": "calculabilité",
+          "year": 1944,
+          "degree": 4,
+          "px": -1.0659,
+          "pz": -0.9475
+        },
+        {
+          "s": "Π⁰ₙ",
+          "from": "n-ième universel",
+          "domain": "calculabilité",
+          "year": 1944,
+          "degree": 4,
+          "px": -0.3553,
+          "pz": -0.9475
+        },
+        {
+          "s": "Δ⁰ₙ",
+          "from": "Intersection Σ⁰ₙ ∩ Π⁰ₙ",
+          "domain": "calculabilité",
+          "year": 1944,
+          "degree": 4,
+          "px": 0.3553,
+          "pz": -0.9475
+        },
+        {
+          "s": "∅⁽ⁿ⁾",
+          "from": "n-ième saut de Turing",
+          "domain": "calculabilité",
+          "year": 1944,
+          "degree": 6,
+          "px": 1.0659,
+          "pz": -0.9475
+        },
+        {
+          "s": "ΣₖP",
+          "from": "k-ième niveau PH",
+          "domain": "complexité",
+          "year": 1977,
+          "degree": 4,
+          "px": -1.0659,
+          "pz": 0.0
+        },
+        {
+          "s": "ΠₖP",
+          "from": "k-ième niveau PH",
+          "domain": "complexité",
+          "year": 1977,
+          "degree": 4,
+          "px": -0.3553,
+          "pz": 0.0
+        },
+        {
+          "s": "PH",
+          "from": "Polynomial Hierarchy ∪ₖΣₖP",
+          "domain": "complexité",
+          "year": 1977,
+          "degree": 7,
+          "px": 0.3553,
+          "pz": 0.0
+        },
+        {
+          "s": "#P",
+          "from": "Comptage — Toda 1991",
+          "domain": "complexité",
+          "year": 1979,
+          "degree": 3,
+          "px": 1.0659,
+          "pz": 0.0
+        },
+        {
+          "s": "MA",
+          "from": "Merlin-Arthur",
+          "domain": "complexité",
+          "year": 1988,
+          "degree": 3,
+          "px": -1.0659,
+          "pz": 0.9475
+        },
+        {
+          "s": "AM",
+          "from": "Arthur-Merlin",
+          "domain": "complexité",
+          "year": 1986,
+          "degree": 3,
+          "px": -0.3553,
+          "pz": 0.9475
+        },
+        {
+          "s": "PP",
+          "from": "Probabilistic Polynomial",
+          "domain": "complexité",
+          "year": 1977,
+          "degree": 0,
+          "px": 0.3553,
+          "pz": 0.9475
+        },
+        {
+          "s": "⊕P",
+          "from": "Parité — Parity-P",
+          "domain": "complexité",
+          "year": 1986,
+          "degree": 0,
+          "px": 1.0659,
+          "pz": 0.9475
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "CIEL · AH = ∪ₙ Σ⁰ₙ",
+      "short": "AH CIEL",
+      "formula": "AH = ∪ₙ Σ⁰ₙ — tout le ciel arithmétique",
+      "desc": "L'union de tous les nuages. Tout ce qui se dit en arithmétique du 1er ordre.",
+      "color": [
+        251,
+        191,
+        36
+      ],
+      "yr": 0.2,
+      "opacity": 0.14,
+      "formal": {
+        "quantifiers": "ω",
+        "class": "AH (arithmetical hierarchy)",
+        "decidable": false,
+        "oracle": "∅⁽ω⁾"
+      },
+      "symbols": [
+        {
+          "s": "AH",
+          "from": "Hiérarchie arithmétique",
+          "domain": "calculabilité",
+          "year": 1944,
+          "degree": 9,
+          "px": -0.9475,
+          "pz": -0.9475
+        },
+        {
+          "s": "∪ₙ",
+          "from": "Union tous niveaux",
+          "domain": "ensembles",
+          "year": 1944,
+          "degree": 4,
+          "px": 0.0,
+          "pz": -0.9475
+        },
+        {
+          "s": "Th(ℕ)",
+          "from": "Théorie complète de ℕ",
+          "domain": "logique",
+          "year": 1931,
+          "degree": 3,
+          "px": 0.9475,
+          "pz": -0.9475
+        },
+        {
+          "s": "∅⁽ω⁾",
+          "from": "ω-ième saut (au-dessus AH)",
+          "domain": "calculabilité",
+          "year": 1955,
+          "degree": 3,
+          "px": -0.9475,
+          "pz": 0.0
+        },
+        {
+          "s": "PSPACE",
+          "from": "Espace poly — attracteur",
+          "domain": "complexité",
+          "year": 1972,
+          "degree": 9,
+          "px": 0.0,
+          "pz": 0.0
+        },
+        {
+          "s": "QIP",
+          "from": "Quantum Interactive Proof",
+          "domain": "quantique",
+          "year": 2011,
+          "degree": 2,
+          "px": 0.9475,
+          "pz": 0.0
+        },
+        {
+          "s": "EXPTIME",
+          "from": "Temps exponentiel",
+          "domain": "complexité",
+          "year": 1972,
+          "degree": 2,
+          "px": -0.9475,
+          "pz": 0.9475
+        },
+        {
+          "s": "NEXP",
+          "from": "Non-det exponentiel",
+          "domain": "complexité",
+          "year": 1972,
+          "degree": 0,
+          "px": 0.0,
+          "pz": 0.9475
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "HYPERARITHMÉTIQUE · ∅⁽ω⁾→∅⁽α⁾",
+      "short": "HYP ω₁ᶜᵏ",
+      "formula": "∅⁽α⁾ pour α < ω₁^CK",
+      "desc": "Kleene, Church-Kleene ω₁^CK, Δ¹₁. L'escalier transfini.",
+      "color": [
+        251,
+        146,
+        60
+      ],
+      "yr": 0.34,
+      "opacity": 0.18,
+      "formal": {
+        "quantifiers": "transfinite",
+        "class": "HYP ⊂ Δ¹₁",
+        "decidable": false,
+        "oracle": "∅⁽α⁾, α < ω₁^CK"
+      },
+      "symbols": [
+        {
+          "s": "ω₁ᶜᵏ",
+          "from": "Ordinal Church-Kleene",
+          "domain": "ordinaux",
+          "year": 1938,
+          "degree": 5,
+          "px": -0.9475,
+          "pz": -0.9475
+        },
+        {
+          "s": "∅⁽α⁾",
+          "from": "Saut transfinite α",
+          "domain": "calculabilité",
+          "year": 1955,
+          "degree": 3,
+          "px": 0.0,
+          "pz": -0.9475
+        },
+        {
+          "s": "Δ¹₁",
+          "from": "Analytique niveau 1 intersect",
+          "domain": "descriptive",
+          "year": 1955,
+          "degree": 3,
+          "px": 0.9475,
+          "pz": -0.9475
+        },
+        {
+          "s": "Σ¹₁",
+          "from": "Analytique existentiel",
+          "domain": "descriptive",
+          "year": 1917,
+          "degree": 3,
+          "px": -0.9475,
+          "pz": 0.0
+        },
+        {
+          "s": "Π¹₁",
+          "from": "Co-analytique",
+          "domain": "descriptive",
+          "year": 1917,
+          "degree": 5,
+          "px": 0.0,
+          "pz": 0.0
+        },
+        {
+          "s": "O",
+          "from": "O de Kleene notations ord.",
+          "domain": "calculabilité",
+          "year": 1938,
+          "degree": 3,
+          "px": 0.9475,
+          "pz": 0.0
+        },
+        {
+          "s": "HYP",
+          "from": "Ensemble hyperarithmétique",
+          "domain": "calculabilité",
+          "year": 1955,
+          "degree": 6,
+          "px": -0.9475,
+          "pz": 0.9475
+        },
+        {
+          "s": "WO",
+          "from": "Bons ordres (Π¹₁-complet)",
+          "domain": "descriptive",
+          "year": 1917,
+          "degree": 2,
+          "px": 0.0,
+          "pz": 0.9475
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "PLAFOND · Turing 1936 · Non-Calculable",
+      "short": "∞ PLAFOND",
+      "formula": "∄ M décidant l'arrêt — Prouvé.",
+      "desc": "Gödel 1931 · Church 1936 · Turing 1936. BB(n). Le mur absolu.",
+      "color": [
+        239,
+        68,
+        68
+      ],
+      "yr": 0.46,
+      "opacity": 0.28,
+      "formal": {
+        "quantifiers": "∞",
+        "class": "Non-calculable",
+        "decidable": false,
+        "oracle": "Aucun ne suffit"
+      },
+      "symbols": [
+        {
+          "s": "∄",
+          "from": "N'existe pas (pas d'algo)",
+          "domain": "calculabilité",
+          "year": 1936,
+          "degree": 4,
+          "px": -0.9475,
+          "pz": -0.9475
+        },
+        {
+          "s": "Ω",
+          "from": "Constante de Chaitin",
+          "domain": "information",
+          "year": 1975,
+          "degree": 2,
+          "px": 0.0,
+          "pz": -0.9475
+        },
+        {
+          "s": "BB",
+          "from": "Busy Beaver BB(n)",
+          "domain": "calculabilité",
+          "year": 1962,
+          "degree": 2,
+          "px": 0.9475,
+          "pz": -0.9475
+        },
+        {
+          "s": "⊥",
+          "from": "Bottom / indécidable",
+          "domain": "logique",
+          "year": 1936,
+          "degree": 3,
+          "px": -0.9475,
+          "pz": 0.0
+        },
+        {
+          "s": "G",
+          "from": "Phrase de Gödel auto-réf.",
+          "domain": "logique",
+          "year": 1931,
+          "degree": 6,
+          "px": 0.0,
+          "pz": 0.0
+        },
+        {
+          "s": "⊢",
+          "from": "Prouvabilité",
+          "domain": "logique",
+          "year": 1879,
+          "degree": 2,
+          "px": 0.9475,
+          "pz": 0.0
+        },
+        {
+          "s": "⊬",
+          "from": "Non-prouvable dans S",
+          "domain": "logique",
+          "year": 1931,
+          "degree": 4,
+          "px": -0.9475,
+          "pz": 0.9475
+        },
+        {
+          "s": "K(x)",
+          "from": "Complexité de Kolmogorov",
+          "domain": "information",
+          "year": 1965,
+          "degree": 2,
+          "px": 0.0,
+          "pz": 0.9475
+        },
+        {
+          "s": "HALT",
+          "from": "Problème de l'arrêt",
+          "domain": "calculabilité",
+          "year": 1936,
+          "degree": 8,
+          "px": 0.9475,
+          "pz": 0.9475
+        }
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "a": "e",
+      "b": "i",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Euler Identity"
+      ]
+    },
+    {
+      "a": "e",
+      "b": "π",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Euler Identity"
+      ]
+    },
+    {
+      "a": "=",
+      "b": "e",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Euler Identity"
+      ]
+    },
+    {
+      "a": "+",
+      "b": "e",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Euler Identity"
+      ]
+    },
+    {
+      "a": "i",
+      "b": "π",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Euler Identity"
+      ]
+    },
+    {
+      "a": "=",
+      "b": "i",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Euler Identity"
+      ]
+    },
+    {
+      "a": "+",
+      "b": "i",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Euler Identity"
+      ]
+    },
+    {
+      "a": "=",
+      "b": "π",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Euler Identity"
+      ]
+    },
+    {
+      "a": "+",
+      "b": "π",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Euler Identity"
+      ]
+    },
+    {
+      "a": "+",
+      "b": "=",
+      "weight": 2,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Euler Identity",
+        "Pythagore"
+      ]
+    },
+    {
+      "a": "E",
+      "b": "m",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Einstein E=mc²"
+      ]
+    },
+    {
+      "a": "E",
+      "b": "c",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Einstein E=mc²"
+      ]
+    },
+    {
+      "a": "=",
+      "b": "E",
+      "weight": 2,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Einstein E=mc²",
+        "Schrödinger"
+      ]
+    },
+    {
+      "a": "c",
+      "b": "m",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Einstein E=mc²"
+      ]
+    },
+    {
+      "a": "=",
+      "b": "m",
+      "weight": 2,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Einstein E=mc²",
+        "Newton F=ma"
+      ]
+    },
+    {
+      "a": "=",
+      "b": "c",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Einstein E=mc²"
+      ]
+    },
+    {
+      "a": "F",
+      "b": "m",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Newton F=ma"
+      ]
+    },
+    {
+      "a": "F",
+      "b": "a",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Newton F=ma"
+      ]
+    },
+    {
+      "a": "=",
+      "b": "F",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Newton F=ma"
+      ]
+    },
+    {
+      "a": "a",
+      "b": "m",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Newton F=ma"
+      ]
+    },
+    {
+      "a": "=",
+      "b": "a",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Newton F=ma"
+      ]
+    },
+    {
+      "a": "a²",
+      "b": "b²",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Pythagore"
+      ]
+    },
+    {
+      "a": "a²",
+      "b": "c²",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Pythagore"
+      ]
+    },
+    {
+      "a": "=",
+      "b": "a²",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Pythagore"
+      ]
+    },
+    {
+      "a": "+",
+      "b": "a²",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Pythagore"
+      ]
+    },
+    {
+      "a": "b²",
+      "b": "c²",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Pythagore"
+      ]
+    },
+    {
+      "a": "=",
+      "b": "b²",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Pythagore"
+      ]
+    },
+    {
+      "a": "+",
+      "b": "b²",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Pythagore"
+      ]
+    },
+    {
+      "a": "=",
+      "b": "c²",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Pythagore"
+      ]
+    },
+    {
+      "a": "+",
+      "b": "c²",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Pythagore"
+      ]
+    },
+    {
+      "a": "S",
+      "b": "k",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Boltzmann entropy"
+      ]
+    },
+    {
+      "a": "S",
+      "b": "ln",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Boltzmann entropy"
+      ]
+    },
+    {
+      "a": "S",
+      "b": "W",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Boltzmann entropy"
+      ]
+    },
+    {
+      "a": "=",
+      "b": "S",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Boltzmann entropy"
+      ]
+    },
+    {
+      "a": "k",
+      "b": "ln",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Boltzmann entropy"
+      ]
+    },
+    {
+      "a": "W",
+      "b": "k",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Boltzmann entropy"
+      ]
+    },
+    {
+      "a": "=",
+      "b": "k",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Boltzmann entropy"
+      ]
+    },
+    {
+      "a": "W",
+      "b": "ln",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Boltzmann entropy"
+      ]
+    },
+    {
+      "a": "=",
+      "b": "ln",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Boltzmann entropy"
+      ]
+    },
+    {
+      "a": "=",
+      "b": "W",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Boltzmann entropy"
+      ]
+    },
+    {
+      "a": "Ĥ",
+      "b": "ψ",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Schrödinger"
+      ]
+    },
+    {
+      "a": "E",
+      "b": "Ĥ",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Schrödinger"
+      ]
+    },
+    {
+      "a": "Ĥ",
+      "b": "ℏ",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Schrödinger"
+      ]
+    },
+    {
+      "a": "=",
+      "b": "Ĥ",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Schrödinger"
+      ]
+    },
+    {
+      "a": "E",
+      "b": "ψ",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Schrödinger"
+      ]
+    },
+    {
+      "a": "ψ",
+      "b": "ℏ",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Schrödinger"
+      ]
+    },
+    {
+      "a": "=",
+      "b": "ψ",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Schrödinger"
+      ]
+    },
+    {
+      "a": "E",
+      "b": "ℏ",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Schrödinger"
+      ]
+    },
+    {
+      "a": "=",
+      "b": "ℏ",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Schrödinger"
+      ]
+    },
+    {
+      "a": "B",
+      "b": "∇·",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Maxwell div B"
+      ]
+    },
+    {
+      "a": "=",
+      "b": "∇·",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Maxwell div B"
+      ]
+    },
+    {
+      "a": "=",
+      "b": "B",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Maxwell div B"
+      ]
+    },
+    {
+      "a": "B",
+      "b": "∇×",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Maxwell rot"
+      ]
+    },
+    {
+      "a": "E",
+      "b": "∇×",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Maxwell rot"
+      ]
+    },
+    {
+      "a": "∂",
+      "b": "∇×",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Maxwell rot"
+      ]
+    },
+    {
+      "a": "μ₀",
+      "b": "∇×",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Maxwell rot"
+      ]
+    },
+    {
+      "a": "ε₀",
+      "b": "∇×",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Maxwell rot"
+      ]
+    },
+    {
+      "a": "B",
+      "b": "E",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Maxwell rot"
+      ]
+    },
+    {
+      "a": "B",
+      "b": "∂",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Maxwell rot"
+      ]
+    },
+    {
+      "a": "B",
+      "b": "μ₀",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Maxwell rot"
+      ]
+    },
+    {
+      "a": "B",
+      "b": "ε₀",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Maxwell rot"
+      ]
+    },
+    {
+      "a": "E",
+      "b": "∂",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Maxwell rot"
+      ]
+    },
+    {
+      "a": "E",
+      "b": "μ₀",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Maxwell rot"
+      ]
+    },
+    {
+      "a": "E",
+      "b": "ε₀",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Maxwell rot"
+      ]
+    },
+    {
+      "a": "μ₀",
+      "b": "∂",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Maxwell rot"
+      ]
+    },
+    {
+      "a": "ε₀",
+      "b": "∂",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Maxwell rot"
+      ]
+    },
+    {
+      "a": "ε₀",
+      "b": "μ₀",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Maxwell rot"
+      ]
+    },
+    {
+      "a": "lim",
+      "b": "ε",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Cauchy limit"
+      ]
+    },
+    {
+      "a": "lim",
+      "b": "δ",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Cauchy limit"
+      ]
+    },
+    {
+      "a": "δ",
+      "b": "ε",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Cauchy limit"
+      ]
+    },
+    {
+      "a": "dx",
+      "b": "∫",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Integral/derivative"
+      ]
+    },
+    {
+      "a": "∂",
+      "b": "∫",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Integral/derivative"
+      ]
+    },
+    {
+      "a": "lim",
+      "b": "∫",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Integral/derivative"
+      ]
+    },
+    {
+      "a": "dx",
+      "b": "∂",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Integral/derivative"
+      ]
+    },
+    {
+      "a": "dx",
+      "b": "lim",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Integral/derivative"
+      ]
+    },
+    {
+      "a": "lim",
+      "b": "∂",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Integral/derivative"
+      ]
+    },
+    {
+      "a": "Σ",
+      "b": "ζ",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Riemann zeta"
+      ]
+    },
+    {
+      "a": "ζ",
+      "b": "∞",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Riemann zeta"
+      ]
+    },
+    {
+      "a": "log",
+      "b": "ζ",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Riemann zeta"
+      ]
+    },
+    {
+      "a": "Σ",
+      "b": "∞",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Riemann zeta"
+      ]
+    },
+    {
+      "a": "log",
+      "b": "Σ",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Riemann zeta"
+      ]
+    },
+    {
+      "a": "log",
+      "b": "∞",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Riemann zeta"
+      ]
+    },
+    {
+      "a": "Γ",
+      "b": "∫",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Gamma function"
+      ]
+    },
+    {
+      "a": "e",
+      "b": "Γ",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Gamma function"
+      ]
+    },
+    {
+      "a": "Γ",
+      "b": "∞",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Gamma function"
+      ]
+    },
+    {
+      "a": "e",
+      "b": "∫",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Gamma function"
+      ]
+    },
+    {
+      "a": "∞",
+      "b": "∫",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Gamma function"
+      ]
+    },
+    {
+      "a": "e",
+      "b": "∞",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Gamma function"
+      ]
+    },
+    {
+      "a": "φ",
+      "b": "√",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Golden ratio"
+      ]
+    },
+    {
+      "a": "+",
+      "b": "φ",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Golden ratio"
+      ]
+    },
+    {
+      "a": "+",
+      "b": "√",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Golden ratio"
+      ]
+    },
+    {
+      "a": "∅",
+      "b": "∈",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Set theory basics"
+      ]
+    },
+    {
+      "a": "∈",
+      "b": "∪",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Set theory basics"
+      ]
+    },
+    {
+      "a": "∈",
+      "b": "∩",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Set theory basics"
+      ]
+    },
+    {
+      "a": "∈",
+      "b": "⊆",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Set theory basics"
+      ]
+    },
+    {
+      "a": "∅",
+      "b": "∪",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Set theory basics"
+      ]
+    },
+    {
+      "a": "∅",
+      "b": "∩",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Set theory basics"
+      ]
+    },
+    {
+      "a": "∅",
+      "b": "⊆",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Set theory basics"
+      ]
+    },
+    {
+      "a": "∩",
+      "b": "∪",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Set theory basics"
+      ]
+    },
+    {
+      "a": "∪",
+      "b": "⊆",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Set theory basics"
+      ]
+    },
+    {
+      "a": "∩",
+      "b": "⊆",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Set theory basics"
+      ]
+    },
+    {
+      "a": "ℕ",
+      "b": "ℤ",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Number sets chain"
+      ]
+    },
+    {
+      "a": "ℕ",
+      "b": "ℚ",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Number sets chain"
+      ]
+    },
+    {
+      "a": "ℕ",
+      "b": "ℝ",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Number sets chain"
+      ]
+    },
+    {
+      "a": "ℂ",
+      "b": "ℕ",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Number sets chain"
+      ]
+    },
+    {
+      "a": "ℕ",
+      "b": "⊆",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Number sets chain"
+      ]
+    },
+    {
+      "a": "ℚ",
+      "b": "ℤ",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Number sets chain"
+      ]
+    },
+    {
+      "a": "ℝ",
+      "b": "ℤ",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Number sets chain"
+      ]
+    },
+    {
+      "a": "ℂ",
+      "b": "ℤ",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Number sets chain"
+      ]
+    },
+    {
+      "a": "ℤ",
+      "b": "⊆",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Number sets chain"
+      ]
+    },
+    {
+      "a": "ℚ",
+      "b": "ℝ",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Number sets chain"
+      ]
+    },
+    {
+      "a": "ℂ",
+      "b": "ℚ",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Number sets chain"
+      ]
+    },
+    {
+      "a": "ℚ",
+      "b": "⊆",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Number sets chain"
+      ]
+    },
+    {
+      "a": "ℂ",
+      "b": "ℝ",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Number sets chain"
+      ]
+    },
+    {
+      "a": "ℝ",
+      "b": "⊆",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Number sets chain"
+      ]
+    },
+    {
+      "a": "ℂ",
+      "b": "⊆",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Number sets chain"
+      ]
+    },
+    {
+      "a": "∧",
+      "b": "∨",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Propositional logic"
+      ]
+    },
+    {
+      "a": "¬",
+      "b": "∧",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Propositional logic"
+      ]
+    },
+    {
+      "a": "→",
+      "b": "∧",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Propositional logic"
+      ]
+    },
+    {
+      "a": "↔",
+      "b": "∧",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Propositional logic"
+      ]
+    },
+    {
+      "a": "¬",
+      "b": "∨",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Propositional logic"
+      ]
+    },
+    {
+      "a": "→",
+      "b": "∨",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Propositional logic"
+      ]
+    },
+    {
+      "a": "↔",
+      "b": "∨",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Propositional logic"
+      ]
+    },
+    {
+      "a": "¬",
+      "b": "→",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Propositional logic"
+      ]
+    },
+    {
+      "a": "¬",
+      "b": "↔",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Propositional logic"
+      ]
+    },
+    {
+      "a": "→",
+      "b": "↔",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Propositional logic"
+      ]
+    },
+    {
+      "a": "β",
+      "b": "γ",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Lorentz factor"
+      ]
+    },
+    {
+      "a": "c",
+      "b": "γ",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Lorentz factor"
+      ]
+    },
+    {
+      "a": "γ",
+      "b": "√",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Lorentz factor"
+      ]
+    },
+    {
+      "a": "c",
+      "b": "β",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Lorentz factor"
+      ]
+    },
+    {
+      "a": "β",
+      "b": "√",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Lorentz factor"
+      ]
+    },
+    {
+      "a": "c",
+      "b": "√",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Lorentz factor"
+      ]
+    },
+    {
+      "a": "λ",
+      "b": "→",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 0,
+      "cross_strata": false,
+      "formulas": [
+        "Lambda calculus"
+      ]
+    },
+    {
+      "a": "K",
+      "b": "φₑ",
+      "weight": 1,
+      "strate_a": 1,
+      "strate_b": 1,
+      "cross_strata": false,
+      "formulas": [
+        "Halting Problem def"
+      ]
+    },
+    {
+      "a": "K",
+      "b": "↓",
+      "weight": 1,
+      "strate_a": 1,
+      "strate_b": 1,
+      "cross_strata": false,
+      "formulas": [
+        "Halting Problem def"
+      ]
+    },
+    {
+      "a": "K",
+      "b": "∃",
+      "weight": 1,
+      "strate_a": 1,
+      "strate_b": 1,
+      "cross_strata": false,
+      "formulas": [
+        "Halting Problem def"
+      ]
+    },
+    {
+      "a": "φₑ",
+      "b": "↓",
+      "weight": 1,
+      "strate_a": 1,
+      "strate_b": 1,
+      "cross_strata": false,
+      "formulas": [
+        "Halting Problem def"
+      ]
+    },
+    {
+      "a": "φₑ",
+      "b": "∃",
+      "weight": 1,
+      "strate_a": 1,
+      "strate_b": 1,
+      "cross_strata": false,
+      "formulas": [
+        "Halting Problem def"
+      ]
+    },
+    {
+      "a": "↓",
+      "b": "∃",
+      "weight": 1,
+      "strate_a": 1,
+      "strate_b": 1,
+      "cross_strata": false,
+      "formulas": [
+        "Halting Problem def"
+      ]
+    },
+    {
+      "a": "RE",
+      "b": "coRE",
+      "weight": 1,
+      "strate_a": 1,
+      "strate_b": 1,
+      "cross_strata": false,
+      "formulas": [
+        "RE / coRE split"
+      ]
+    },
+    {
+      "a": "K",
+      "b": "RE",
+      "weight": 2,
+      "strate_a": 1,
+      "strate_b": 1,
+      "cross_strata": false,
+      "formulas": [
+        "RE / coRE split",
+        "Decidable → RE"
+      ]
+    },
+    {
+      "a": "RE",
+      "b": "Wₑ",
+      "weight": 1,
+      "strate_a": 1,
+      "strate_b": 1,
+      "cross_strata": false,
+      "formulas": [
+        "RE / coRE split"
+      ]
+    },
+    {
+      "a": "K",
+      "b": "coRE",
+      "weight": 1,
+      "strate_a": 1,
+      "strate_b": 1,
+      "cross_strata": false,
+      "formulas": [
+        "RE / coRE split"
+      ]
+    },
+    {
+      "a": "Wₑ",
+      "b": "coRE",
+      "weight": 1,
+      "strate_a": 1,
+      "strate_b": 1,
+      "cross_strata": false,
+      "formulas": [
+        "RE / coRE split"
+      ]
+    },
+    {
+      "a": "K",
+      "b": "Wₑ",
+      "weight": 1,
+      "strate_a": 1,
+      "strate_b": 1,
+      "cross_strata": false,
+      "formulas": [
+        "RE / coRE split"
+      ]
+    },
+    {
+      "a": "≤ₘ",
+      "b": "≤ₜ",
+      "weight": 1,
+      "strate_a": 1,
+      "strate_b": 1,
+      "cross_strata": false,
+      "formulas": [
+        "Turing reductions"
+      ]
+    },
+    {
+      "a": "K",
+      "b": "≤ₘ",
+      "weight": 1,
+      "strate_a": 1,
+      "strate_b": 1,
+      "cross_strata": false,
+      "formulas": [
+        "Turing reductions"
+      ]
+    },
+    {
+      "a": "K",
+      "b": "≤ₜ",
+      "weight": 1,
+      "strate_a": 1,
+      "strate_b": 1,
+      "cross_strata": false,
+      "formulas": [
+        "Turing reductions"
+      ]
+    },
+    {
+      "a": "NP",
+      "b": "∃",
+      "weight": 1,
+      "strate_a": 1,
+      "strate_b": 1,
+      "cross_strata": false,
+      "formulas": [
+        "NP definition"
+      ]
+    },
+    {
+      "a": "NP",
+      "b": "P",
+      "weight": 4,
+      "strate_a": 1,
+      "strate_b": 0,
+      "cross_strata": true,
+      "formulas": [
+        "NP definition",
+        "P vs NP",
+        "PH collapse",
+        "Quantum landscape"
+      ]
+    },
+    {
+      "a": "P",
+      "b": "∃",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 1,
+      "cross_strata": true,
+      "formulas": [
+        "NP definition"
+      ]
+    },
+    {
+      "a": "NP",
+      "b": "SAT",
+      "weight": 3,
+      "strate_a": 1,
+      "strate_b": 1,
+      "cross_strata": false,
+      "formulas": [
+        "Cook-Levin",
+        "Karp 21 problems",
+        "P vs NP"
+      ]
+    },
+    {
+      "a": "SAT",
+      "b": "≤ₘ",
+      "weight": 1,
+      "strate_a": 1,
+      "strate_b": 1,
+      "cross_strata": false,
+      "formulas": [
+        "Cook-Levin"
+      ]
+    },
+    {
+      "a": "NP",
+      "b": "≤ₘ",
+      "weight": 1,
+      "strate_a": 1,
+      "strate_b": 1,
+      "cross_strata": false,
+      "formulas": [
+        "Cook-Levin"
+      ]
+    },
+    {
+      "a": "3COL",
+      "b": "SAT",
+      "weight": 1,
+      "strate_a": 1,
+      "strate_b": 1,
+      "cross_strata": false,
+      "formulas": [
+        "Karp 21 problems"
+      ]
+    },
+    {
+      "a": "SAT",
+      "b": "TSP",
+      "weight": 1,
+      "strate_a": 1,
+      "strate_b": 1,
+      "cross_strata": false,
+      "formulas": [
+        "Karp 21 problems"
+      ]
+    },
+    {
+      "a": "3COL",
+      "b": "TSP",
+      "weight": 1,
+      "strate_a": 1,
+      "strate_b": 1,
+      "cross_strata": false,
+      "formulas": [
+        "Karp 21 problems"
+      ]
+    },
+    {
+      "a": "3COL",
+      "b": "NP",
+      "weight": 1,
+      "strate_a": 1,
+      "strate_b": 1,
+      "cross_strata": false,
+      "formulas": [
+        "Karp 21 problems"
+      ]
+    },
+    {
+      "a": "NP",
+      "b": "TSP",
+      "weight": 1,
+      "strate_a": 1,
+      "strate_b": 1,
+      "cross_strata": false,
+      "formulas": [
+        "Karp 21 problems"
+      ]
+    },
+    {
+      "a": "∀",
+      "b": "∃∀",
+      "weight": 1,
+      "strate_a": 2,
+      "strate_b": 2,
+      "cross_strata": false,
+      "formulas": [
+        "Σ⁰₂ definition"
+      ]
+    },
+    {
+      "a": "TOT",
+      "b": "∃∀",
+      "weight": 1,
+      "strate_a": 2,
+      "strate_b": 2,
+      "cross_strata": false,
+      "formulas": [
+        "Σ⁰₂ definition"
+      ]
+    },
+    {
+      "a": "FIN",
+      "b": "∃∀",
+      "weight": 1,
+      "strate_a": 2,
+      "strate_b": 2,
+      "cross_strata": false,
+      "formulas": [
+        "Σ⁰₂ definition"
+      ]
+    },
+    {
+      "a": "TOT",
+      "b": "∀",
+      "weight": 1,
+      "strate_a": 2,
+      "strate_b": 2,
+      "cross_strata": false,
+      "formulas": [
+        "Σ⁰₂ definition"
+      ]
+    },
+    {
+      "a": "FIN",
+      "b": "∀",
+      "weight": 1,
+      "strate_a": 2,
+      "strate_b": 2,
+      "cross_strata": false,
+      "formulas": [
+        "Σ⁰₂ definition"
+      ]
+    },
+    {
+      "a": "FIN",
+      "b": "TOT",
+      "weight": 1,
+      "strate_a": 2,
+      "strate_b": 2,
+      "cross_strata": false,
+      "formulas": [
+        "Σ⁰₂ definition"
+      ]
+    },
+    {
+      "a": "∅'",
+      "b": "∅''",
+      "weight": 1,
+      "strate_a": 2,
+      "strate_b": 2,
+      "cross_strata": false,
+      "formulas": [
+        "Turing jump chain"
+      ]
+    },
+    {
+      "a": "K",
+      "b": "∅'",
+      "weight": 1,
+      "strate_a": 1,
+      "strate_b": 2,
+      "cross_strata": true,
+      "formulas": [
+        "Turing jump chain"
+      ]
+    },
+    {
+      "a": "∅'",
+      "b": "∅⁽ⁿ⁾",
+      "weight": 1,
+      "strate_a": 2,
+      "strate_b": 3,
+      "cross_strata": true,
+      "formulas": [
+        "Turing jump chain"
+      ]
+    },
+    {
+      "a": "K",
+      "b": "∅''",
+      "weight": 1,
+      "strate_a": 1,
+      "strate_b": 2,
+      "cross_strata": true,
+      "formulas": [
+        "Turing jump chain"
+      ]
+    },
+    {
+      "a": "∅''",
+      "b": "∅⁽ⁿ⁾",
+      "weight": 1,
+      "strate_a": 2,
+      "strate_b": 3,
+      "cross_strata": true,
+      "formulas": [
+        "Turing jump chain"
+      ]
+    },
+    {
+      "a": "K",
+      "b": "∅⁽ⁿ⁾",
+      "weight": 1,
+      "strate_a": 1,
+      "strate_b": 3,
+      "cross_strata": true,
+      "formulas": [
+        "Turing jump chain"
+      ]
+    },
+    {
+      "a": "lim",
+      "b": "Δ⁰₂",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 2,
+      "cross_strata": true,
+      "formulas": [
+        "Limit lemma"
+      ]
+    },
+    {
+      "a": "Δ⁰₂",
+      "b": "∅'",
+      "weight": 1,
+      "strate_a": 2,
+      "strate_b": 2,
+      "cross_strata": false,
+      "formulas": [
+        "Limit lemma"
+      ]
+    },
+    {
+      "a": "lim",
+      "b": "∅'",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 2,
+      "cross_strata": true,
+      "formulas": [
+        "Limit lemma"
+      ]
+    },
+    {
+      "a": "PH",
+      "b": "ΣₖP",
+      "weight": 1,
+      "strate_a": 3,
+      "strate_b": 3,
+      "cross_strata": false,
+      "formulas": [
+        "PH structure"
+      ]
+    },
+    {
+      "a": "PH",
+      "b": "ΠₖP",
+      "weight": 1,
+      "strate_a": 3,
+      "strate_b": 3,
+      "cross_strata": false,
+      "formulas": [
+        "PH structure"
+      ]
+    },
+    {
+      "a": "NP",
+      "b": "PH",
+      "weight": 2,
+      "strate_a": 1,
+      "strate_b": 3,
+      "cross_strata": true,
+      "formulas": [
+        "PH structure",
+        "PH collapse"
+      ]
+    },
+    {
+      "a": "PH",
+      "b": "coNP",
+      "weight": 1,
+      "strate_a": 3,
+      "strate_b": 1,
+      "cross_strata": true,
+      "formulas": [
+        "PH structure"
+      ]
+    },
+    {
+      "a": "ΠₖP",
+      "b": "ΣₖP",
+      "weight": 1,
+      "strate_a": 3,
+      "strate_b": 3,
+      "cross_strata": false,
+      "formulas": [
+        "PH structure"
+      ]
+    },
+    {
+      "a": "NP",
+      "b": "ΣₖP",
+      "weight": 1,
+      "strate_a": 1,
+      "strate_b": 3,
+      "cross_strata": true,
+      "formulas": [
+        "PH structure"
+      ]
+    },
+    {
+      "a": "coNP",
+      "b": "ΣₖP",
+      "weight": 1,
+      "strate_a": 1,
+      "strate_b": 3,
+      "cross_strata": true,
+      "formulas": [
+        "PH structure"
+      ]
+    },
+    {
+      "a": "NP",
+      "b": "ΠₖP",
+      "weight": 1,
+      "strate_a": 1,
+      "strate_b": 3,
+      "cross_strata": true,
+      "formulas": [
+        "PH structure"
+      ]
+    },
+    {
+      "a": "coNP",
+      "b": "ΠₖP",
+      "weight": 1,
+      "strate_a": 1,
+      "strate_b": 3,
+      "cross_strata": true,
+      "formulas": [
+        "PH structure"
+      ]
+    },
+    {
+      "a": "NP",
+      "b": "coNP",
+      "weight": 1,
+      "strate_a": 1,
+      "strate_b": 1,
+      "cross_strata": false,
+      "formulas": [
+        "PH structure"
+      ]
+    },
+    {
+      "a": "#P",
+      "b": "PH",
+      "weight": 2,
+      "strate_a": 3,
+      "strate_b": 3,
+      "cross_strata": false,
+      "formulas": [
+        "Toda theorem",
+        "Counting power"
+      ]
+    },
+    {
+      "a": "P",
+      "b": "PH",
+      "weight": 2,
+      "strate_a": 0,
+      "strate_b": 3,
+      "cross_strata": true,
+      "formulas": [
+        "Toda theorem",
+        "PH collapse"
+      ]
+    },
+    {
+      "a": "#P",
+      "b": "P",
+      "weight": 1,
+      "strate_a": 3,
+      "strate_b": 0,
+      "cross_strata": true,
+      "formulas": [
+        "Toda theorem"
+      ]
+    },
+    {
+      "a": "IP",
+      "b": "PSPACE",
+      "weight": 1,
+      "strate_a": 2,
+      "strate_b": 4,
+      "cross_strata": true,
+      "formulas": [
+        "IP = PSPACE (Shamir)"
+      ]
+    },
+    {
+      "a": "PSPACE",
+      "b": "QIP",
+      "weight": 1,
+      "strate_a": 4,
+      "strate_b": 4,
+      "cross_strata": false,
+      "formulas": [
+        "QIP = PSPACE"
+      ]
+    },
+    {
+      "a": "BQP",
+      "b": "QIP",
+      "weight": 1,
+      "strate_a": 1,
+      "strate_b": 4,
+      "cross_strata": true,
+      "formulas": [
+        "QIP = PSPACE"
+      ]
+    },
+    {
+      "a": "BQP",
+      "b": "PSPACE",
+      "weight": 2,
+      "strate_a": 1,
+      "strate_b": 4,
+      "cross_strata": true,
+      "formulas": [
+        "QIP = PSPACE",
+        "Quantum landscape"
+      ]
+    },
+    {
+      "a": "AM",
+      "b": "MA",
+      "weight": 1,
+      "strate_a": 3,
+      "strate_b": 3,
+      "cross_strata": false,
+      "formulas": [
+        "Arthur-Merlin"
+      ]
+    },
+    {
+      "a": "AM",
+      "b": "IP",
+      "weight": 1,
+      "strate_a": 3,
+      "strate_b": 2,
+      "cross_strata": true,
+      "formulas": [
+        "Arthur-Merlin"
+      ]
+    },
+    {
+      "a": "AM",
+      "b": "BPP",
+      "weight": 1,
+      "strate_a": 3,
+      "strate_b": 2,
+      "cross_strata": true,
+      "formulas": [
+        "Arthur-Merlin"
+      ]
+    },
+    {
+      "a": "IP",
+      "b": "MA",
+      "weight": 1,
+      "strate_a": 2,
+      "strate_b": 3,
+      "cross_strata": true,
+      "formulas": [
+        "Arthur-Merlin"
+      ]
+    },
+    {
+      "a": "BPP",
+      "b": "MA",
+      "weight": 1,
+      "strate_a": 2,
+      "strate_b": 3,
+      "cross_strata": true,
+      "formulas": [
+        "Arthur-Merlin"
+      ]
+    },
+    {
+      "a": "BPP",
+      "b": "IP",
+      "weight": 1,
+      "strate_a": 2,
+      "strate_b": 2,
+      "cross_strata": false,
+      "formulas": [
+        "Arthur-Merlin"
+      ]
+    },
+    {
+      "a": "AH",
+      "b": "∪ₙ",
+      "weight": 1,
+      "strate_a": 4,
+      "strate_b": 4,
+      "cross_strata": false,
+      "formulas": [
+        "Arithmetical Hierarchy"
+      ]
+    },
+    {
+      "a": "AH",
+      "b": "Σ⁰ₙ",
+      "weight": 1,
+      "strate_a": 4,
+      "strate_b": 3,
+      "cross_strata": true,
+      "formulas": [
+        "Arithmetical Hierarchy"
+      ]
+    },
+    {
+      "a": "AH",
+      "b": "Π⁰ₙ",
+      "weight": 1,
+      "strate_a": 4,
+      "strate_b": 3,
+      "cross_strata": true,
+      "formulas": [
+        "Arithmetical Hierarchy"
+      ]
+    },
+    {
+      "a": "AH",
+      "b": "Δ⁰ₙ",
+      "weight": 1,
+      "strate_a": 4,
+      "strate_b": 3,
+      "cross_strata": true,
+      "formulas": [
+        "Arithmetical Hierarchy"
+      ]
+    },
+    {
+      "a": "Σ⁰ₙ",
+      "b": "∪ₙ",
+      "weight": 1,
+      "strate_a": 3,
+      "strate_b": 4,
+      "cross_strata": true,
+      "formulas": [
+        "Arithmetical Hierarchy"
+      ]
+    },
+    {
+      "a": "Π⁰ₙ",
+      "b": "∪ₙ",
+      "weight": 1,
+      "strate_a": 3,
+      "strate_b": 4,
+      "cross_strata": true,
+      "formulas": [
+        "Arithmetical Hierarchy"
+      ]
+    },
+    {
+      "a": "Δ⁰ₙ",
+      "b": "∪ₙ",
+      "weight": 1,
+      "strate_a": 3,
+      "strate_b": 4,
+      "cross_strata": true,
+      "formulas": [
+        "Arithmetical Hierarchy"
+      ]
+    },
+    {
+      "a": "Π⁰ₙ",
+      "b": "Σ⁰ₙ",
+      "weight": 1,
+      "strate_a": 3,
+      "strate_b": 3,
+      "cross_strata": false,
+      "formulas": [
+        "Arithmetical Hierarchy"
+      ]
+    },
+    {
+      "a": "Δ⁰ₙ",
+      "b": "Σ⁰ₙ",
+      "weight": 1,
+      "strate_a": 3,
+      "strate_b": 3,
+      "cross_strata": false,
+      "formulas": [
+        "Arithmetical Hierarchy"
+      ]
+    },
+    {
+      "a": "Δ⁰ₙ",
+      "b": "Π⁰ₙ",
+      "weight": 1,
+      "strate_a": 3,
+      "strate_b": 3,
+      "cross_strata": false,
+      "formulas": [
+        "Arithmetical Hierarchy"
+      ]
+    },
+    {
+      "a": "AH",
+      "b": "∅⁽ω⁾",
+      "weight": 1,
+      "strate_a": 4,
+      "strate_b": 4,
+      "cross_strata": false,
+      "formulas": [
+        "AH ↔ oracle chain"
+      ]
+    },
+    {
+      "a": "AH",
+      "b": "∅⁽ⁿ⁾",
+      "weight": 1,
+      "strate_a": 4,
+      "strate_b": 3,
+      "cross_strata": true,
+      "formulas": [
+        "AH ↔ oracle chain"
+      ]
+    },
+    {
+      "a": "AH",
+      "b": "Th(ℕ)",
+      "weight": 1,
+      "strate_a": 4,
+      "strate_b": 4,
+      "cross_strata": false,
+      "formulas": [
+        "AH ↔ oracle chain"
+      ]
+    },
+    {
+      "a": "∅⁽ω⁾",
+      "b": "∅⁽ⁿ⁾",
+      "weight": 1,
+      "strate_a": 4,
+      "strate_b": 3,
+      "cross_strata": true,
+      "formulas": [
+        "AH ↔ oracle chain"
+      ]
+    },
+    {
+      "a": "Th(ℕ)",
+      "b": "∅⁽ω⁾",
+      "weight": 1,
+      "strate_a": 4,
+      "strate_b": 4,
+      "cross_strata": false,
+      "formulas": [
+        "AH ↔ oracle chain"
+      ]
+    },
+    {
+      "a": "Th(ℕ)",
+      "b": "∅⁽ⁿ⁾",
+      "weight": 1,
+      "strate_a": 4,
+      "strate_b": 3,
+      "cross_strata": true,
+      "formulas": [
+        "AH ↔ oracle chain"
+      ]
+    },
+    {
+      "a": "ω₁ᶜᵏ",
+      "b": "∅⁽α⁾",
+      "weight": 1,
+      "strate_a": 5,
+      "strate_b": 5,
+      "cross_strata": false,
+      "formulas": [
+        "Hyperarithmetic"
+      ]
+    },
+    {
+      "a": "O",
+      "b": "ω₁ᶜᵏ",
+      "weight": 1,
+      "strate_a": 5,
+      "strate_b": 5,
+      "cross_strata": false,
+      "formulas": [
+        "Hyperarithmetic"
+      ]
+    },
+    {
+      "a": "HYP",
+      "b": "ω₁ᶜᵏ",
+      "weight": 1,
+      "strate_a": 5,
+      "strate_b": 5,
+      "cross_strata": false,
+      "formulas": [
+        "Hyperarithmetic"
+      ]
+    },
+    {
+      "a": "O",
+      "b": "∅⁽α⁾",
+      "weight": 1,
+      "strate_a": 5,
+      "strate_b": 5,
+      "cross_strata": false,
+      "formulas": [
+        "Hyperarithmetic"
+      ]
+    },
+    {
+      "a": "HYP",
+      "b": "∅⁽α⁾",
+      "weight": 1,
+      "strate_a": 5,
+      "strate_b": 5,
+      "cross_strata": false,
+      "formulas": [
+        "Hyperarithmetic"
+      ]
+    },
+    {
+      "a": "HYP",
+      "b": "O",
+      "weight": 1,
+      "strate_a": 5,
+      "strate_b": 5,
+      "cross_strata": false,
+      "formulas": [
+        "Hyperarithmetic"
+      ]
+    },
+    {
+      "a": "Π¹₁",
+      "b": "Σ¹₁",
+      "weight": 1,
+      "strate_a": 5,
+      "strate_b": 5,
+      "cross_strata": false,
+      "formulas": [
+        "Analytical hierarchy"
+      ]
+    },
+    {
+      "a": "Δ¹₁",
+      "b": "Σ¹₁",
+      "weight": 1,
+      "strate_a": 5,
+      "strate_b": 5,
+      "cross_strata": false,
+      "formulas": [
+        "Analytical hierarchy"
+      ]
+    },
+    {
+      "a": "HYP",
+      "b": "Σ¹₁",
+      "weight": 1,
+      "strate_a": 5,
+      "strate_b": 5,
+      "cross_strata": false,
+      "formulas": [
+        "Analytical hierarchy"
+      ]
+    },
+    {
+      "a": "Δ¹₁",
+      "b": "Π¹₁",
+      "weight": 1,
+      "strate_a": 5,
+      "strate_b": 5,
+      "cross_strata": false,
+      "formulas": [
+        "Analytical hierarchy"
+      ]
+    },
+    {
+      "a": "HYP",
+      "b": "Π¹₁",
+      "weight": 1,
+      "strate_a": 5,
+      "strate_b": 5,
+      "cross_strata": false,
+      "formulas": [
+        "Analytical hierarchy"
+      ]
+    },
+    {
+      "a": "HYP",
+      "b": "Δ¹₁",
+      "weight": 1,
+      "strate_a": 5,
+      "strate_b": 5,
+      "cross_strata": false,
+      "formulas": [
+        "Analytical hierarchy"
+      ]
+    },
+    {
+      "a": "WO",
+      "b": "Π¹₁",
+      "weight": 1,
+      "strate_a": 5,
+      "strate_b": 5,
+      "cross_strata": false,
+      "formulas": [
+        "Well-ordering"
+      ]
+    },
+    {
+      "a": "WO",
+      "b": "ω₁ᶜᵏ",
+      "weight": 1,
+      "strate_a": 5,
+      "strate_b": 5,
+      "cross_strata": false,
+      "formulas": [
+        "Well-ordering"
+      ]
+    },
+    {
+      "a": "Π¹₁",
+      "b": "ω₁ᶜᵏ",
+      "weight": 1,
+      "strate_a": 5,
+      "strate_b": 5,
+      "cross_strata": false,
+      "formulas": [
+        "Well-ordering"
+      ]
+    },
+    {
+      "a": "G",
+      "b": "⊢",
+      "weight": 1,
+      "strate_a": 6,
+      "strate_b": 6,
+      "cross_strata": false,
+      "formulas": [
+        "Gödel incompleteness"
+      ]
+    },
+    {
+      "a": "G",
+      "b": "⊬",
+      "weight": 2,
+      "strate_a": 6,
+      "strate_b": 6,
+      "cross_strata": false,
+      "formulas": [
+        "Gödel incompleteness",
+        "Halting → Gödel"
+      ]
+    },
+    {
+      "a": "⊢",
+      "b": "⊬",
+      "weight": 1,
+      "strate_a": 6,
+      "strate_b": 6,
+      "cross_strata": false,
+      "formulas": [
+        "Gödel incompleteness"
+      ]
+    },
+    {
+      "a": "K(x)",
+      "b": "Ω",
+      "weight": 1,
+      "strate_a": 6,
+      "strate_b": 6,
+      "cross_strata": false,
+      "formulas": [
+        "Chaitin Omega"
+      ]
+    },
+    {
+      "a": "HALT",
+      "b": "Ω",
+      "weight": 1,
+      "strate_a": 6,
+      "strate_b": 6,
+      "cross_strata": false,
+      "formulas": [
+        "Chaitin Omega"
+      ]
+    },
+    {
+      "a": "HALT",
+      "b": "K(x)",
+      "weight": 1,
+      "strate_a": 6,
+      "strate_b": 6,
+      "cross_strata": false,
+      "formulas": [
+        "Chaitin Omega"
+      ]
+    },
+    {
+      "a": "BB",
+      "b": "∄",
+      "weight": 1,
+      "strate_a": 6,
+      "strate_b": 6,
+      "cross_strata": false,
+      "formulas": [
+        "Busy Beaver"
+      ]
+    },
+    {
+      "a": "BB",
+      "b": "HALT",
+      "weight": 1,
+      "strate_a": 6,
+      "strate_b": 6,
+      "cross_strata": false,
+      "formulas": [
+        "Busy Beaver"
+      ]
+    },
+    {
+      "a": "HALT",
+      "b": "∄",
+      "weight": 2,
+      "strate_a": 6,
+      "strate_b": 6,
+      "cross_strata": false,
+      "formulas": [
+        "Busy Beaver",
+        "Undecidability trio"
+      ]
+    },
+    {
+      "a": "HALT",
+      "b": "⊥",
+      "weight": 1,
+      "strate_a": 6,
+      "strate_b": 6,
+      "cross_strata": false,
+      "formulas": [
+        "Undecidability trio"
+      ]
+    },
+    {
+      "a": "G",
+      "b": "HALT",
+      "weight": 2,
+      "strate_a": 6,
+      "strate_b": 6,
+      "cross_strata": false,
+      "formulas": [
+        "Undecidability trio",
+        "Halting → Gödel"
+      ]
+    },
+    {
+      "a": "∄",
+      "b": "⊥",
+      "weight": 1,
+      "strate_a": 6,
+      "strate_b": 6,
+      "cross_strata": false,
+      "formulas": [
+        "Undecidability trio"
+      ]
+    },
+    {
+      "a": "G",
+      "b": "⊥",
+      "weight": 1,
+      "strate_a": 6,
+      "strate_b": 6,
+      "cross_strata": false,
+      "formulas": [
+        "Undecidability trio"
+      ]
+    },
+    {
+      "a": "G",
+      "b": "∄",
+      "weight": 1,
+      "strate_a": 6,
+      "strate_b": 6,
+      "cross_strata": false,
+      "formulas": [
+        "Undecidability trio"
+      ]
+    },
+    {
+      "a": "P",
+      "b": "SAT",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 1,
+      "cross_strata": true,
+      "formulas": [
+        "P vs NP"
+      ]
+    },
+    {
+      "a": "P",
+      "b": "RE",
+      "weight": 1,
+      "strate_a": 0,
+      "strate_b": 1,
+      "cross_strata": true,
+      "formulas": [
+        "Decidable → RE"
+      ]
+    },
+    {
+      "a": "K",
+      "b": "P",
+      "weight": 1,
+      "strate_a": 1,
+      "strate_b": 0,
+      "cross_strata": true,
+      "formulas": [
+        "Decidable → RE"
+      ]
+    },
+    {
+      "a": "PH",
+      "b": "PSPACE",
+      "weight": 2,
+      "strate_a": 3,
+      "strate_b": 4,
+      "cross_strata": true,
+      "formulas": [
+        "PH collapse",
+        "Counting power"
+      ]
+    },
+    {
+      "a": "P",
+      "b": "PSPACE",
+      "weight": 2,
+      "strate_a": 0,
+      "strate_b": 4,
+      "cross_strata": true,
+      "formulas": [
+        "PH collapse",
+        "Quantum landscape"
+      ]
+    },
+    {
+      "a": "NP",
+      "b": "PSPACE",
+      "weight": 2,
+      "strate_a": 1,
+      "strate_b": 4,
+      "cross_strata": true,
+      "formulas": [
+        "PH collapse",
+        "Quantum landscape"
+      ]
+    },
+    {
+      "a": "#P",
+      "b": "PSPACE",
+      "weight": 1,
+      "strate_a": 3,
+      "strate_b": 4,
+      "cross_strata": true,
+      "formulas": [
+        "Counting power"
+      ]
+    },
+    {
+      "a": "BQP",
+      "b": "NP",
+      "weight": 1,
+      "strate_a": 1,
+      "strate_b": 1,
+      "cross_strata": false,
+      "formulas": [
+        "Quantum landscape"
+      ]
+    },
+    {
+      "a": "BQP",
+      "b": "P",
+      "weight": 1,
+      "strate_a": 1,
+      "strate_b": 0,
+      "cross_strata": true,
+      "formulas": [
+        "Quantum landscape"
+      ]
+    },
+    {
+      "a": "HALT",
+      "b": "K",
+      "weight": 1,
+      "strate_a": 6,
+      "strate_b": 1,
+      "cross_strata": true,
+      "formulas": [
+        "Halting → Gödel"
+      ]
+    },
+    {
+      "a": "HALT",
+      "b": "⊬",
+      "weight": 1,
+      "strate_a": 6,
+      "strate_b": 6,
+      "cross_strata": false,
+      "formulas": [
+        "Halting → Gödel"
+      ]
+    },
+    {
+      "a": "G",
+      "b": "K",
+      "weight": 1,
+      "strate_a": 6,
+      "strate_b": 1,
+      "cross_strata": true,
+      "formulas": [
+        "Halting → Gödel"
+      ]
+    },
+    {
+      "a": "K",
+      "b": "⊬",
+      "weight": 1,
+      "strate_a": 1,
+      "strate_b": 6,
+      "cross_strata": true,
+      "formulas": [
+        "Halting → Gödel"
+      ]
+    },
+    {
+      "a": "AH",
+      "b": "PSPACE",
+      "weight": 1,
+      "strate_a": 4,
+      "strate_b": 4,
+      "cross_strata": false,
+      "formulas": [
+        "Complexity → computability"
+      ]
+    },
+    {
+      "a": "EXPTIME",
+      "b": "PSPACE",
+      "weight": 1,
+      "strate_a": 4,
+      "strate_b": 4,
+      "cross_strata": false,
+      "formulas": [
+        "Complexity → computability"
+      ]
+    },
+    {
+      "a": "AH",
+      "b": "EXPTIME",
+      "weight": 1,
+      "strate_a": 4,
+      "strate_b": 4,
+      "cross_strata": false,
+      "formulas": [
+        "Complexity → computability"
+      ]
+    }
+  ]
+}

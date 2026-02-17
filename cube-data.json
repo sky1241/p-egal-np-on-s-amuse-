@@ -22,5 +22,12 @@
     "camera": 7.0,
     "scale": 907.2,
     "perspective": 0.18
+  },
+  "strates": {
+    "visible": true,
+    "showLabels": true,
+    "showFormulas": true,
+    "fillOpacity": 1.0,
+    "shrinkRatio": 0.88
   }
 }
