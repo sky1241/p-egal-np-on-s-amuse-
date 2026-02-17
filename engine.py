@@ -925,6 +925,80 @@ SYMBOLES = [
     {"s": "GuthKatz",  "strate": 3, "from": "Erdős distinct distances — n points dans ℝ² déterminent Ω(n/log n) distances distinctes (Guth-Katz 2010). Polynomial partitioning.", "domain": "combinatoire"},
     {"s": "RamseyExp", "strate": 3, "from": "Ramsey diagonal upper bound — R(k,k) ≤ (4-ε)^k, première amélioration exponentielle depuis 1935 (Campos-Griffiths-Morris-Sahasrabudhe 2023).", "domain": "combinatoire"},
 
+    # --- Strate 3 vague 4 : barrières complexité + probabilités + EDP + topo alg + classiques ---
+
+    # ⚠️ BARRIÈRES COMPLEXITÉ — fondamentaux pour P=NP ⚠️
+    {"s": "BGS",       "strate": 3, "from": "Baker-Gill-Solovay — ∃ oracle A: P^A=NP^A, ∃ oracle B: P^B≠NP^B (1975). Relativisation ne peut séparer P de NP.", "domain": "complexité"},
+    {"s": "NatProof",  "strate": 3, "from": "Razborov-Rudich Natural Proofs barrier — si OWF existent, pas de preuve 'naturelle' de P≠NP (1997). Combinatorialisation bloquée.", "domain": "complexité"},
+    {"s": "Algebriz",  "strate": 3, "from": "Aaronson-Wigderson Algebrization — généralise relativisation, toute preuve P≠NP doit être non-algébrisante (2009).", "domain": "complexité"},
+    {"s": "ImmSzel",   "strate": 3, "from": "Immerman-Szelepcsényi — NL = co-NL (1987). Non-déterminisme spatial fermé sous complémentation.", "domain": "complexité"},
+    {"s": "SipLaut",   "strate": 3, "from": "Sipser-Lautemann — BPP ⊆ Σ₂P ∩ Π₂P (1983). Randomisation contenue dans PH niveau 2.", "domain": "complexité"},
+    {"s": "Perm#P",    "strate": 3, "from": "Valiant permanent — Permanent est #P-complet (1979). Comptage ≠ décision, lien matrices/complexité.", "domain": "complexité"},
+    {"s": "RazWid",    "strate": 3, "from": "Razborov-Widgerson — si NEXP ⊄ P/poly alors dérandomisation : P = BPP (2004). Dureté → dérandomisation.", "domain": "complexité"},
+    {"s": "ImpPad",    "strate": 3, "from": "Impagliazzo-Paturi SETH — ETH: 3-SAT pas en 2^{o(n)}, SETH: k-SAT pas en 2^{(1-ε)n} (1999). Base complexité fine.", "domain": "complexité"},
+
+    # Probabilités / Stochastique (domaine quasi-vide !)
+    {"s": "BirkErg",   "strate": 3, "from": "Birkhoff ergodic theorem — moyenne temporelle = moyenne spatiale p.p. (1931). Fondement théorie ergodique.", "domain": "probabilités"},
+    {"s": "CLT",       "strate": 3, "from": "Central Limit Theorem — (Sₙ-nμ)/σ√n → N(0,1) (Lindeberg 1922, Lévy, Feller). Universalité gaussienne.", "domain": "probabilités"},
+    {"s": "SLLN",      "strate": 3, "from": "Strong Law Large Numbers — X̄ₙ → μ p.s. (Kolmogorov 1930). Convergence presque sûre des moyennes.", "domain": "probabilités"},
+    {"s": "Donsker",   "strate": 3, "from": "Donsker invariance principle — marche aléatoire renormalisée → mouvement brownien (1951). CLT fonctionnel.", "domain": "probabilités"},
+    {"s": "LDP",       "strate": 3, "from": "Large Deviations Principle — P(S̄ₙ∈A) ~ e^{-nI(A)} (Cramér 1938, Varadhan 1966). Taux exponentiels.", "domain": "probabilités"},
+    {"s": "OrnIsm",    "strate": 3, "from": "Ornstein isomorphism — shifts de Bernoulli isomorphes ssi même entropie (Ornstein 1970). Classification systèmes aléatoires.", "domain": "probabilités"},
+
+    # EDP (domaine vide !)
+    {"s": "DeGNM",     "strate": 3, "from": "De Giorgi-Nash-Moser — solutions équations elliptiques div-forme à coefficients L^∞ sont Hölder (1957-58-60). Résout Hilbert 19ème.", "domain": "EDP"},
+    {"s": "NashEmb",   "strate": 3, "from": "Nash embedding theorem — toute variété riemannienne se plonge isométriquement dans ℝ^N (1956). Schéma itératif Nash-Moser.", "domain": "géom diff"},
+    {"s": "KAM",       "strate": 3, "from": "KAM theorem — tores quasi-périodiques persistent sous petites perturbations hamiltoniennes (Kolmogorov 1954, Arnold 1963, Moser 1962).", "domain": "mécanique analytique"},
+
+    # Topologie algébrique (manquante)
+    {"s": "deRham",    "strate": 3, "from": "de Rham theorem — cohomologie de de Rham ≅ cohomologie singulière (1931). Pont analyse ↔ topologie.", "domain": "topologie"},
+    {"s": "BottPer",   "strate": 3, "from": "Bott periodicity — K-théorie topologique est périodique: π_{n+2}(U) ≅ π_n(U), π_{n+8}(O) ≅ π_n(O) (1959).", "domain": "topologie"},
+
+    # Géométrie/Analyse complexe
+    {"s": "Uniformiz", "strate": 3, "from": "Uniformization theorem — toute surface de Riemann simplement connexe ≅ S², ℂ ou 𝔻 (Koebe-Poincaré 1907).", "domain": "analyse"},
+    {"s": "GrotRR",    "strate": 3, "from": "Grothendieck-Riemann-Roch — ch(f_!(F)) = f_*(ch(F)·Td(T_f)) en K-théorie (1957). Généralise Hirzebruch-RR.", "domain": "géom algébrique"},
+
+    # Théorie des nombres (classiques manquants)
+    {"s": "ClassFT",   "strate": 3, "from": "Class Field Theory — abélianisation Gal(K^ab/K) ≅ C_K (Takagi 1920, Artin 1927). Réciprocité non-abélienne = Langlands.", "domain": "nb théorie"},
+
+    # Logique (compléments)
+    {"s": "GodelInc",  "strate": 3, "from": "Gödel incompleteness — (1) toute théorie cohérente contenant PA a énoncés indécidables, (2) ne peut prouver sa propre cohérence (1931).", "domain": "logique"},
+
+    # Algèbre classique
+    {"s": "NoetherSy", "strate": 3, "from": "Noether theorem — toute symétrie continue d'un lagrangien donne une loi de conservation (1918). Pont algèbre ↔ physique.", "domain": "algèbre"},
+
+    # Information
+    {"s": "Shannon2",  "strate": 3, "from": "Shannon coding theorems — (1) source coding: H(X) bits suffisent, (2) channel: capacité C atteignable (1948). Fondement théorie info.", "domain": "information"},
+
+    # --- Strate 3 vague 5 : trous finaux — quantique, circuits, descriptive, automates, stochastique ---
+
+    # ⚠️ COMPLEXITÉ QUANTIQUE — résultat du siècle ⚠️
+    {"s": "MIP*RE",    "strate": 3, "from": "MIP* = RE — prouveurs quantiques intriqués = langages r.e. (Ji-Natarajan-Vidick-Wright-Yuen 2020). Réfute Connes embedding, résout Tsirelson.", "domain": "quantique"},
+
+    # Circuit lower bounds (complexité prouvée, pas barrières)
+    {"s": "WillACC",   "strate": 3, "from": "Williams — NEXP ⊄ ACC⁰ circuits de taille poly (2011). Première borne inférieure circuits avec portes MODm depuis Razborov-Smolensky 87.", "domain": "complexité"},
+    {"s": "RazMono",   "strate": 3, "from": "Razborov — circuits monotones pour CLIQUE exigent taille super-polynomiale 2^{Ω(n^{1/6})} (1985). Méthode d'approximation.", "domain": "complexité"},
+    {"s": "RazSmol",   "strate": 3, "from": "Razborov-Smolensky — AC⁰[p] ne contient pas MOD_q pour p≠q premiers (1987). Bornes inférieures circuits à profondeur constante.", "domain": "complexité"},
+    {"s": "HasAC0",    "strate": 3, "from": "Håstad switching lemma — PARITY ∉ AC⁰, circuits profondeur d taille 2^{Ω(n^{1/(d-1)})} nécessaires (1987). Tight pour AC⁰.", "domain": "complexité"},
+
+    # Descriptive set theory (domaine vide !)
+    {"s": "BorelDet",  "strate": 3, "from": "Borel determinacy — tout jeu de Gale-Stewart à gain Borel est déterminé (Martin 1975). Nécessite remplacement (Friedman 71).", "domain": "descriptive"},
+
+    # Ensembles / Logique (résultats-événements)
+    {"s": "CohenInd",  "strate": 3, "from": "Cohen forcing — CH est indépendant de ZFC: ni prouvable ni réfutable (Cohen 1963, Fields 1966). Méthode du forcing.", "domain": "ensembles"},
+
+    # Automates (domaine vide !)
+    {"s": "BuchiMSO",  "strate": 3, "from": "Büchi theorem — L est ω-régulier ssi définissable en MSO sur ω (Büchi 1962). Pont logique ↔ automates sur mots infinis.", "domain": "automates"},
+    {"s": "MyhNer",    "strate": 3, "from": "Myhill-Nerode — L régulier ssi nombre fini de classes d'équivalence (Myhill 1957, Nerode 1958). Caractérisation algébrique réguliers.", "domain": "automates"},
+    {"s": "RabinS2S",  "strate": 3, "from": "Rabin theorem — S2S (théorie monadique 2 successeurs) est décidable (Rabin 1969). Automates d'arbres, implique de nombreux résultats.", "domain": "automates"},
+
+    # Stochastique (domaine vide !)
+    {"s": "DoobMart",  "strate": 3, "from": "Doob martingale convergence — toute surmartingale bornée dans L¹ converge p.s. (Doob 1953). Fondement probabilités modernes.", "domain": "stochastique"},
+
+    # Analyse fonctionnelle (presque vide)
+    {"s": "BaireCat",  "strate": 3, "from": "Baire category theorem — espace métrique complet n'est pas union dénombrable de fermés d'intérieur vide (Baire 1899). Base Banach-Steinhaus/open mapping.", "domain": "analyse fonctionnelle"},
+    {"s": "BanOpen",   "strate": 3, "from": "Banach open mapping + closed graph — surjection continue entre Banach est ouverte; graphe fermé implique continuité (Banach 1932).", "domain": "analyse fonctionnelle"},
+
 
 
     # ==================================================================

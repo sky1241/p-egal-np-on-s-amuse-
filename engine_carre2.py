@@ -1127,7 +1127,7 @@ SYMBOLES = [
     {"s": "EXP≠NEXP","strate": 4, "from": "EXP ≠ NEXP ? (non-déterminisme exponentiel)", "domain": "complexité", "status": "conjecture"},
     {"s": "Vaught","strate": 4, "from": "Conjecture Vaught — nombre modèles dénombrables: ω ou ≤ℵ₀ (1961)", "domain": "logique", "status": "conjecture"},
     {"s": "BQP_PSPACE","strate": 4, "from": "BQP ⊊ PSPACE ? (quantique < espace poly, conjecture)", "domain": "complexité", "status": "conjecture"},
-    {"s": "Algebriz","strate": 4, "from": "Barrière algébrisation — tout lower bound doit être non-algébrisant (Aaronson-Wigderson 2009)", "domain": "complexité", "status": "open"},
+    
     {"s": "NEXP⊄P/poly","strate": 4, "from": "NEXP ⊄ P/poly ? (conjecture, impliquerait EXP≠NEXP)", "domain": "complexité", "status": "conjecture"},
 
     # ================================================================
@@ -1391,6 +1391,68 @@ SYMBOLES = [
     {"s": "ErdDiscrep","strate": 3, "from": "Erdős discrepancy — suite ±1 a sous-sommes non-bornées (Tao 2015)."},
     {"s": "GuthKatz", "strate": 3, "from": "Erdős distinct distances — Ω(n/log n) distances pour n points ℝ² (Guth-Katz 2010)."},
     {"s": "RamseyExp","strate": 3, "from": "Ramsey diagonal — R(k,k) ≤ (4-ε)^k, 1ère amélioration exponentielle depuis 1935 (Campos et al. 2023)."},
+
+    # --- Sync vagues 4+5 depuis C1 ---
+
+    # Barrières complexité
+    {"s": "BGS",       "strate": 3, "from": "Baker-Gill-Solovay — ∃ oracle A: P^A=NP^A, ∃ oracle B: P^B≠NP^B (1975). Relativisation ne peut séparer P de NP."},
+    {"s": "NatProof",  "strate": 3, "from": "Razborov-Rudich Natural Proofs barrier — si OWF existent, pas de preuve 'naturelle' de P≠NP (1997)."},
+    {"s": "Algebriz",  "strate": 3, "from": "Aaronson-Wigderson Algebrization — toute preuve P≠NP doit être non-algébrisante (2009)."},
+    {"s": "ImmSzel",   "strate": 3, "from": "Immerman-Szelepcsényi — NL = co-NL (1987). Non-déterminisme spatial fermé sous complémentation."},
+    {"s": "SipLaut",   "strate": 3, "from": "Sipser-Lautemann — BPP ⊆ Σ₂P ∩ Π₂P (1983). Randomisation contenue dans PH niveau 2."},
+    {"s": "Perm#P",    "strate": 3, "from": "Valiant permanent — Permanent est #P-complet (1979). Comptage ≠ décision."},
+    {"s": "RazWid",    "strate": 3, "from": "Razborov-Wigderson — si NEXP ⊄ P/poly alors P = BPP (2004). Dureté → dérandomisation."},
+    {"s": "ImpPad",    "strate": 3, "from": "Impagliazzo-Paturi SETH — ETH: 3-SAT pas en 2^{o(n)}, SETH: k-SAT pas en 2^{(1-ε)n} (1999)."},
+
+    # Circuit lower bounds
+    {"s": "WillACC",   "strate": 3, "from": "Williams — NEXP ⊄ ACC⁰ circuits poly (2011). 1ère borne inférieure circuits MODm depuis 87."},
+    {"s": "RazMono",   "strate": 3, "from": "Razborov — circuits monotones pour CLIQUE : taille super-poly 2^{Ω(n^{1/6})} (1985)."},
+    {"s": "RazSmol",   "strate": 3, "from": "Razborov-Smolensky — AC⁰[p] ne contient pas MOD_q pour p≠q premiers (1987)."},
+    {"s": "HasAC0",    "strate": 3, "from": "Håstad switching lemma — PARITY ∉ AC⁰, taille 2^{Ω(n^{1/(d-1)})} nécessaire (1987)."},
+
+    # Quantique
+    {"s": "MIP*RE",    "strate": 3, "from": "MIP* = RE — prouveurs quantiques intriqués = langages r.e. (Ji et al. 2020). Réfute Connes embedding."},
+
+    # Probabilités
+    {"s": "BirkErg",   "strate": 3, "from": "Birkhoff ergodic theorem — moyenne temporelle = moyenne spatiale p.p. (1931)."},
+    {"s": "CLT",       "strate": 3, "from": "Central Limit Theorem — (Sₙ-nμ)/σ√n → N(0,1) (Lindeberg 1922). Universalité gaussienne."},
+    {"s": "SLLN",      "strate": 3, "from": "Strong Law Large Numbers — X̄ₙ → μ p.s. (Kolmogorov 1930)."},
+    {"s": "Donsker",   "strate": 3, "from": "Donsker invariance principle — marche aléatoire → mouvement brownien (1951). CLT fonctionnel."},
+    {"s": "LDP",       "strate": 3, "from": "Large Deviations Principle — P(S̄ₙ∈A) ~ e^{-nI(A)} (Cramér 1938, Varadhan 1966)."},
+    {"s": "OrnIsm",    "strate": 3, "from": "Ornstein isomorphism — shifts de Bernoulli isomorphes ssi même entropie (1970)."},
+
+    # EDP / Géom diff / Mécanique
+    {"s": "DeGNM",     "strate": 3, "from": "De Giorgi-Nash-Moser — solutions elliptiques div-forme Hölder (1957-60). Résout Hilbert 19ème."},
+    {"s": "NashEmb",   "strate": 3, "from": "Nash embedding — toute variété riemannienne se plonge isométriquement dans ℝ^N (1956)."},
+    {"s": "KAM",       "strate": 3, "from": "KAM theorem — tores quasi-périodiques persistent sous perturbations (Kolmogorov-Arnold-Moser 54-62-63)."},
+
+    # Topologie
+    {"s": "deRham",    "strate": 3, "from": "de Rham theorem — cohomologie de de Rham ≅ cohomologie singulière (1931)."},
+    {"s": "BottPer",   "strate": 3, "from": "Bott periodicity — K-théorie topologique périodique: π_{n+2}(U) ≅ π_n(U) (1959)."},
+
+    # Analyse / Géom algébrique
+    {"s": "Uniformiz", "strate": 3, "from": "Uniformization — toute surface Riemann simplement connexe ≅ S², ℂ ou 𝔻 (Koebe-Poincaré 1907)."},
+    {"s": "GrotRR",    "strate": 3, "from": "Grothendieck-Riemann-Roch — ch(f_!(F)) = f_*(ch(F)·Td(T_f)) (1957)."},
+
+    # Nb théorie / Logique / Algèbre
+    {"s": "ClassFT",   "strate": 3, "from": "Class Field Theory — Gal(K^ab/K) ≅ C_K (Takagi 1920, Artin 1927)."},
+    {"s": "GodelInc",  "strate": 3, "from": "Gödel incompleteness — (1) PA a énoncés indécidables, (2) ne prouve pas sa cohérence (1931)."},
+    {"s": "NoetherSy", "strate": 3, "from": "Noether theorem — symétrie continue → loi de conservation (1918)."},
+    {"s": "Shannon2",  "strate": 3, "from": "Shannon coding theorems — source: H(X) bits, channel: capacité C atteignable (1948)."},
+
+    # Descriptive / Ensembles
+    {"s": "BorelDet",  "strate": 3, "from": "Borel determinacy — tout jeu Gale-Stewart à gain Borel est déterminé (Martin 1975)."},
+    {"s": "CohenInd",  "strate": 3, "from": "Cohen forcing — CH indépendant de ZFC (Cohen 1963, Fields 1966)."},
+
+    # Automates
+    {"s": "BuchiMSO",  "strate": 3, "from": "Büchi theorem — ω-régulier ssi MSO-définissable sur ω (1962)."},
+    {"s": "MyhNer",    "strate": 3, "from": "Myhill-Nerode — L régulier ssi classes d'équivalence finies (1957-58)."},
+    {"s": "RabinS2S",  "strate": 3, "from": "Rabin theorem — S2S décidable via automates d'arbres (1969)."},
+
+    # Stochastique / Analyse fonctionnelle
+    {"s": "DoobMart",  "strate": 3, "from": "Doob martingale convergence — surmartingale L¹-bornée converge p.s. (1953)."},
+    {"s": "BaireCat",  "strate": 3, "from": "Baire category — complet ≠ union dénombrable fermés d'intérieur vide (1899)."},
+    {"s": "BanOpen",   "strate": 3, "from": "Banach open mapping + closed graph (1932)."},
 ]
 
 
