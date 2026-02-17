@@ -690,7 +690,7 @@ SYMBOLES = [
     {"s": "coRE",  "strate": 1, "from": "Complément de RE",             "domain": "calculabilité"},
     {"s": "NP",    "strate": 1, "from": "Non-déterministe polynomial",  "domain": "complexité"},
     {"s": "coNP",  "strate": 1, "from": "Complément de NP",             "domain": "complexité"},
-    {"s": "NL",    "strate": 1, "from": "Non-det espace log",           "domain": "complexité"},
+    {"s": "NL",    "strate": 0, "from": "Non-det espace log (NL⊆P, Savitch)", "domain": "complexité"},
     {"s": "SAT",   "strate": 1, "from": "Satisfiabilité Cook 1971",     "domain": "complexité"},
     {"s": "3SAT",  "strate": 1, "from": "3-SAT NP-complet",             "domain": "complexité"},
     {"s": "3COL",  "strate": 1, "from": "3-coloration graphe",          "domain": "complexité"},
@@ -826,7 +826,7 @@ SYMBOLES = [
     {"s": "WP_grp", "strate": 6, "from": "Word Problem groupes (Novikov 1955, Boone 1959)", "domain": "calculabilité"},
     {"s": "PCP",    "strate": 6, "from": "Post Correspondence Problem (Post 1946)", "domain": "calculabilité"},
     {"s": "Rice",   "strate": 6, "from": "Théorème de Rice (propriété sémantique indécidable)", "domain": "calculabilité"},
-    {"s": "ATM",    "strate": 6, "from": "Acceptance problem {⟨M,w⟩ : M accepte w}", "domain": "calculabilité"},
+
     {"s": "ETM",    "strate": 6, "from": "Emptiness {⟨M⟩ : L(M)=∅} indécidable", "domain": "calculabilité"},
     {"s": "EQTM",   "strate": 6, "from": "Equivalence {⟨M₁,M₂⟩ : L(M₁)=L(M₂)} indécidable", "domain": "calculabilité"},
     {"s": "S(n)",   "strate": 6, "from": "Maximum shifts function — max steps (Radó 1962)", "domain": "calculabilité"},
