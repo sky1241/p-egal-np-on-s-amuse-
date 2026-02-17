@@ -1344,6 +1344,24 @@ SYMBOLES = [
     # --- Logique : résolus ---
     {"s": "ParisHarr","strate": 3, "from": "Paris-Harrington — variante combinatoire de Ramsey indépendante de l'arithmétique de Peano (1977). Premier exemple 'naturel' d'indépendance."},
     {"s": "DPRM",     "strate": 3, "from": "Théorème DPRM — ensembles récursivement énumérables = ensembles diophantiens (Davis-Putnam-Robinson-Matiyasevich 1970). Résolution négative H10."},
+
+    # ═══════════════════════════════════════════════════════════════
+    #  RATISSAGE PASS 5 vague 2 — grands théorèmes manquants
+    # ═══════════════════════════════════════════════════════════════
+
+    {"s": "Hironaka", "strate": 3, "from": "Résolution des singularités caractéristique 0 (Hironaka 1964, Fields Medal)."},
+    {"s": "FundLemma","strate": 3, "from": "Lemme fondamental Langlands-Shelstad — identité orbitale endoscopie (Ngô Bảo Châu 2008, Fields Medal 2010)."},
+    {"s": "Szemer",   "strate": 3, "from": "Théorème Szemerédi — ensemble densité positive dans ℕ contient PA longueur k (1975). Preuve ergodique Furstenberg 1977."},
+    {"s": "RothAP",   "strate": 3, "from": "Théorème Roth — ensemble dense dans ℕ contient 3-AP (1953, Fields Medal). Méthode cercle Hardy-Littlewood."},
+    {"s": "MostowRig","strate": 3, "from": "Mostow rigidity — var. hyperboliques fermées dim ≥ 3 isométriques ssi π₁ isomorphes (1968)."},
+    {"s": "MargSup",  "strate": 3, "from": "Margulis superrigidité — réseaux dans groupes Lie rang ≥ 2 sont arithmétiques (1975, Fields Medal)."},
+    {"s": "Oppenh",   "strate": 3, "from": "Conjecture Oppenheim — forme quadratique irrationnelle indéfinie ≥ 3 variables prend valeurs denses (Margulis 1987)."},
+    {"s": "Ratner",   "strate": 3, "from": "Théorèmes Ratner — classification mesures/orbites invariantes unipotentes espaces homogènes (1990-91)."},
+    {"s": "Tameness", "strate": 3, "from": "Marden Tameness — var. hyperboliques vol. infini topologiquement apprivoisées (Agol 2004, Calegari-Gabai 2004)."},
+    {"s": "EndLam",   "strate": 3, "from": "Ending Lamination — 3-var. hyperbolique déterminée par end invariants (Brock-Canary-Minsky 2012)."},
+    {"s": "DiffSph",  "strate": 3, "from": "1/4-pinched differentiable sphere theorem (Brendle-Schoen 2009)."},
+    {"s": "FeitThomp","strate": 3, "from": "Odd order theorem — tout groupe fini d'ordre impair est résoluble (Feit-Thompson 1963, 255 pages)."},
+    {"s": "Vinogr3P", "strate": 3, "from": "Vinogradov — tout impair suffisamment grand = somme de 3 premiers (1937). Méthode cercle."},
 ]
 
 

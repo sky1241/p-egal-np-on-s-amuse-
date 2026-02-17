@@ -869,6 +869,35 @@ SYMBOLES = [
     {"s": "ParisHarr", "strate": 3, "from": "Paris-Harrington — variante Ramsey indépendante de PA (1977). Premier exemple 'naturel' d'indépendance.", "domain": "logique"},
     {"s": "DPRM",      "strate": 3, "from": "Théorème DPRM — ensembles r.e. = ensembles diophantiens (Davis-Putnam-Robinson 1961, Matiyasevich 1970). H10 négatif.", "domain": "logique"},
 
+    # --- Strate 3 vague 2 : grands théorèmes prouvés (suite) ---
+
+    # Géom algébrique / algèbre commutative
+    {"s": "Hironaka",  "strate": 3, "from": "Résolution des singularités en car. 0 — tout variété admet désingularisation (Hironaka 1964, Fields Medal)", "domain": "géom algébrique"},
+    {"s": "FundLemma", "strate": 3, "from": "Lemme fondamental Langlands-Shelstad — identité orbitale pour endoscopie (Ngô Bảo Châu 2008, Fields Medal 2010)", "domain": "nb théorie"},
+
+    # Combinatoire additive / théorie ergodique
+    {"s": "Szemer",    "strate": 3, "from": "Théorème Szemerédi — tout ensemble de densité positive dans ℕ contient des PA de longueur k (1975, Fields Medal). Preuve ergodique Furstenberg 1977.", "domain": "combinatoire"},
+    {"s": "RothAP",    "strate": 3, "from": "Théorème Roth — tout ensemble dense dans ℕ contient des 3-AP (1953, Fields Medal). Méthode cercle de Hardy-Littlewood.", "domain": "combinatoire"},
+
+    # Rigidité géométrique
+    {"s": "MostowRig", "strate": 3, "from": "Mostow rigidity — variétés hyperboliques fermées dim ≥ 3 isométriques ssi π₁ isomorphes (1968)", "domain": "géom diff"},
+    {"s": "MargSup",   "strate": 3, "from": "Margulis superrigidité — réseaux dans groupes de Lie rang ≥ 2 sont arithmétiques (1975, Fields Medal)", "domain": "géom diff"},
+    {"s": "Oppenh",    "strate": 3, "from": "Conjecture Oppenheim — forme quadratique irrationnelle indéfinie ≥3 var. prend valeurs denses (Margulis 1987, flots unipotents)", "domain": "nb théorie"},
+    {"s": "Ratner",    "strate": 3, "from": "Théorèmes Ratner — classification mesures/orbites invariantes unipotentes sur espaces homogènes (1990-91)", "domain": "géom diff"},
+
+    # Topologie 3-variétés (compléments)
+    {"s": "Tameness",  "strate": 3, "from": "Marden Tameness — variétés hyperboliques de volume infini sont topologiquement apprivoisées (Agol 2004, Calegari-Gabai 2004)", "domain": "topologie"},
+    {"s": "EndLam",    "strate": 3, "from": "Ending Lamination — 3-var. hyperbolique déterminée par end invariants (Brock-Canary-Minsky 2012, Thurston conjecture)", "domain": "topologie"},
+
+    # Géom diff (compléments)
+    {"s": "DiffSph",   "strate": 3, "from": "1/4-pinched differentiable sphere theorem — variété courbure 1/4-pincée est difféomorphe à Sⁿ (Brendle-Schoen 2009)", "domain": "géom diff"},
+
+    # Algèbre (compléments)
+    {"s": "FeitThomp", "strate": 3, "from": "Odd order theorem — tout groupe fini d'ordre impair est résoluble (Feit-Thompson 1963, 255 pages). Premier pas vers CFSG.", "domain": "algèbre"},
+
+    # Théorie des nombres (compléments)
+    {"s": "Vinogr3P",  "strate": 3, "from": "Vinogradov — tout impair suffisamment grand est somme de 3 premiers (1937). Méthode cercle. Rendu effectif par Helfgott (GoldWeak).", "domain": "nb théorie"},
+
     # ==================================================================
     # STRATE 4 — CIEL · AH
     # ==================================================================
