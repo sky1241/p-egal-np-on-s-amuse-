@@ -533,6 +533,108 @@ SYMBOLES = [
     {"s": "≅_geom","strate": 0, "from": "Congruence géométrique",       "domain": "géométrie"},
     {"s": "∼_geom","strate": 0, "from": "Similitude",                   "domain": "géométrie"},
 
+    # --- TRANSFORMÉES & TRAITEMENT DU SIGNAL ---
+    {"s": "ℱ",     "strate": 0, "from": "Transformée de Fourier",        "domain": "signal"},
+    {"s": "ℱ⁻¹",   "strate": 0, "from": "Transformée inverse Fourier",   "domain": "signal"},
+    {"s": "ℒ_Lap", "strate": 0, "from": "Transformée de Laplace",        "domain": "signal"},
+    {"s": "Z_tr",  "strate": 0, "from": "Transformée en Z (discret)",    "domain": "signal"},
+    {"s": "DFT",   "strate": 0, "from": "Transformée de Fourier discrète","domain": "signal"},
+    {"s": "FFT",   "strate": 0, "from": "Fast Fourier Transform (Cooley-Tukey 1965)", "domain": "signal"},
+    {"s": "∗_conv","strate": 0, "from": "Convolution f∗g",              "domain": "signal"},
+    {"s": "⊛",     "strate": 0, "from": "Corrélation croisée",          "domain": "signal"},
+    {"s": "δ_Dir", "strate": 0, "from": "Peigne de Dirac (échantillonnage)", "domain": "signal"},
+    {"s": "Nyquist","strate":0, "from": "Critère Nyquist-Shannon fₛ≥2B", "domain": "signal"},
+
+    # --- ÉQUATIONS DIFFÉRENTIELLES ---
+    {"s": "ODE",   "strate": 0, "from": "Équation diff ordinaire dy/dx=f(x,y)", "domain": "EDP"},
+    {"s": "PDE",   "strate": 0, "from": "Équation aux dérivées partielles", "domain": "EDP"},
+    {"s": "G_Grn", "strate": 0, "from": "Fonction de Green",            "domain": "EDP"},
+    {"s": "∂²u/∂t²","strate":0,"from": "Équation des ondes",            "domain": "EDP"},
+    {"s": "∂u/∂t", "strate": 0, "from": "Équation de la chaleur",       "domain": "EDP"},
+    {"s": "Sturm", "strate": 0, "from": "Problème Sturm-Liouville",     "domain": "EDP"},
+
+    # --- BIOLOGIE & GÉNÉTIQUE ---
+    {"s": "DNA",   "strate": 0, "from": "Acide désoxyribonucléique (Watson-Crick 1953)", "domain": "biologie"},
+    {"s": "RNA",   "strate": 0, "from": "Acide ribonucléique",          "domain": "biologie"},
+    {"s": "ATP",   "strate": 0, "from": "Adénosine triphosphate (énergie cellulaire)", "domain": "biologie"},
+    {"s": "Km",    "strate": 0, "from": "Constante Michaelis-Menten (enzymologie)", "domain": "biologie"},
+    {"s": "Vmax",  "strate": 0, "from": "Vitesse max réaction enzymatique", "domain": "biologie"},
+    {"s": "LV",    "strate": 0, "from": "Équations Lotka-Volterra (prédateur-proie)", "domain": "biologie"},
+    {"s": "HW",    "strate": 0, "from": "Hardy-Weinberg p²+2pq+q²=1",   "domain": "biologie"},
+    {"s": "R₀",    "strate": 0, "from": "Taux reproduction base (épidémiologie)", "domain": "biologie"},
+    {"s": "SIR",   "strate": 0, "from": "Modèle SIR (Susceptible-Infecté-Rétabli)", "domain": "biologie"},
+    {"s": "logist","strate": 0, "from": "Équation logistique dN/dt=rN(1-N/K)", "domain": "biologie"},
+
+    # --- ÉCONOMIE & THÉORIE DES JEUX ---
+    {"s": "U_util","strate": 0, "from": "Fonction d'utilité",            "domain": "économie"},
+    {"s": "S_D",   "strate": 0, "from": "Offre et demande (Marshall)",   "domain": "économie"},
+    {"s": "Nash",  "strate": 0, "from": "Équilibre de Nash (1950)",      "domain": "économie"},
+    {"s": "Pareto","strate": 0, "from": "Optimum de Pareto",             "domain": "économie"},
+    {"s": "π_payoff","strate":0,"from": "Fonction de payoff (jeux)",     "domain": "économie"},
+    {"s": "BS",    "strate": 0, "from": "Black-Scholes (pricing options 1973)", "domain": "finance"},
+    {"s": "σ_vol", "strate": 0, "from": "Volatilité (finance)",          "domain": "finance"},
+    {"s": "VaR",   "strate": 0, "from": "Value at Risk",                 "domain": "finance"},
+    {"s": "CAPM",  "strate": 0, "from": "Capital Asset Pricing Model (Sharpe)", "domain": "finance"},
+    {"s": "GDP",   "strate": 0, "from": "Produit intérieur brut Y=C+I+G+NX", "domain": "économie"},
+
+    # --- MACHINE LEARNING / IA ---
+    {"s": "∇L",    "strate": 0, "from": "Gradient de la loss (descente de gradient)", "domain": "ML"},
+    {"s": "σ_sigm","strate": 0, "from": "Sigmoïde σ(x)=1/(1+e⁻ˣ)",     "domain": "ML"},
+    {"s": "softmax","strate":0, "from": "Softmax eˣⁱ/Σeˣʲ",            "domain": "ML"},
+    {"s": "ReLU",  "strate": 0, "from": "Rectified Linear Unit max(0,x)","domain": "ML"},
+    {"s": "CE",    "strate": 0, "from": "Cross-entropy loss -Σp·log(q)", "domain": "ML"},
+    {"s": "SGD",   "strate": 0, "from": "Stochastic Gradient Descent",   "domain": "ML"},
+    {"s": "BP",    "strate": 0, "from": "Backpropagation (Rumelhart 1986)", "domain": "ML"},
+    {"s": "Attn",  "strate": 0, "from": "Attention Softmax(QKᵀ/√d)V (Vaswani 2017)", "domain": "ML"},
+    {"s": "GAN",   "strate": 0, "from": "Generative Adversarial Network (Goodfellow 2014)", "domain": "ML"},
+    {"s": "VC_dim","strate": 0, "from": "Dimension VC (Vapnik-Chervonenkis)", "domain": "ML"},
+    {"s": "PAC",   "strate": 0, "from": "Probably Approximately Correct (Valiant 1984)", "domain": "ML"},
+
+    # --- PHYSIQUE NUCLÉAIRE & PARTICULES ---
+    {"s": "σ_xs",  "strate": 0, "from": "Section efficace (barn)",       "domain": "nucléaire"},
+    {"s": "τ_decay","strate":0, "from": "Temps de vie demi-vie",         "domain": "nucléaire"},
+    {"s": "λ_decay","strate":0, "from": "Constante de désintégration",   "domain": "nucléaire"},
+    {"s": "A_mass","strate": 0, "from": "Nombre de masse",               "domain": "nucléaire"},
+    {"s": "Z_at",  "strate": 0, "from": "Numéro atomique",               "domain": "nucléaire"},
+    {"s": "β_decay","strate":0, "from": "Désintégration bêta",           "domain": "nucléaire"},
+    {"s": "α_decay","strate":0, "from": "Désintégration alpha",          "domain": "nucléaire"},
+    {"s": "Feyn",  "strate": 0, "from": "Diagrammes de Feynman (propagateur)", "domain": "QFT"},
+
+    # --- OPTIQUE ---
+    {"s": "n_refr","strate": 0, "from": "Indice de réfraction",          "domain": "optique"},
+    {"s": "Snell", "strate": 0, "from": "Loi Snell-Descartes n₁sinθ₁=n₂sinθ₂", "domain": "optique"},
+    {"s": "λ_wave","strate": 0, "from": "Longueur d'onde",               "domain": "optique"},
+    {"s": "ν_freq","strate": 0, "from": "Fréquence",                     "domain": "optique"},
+    {"s": "E=hν",  "strate": 0, "from": "Énergie photon (Planck 1900)",  "domain": "quantique"},
+
+    # --- ASTRONOMIE / COSMOLOGIE ---
+    {"s": "M☉",    "strate": 0, "from": "Masse solaire ~2×10³⁰ kg",      "domain": "astronomie"},
+    {"s": "L☉",    "strate": 0, "from": "Luminosité solaire ~3.8×10²⁶ W","domain": "astronomie"},
+    {"s": "pc",    "strate": 0, "from": "Parsec ~3.26 années-lumière",    "domain": "astronomie"},
+    {"s": "z_red", "strate": 0, "from": "Redshift cosmologique",         "domain": "cosmologie"},
+    {"s": "Ω_m",   "strate": 0, "from": "Densité matière Ωm~0.3",       "domain": "cosmologie"},
+    {"s": "Ω_Λ",   "strate": 0, "from": "Densité énergie noire ΩΛ~0.7", "domain": "cosmologie"},
+    {"s": "FLRW",  "strate": 0, "from": "Métrique Friedmann-Lemaître-Robertson-Walker", "domain": "cosmologie"},
+    {"s": "a(t)",  "strate": 0, "from": "Facteur d'échelle cosmologique", "domain": "cosmologie"},
+
+    # --- THÉORIE DU CONTRÔLE ---
+    {"s": "H(s)",  "strate": 0, "from": "Fonction de transfert",         "domain": "contrôle"},
+    {"s": "PID",   "strate": 0, "from": "Contrôleur Proportionnel-Intégral-Dérivé", "domain": "contrôle"},
+    {"s": "Bode",  "strate": 0, "from": "Diagramme de Bode (gain/phase)", "domain": "contrôle"},
+    {"s": "Nyq_st","strate": 0, "from": "Critère stabilité Nyquist",     "domain": "contrôle"},
+
+    # --- AUTOMATES & LANGAGES FORMELS ---
+    {"s": "DFA",   "strate": 0, "from": "Automate fini déterministe",    "domain": "automates"},
+    {"s": "NFA",   "strate": 0, "from": "Automate fini non-déterministe","domain": "automates"},
+    {"s": "CFG",   "strate": 0, "from": "Grammaire hors-contexte (Chomsky)", "domain": "automates"},
+    {"s": "PDA",   "strate": 0, "from": "Automate à pile",               "domain": "automates"},
+    {"s": "TM",    "strate": 0, "from": "Machine de Turing (1936)",      "domain": "automates"},
+    {"s": "UTM",   "strate": 0, "from": "Machine de Turing universelle", "domain": "automates"},
+    {"s": "λ_calc","strate": 0, "from": "Lambda-calcul (Church 1936)",   "domain": "automates"},
+    {"s": "Reg",   "strate": 0, "from": "Langages réguliers (Kleene)",   "domain": "automates"},
+    {"s": "CFL",   "strate": 0, "from": "Langages hors-contexte",        "domain": "automates"},
+    {"s": "Chom",  "strate": 0, "from": "Hiérarchie de Chomsky (4 niveaux)", "domain": "automates"},
+
     # ==================================================================
     # STRATE 1 — Σ⁰₁ · Récursivement énumérable
     # ==================================================================
