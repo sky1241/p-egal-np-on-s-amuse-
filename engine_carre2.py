@@ -1199,7 +1199,95 @@ SYMBOLES = [
     {"s": "K_bound","strate": 6, "from": "Borne Kolmogorov — complexité K(x) non calculable, quelle borne par théorie? (Chaitin)", "domain": "calculabilité", "status": "open"},
 
     # --- Σ¹₂ et déterminance ---
-    {"s": "Σ¹₂_det","strate": 6, "from": "Déterminance Σ¹₂ sans grands cardinaux (ouvert)", "domain": "logique", "status": "open"},]
+    {"s": "Σ¹₂_det","strate": 6, "from": "Déterminance Σ¹₂ sans grands cardinaux (ouvert)", "domain": "logique", "status": "open"},
+
+    # ==================================================================
+    # RATISSAGE PASS 3 — 17 Fév 2026 soir
+    # ==================================================================
+
+    # --- Strate 6 : indécidable/physique ---
+    {"s": "SpectGap","strate": 6, "from": "Spectral gap undecidability — gapped/gapless indécidable pour Hamiltoniens 2D (Cubitt-Perez-Garcia-Wolf, Nature 2015)", "domain": "calculabilité", "status": "open"},
+    {"s": "H10_Q","strate": 6, "from": "Hilbert 10th sur ℚ — décidabilité Diophantine over rationals? (Mazur-Poonen, ouvert majeur)", "domain": "calculabilité", "status": "open"},
+
+    # --- Strate 0 : nombre théorie ---
+    {"s": "Littlewood","strate": 0, "from": "Conjecture Littlewood — inf n·‖nα‖·‖nβ‖=0 (c.1930, Einsiedler-Katok-Lindenstrauss 2006: exceptions dim Hausdorff 0)", "domain": "nb théorie", "status": "conjecture"},
+    {"s": "ErdTuran_ab","strate": 0, "from": "Conjecture Erdős-Turán bases additives — base ordre 2 a f(n) non borné (1941)", "domain": "nb théorie", "status": "conjecture"},
+    {"s": "Singmaster","strate": 0, "from": "Conjecture Singmaster — multiplicité bornée dans triangle Pascal (1971)", "domain": "nb théorie", "status": "conjecture"},
+
+    # --- Strate 0 : combinatoire ---
+    {"s": "ErdHajnal","strate": 0, "from": "Conjecture Erdős-Hajnal — H-free → clique/stable poly(n) (1977/1989, toujours ouverte)", "domain": "combinatoire", "status": "conjecture"},
+    {"s": "ErdSzek","strate": 0, "from": "Conjecture Erdős-Szekeres — 2^(n-2)+1 points suffisent pour n-gone convexe (1935)", "domain": "combinatoire", "status": "conjecture"},
+    {"s": "ErdSelf","strate": 0, "from": "Conjecture Erdős-Selfridge — covering system moduli distincts contient modulus pair (1950)", "domain": "combinatoire", "status": "conjecture"},
+    {"s": "Turan_bfp","strate": 0, "from": "Turán brick factory problem — crossing number K(m,n) = Zarankiewicz? (1952, ouvert)", "domain": "combinatoire", "status": "conjecture"},
+
+    # --- Strate 0 : systèmes dynamiques ---
+    {"s": "Furst_x2x3","strate": 0, "from": "Conjecture Furstenberg ×2,×3 — seules mesures ergodiques = Lebesgue ou atomiques (1967, rigidité mesure)", "domain": "systèmes dynamiques", "status": "conjecture"},
+    {"s": "QUE","strate": 0, "from": "Quantum Unique Ergodicity — fonctions propres → Lebesgue (Rudnick-Sarnak 1994, Lindenstrauss 2006 arithmétique)", "domain": "systèmes dynamiques", "status": "conjecture"},
+
+    # --- Strate 0 : géométrie algébrique ---
+    {"s": "Tate_c","strate": 0, "from": "Conjecture Tate — cycles algébriques ↔ classes Galois-invariantes ℓ-adiques (Tate 1963, analogue Hodge)", "domain": "géom algébrique", "status": "conjecture"},
+    {"s": "Groth_std","strate": 0, "from": "Conjectures standard Grothendieck — Lefschetz, Künneth, Hodge standard pour motifs (1968, ouvertes en général)", "domain": "géom algébrique", "status": "conjecture"},
+    {"s": "GrotPeriod","strate": 0, "from": "Conjecture périodes Grothendieck — deg.transc(périodes) = dim groupe Galois motivique (Kontsevich-Zagier)", "domain": "géom algébrique", "status": "conjecture"},
+    {"s": "Sect_conj","strate": 0, "from": "Section conjecture Grothendieck — points rationnels ↔ sections π₁ (lettre à Faltings 1983)", "domain": "géom algébrique", "status": "conjecture"},
+
+    # --- Strate 0 : physique quantique ---
+    {"s": "Haldane","strate": 0, "from": "Conjecture Haldane — chaîne Heisenberg antiferro spin entier est gappée (1983, Nobel 2016, non prouvé rigoureusement)", "domain": "QFT", "status": "conjecture"},
+    {"s": "AreaLaw","strate": 0, "from": "Area law conjecture — entropie intrication ∝ surface frontière (prouvé 1D Hastings 2007, ouvert dim>1)", "domain": "QFT", "status": "conjecture"},
+
+    # ═══════════════════════════════════════════════════════════════
+    #  RATISSAGE PASS 4 — topologie K-théorie, nb théorie, motivique
+    # ═══════════════════════════════════════════════════════════════
+
+    # --- Strate 0 : topologie / K-théorie ---
+    {"s": "BaumConnes","strate": 0, "from": "Conjecture Baum-Connes (1982) — assembly map μ: K_*^top(G) → K_*(C*_r(G)) isomorphisme. Prouvée a-T-ménables (Higson-Kasparov 2001), hyperboliques (Lafforgue 2012). Contre-ex. avec coeff. (Higson-Lafforgue-Skandalis 2002). Ouverte en général.", "domain": "topologie", "status": "conjecture"},
+    {"s": "FarrellJones","strate": 0, "from": "Conjecture Farrell-Jones (1993) — assembly map K/L-théorie algébrique. Pas de contre-exemples. Implique Novikov, Borel. Prouvée CAT(0), hyperboliques (Bartels-Lück-Reich).", "domain": "topologie", "status": "conjecture"},
+
+    # --- Strate 0 : théorie des nombres ---
+    {"s": "Artin_prim","strate": 0, "from": "Conjecture Artin racine primitive (1927) — tout non-carré a≠-1 est racine primitive mod p pour ∞ primes. Hooley 1967: conditionnel GRH. Heath-Brown 1986: au moins un de {2,3,5}.", "domain": "nb théorie", "status": "conjecture"},
+    {"s": "Selberg_ev","strate": 0, "from": "Conjecture Selberg valeur propre (1965) — λ₁ ≥ 1/4 pour Γ(N) congruence. Selberg: ≥3/16. Kim-Sarnak 2003: ≥975/4096≈0.238. Impliquée par Ramanujan généralisée.", "domain": "nb théorie", "status": "conjecture"},
+    {"s": "GenRam","strate": 0, "from": "Conjecture Ramanujan généralisée — paramètres Satake tempérés pour formes automorphes cuspidales GL_n. Deligne: prouvée GL_2 holomorphe. Ouverte Maass forms et GL_n, n>2. Implique Selberg.", "domain": "nb théorie", "status": "conjecture"},
+
+    # --- Strate 0 : géométrie algébrique / motivique ---
+    {"s": "BeilSoule","strate": 0, "from": "Conjecture Beilinson-Soulé (vanishing) — H^p_mot(X,ℤ(q))=0 pour p<0, q≥0. Connue corps finis. Centrale théorie motivique, t-structure sur motifs.", "domain": "géom algébrique", "status": "conjecture"},
+
+    # ═══════════════════════════════════════════════════════════════
+    #  RATISSAGE PASS 4 — PROUVÉS récents majeurs
+    # ═══════════════════════════════════════════════════════════════
+
+    # --- Prouvés : K-théorie / cohomologie motivique ---
+    {"s": "Milnor_K","strate": 3, "from": "Conjecture Milnor K-théorie (1970) — K^M_n(F)/2 ≅ H^n(F,ℤ/2). Voevodsky 2003 (Fields Medal 2002). Utilise A¹-homotopie, opérations Steenrod motiviques."},
+    {"s": "BlochKato","strate": 3, "from": "Conjecture Bloch-Kato (norm residue) — K^M_n(F)/ℓ ≅ H^n(F,μ_ℓ^⊗n) pour tout premier ℓ. Rost-Voevodsky 2011. Généralise Milnor. Implique Quillen-Lichtenbaum."},
+
+    # --- Prouvés : représentations / Langlands ---
+    {"s": "KazhLusz","strate": 3, "from": "Conjecture Kazhdan-Lusztig (1979) — multiplicités [M_w:L_y] = P_{y,w}(1) polynômes KL. Beilinson-Bernstein 1981, Brylinski-Kashiwara 1981. D-modules, perverse sheaves."},
+    {"s": "GeomLang","strate": 3, "from": "Conjecture géométrique Langlands catégorique (unramified) — Gaitsgory-Raskin et al. 2024. 800+ pages, 5 papers, 9 auteurs. 30 ans de travail. Hecke eigensheaves."},
+
+    # --- Prouvés : EDP / fluides ---
+    {"s": "Onsager_c","strate": 3, "from": "Conjecture Onsager (1949) — solutions Euler C^{α}: conservation énergie ssi α>1/3. Rigide: Constantin-E-Titi 1994. Flexible: Isett 2018, Buckmaster-De Lellis-Székelyhidi-Vicol 2019 (convex integration)."},
+
+    # ═══════════════════════════════════════════════════════════════
+    #  RATISSAGE PASS 4 — batch 2 : convexe, birationnel, prouvés majeurs
+    # ═══════════════════════════════════════════════════════════════
+
+    # --- Strate 0 : géométrie convexe ---
+    {"s": "Mahler_vol","strate": 0, "from": "Conjecture Mahler (1939) — produit volumique |K||K°| minimisé par hypercubes (sym) ou simplexes (non-sym). Prouvée n=2 (Mahler), n=3 (Iriyeh-Shibata 2020). Hanner polytopes = minima locaux.", "domain": "géométrie", "status": "conjecture"},
+
+    # --- Strate 0 : géométrie algébrique / birationnelle ---
+    {"s": "Abundance","strate": 0, "from": "Abundance conjecture (MMP) — K_X nef ⟹ K_X semi-ample. Prouvée dim ≤ 3. Compléterait classification birationnelle. Birkar-Cascini-Hacon-McKernan 2010 (cas log general type).", "domain": "géom algébrique", "status": "conjecture"},
+
+    # --- Prouvés : analyse fonctionnelle / combinatoire ---
+    {"s": "KadSinger","strate": 3, "from": "Kadison-Singer (1959) — extension unique d'états purs B(H) vers MASA. Marcus-Spielman-Srivastava 2013. Méthode polynômes entrelacés, interlacing families."},
+
+    # --- Prouvés : théorie des nombres ---
+    {"s": "FermatWiles","strate": 3, "from": "Dernier théorème Fermat / modularité (1637/1995) — x^n+y^n=z^n impossible n>2. Wiles 1995 (modularity semi-stable). BCDT 2001 (modularity complète courbes elliptiques sur ℚ)."},
+    {"s": "SatoTate","strate": 3, "from": "Conjecture Sato-Tate (1963) — distribution angles Frobenius courbes elliptiques suit mesure sin²θ. Taylor-Barnet-Lamb-Geraghty-Harris-Shepherd-Barron 2011."},
+
+    # --- Prouvés : topologie 3-variétés ---
+    {"s": "VirtHaken","strate": 3, "from": "Virtual Haken conjecture (Waldhausen 1968) — toute 3-variété hyperbolique fermée a revêtement fini Haken. Agol 2012, s'appuyant sur Wise (cube complexes spéciaux) et Kahn-Markovic."},
+
+    # --- Prouvés : combinatoire algébrique ---
+    {"s": "KakeyaFin","strate": 3, "from": "Kakeya conjecture corps finis (Wolff 1999) — Besicovitch set dans F_q^n a ≥ c_n·q^n éléments. Dvir 2008, méthode polynomiale. Preuve élégante en 1 page."},
+]
 
 
 # ============================================================================
