@@ -1,6 +1,6 @@
 {
   "meta": {
-    "total_symbols": 502
+    "total_symbols": 535
   },
   "strates": [
     {
@@ -2823,176 +2823,260 @@
           "s": "∃",
           "from": "Quantificateur existentiel",
           "domain": "logique",
-          "px": -1.137,
-          "pz": -1.137
+          "px": -1.2182,
+          "pz": -1.1843
         },
         {
           "s": "K",
           "from": "Halting set K={e:φₑ(e)↓}",
           "domain": "calculabilité",
-          "px": -0.5685,
-          "pz": -1.137
+          "px": -0.8121,
+          "pz": -1.1843
         },
         {
           "s": "φₑ",
           "from": "e-ième fonction partielle",
           "domain": "calculabilité",
-          "px": 0.0,
-          "pz": -1.137
+          "px": -0.4061,
+          "pz": -1.1843
         },
         {
           "s": "↓",
           "from": "Converge (s'arrête)",
           "domain": "calculabilité",
-          "px": 0.5685,
-          "pz": -1.137
+          "px": -0.0,
+          "pz": -1.1843
         },
         {
           "s": "↑",
           "from": "Diverge (boucle infinie)",
           "domain": "calculabilité",
-          "px": 1.137,
-          "pz": -1.137
+          "px": 0.4061,
+          "pz": -1.1843
         },
         {
           "s": "Wₑ",
           "from": "e-ième ensemble r.e.",
           "domain": "calculabilité",
-          "px": -1.137,
-          "pz": -0.5685
+          "px": 0.8121,
+          "pz": -1.1843
         },
         {
           "s": "μy",
           "from": "Opérateur μ recherche",
           "domain": "calculabilité",
-          "px": -0.5685,
-          "pz": -0.5685
+          "px": 1.2182,
+          "pz": -1.1843
         },
         {
           "s": "≤ₘ",
           "from": "Réduction many-one",
           "domain": "calculabilité",
-          "px": 0.0,
-          "pz": -0.5685
+          "px": -1.2182,
+          "pz": -0.7106
         },
         {
           "s": "≤ₜ",
           "from": "Réduction Turing",
           "domain": "calculabilité",
-          "px": 0.5685,
-          "pz": -0.5685
+          "px": -0.8121,
+          "pz": -0.7106
         },
         {
           "s": "RE",
           "from": "Récursivement énumérable",
           "domain": "calculabilité",
-          "px": 1.137,
-          "pz": -0.5685
+          "px": -0.4061,
+          "pz": -0.7106
         },
         {
           "s": "coRE",
           "from": "Complément de RE",
           "domain": "calculabilité",
-          "px": -1.137,
-          "pz": 0.0
+          "px": -0.0,
+          "pz": -0.7106
         },
         {
           "s": "NP",
           "from": "Non-déterministe polynomial",
           "domain": "complexité",
-          "px": -0.5685,
-          "pz": 0.0
+          "px": 0.4061,
+          "pz": -0.7106
         },
         {
           "s": "coNP",
           "from": "Complément de NP",
           "domain": "complexité",
-          "px": 0.0,
-          "pz": 0.0
+          "px": 0.8121,
+          "pz": -0.7106
         },
         {
           "s": "NL",
           "from": "Non-det espace log",
           "domain": "complexité",
-          "px": 0.5685,
-          "pz": 0.0
+          "px": 1.2182,
+          "pz": -0.7106
         },
         {
           "s": "SAT",
           "from": "Satisfiabilité Cook 1971",
           "domain": "complexité",
-          "px": 1.137,
-          "pz": 0.0
+          "px": -1.2182,
+          "pz": -0.2369
         },
         {
           "s": "3SAT",
           "from": "3-SAT NP-complet",
           "domain": "complexité",
-          "px": -1.137,
-          "pz": 0.5685
+          "px": -0.8121,
+          "pz": -0.2369
         },
         {
           "s": "3COL",
           "from": "3-coloration graphe",
           "domain": "complexité",
-          "px": -0.5685,
-          "pz": 0.5685
+          "px": -0.4061,
+          "pz": -0.2369
         },
         {
           "s": "TSP",
           "from": "Voyageur de commerce",
           "domain": "complexité",
-          "px": 0.0,
-          "pz": 0.5685
+          "px": -0.0,
+          "pz": -0.2369
         },
         {
           "s": "CLIQUE",
           "from": "Problème de la clique",
           "domain": "complexité",
-          "px": 0.5685,
-          "pz": 0.5685
+          "px": 0.4061,
+          "pz": -0.2369
         },
         {
           "s": "SUBSET",
           "from": "Subset Sum",
           "domain": "complexité",
-          "px": 1.137,
-          "pz": 0.5685
+          "px": 0.8121,
+          "pz": -0.2369
         },
         {
           "s": "HAM",
           "from": "Chemin hamiltonien",
           "domain": "complexité",
-          "px": -1.137,
-          "pz": 1.137
+          "px": 1.2182,
+          "pz": -0.2369
         },
         {
           "s": "ILP",
           "from": "Integer Linear Programming",
           "domain": "complexité",
-          "px": -0.5685,
-          "pz": 1.137
+          "px": -1.2182,
+          "pz": 0.2369
         },
         {
           "s": "BQP",
           "from": "Bounded-error Quantum Poly",
           "domain": "quantique",
-          "px": 0.0,
-          "pz": 1.137
+          "px": -0.8121,
+          "pz": 0.2369
         },
         {
           "s": "NP-C",
-          "from": "NP-Complet",
+          "from": "NP-Complet (Cook-Levin 1971)",
           "domain": "complexité",
-          "px": 0.5685,
-          "pz": 1.137
+          "px": -0.4061,
+          "pz": 0.2369
         },
         {
           "s": "NP-H",
           "from": "NP-Hard",
           "domain": "complexité",
-          "px": 1.137,
-          "pz": 1.137
+          "px": -0.0,
+          "pz": 0.2369
+        },
+        {
+          "s": "VERTEX",
+          "from": "Vertex Cover (Karp 1972)",
+          "domain": "complexité",
+          "px": 0.4061,
+          "pz": 0.2369
+        },
+        {
+          "s": "SETCOV",
+          "from": "Set Cover (Karp 1972)",
+          "domain": "complexité",
+          "px": 0.8121,
+          "pz": 0.2369
+        },
+        {
+          "s": "KNAP",
+          "from": "Knapsack / Sac à dos",
+          "domain": "complexité",
+          "px": 1.2182,
+          "pz": 0.2369
+        },
+        {
+          "s": "PART",
+          "from": "Partition (Karp 1972)",
+          "domain": "complexité",
+          "px": -1.2182,
+          "pz": 0.7106
+        },
+        {
+          "s": "MAXCUT",
+          "from": "Maximum Cut (Karp 1972)",
+          "domain": "complexité",
+          "px": -0.8121,
+          "pz": 0.7106
+        },
+        {
+          "s": "3DM",
+          "from": "3-Dimensional Matching (Karp)",
+          "domain": "complexité",
+          "px": -0.4061,
+          "pz": 0.7106
+        },
+        {
+          "s": "GI",
+          "from": "Graph Isomorphism (NP, non NP-complet connu)",
+          "domain": "complexité",
+          "px": -0.0,
+          "pz": 0.7106
+        },
+        {
+          "s": "Ladner",
+          "from": "Ladner: si P≠NP ∃ NP-intermédiaire (1975)",
+          "domain": "complexité",
+          "px": 0.4061,
+          "pz": 0.7106
+        },
+        {
+          "s": "Cook",
+          "from": "Théorème Cook-Levin: SAT est NP-complet (1971)",
+          "domain": "complexité",
+          "px": 0.8121,
+          "pz": 0.7106
+        },
+        {
+          "s": "Σ⁰₁",
+          "from": "Classe Σ⁰₁ (r.e.) de la hiérarchie",
+          "domain": "calculabilité",
+          "px": 1.2182,
+          "pz": 0.7106
+        },
+        {
+          "s": "Π⁰₁",
+          "from": "Classe Π⁰₁ (co-r.e.)",
+          "domain": "calculabilité",
+          "px": -1.2182,
+          "pz": 1.1843
+        },
+        {
+          "s": "P/poly",
+          "from": "P avec conseil polynomial (circuits)",
+          "domain": "complexité",
+          "px": -0.8121,
+          "pz": 1.1843
         }
       ]
     },
@@ -3014,105 +3098,133 @@
           "s": "∀",
           "from": "Quantificateur universel",
           "domain": "logique",
-          "px": -1.0659,
+          "px": -1.137,
           "pz": -1.0659
         },
         {
           "s": "∃∀",
           "from": "Alternance Σ⁰₂",
           "domain": "calculabilité",
-          "px": -0.3553,
+          "px": -0.5685,
           "pz": -1.0659
         },
         {
           "s": "TOT",
-          "from": "{e : φₑ totale}",
+          "from": "{e : φₑ totale} Π₂-complet",
           "domain": "calculabilité",
-          "px": 0.3553,
+          "px": 0.0,
           "pz": -1.0659
         },
         {
           "s": "FIN",
-          "from": "{e : Wₑ fini}",
+          "from": "{e : Wₑ fini} Σ₂-complet",
           "domain": "calculabilité",
-          "px": 1.0659,
+          "px": 0.5685,
           "pz": -1.0659
-        },
-        {
-          "s": "COF",
-          "from": "{e : Wₑ cofini}",
-          "domain": "calculabilité",
-          "px": -1.0659,
-          "pz": -0.3553
-        },
-        {
-          "s": "REC",
-          "from": "{e : Wₑ récursif}",
-          "domain": "calculabilité",
-          "px": -0.3553,
-          "pz": -0.3553
         },
         {
           "s": "∅'",
           "from": "Turing jump ∅'",
           "domain": "calculabilité",
-          "px": 0.3553,
-          "pz": -0.3553
+          "px": 1.137,
+          "pz": -1.0659
         },
         {
           "s": "∅''",
           "from": "Double saut ∅''",
           "domain": "calculabilité",
-          "px": 1.0659,
+          "px": -1.137,
           "pz": -0.3553
         },
         {
           "s": "Δ⁰₂",
-          "from": "Σ⁰₂ ∩ Π⁰₂",
+          "from": "Σ⁰₂ ∩ Π⁰₂ (limit computable)",
           "domain": "calculabilité",
-          "px": -1.0659,
-          "pz": 0.3553
+          "px": -0.5685,
+          "pz": -0.3553
         },
         {
           "s": "BPP",
-          "from": "Bounded-error Probabilistic",
+          "from": "Bounded-error Probabilistic (⊆ Σ₂∩Π₂)",
           "domain": "complexité",
-          "px": -0.3553,
-          "pz": 0.3553
-        },
-        {
-          "s": "IP",
-          "from": "Interactive Proof",
-          "domain": "complexité",
-          "px": 0.3553,
-          "pz": 0.3553
+          "px": 0.0,
+          "pz": -0.3553
         },
         {
           "s": "SZK",
-          "from": "Statistical Zero Knowledge",
+          "from": "Statistical Zero Knowledge (⊆ AM∩coAM)",
           "domain": "crypto",
-          "px": 1.0659,
-          "pz": 0.3553
+          "px": 0.5685,
+          "pz": -0.3553
         },
         {
           "s": "RP",
-          "from": "Randomized Polynomial",
+          "from": "Randomized Polynomial (one-sided error)",
           "domain": "complexité",
-          "px": -1.0659,
-          "pz": 1.0659
+          "px": 1.137,
+          "pz": -0.3553
         },
         {
           "s": "coRP",
           "from": "Complement RP",
           "domain": "complexité",
-          "px": -0.3553,
-          "pz": 1.0659
+          "px": -1.137,
+          "pz": 0.3553
         },
         {
           "s": "ZPP",
-          "from": "Zero-error Probabilistic Poly",
+          "from": "Zero-error Probabilistic (=RP∩coRP)",
           "domain": "complexité",
-          "px": 0.3553,
+          "px": -0.5685,
+          "pz": 0.3553
+        },
+        {
+          "s": "Post",
+          "from": "Théorème Post: Σ⁰ₙ↔∅⁽ⁿ⁾ (hiérarchie=sauts)",
+          "domain": "calculabilité",
+          "px": 0.0,
+          "pz": 0.3553
+        },
+        {
+          "s": "Lim",
+          "from": "Shoenfield Limit Lemma (Δ⁰₂=limit computable)",
+          "domain": "calculabilité",
+          "px": 0.5685,
+          "pz": 0.3553
+        },
+        {
+          "s": "Low",
+          "from": "Degré Low: A'=∅' (faible complexité)",
+          "domain": "calculabilité",
+          "px": 1.137,
+          "pz": 0.3553
+        },
+        {
+          "s": "High",
+          "from": "Degré High: A'=∅'' (forte complexité)",
+          "domain": "calculabilité",
+          "px": -1.137,
+          "pz": 1.0659
+        },
+        {
+          "s": "INF",
+          "from": "{e : Wₑ infini} Π₂-complet",
+          "domain": "calculabilité",
+          "px": -0.5685,
+          "pz": 1.0659
+        },
+        {
+          "s": "Σ⁰₂",
+          "from": "Classe Σ⁰₂ de la hiérarchie",
+          "domain": "calculabilité",
+          "px": 0.0,
+          "pz": 1.0659
+        },
+        {
+          "s": "Π⁰₂",
+          "from": "Classe Π⁰₂ de la hiérarchie",
+          "domain": "calculabilité",
+          "px": 0.5685,
           "pz": 1.0659
         }
       ]
@@ -3135,99 +3247,155 @@
           "s": "Σ⁰ₙ",
           "from": "n-ième existentiel",
           "domain": "calculabilité",
-          "px": -1.0659,
-          "pz": -1.0659
+          "px": -1.137,
+          "pz": -1.137
         },
         {
           "s": "Π⁰ₙ",
           "from": "n-ième universel",
           "domain": "calculabilité",
-          "px": -0.3553,
-          "pz": -1.0659
+          "px": -0.5685,
+          "pz": -1.137
         },
         {
           "s": "Δ⁰ₙ",
           "from": "Σ⁰ₙ ∩ Π⁰ₙ",
           "domain": "calculabilité",
-          "px": 0.3553,
-          "pz": -1.0659
+          "px": 0.0,
+          "pz": -1.137
         },
         {
           "s": "∅⁽ⁿ⁾",
           "from": "n-ième saut Turing",
           "domain": "calculabilité",
-          "px": 1.0659,
-          "pz": -1.0659
+          "px": 0.5685,
+          "pz": -1.137
         },
         {
           "s": "ΣₖP",
           "from": "k-ième niveau PH existentiel",
           "domain": "complexité",
-          "px": -1.0659,
-          "pz": -0.3553
+          "px": 1.137,
+          "pz": -1.137
         },
         {
           "s": "ΠₖP",
           "from": "k-ième niveau PH universel",
           "domain": "complexité",
-          "px": -0.3553,
-          "pz": -0.3553
+          "px": -1.137,
+          "pz": -0.5685
+        },
+        {
+          "s": "ΔₖP",
+          "from": "k-ième niveau PH déterministe (P^Σₖ₋₁)",
+          "domain": "complexité",
+          "px": -0.5685,
+          "pz": -0.5685
         },
         {
           "s": "PH",
           "from": "Polynomial Hierarchy ∪ₖΣₖP",
           "domain": "complexité",
-          "px": 0.3553,
-          "pz": -0.3553
+          "px": 0.0,
+          "pz": -0.5685
         },
         {
           "s": "#P",
-          "from": "Comptage — Valiant/Toda",
+          "from": "Comptage — Valiant 1979",
           "domain": "complexité",
-          "px": 1.0659,
-          "pz": -0.3553
+          "px": 0.5685,
+          "pz": -0.5685
         },
         {
           "s": "MA",
           "from": "Merlin-Arthur",
           "domain": "complexité",
-          "px": -1.0659,
-          "pz": 0.3553
+          "px": 1.137,
+          "pz": -0.5685
         },
         {
           "s": "AM",
-          "from": "Arthur-Merlin",
+          "from": "Arthur-Merlin (Babai 1985)",
           "domain": "complexité",
-          "px": -0.3553,
-          "pz": 0.3553
+          "px": -1.137,
+          "pz": 0.0
         },
         {
           "s": "PP",
           "from": "Probabilistic Polynomial",
           "domain": "complexité",
-          "px": 0.3553,
-          "pz": 0.3553
+          "px": -0.5685,
+          "pz": 0.0
         },
         {
           "s": "⊕P",
           "from": "Parité — Parity-P",
           "domain": "complexité",
-          "px": 1.0659,
-          "pz": 0.3553
+          "px": 0.0,
+          "pz": 0.0
         },
         {
           "s": "Σ₂P",
           "from": "2ème niveau existentiel PH",
           "domain": "complexité",
-          "px": -1.0659,
-          "pz": 1.0659
+          "px": 0.5685,
+          "pz": 0.0
         },
         {
           "s": "Π₂P",
           "from": "2ème niveau universel PH",
           "domain": "complexité",
-          "px": -0.3553,
-          "pz": 1.0659
+          "px": 1.137,
+          "pz": 0.0
+        },
+        {
+          "s": "Toda",
+          "from": "Théorème Toda: PH ⊆ P^#P (1991)",
+          "domain": "complexité",
+          "px": -1.137,
+          "pz": 0.5685
+        },
+        {
+          "s": "QMA",
+          "from": "Quantum Merlin-Arthur",
+          "domain": "quantique",
+          "px": -0.5685,
+          "pz": 0.5685
+        },
+        {
+          "s": "#SAT",
+          "from": "Compter solutions SAT (#P-complet)",
+          "domain": "complexité",
+          "px": 0.0,
+          "pz": 0.5685
+        },
+        {
+          "s": "GapP",
+          "from": "Fonctions de gap (différence de #P)",
+          "domain": "complexité",
+          "px": 0.5685,
+          "pz": 0.5685
+        },
+        {
+          "s": "C₌P",
+          "from": "Exact counting complexity",
+          "domain": "complexité",
+          "px": 1.137,
+          "pz": 0.5685
+        },
+        {
+          "s": "COF",
+          "from": "{e : Wₑ cofini} Σ₃-complet",
+          "domain": "calculabilité",
+          "px": -1.137,
+          "pz": 1.137
+        },
+        {
+          "s": "REC",
+          "from": "{e : Wₑ récursif} Σ₃-complet",
+          "domain": "calculabilité",
+          "px": -0.5685,
+          "pz": 1.137
         }
       ]
     },
@@ -3249,71 +3417,134 @@
           "s": "AH",
           "from": "Hiérarchie arithmétique",
           "domain": "calculabilité",
-          "px": -1.0659,
-          "pz": -0.9475
+          "px": -1.137,
+          "pz": -1.0659
         },
         {
           "s": "∪ₙ",
           "from": "Union tous niveaux",
           "domain": "ensembles",
-          "px": -0.3553,
-          "pz": -0.9475
+          "px": -0.5685,
+          "pz": -1.0659
         },
         {
           "s": "ω_ord",
           "from": "Premier ordinal infini ω",
           "domain": "ordinaux",
-          "px": 0.3553,
-          "pz": -0.9475
+          "px": 0.0,
+          "pz": -1.0659
         },
         {
           "s": "Th(ℕ)",
           "from": "Théorie complète de ℕ",
           "domain": "logique",
-          "px": 1.0659,
-          "pz": -0.9475
+          "px": 0.5685,
+          "pz": -1.0659
         },
         {
           "s": "∅⁽ω⁾",
           "from": "ω-ième saut",
           "domain": "calculabilité",
-          "px": -1.0659,
-          "pz": 0.0
+          "px": 1.137,
+          "pz": -1.0659
         },
         {
           "s": "PSPACE",
-          "from": "Espace polynomial attracteur",
+          "from": "Espace polynomial (Savitch: =NPSPACE)",
           "domain": "complexité",
-          "px": -0.3553,
-          "pz": 0.0
+          "px": -1.137,
+          "pz": -0.3553
         },
         {
           "s": "QIP",
-          "from": "Quantum Interactive Proof",
+          "from": "Quantum Interactive Proof (=PSPACE)",
           "domain": "quantique",
-          "px": 0.3553,
-          "pz": 0.0
+          "px": -0.5685,
+          "pz": -0.3553
         },
         {
           "s": "EXPTIME",
-          "from": "Temps exponentiel",
+          "from": "Temps exponentiel (⊋ P strict)",
           "domain": "complexité",
-          "px": 1.0659,
-          "pz": 0.0
+          "px": 0.0,
+          "pz": -0.3553
         },
         {
           "s": "NEXP",
           "from": "Non-det exponentiel",
           "domain": "complexité",
-          "px": -1.0659,
-          "pz": 0.9475
+          "px": 0.5685,
+          "pz": -0.3553
         },
         {
           "s": "EXPSPACE",
-          "from": "Espace exponentiel",
+          "from": "Espace exponentiel (=NEXPSPACE Savitch)",
           "domain": "complexité",
-          "px": -0.3553,
-          "pz": 0.9475
+          "px": 1.137,
+          "pz": -0.3553
+        },
+        {
+          "s": "AP",
+          "from": "Alternating Polynomial time (=PSPACE)",
+          "domain": "complexité",
+          "px": -1.137,
+          "pz": 0.3553
+        },
+        {
+          "s": "TQBF",
+          "from": "True QBF — PSPACE-complet",
+          "domain": "complexité",
+          "px": -0.5685,
+          "pz": 0.3553
+        },
+        {
+          "s": "IP_eq",
+          "from": "IP=PSPACE (théorème Shamir 1992)",
+          "domain": "complexité",
+          "px": 0.0,
+          "pz": 0.3553
+        },
+        {
+          "s": "2-EXP",
+          "from": "2-EXPTIME doublement exponentiel",
+          "domain": "complexité",
+          "px": 0.5685,
+          "pz": 0.3553
+        },
+        {
+          "s": "ELEM",
+          "from": "ELEMENTARY ∪ₖ k-EXPTIME",
+          "domain": "complexité",
+          "px": 1.137,
+          "pz": 0.3553
+        },
+        {
+          "s": "E",
+          "from": "DTIME(2^O(n)) temps exp linéaire",
+          "domain": "complexité",
+          "px": -1.137,
+          "pz": 1.0659
+        },
+        {
+          "s": "NE",
+          "from": "NTIME(2^O(n))",
+          "domain": "complexité",
+          "px": -0.5685,
+          "pz": 1.0659
+        },
+        {
+          "s": "Tarski",
+          "from": "Indéfinissabilité vérité (Tarski 1936)",
+          "domain": "logique",
+          "px": 0.0,
+          "pz": 1.0659
+        },
+        {
+          "s": "ε₀_ord",
+          "from": "Ordinal ε₀ = ω^ω^ω^… (Gentzen)",
+          "domain": "ordinaux",
+          "px": 0.5685,
+          "pz": 1.0659
         }
       ]
     },
