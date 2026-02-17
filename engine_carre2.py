@@ -881,44 +881,76 @@ SYMBOLES = [
     # ====================================================================
     # CARRÉ 2 UNIQUEMENT — SYMBOLES NON PROUVÉS
     # Conjectures, problèmes ouverts, théories non fondées
+    # Organisé par strate (0 → 6) comme le carré 1
     # ====================================================================
 
-    # --- Problèmes du Millénaire (Clay, 2000) ---
-    {"s": "P≠NP",   "strate": 1, "from": "Conjecture P≠NP (Cook 1971, non prouvé)", "domain": "complexité", "status": "conjecture"},
-    {"s": "P=NP",   "strate": 1, "from": "Question ouverte P=NP (Cook 1971)", "domain": "complexité", "status": "open"},
-    {"s": "RH",     "strate": 0, "from": "Hypothèse de Riemann — ζ(s)=0 → Re(s)=½ (1859, non prouvé)", "domain": "nb théorie", "status": "conjecture"},
-    {"s": "NS_reg", "strate": 0, "from": "Navier-Stokes existence et régularité (non prouvé)", "domain": "fluides", "status": "open"},
-    {"s": "YM_gap", "strate": 0, "from": "Yang-Mills mass gap (non prouvé)", "domain": "QFT", "status": "open"},
-    {"s": "Hodge",  "strate": 0, "from": "Conjecture de Hodge (non prouvé)", "domain": "géom diff", "status": "conjecture"},
-    {"s": "BSD",    "strate": 0, "from": "Birch et Swinnerton-Dyer (courbes elliptiques, non prouvé)", "domain": "nb théorie", "status": "conjecture"},
+    # ================================================================
+    # STRATE 0 — CONJECTURES SUR OBJETS DÉCIDABLES
+    # ================================================================
 
-    # --- Conjectures majeures théorie des nombres ---
-    {"s": "Goldbach","strate": 0, "from": "Conjecture Goldbach — tout pair >2 = somme 2 premiers (1742)", "domain": "nb théorie", "status": "conjecture"},
-    {"s": "Twin_p", "strate": 0, "from": "Conjecture des premiers jumeaux (∞ paires p, p+2)", "domain": "nb théorie", "status": "conjecture"},
-    {"s": "Collatz","strate": 0, "from": "Conjecture Collatz / Syracuse (1937, non prouvé)", "domain": "nb théorie", "status": "conjecture"},
-    {"s": "ABC",    "strate": 0, "from": "Conjecture ABC (Masser-Oesterlé 1985, Mochizuki controversé)", "domain": "nb théorie", "status": "conjecture"},
-    {"s": "Legendre","strate": 0, "from": "Conjecture Legendre — ∃ premier entre n² et (n+1)²", "domain": "nb théorie", "status": "conjecture"},
-    {"s": "Cramér", "strate": 0, "from": "Conjecture Cramér — gaps entre premiers O(log²p)", "domain": "nb théorie", "status": "conjecture"},
+    # --- Problèmes du Millénaire Clay (2000) — strate 0 ---
+    {"s": "RH",      "strate": 0, "from": "Hypothèse de Riemann — ζ(s)=0 → Re(s)=½ (1859)", "domain": "nb théorie", "status": "conjecture"},
+    {"s": "NS_reg",  "strate": 0, "from": "Navier-Stokes existence et régularité 3D", "domain": "fluides", "status": "open"},
+    {"s": "YM_gap",  "strate": 0, "from": "Yang-Mills mass gap (existence + gap >0)", "domain": "QFT", "status": "open"},
+    {"s": "Hodge",   "strate": 0, "from": "Conjecture de Hodge (classes cohomologie algébriques)", "domain": "géom diff", "status": "conjecture"},
+    {"s": "BSD",     "strate": 0, "from": "Birch et Swinnerton-Dyer (rang courbes elliptiques)", "domain": "nb théorie", "status": "conjecture"},
 
-    # --- Conjectures algèbre / topologie ---
-    {"s": "Poinc4","strate": 0, "from": "Conjecture Poincaré lisse dim 4 (non prouvé, dim 3 = Perelman 2003)", "domain": "topologie", "status": "open"},
-    {"s": "Jacobian","strate": 0, "from": "Conjecture Jacobienne (Keller 1939, non prouvé)", "domain": "algèbre", "status": "conjecture"},
-    {"s": "Inv_Gal","strate": 0, "from": "Problème inverse de Galois (tout groupe fini = Gal?)", "domain": "algèbre", "status": "open"},
-
-    # --- Programme de Langlands ---
+    # --- Théorie des nombres : conjectures ---
+    {"s": "Goldbach","strate": 0, "from": "Tout pair >2 = somme 2 premiers (1742)", "domain": "nb théorie", "status": "conjecture"},
+    {"s": "Twin_p", "strate": 0, "from": "∞ paires premiers jumeaux p, p+2", "domain": "nb théorie", "status": "conjecture"},
+    {"s": "Collatz","strate": 0, "from": "Conjecture Syracuse/Collatz (1937)", "domain": "nb théorie", "status": "conjecture"},
+    {"s": "ABC",    "strate": 0, "from": "Conjecture ABC (Masser-Oesterlé 1985)", "domain": "nb théorie", "status": "conjecture"},
+    {"s": "Legendre","strate": 0, "from": "∃ premier entre n² et (n+1)²", "domain": "nb théorie", "status": "conjecture"},
+    {"s": "Cramér", "strate": 0, "from": "Gaps entre premiers O(log²p) (1936)", "domain": "nb théorie", "status": "conjecture"},
+    {"s": "Lehmer", "strate": 0, "from": "Mesure de Mahler minimale (1933)", "domain": "nb théorie", "status": "conjecture"},
+    {"s": "Beal",   "strate": 0, "from": "Conjecture Beal — Aˣ+Bʸ=Cᶻ → gcd>1 (1993)", "domain": "nb théorie", "status": "conjecture"},
+    {"s": "Buny",   "strate": 0, "from": "Conjecture Bunyakovsky (polynômes irréductibles → ∞ premiers, 1857)", "domain": "nb théorie", "status": "conjecture"},
+    {"s": "ErdStraus","strate": 0, "from": "Conjecture Erdős-Straus — 4/n = 1/x+1/y+1/z (1948)", "domain": "nb théorie", "status": "conjecture"},
+    {"s": "Brocard","strate": 0, "from": "Problème Brocard — n!+1 = m² (1876, seuls n=4,5,7 connus)", "domain": "nb théorie", "status": "conjecture"},
+    {"s": "Lindelöf","strate": 0, "from": "Hypothèse Lindelöf — ζ(½+it) = O(t^ε) (impliquée par RH)", "domain": "nb théorie", "status": "conjecture"},
     {"s": "Langlands","strate": 0, "from": "Programme de Langlands (1967, partiellement prouvé)", "domain": "nb théorie", "status": "programme"},
-    {"s": "Funct", "strate": 0, "from": "Fonctorialité de Langlands (non prouvé en général)", "domain": "nb théorie", "status": "conjecture"},
+    {"s": "Funct_L","strate": 0, "from": "Fonctorialité de Langlands (non prouvé en général)", "domain": "nb théorie", "status": "conjecture"},
 
-    # --- Conjectures complexité / calculabilité ---
-    {"s": "NP≠coNP","strate": 1, "from": "Conjecture NP≠coNP (non prouvé)", "domain": "complexité", "status": "conjecture"},
-    {"s": "L≠NL",  "strate": 0, "from": "Conjecture L≠NL (non prouvé)", "domain": "complexité", "status": "conjecture"},
-    {"s": "P≠PSPACE","strate": 1, "from": "Conjecture P≠PSPACE (non prouvé)", "domain": "complexité", "status": "conjecture"},
-    {"s": "BPP=P", "strate": 0, "from": "Conjecture BPP=P (dérandomisation, non prouvé)", "domain": "complexité", "status": "conjecture"},
-    {"s": "NP∩coNP","strate": 1, "from": "NP∩coNP = P ? (ouvert)", "domain": "complexité", "status": "open"},
-    {"s": "UGC",   "strate": 1, "from": "Unique Games Conjecture (Khot 2002)", "domain": "complexité", "status": "conjecture"},
-    {"s": "ETH",   "strate": 1, "from": "Exponential Time Hypothesis (Impagliazzo-Paturi 2001)", "domain": "complexité", "status": "conjecture"},
+    # --- Analyse : conjectures ---
+    {"s": "Sendov","strate": 0, "from": "Conjecture Sendov (zéros polynômes, 1959, prouvé n>8 Tao)", "domain": "analyse", "status": "conjecture"},
+    {"s": "Kakeya","strate": 0, "from": "Conjecture Kakeya (dimension Besicovitch sets = n)", "domain": "analyse", "status": "conjecture"},
+    {"s": "InvSub","strate": 0, "from": "Invariant Subspace Problem (tout opérateur sur Hilbert?)", "domain": "analyse fonctionnelle", "status": "open"},
+    {"s": "Schanuel","strate": 0, "from": "Conjecture Schanuel (transcendance, implique Lindemann)", "domain": "analyse", "status": "conjecture"},
+    {"s": "Pompeiu","strate": 0, "from": "Problème de Pompeiu (domaines sans propriété, 1929)", "domain": "analyse", "status": "open"},
 
-    # --- Physique théorique non prouvée ---
+    # --- Algèbre : conjectures ---
+    {"s": "Jacobian","strate": 0, "from": "Conjecture Jacobienne (Keller 1939)", "domain": "algèbre", "status": "conjecture"},
+    {"s": "Inv_Gal","strate": 0, "from": "Problème inverse de Galois (tout groupe fini = Gal?)", "domain": "algèbre", "status": "open"},
+    {"s": "Köthe",  "strate": 0, "from": "Conjecture Köthe (nil idéal à gauche → nil bilatère)", "domain": "algèbre", "status": "conjecture"},
+    {"s": "Dixmier","strate": 0, "from": "Conjecture Dixmier (endomorphisme algèbre Weyl = automorphisme)", "domain": "algèbre", "status": "conjecture"},
+    {"s": "Kaplansky","strate": 0, "from": "Conjectures Kaplansky (unit, zero divisor, idempotent group rings)", "domain": "algèbre", "status": "conjecture"},
+
+    # --- Topologie : conjectures ---
+    {"s": "Poinc4","strate": 0, "from": "Poincaré lisse dim 4 (dim 3 = Perelman 2003)", "domain": "topologie", "status": "open"},
+    {"s": "AndrCurt","strate": 0, "from": "Conjecture Andrews-Curtis (présentations triviales, 1965)", "domain": "topologie", "status": "conjecture"},
+    {"s": "Zeeman","strate": 0, "from": "Conjecture Zeeman (contractible 2-complex × I collapsible)", "domain": "topologie", "status": "conjecture"},
+    {"s": "Borel_c","strate": 0, "from": "Conjecture Borel (variétés asphériques rigides)", "domain": "topologie", "status": "conjecture"},
+    {"s": "Novikov_c","strate": 0, "from": "Conjecture Novikov (invariance classes de Pontryagin supérieures)", "domain": "topologie", "status": "conjecture"},
+
+    # --- Géométrie différentielle : conjectures ---
+    {"s": "Hopf_c","strate": 0, "from": "Conjecture Hopf (courbure positive → χ>0 en dim paire)", "domain": "géom diff", "status": "conjecture"},
+    {"s": "Chern_c","strate": 0, "from": "Conjecture Chern (variétés affines plates → χ=0)", "domain": "géom diff", "status": "conjecture"},
+    {"s": "Yau_c",  "strate": 0, "from": "Conjectures de Yau (géométrie kählérienne, partiellement ouvert)", "domain": "géom diff", "status": "conjecture"},
+
+    # --- Combinatoire / Graphes : conjectures ---
+    {"s": "Hadwiger","strate": 0, "from": "Hadwiger — χ(G)≥k → Kₖ mineur (1943)", "domain": "combinatoire", "status": "conjecture"},
+    {"s": "Recon",  "strate": 0, "from": "Reconstruction graphe (Kelly-Ulam 1941)", "domain": "combinatoire", "status": "conjecture"},
+    {"s": "Frankl", "strate": 0, "from": "Conjecture union-closed (Frankl 1979, partiellement Gilmer 2022)", "domain": "combinatoire", "status": "conjecture"},
+    {"s": "EFL",    "strate": 0, "from": "Conjecture Erdős-Faber-Lovász (χ sur hypergraphes linéaires)", "domain": "combinatoire", "status": "conjecture"},
+    {"s": "GracTree","strate": 0, "from": "Conjecture graceful tree (Ringel-Kotzig 1967)", "domain": "combinatoire", "status": "conjecture"},
+    {"s": "Cycle2c","strate": 0, "from": "Cycle double cover conjecture (Szegedy 1979)", "domain": "combinatoire", "status": "conjecture"},
+    {"s": "Barnette","strate": 0, "from": "Conjecture Barnette (polytope simple 3-connexe biparti → hamiltonien)", "domain": "combinatoire", "status": "conjecture"},
+
+    # --- Probabilités / Stochastique : conjectures ---
+    {"s": "SLE_univ","strate": 0, "from": "Universalité SLE (convergence modèles discrets → SLE, partiel)", "domain": "probabilités", "status": "conjecture"},
+    {"s": "KPZ_univ","strate": 0, "from": "Universalité KPZ (exposants croissance, Kardar-Parisi-Zhang 1986)", "domain": "stochastique", "status": "conjecture"},
+
+    # --- Physique théorique : non prouvé ---
     {"s": "Str_th","strate": 0, "from": "Théorie des cordes (non vérifiée expérimentalement)", "domain": "QFT", "status": "théorie"},
     {"s": "SUSY",  "strate": 0, "from": "Supersymétrie (non détectée au LHC)", "domain": "QFT", "status": "théorie"},
     {"s": "DM",    "strate": 0, "from": "Matière noire (observée indirectement, nature inconnue)", "domain": "cosmologie", "status": "open"},
@@ -929,29 +961,143 @@ SYMBOLES = [
     {"s": "Prot_d","strate": 0, "from": "Décroissance du proton (prédite GUT, non observée)", "domain": "QFT", "status": "open"},
     {"s": "Magn_m","strate": 0, "from": "Monopôle magnétique (Dirac 1931, non détecté)", "domain": "électromagn", "status": "open"},
     {"s": "CP_strong","strate": 0, "from": "Problème CP fort (pourquoi θ~0? axion?)", "domain": "QFT", "status": "open"},
-    {"s": "ν_mass","strate": 0, "from": "Masse des neutrinos (mécanisme inconnu, Majorana/Dirac?)", "domain": "quantique", "status": "open"},
+    {"s": "ν_mass","strate": 0, "from": "Masse neutrinos (Majorana/Dirac? mécanisme inconnu)", "domain": "quantique", "status": "open"},
     {"s": "Hier_pb","strate": 0, "from": "Problème de hiérarchie (masse Higgs vs Planck)", "domain": "QFT", "status": "open"},
+    {"s": "Axion", "strate": 0, "from": "Axion (particule hypothétique, solution CP fort)", "domain": "QFT", "status": "open"},
+    {"s": "Cosm_inf","strate": 0, "from": "Inflation cosmique (Guth 1981, mécanisme exact ouvert)", "domain": "cosmologie", "status": "théorie"},
+    {"s": "Baryon","strate": 0, "from": "Baryogénèse (asymétrie matière/antimatière, mécanisme inconnu)", "domain": "cosmologie", "status": "open"},
+    {"s": "Penrose","strate": 0, "from": "Censure cosmique (Penrose 1969, singularités nues interdites?)", "domain": "relativité", "status": "conjecture"},
+    {"s": "BH_info","strate": 0, "from": "Paradoxe information trou noir (Hawking, non résolu)", "domain": "quantique", "status": "open"},
 
-    # --- Conjectures analyse / géométrie ---
-    {"s": "Sendov","strate": 0, "from": "Conjecture Sendov (zéros polynômes, 1959, non prouvé n>9)", "domain": "analyse", "status": "conjecture"},
-    {"s": "Lehmer","strate": 0, "from": "Conjecture Lehmer (mesure de Mahler minimale, 1933)", "domain": "nb théorie", "status": "conjecture"},
+    # --- Quantique / Information : conjectures ---
+    {"s": "QC_adv","strate": 0, "from": "Avantage quantique prouvable (au-delà échantillonnage)", "domain": "quantique", "status": "open"},
+    {"s": "AdS/CFT","strate": 0, "from": "Correspondance AdS/CFT (Maldacena 1997, non prouvé)", "domain": "QFT", "status": "conjecture"},
+    {"s": "Confinement","strate": 0, "from": "Confinement quarks (QCD, non prouvé analytiquement)", "domain": "QFT", "status": "open"},
 
-    # --- Conjectures combinatoire / graphes ---
-    {"s": "Hadwiger","strate": 0, "from": "Conjecture Hadwiger (χ(G)≥k → Kₖ mineur, 1943)", "domain": "combinatoire", "status": "conjecture"},
-    {"s": "Recon", "strate": 0, "from": "Conjecture reconstruction graphe (Kelly-Ulam 1941)", "domain": "combinatoire", "status": "conjecture"},
-
-    # --- Informatique / Crypto non prouvé ---
+    # --- Crypto : conjectures ---
     {"s": "OWF_ex","strate": 0, "from": "Existence one-way functions (base crypto, non prouvé)", "domain": "crypto", "status": "conjecture"},
-
-    # --- Logique / Fondements ---
-    {"s": "Large_c","strate": 5, "from": "Cardinaux larges (Woodin, non résolu dans ZFC)", "domain": "logique", "status": "open"},
-    {"s": "V=Ult", "strate": 5, "from": "V=Ultimate L (Woodin, programme en cours)", "domain": "logique", "status": "programme"},
-    {"s": "Ω-conj","strate": 5, "from": "Ω-conjecture (Woodin, non prouvé)", "domain": "logique", "status": "conjecture"},
 
     # --- Biologie / Émergence ---
     {"s": "Abio",  "strate": 0, "from": "Abiogénèse (origine de la vie, mécanisme inconnu)", "domain": "biologie", "status": "open"},
     {"s": "Consc", "strate": 0, "from": "Problème difficile conscience (Chalmers 1995)", "domain": "biologie", "status": "open"},
-    {"s": "Prot_fold","strate": 0, "from": "Protein folding (résolu partiellement AlphaFold, théorie manque)", "domain": "biologie", "status": "open"},
+    {"s": "Prot_fold","strate": 0, "from": "Protein folding (AlphaFold partiel, théorie manque)", "domain": "biologie", "status": "open"},
+    {"s": "RNA_w", "strate": 0, "from": "Hypothèse monde ARN (origine réplication, non prouvé)", "domain": "biologie", "status": "théorie"},
+
+    # --- Complexité strate 0 ---
+    {"s": "L≠NL",  "strate": 0, "from": "Conjecture L≠NL", "domain": "complexité", "status": "conjecture"},
+    {"s": "BPP=P", "strate": 0, "from": "Conjecture dérandomisation BPP=P", "domain": "complexité", "status": "conjecture"},
+    {"s": "RP=P",  "strate": 0, "from": "Conjecture RP=P (dérandomisation one-sided)", "domain": "complexité", "status": "conjecture"},
+    {"s": "NC≠P",  "strate": 0, "from": "Conjecture NC≠P (parallélisme strict < séquentiel)", "domain": "complexité", "status": "conjecture"},
+    {"s": "L≠P",   "strate": 0, "from": "Conjecture L≠P (espace log < polynomial)", "domain": "complexité", "status": "conjecture"},
+
+    # --- Théorie des nombres : manquants ---
+    {"s": "Norm_π","strate": 0, "from": "π est-il nombre normal? (distribution uniforme chiffres)", "domain": "nb théorie", "status": "open"},
+    {"s": "Norm_e","strate": 0, "from": "e est-il nombre normal? (distribution uniforme chiffres)", "domain": "nb théorie", "status": "open"},
+    {"s": "Gilbreath","strate": 0, "from": "Conjecture Gilbreath (différences itérées des premiers)", "domain": "nb théorie", "status": "conjecture"},
+    {"s": "Grimm", "strate": 0, "from": "Conjecture Grimm (composés consécutifs → facteurs distincts)", "domain": "nb théorie", "status": "conjecture"},
+    {"s": "Pillai","strate": 0, "from": "Conjecture Pillai (|aˣ-bʸ|→∞ sauf fini, généralise Catalan)", "domain": "nb théorie", "status": "conjecture"},
+
+    # --- Géométrie / Analyse : manquants ---
+    {"s": "Hilb16","strate": 0, "from": "16ème problème Hilbert (cycles limites systèmes polynomiaux)", "domain": "systèmes dynamiques", "status": "open"},
+    {"s": "MovSofa","strate": 0, "from": "Moving sofa problem (Gerver 1992 borne sup, Romik)", "domain": "géométrie", "status": "open"},
+    {"s": "LonelyR","strate": 0, "from": "Lonely runner conjecture (Wills 1968, prouvé k≤7)", "domain": "combinatoire", "status": "conjecture"},
+    {"s": "ChromPlane","strate": 0, "from": "Nombre chromatique du plan (4≤χ≤7, Hadwiger-Nelson)", "domain": "combinatoire", "status": "open"},
+    {"s": "Irr_π", "strate": 0, "from": "Mesure d'irrationalité de π (μ(π)=2?, borne Salikhov 7.103)", "domain": "nb théorie", "status": "open"},
+
+    # --- Systèmes dynamiques ---
+    {"s": "Wein_c","strate": 0, "from": "Conjecture Weinstein (orbites périodiques sur variétés symplectiques)", "domain": "systèmes dynamiques", "status": "conjecture"},
+    {"s": "Smale14","strate": 0, "from": "Problèmes de Smale restants (18 problèmes, plusieurs ouverts)", "domain": "systèmes dynamiques", "status": "open"},
+
+    # --- Physique : manquants ---
+    {"s": "Arrow_t","strate": 0, "from": "Flèche du temps (pourquoi entropie croît? fondement ouvert)", "domain": "stat mech", "status": "open"},
+    {"s": "Meas_pb","strate": 0, "from": "Problème de la mesure QM (effondrement vs many-worlds vs...)", "domain": "quantique", "status": "open"},
+    {"s": "Turbulence","strate": 0, "from": "Turbulence complète (pas de théorie fermée, Feynman unsolved)", "domain": "fluides", "status": "open"},
+
+    # ================================================================
+    # STRATE 1 — CONJECTURES NP / Σ⁰₁
+    # ================================================================
+
+    {"s": "P≠NP",  "strate": 1, "from": "Conjecture P≠NP (Cook 1971)", "domain": "complexité", "status": "conjecture"},
+    {"s": "P=NP",  "strate": 1, "from": "Question ouverte P=NP (Cook 1971)", "domain": "complexité", "status": "open"},
+    {"s": "NP≠coNP","strate": 1, "from": "Conjecture NP≠coNP", "domain": "complexité", "status": "conjecture"},
+    {"s": "P≠PSPACE","strate": 1, "from": "Conjecture P≠PSPACE", "domain": "complexité", "status": "conjecture"},
+    {"s": "NP∩coNP","strate": 1, "from": "NP∩coNP = P ? (ouvert)", "domain": "complexité", "status": "open"},
+    {"s": "UGC",   "strate": 1, "from": "Unique Games Conjecture (Khot 2002)", "domain": "complexité", "status": "conjecture"},
+    {"s": "ETH",   "strate": 1, "from": "Exponential Time Hypothesis (Impagliazzo-Paturi 2001)", "domain": "complexité", "status": "conjecture"},
+    {"s": "SETH",  "strate": 1, "from": "Strong ETH — SAT ne se résout pas en 2^(1-ε)n", "domain": "complexité", "status": "conjecture"},
+    {"s": "GI∈P",  "strate": 1, "from": "Graph Isomorphism ∈ P ? (quasi-poly Babai 2015)", "domain": "complexité", "status": "open"},
+    {"s": "Factor∈P","strate": 1, "from": "Factorisation ∈ P ? (classique, pas quantique)", "domain": "complexité", "status": "open"},
+    {"s": "BH_conj","strate": 1, "from": "Berman-Hartmanis — tous NP-complets isomorphes (1977)", "domain": "complexité", "status": "conjecture"},
+    {"s": "VP≠VNP","strate": 1, "from": "Conjecture Valiant VP≠VNP (permanent vs déterminant, 1979)", "domain": "complexité", "status": "conjecture"},
+    {"s": "Nat_barrier","strate": 1, "from": "Natural proofs barrier (Razborov-Rudich 1997, limite technique)", "domain": "complexité", "status": "conjecture"},
+    {"s": "NP/poly","strate": 1, "from": "NP ⊆ P/poly ? (conjecture : non)", "domain": "complexité", "status": "conjecture"},
+
+    # ================================================================
+    # STRATE 2 — CONJECTURES Π⁰₁ / Σ⁰₂
+    # ================================================================
+
+    {"s": "E_lb",  "strate": 2, "from": "Circuit lower bounds pour E (prouvé ACC⁰, reste ouvert au-delà)", "domain": "complexité", "status": "open"},
+    {"s": "MCSP",  "strate": 2, "from": "Minimum Circuit Size Problem — NP-complet? (ouvert)", "domain": "complexité", "status": "open"},
+    {"s": "Derand","strate": 2, "from": "Dérandomisation complète Σ₂ (PRG vs circuits, ouvert)", "domain": "complexité", "status": "open"},
+    {"s": "NW_hyp","strate": 2, "from": "Hypothèse Nisan-Wigderson (dureté → dérandomisation)", "domain": "complexité", "status": "conjecture"},
+    {"s": "IW_hyp","strate": 2, "from": "Impagliazzo-Wigderson: E dur ↔ BPP=P (partiel)", "domain": "complexité", "status": "conjecture"},
+    {"s": "Imp_5w","strate": 2, "from": "5 mondes d'Impagliazzo (Algorithmica→Cryptomania, lequel?)", "domain": "complexité", "status": "open"},
+    {"s": "AC⁰_lb","strate": 2, "from": "Lower bounds AC⁰[p] pour tout p premier (ouvert au-delà Razborov-Smolensky)", "domain": "complexité", "status": "open"},
+
+    # ================================================================
+    # STRATE 3 — CONJECTURES PH / Σ⁰ₙ
+    # ================================================================
+
+    {"s": "PH_inf","strate": 3, "from": "PH ne collapse pas (∞ niveaux, non prouvé)", "domain": "complexité", "status": "conjecture"},
+    {"s": "FP≠#P", "strate": 3, "from": "FP≠#P (compter est plus dur que décider)", "domain": "complexité", "status": "conjecture"},
+    {"s": "PH⊂PP", "strate": 3, "from": "PH ⊊ PP ? (Toda: PH⊆P^#P, mais PP⊆PSPACE)", "domain": "complexité", "status": "conjecture"},
+    {"s": "TC⁰=NC¹","strate": 3, "from": "TC⁰ = NC¹ ? (threshold vs log-depth, ouvert)", "domain": "complexité", "status": "open"},
+    {"s": "ΣₖP_sep","strate": 3, "from": "Séparations strictes ΣₖP ⊊ Σₖ₊₁P pour tout k", "domain": "complexité", "status": "conjecture"},
+    {"s": "AM=MA", "strate": 3, "from": "AM = MA ? (ordre interaction Arthur-Merlin)", "domain": "complexité", "status": "open"},
+    {"s": "#P_perm","strate": 3, "from": "Permanent ∉ NC ? (lower bound permanent matrice)", "domain": "complexité", "status": "conjecture"},
+
+    # ================================================================
+    # STRATE 4 — CONJECTURES PSPACE / ARITHMÉTIQUE
+    # ================================================================
+
+    {"s": "PSPACE≠EXP","strate": 4, "from": "PSPACE ≠ EXPTIME ? (conjecture)", "domain": "complexité", "status": "conjecture"},
+    {"s": "NEXP_lb","strate": 4, "from": "NEXP lower bounds au-delà ACC⁰ (Williams 2010+)", "domain": "complexité", "status": "open"},
+    {"s": "Derandom_space","strate": 4, "from": "RL=L ? (dérandomisation espace log, Reingold partiel)", "domain": "complexité", "status": "conjecture"},
+    {"s": "Cons_PA","strate": 4, "from": "Con(PA) dans systèmes plus faibles (ouvert au-delà Gentzen)", "domain": "logique", "status": "open"},
+    {"s": "Goldbach_eff","strate": 4, "from": "Goldbach effectif — borne calculable pour exceptions", "domain": "nb théorie", "status": "open"},
+    {"s": "QIP_c", "strate": 4, "from": "QIP(2) = QIP ? (nombre tours quantique interactif)", "domain": "complexité", "status": "open"},
+    {"s": "EXP≠NEXP","strate": 4, "from": "EXP ≠ NEXP ? (non-déterminisme exponentiel)", "domain": "complexité", "status": "conjecture"},
+    {"s": "Vaught","strate": 4, "from": "Conjecture Vaught (nombre modèles dénombrables: ω ou ≤ℵ₀)", "domain": "logique", "status": "conjecture"},
+
+    # ================================================================
+    # STRATE 5 — CONJECTURES HYPERARITHMÉTIQUE
+    # ================================================================
+
+    {"s": "Large_c","strate": 5, "from": "Cardinaux larges (Woodin, non résolu dans ZFC)", "domain": "logique", "status": "open"},
+    {"s": "V=Ult", "strate": 5, "from": "V = Ultimate L (Woodin, programme en cours)", "domain": "logique", "status": "programme"},
+    {"s": "Ω-conj","strate": 5, "from": "Ω-conjecture (Woodin)", "domain": "logique", "status": "conjecture"},
+    {"s": "InnerM","strate": 5, "from": "Inner Model Problem (modèle intérieur pour supercompact)", "domain": "logique", "status": "open"},
+    {"s": "PCF_conj","strate": 5, "from": "Conjectures PCF (Shelah, arithmétique cardinale singulière)", "domain": "logique", "status": "conjecture"},
+    {"s": "MM++",  "strate": 5, "from": "Martin's Maximum++ (extension axiomes de forcing)", "domain": "logique", "status": "conjecture"},
+    {"s": "Det_proj","strate": 5, "from": "Déterminance projective (PD, prouvé sous grands cardinaux)", "domain": "logique", "status": "conjecture"},
+    {"s": "Σ²₁_abs","strate": 5, "from": "Σ²₁-absoluteness (invariance modèles de forcing)", "domain": "logique", "status": "open"},
+    {"s": "Reinh", "strate": 5, "from": "Cardinal Reinhardt (inconsistant avec AC? ouvert sans AC)", "domain": "logique", "status": "open"},
+    {"s": "HOD_conj","strate": 5, "from": "HOD conjecture (Woodin, HOD proche de V?)", "domain": "logique", "status": "conjecture"},
+    {"s": "Borel_det∞","strate": 5, "from": "Déterminance Borélienne infinie (au-delà ZFC?)", "domain": "logique", "status": "open"},
+
+    # ================================================================
+    # STRATE 6 — QUESTIONS INDÉCIDABLES / FRONTIÈRES
+    # ================================================================
+
+    {"s": "BB5",   "strate": 6, "from": "BB(5) = 47176870 ? (bb5.org 2024, vérification en cours)", "domain": "calculabilité", "status": "open"},
+    {"s": "BB6",   "strate": 6, "from": "BB(6) — valeur inconnue, indépendant ZFC pour n≥7?", "domain": "calculabilité", "status": "open"},
+    {"s": "Friedman","strate": 6, "from": "Théorèmes de Friedman (énoncés finis indépendants de PA/ZFC)", "domain": "logique", "status": "open"},
+    {"s": "Con_ZFC","strate": 6, "from": "Con(ZFC) — consistance ZFC non prouvable dans ZFC (Gödel 2)", "domain": "logique", "status": "open"},
+    {"s": "CH_ind","strate": 6, "from": "CH indépendant de ZFC (Gödel/Cohen, quel axiome?)", "domain": "logique", "status": "open"},
+    {"s": "Σ¹₂_det","strate": 6, "from": "Déterminance Σ¹₂ sans grands cardinaux (ouvert)", "domain": "logique", "status": "open"},
+    {"s": "Skolem_pb","strate": 6, "from": "Problème de Skolem (récurrence linéaire = 0? lié à transcendance)", "domain": "calculabilité", "status": "open"},
+    {"s": "Mort_mat","strate": 6, "from": "Mortalité matrices (produit matrice → 0? indécidable dim≥3?)", "domain": "calculabilité", "status": "open"},
+    {"s": "PCPH",  "strate": 6, "from": "PCP sur Z (Post Correspondence sur entiers, décidabilité?)", "domain": "calculabilité", "status": "open"},
 ]
 
 
