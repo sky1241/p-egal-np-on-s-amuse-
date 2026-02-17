@@ -263,8 +263,8 @@ SYMBOLES = [
     {"s": "tr",   "strate": 0, "from": "Trace d'une matrice",         "domain": "algèbre lin"},
     {"s": "rank", "strate": 0, "from": "Rang d'une matrice",          "domain": "algèbre lin"},
     {"s": "dim",  "strate": 0, "from": "Dimension espace vectoriel",   "domain": "algèbre lin"},
-    {"s": "ker",  "strate": 0, "from": "Noyau (kernel)",               "domain": "algèbre lin"},
-    {"s": "im",   "strate": 0, "from": "Image d'application linéaire", "domain": "algèbre lin"},
+
+
     {"s": "span", "strate": 0, "from": "Espace engendré",              "domain": "algèbre lin"},
     {"s": "A⁻¹",  "strate": 0, "from": "Matrice inverse",              "domain": "algèbre lin"},
     {"s": "Aᵀ",   "strate": 0, "from": "Transposée",                   "domain": "algèbre lin"},
@@ -284,8 +284,8 @@ SYMBOLES = [
     {"s": "Aut",  "strate": 0, "from": "Automorphismes",               "domain": "algèbre"},
     {"s": "Hom",  "strate": 0, "from": "Homomorphismes",               "domain": "algèbre"},
     {"s": "End",  "strate": 0, "from": "Endomorphismes",               "domain": "algèbre"},
-    {"s": "Ker",  "strate": 0, "from": "Noyau (groupe/anneau)",        "domain": "algèbre"},
-    {"s": "Im",   "strate": 0, "from": "Image (morphisme)",            "domain": "algèbre"},
+    {"s": "Ker",  "strate": 0, "from": "Noyau (morphisme/application linéaire)", "domain": "algèbre"},
+    {"s": "Im",   "strate": 0, "from": "Image (morphisme/application linéaire)", "domain": "algèbre"},
     {"s": "≅",    "strate": 0, "from": "Isomorphe",                    "domain": "algèbre"},
     {"s": "⊲",    "strate": 0, "from": "Sous-groupe normal",           "domain": "algèbre"},
     {"s": "G/H",  "strate": 0, "from": "Groupe quotient",              "domain": "algèbre"},
