@@ -1,16 +1,15 @@
 """
-P=NP ON S'AMUSE — MOTEUR STRATES × SYMBOLES
-=============================================
-Sky × Claude — Février 2026
+P=NP ON S'AMUSE — MOTEUR STRATES × SYMBOLES v2
+=================================================
+Sky × Claude — 17 Février 2026
 
-Le moteur qui cartographie les symboles mathématiques sur la hiérarchie
-de calculabilité. Chaque symbole est placé sur sa strate. Les connexions
-entre symboles (co-occurrence dans les formules) forment le mycelium.
+Tous les symboles scientifiques et mathématiques connus,
+placés sur leur strate de calculabilité.
+Pas de liaisons — juste la carte pure.
 
 Usage:
-    python engine.py              → génère strates_export.json + rapport console
-    python engine.py --analyse    → analyse détaillée des trous et bottlenecks
-    python engine.py --html       → génère aussi le HTML autonome
+    python engine.py          → génère JSON + rapport
+    python engine.py --html   → génère aussi le HTML autonome
 """
 
 import json
@@ -20,548 +19,673 @@ from collections import defaultdict
 from pathlib import Path
 
 # ============================================================================
-# STRATES — 7 niveaux de la hiérarchie arithmétique
+# STRATES — 7 niveaux
 # ============================================================================
 
 STRATES = [
     {
-        "id": 0,
-        "name": "SOL · Δ⁰₀ · Décidable",
-        "short": "Δ⁰₀ SOL",
-        "formula": "R(x) — pas de quantificateur",
-        "desc": "Tout ce qu'une machine de Turing peut décider en temps fini. Le plancher.",
-        "color": [74, 222, 128],
-        "yr": -0.44,
-        "opacity": 0.22,
-        "formal": {
-            "quantifiers": 0,
-            "class": "Δ⁰₀ = Σ⁰₀ = Π⁰₀",
-            "decidable": True,
-            "oracle": None,
-        }
+        "id": 0, "name": "SOL · Δ⁰₀ · Décidable", "short": "Δ⁰₀ SOL",
+        "formula": "R(x) — tout se calcule en temps fini",
+        "desc": "Arithmétique, algèbre, analyse, physique, chimie — toute formule calculable.",
+        "color": [74, 222, 128], "yr": -0.44, "opacity": 0.18,
     },
     {
-        "id": 1,
-        "name": "NUAGE 1 · Σ⁰₁ · Halting Problem",
-        "short": "Σ⁰₁ HALTING",
-        "formula": "∃y R(x, y)",
-        "desc": "Semi-décidable. On peut dire oui, jamais non. Le Halting Problem.",
-        "color": [96, 165, 250],
-        "yr": -0.26,
-        "opacity": 0.18,
-        "formal": {
-            "quantifiers": 1,
-            "class": "Σ⁰₁ (r.e.)",
-            "decidable": False,
-            "oracle": "∅'",
-        }
+        "id": 1, "name": "NUAGE 1 · Σ⁰₁ · Halting Problem", "short": "Σ⁰₁ HALTING",
+        "formula": "∃y R(x, y) — il existe, mais on sait pas quand",
+        "desc": "Semi-décidable. On peut dire oui, jamais non.",
+        "color": [96, 165, 250], "yr": -0.26, "opacity": 0.16,
     },
     {
-        "id": 2,
-        "name": "NUAGE 2 · Σ⁰₂ · Limite",
-        "short": "Σ⁰₂ LIMITE",
-        "formula": "∃y ∀z R(x,y,z)",
-        "desc": "Deviner, corriger, re-deviner… jamais sûr. Ensembles limites.",
-        "color": [167, 139, 250],
-        "yr": -0.10,
-        "opacity": 0.15,
-        "formal": {
-            "quantifiers": 2,
-            "class": "Σ⁰₂",
-            "decidable": False,
-            "oracle": "∅''",
-        }
+        "id": 2, "name": "NUAGE 2 · Σ⁰₂ · Limite", "short": "Σ⁰₂ LIMITE",
+        "formula": "∃y ∀z R(x,y,z) — deviner, corriger, jamais sûr",
+        "desc": "Ensembles limites. TOT, FIN, COF.",
+        "color": [167, 139, 250], "yr": -0.10, "opacity": 0.14,
     },
     {
-        "id": 3,
-        "name": "NUAGE n · Σ⁰ₙ · Motif Général",
-        "short": "Σ⁰ₙ MOTIF",
+        "id": 3, "name": "NUAGE n · Σ⁰ₙ · Motif", "short": "Σ⁰ₙ MOTIF",
         "formula": "∃∀∃∀… n alternances",
-        "desc": "Chaque alternance = un étage. Post 1944. Saut itéré de Turing.",
-        "color": [244, 114, 182],
-        "yr": 0.06,
-        "opacity": 0.14,
-        "formal": {
-            "quantifiers": "n",
-            "class": "Σ⁰ₙ / Πⁿₙ / PH",
-            "decidable": False,
-            "oracle": "∅⁽ⁿ⁾",
-        }
+        "desc": "Chaque alternance = un étage. Post 1944.",
+        "color": [244, 114, 182], "yr": 0.06, "opacity": 0.13,
     },
     {
-        "id": 4,
-        "name": "CIEL · AH = ∪ₙ Σ⁰ₙ",
-        "short": "AH CIEL",
-        "formula": "AH = ∪ₙ Σ⁰ₙ — tout le ciel arithmétique",
-        "desc": "L'union de tous les nuages. Tout ce qui se dit en arithmétique du 1er ordre.",
-        "color": [251, 191, 36],
-        "yr": 0.20,
-        "opacity": 0.14,
-        "formal": {
-            "quantifiers": "ω",
-            "class": "AH (arithmetical hierarchy)",
-            "decidable": False,
-            "oracle": "∅⁽ω⁾",
-        }
+        "id": 4, "name": "CIEL · AH = ∪ₙ Σ⁰ₙ", "short": "AH CIEL",
+        "formula": "Tout le ciel arithmétique",
+        "desc": "L'union de tous les nuages. Tarski.",
+        "color": [251, 191, 36], "yr": 0.20, "opacity": 0.13,
     },
     {
-        "id": 5,
-        "name": "HYPERARITHMÉTIQUE · ∅⁽ω⁾→∅⁽α⁾",
-        "short": "HYP ω₁ᶜᵏ",
+        "id": 5, "name": "HYPERARITHMÉTIQUE", "short": "HYP ω₁ᶜᵏ",
         "formula": "∅⁽α⁾ pour α < ω₁^CK",
-        "desc": "Kleene, Church-Kleene ω₁^CK, Δ¹₁. L'escalier transfini.",
-        "color": [251, 146, 60],
-        "yr": 0.34,
-        "opacity": 0.18,
-        "formal": {
-            "quantifiers": "transfinite",
-            "class": "HYP ⊂ Δ¹₁",
-            "decidable": False,
-            "oracle": "∅⁽α⁾, α < ω₁^CK",
-        }
+        "desc": "Kleene, Church-Kleene. Le transfini.",
+        "color": [251, 146, 60], "yr": 0.34, "opacity": 0.16,
     },
     {
-        "id": 6,
-        "name": "PLAFOND · Turing 1936 · Non-Calculable",
-        "short": "∞ PLAFOND",
+        "id": 6, "name": "PLAFOND · Turing 1936", "short": "∞ PLAFOND",
         "formula": "∄ M décidant l'arrêt — Prouvé.",
-        "desc": "Gödel 1931 · Church 1936 · Turing 1936. BB(n). Le mur absolu.",
-        "color": [239, 68, 68],
-        "yr": 0.46,
-        "opacity": 0.28,
-        "formal": {
-            "quantifiers": "∞",
-            "class": "Non-calculable",
-            "decidable": False,
-            "oracle": "Aucun ne suffit",
-        }
+        "desc": "Gödel · Church · Turing. BB(n). Le mur.",
+        "color": [239, 68, 68], "yr": 0.46, "opacity": 0.24,
     },
 ]
 
 
 # ============================================================================
-# SYMBOLES — chaque lettre / symbole, sa source, sa strate
+# TOUS LES SYMBOLES SCIENTIFIQUES ET MATHÉMATIQUES CONNUS
 # ============================================================================
 
 SYMBOLES = [
-    # -----------------------------------------------------------------------
-    # STRATE 0 — SOL · Décidable
-    # -----------------------------------------------------------------------
-    # Euler: e^(iπ) + 1 = 0
-    {"s": "e",   "strate": 0, "from": "Euler e^iπ+1=0",          "domain": "analyse",     "year": 1748},
-    {"s": "i",   "strate": 0, "from": "Euler e^iπ+1=0",          "domain": "complexes",   "year": 1748},
-    {"s": "π",   "strate": 0, "from": "Euler / géométrie",        "domain": "géométrie",   "year": -250},
-    # Einstein: E=mc²
-    {"s": "E",   "strate": 0, "from": "Einstein E=mc²",          "domain": "physique",    "year": 1905},
-    {"s": "m",   "strate": 0, "from": "Einstein E=mc²",          "domain": "physique",    "year": 1905},
-    {"s": "c",   "strate": 0, "from": "Einstein E=mc²",          "domain": "physique",    "year": 1905},
-    # Newton: F=ma
-    {"s": "F",   "strate": 0, "from": "Newton F=ma",             "domain": "mécanique",   "year": 1687},
-    {"s": "a",   "strate": 0, "from": "Newton F=ma",             "domain": "mécanique",   "year": 1687},
-    # Pythagore
-    {"s": "a²",  "strate": 0, "from": "Pythagore a²+b²=c²",     "domain": "géométrie",   "year": -530},
-    {"s": "b²",  "strate": 0, "from": "Pythagore a²+b²=c²",     "domain": "géométrie",   "year": -530},
-    {"s": "c²",  "strate": 0, "from": "Pythagore a²+b²=c²",     "domain": "géométrie",   "year": -530},
-    # Maxwell
-    {"s": "∇×",  "strate": 0, "from": "Maxwell rotationnel",     "domain": "électromagn", "year": 1865},
-    {"s": "∇·",  "strate": 0, "from": "Maxwell divergence",      "domain": "électromagn", "year": 1865},
-    {"s": "B",   "strate": 0, "from": "Maxwell champ magnétique","domain": "électromagn", "year": 1865},
-    # Schrödinger
-    {"s": "ψ",   "strate": 0, "from": "Schrödinger Hψ=Eψ",      "domain": "quantique",   "year": 1926},
-    {"s": "ℏ",   "strate": 0, "from": "Planck réduite h/2π",     "domain": "quantique",   "year": 1900},
-    {"s": "Ĥ",   "strate": 0, "from": "Hamiltonien quantique",   "domain": "quantique",   "year": 1926},
-    # Boltzmann
-    {"s": "S",   "strate": 0, "from": "Boltzmann S=k·ln(W)",     "domain": "thermo",      "year": 1877},
-    {"s": "k",   "strate": 0, "from": "Boltzmann constante",     "domain": "thermo",      "year": 1877},
-    {"s": "W",   "strate": 0, "from": "Boltzmann micro-états",   "domain": "thermo",      "year": 1877},
-    {"s": "ln",  "strate": 0, "from": "Logarithme naturel",      "domain": "analyse",     "year": 1614},
-    # Calcul / Analyse
-    {"s": "∫",   "strate": 0, "from": "Leibniz intégrale",       "domain": "analyse",     "year": 1675},
-    {"s": "∂",   "strate": 0, "from": "Dérivée partielle",       "domain": "analyse",     "year": 1770},
-    {"s": "dx",  "strate": 0, "from": "Leibniz différentielle",  "domain": "analyse",     "year": 1675},
-    {"s": "∇",   "strate": 0, "from": "Hamilton gradient/nabla", "domain": "analyse",     "year": 1837},
-    {"s": "Δ",   "strate": 0, "from": "Laplacien",               "domain": "analyse",     "year": 1782},
-    {"s": "lim",  "strate": 0, "from": "Cauchy/Weierstrass limite","domain":"analyse",     "year": 1821},
-    {"s": "Σ",   "strate": 0, "from": "Sommation finie",         "domain": "algèbre",     "year": 1755},
-    {"s": "Π",   "strate": 0, "from": "Produit fini",            "domain": "algèbre",     "year": 1755},
-    {"s": "Γ",   "strate": 0, "from": "Fonction Gamma d'Euler",  "domain": "analyse",     "year": 1729},
-    {"s": "ζ",   "strate": 0, "from": "Riemann ζ(s)",            "domain": "nb premiers", "year": 1859},
-    # Ensembles / logique
-    {"s": "∈",   "strate": 0, "from": "Cantor appartenance",     "domain": "ensembles",   "year": 1874},
-    {"s": "∅",   "strate": 0, "from": "Ensemble vide",           "domain": "ensembles",   "year": 1939},
-    {"s": "∪",   "strate": 0, "from": "Union",                   "domain": "ensembles",   "year": 1888},
-    {"s": "∩",   "strate": 0, "from": "Intersection",            "domain": "ensembles",   "year": 1888},
-    {"s": "⊆",   "strate": 0, "from": "Inclusion",               "domain": "ensembles",   "year": 1890},
-    {"s": "ℕ",   "strate": 0, "from": "Nombres naturels",        "domain": "nb",          "year": 1895},
-    {"s": "ℤ",   "strate": 0, "from": "Entiers relatifs",        "domain": "nb",          "year": 1895},
-    {"s": "ℚ",   "strate": 0, "from": "Rationnels",              "domain": "nb",          "year": 1895},
-    {"s": "ℝ",   "strate": 0, "from": "Réels",                   "domain": "nb",          "year": 1895},
-    {"s": "ℂ",   "strate": 0, "from": "Complexes",               "domain": "nb",          "year": 1895},
-    # Logique propositionnelle
-    {"s": "∧",   "strate": 0, "from": "ET logique",              "domain": "logique",     "year": 1910},
-    {"s": "∨",   "strate": 0, "from": "OU logique",              "domain": "logique",     "year": 1910},
-    {"s": "¬",   "strate": 0, "from": "Négation",                "domain": "logique",     "year": 1910},
-    {"s": "→",   "strate": 0, "from": "Implication",             "domain": "logique",     "year": 1910},
-    {"s": "↔",   "strate": 0, "from": "Bi-implication",          "domain": "logique",     "year": 1910},
-    # Greek letters physique
-    {"s": "α",   "strate": 0, "from": "Constante structure fine", "domain": "physique",    "year": 1916},
-    {"s": "β",   "strate": 0, "from": "Vitesse relative v/c",    "domain": "relativité",  "year": 1905},
-    {"s": "γ",   "strate": 0, "from": "Facteur Lorentz",         "domain": "relativité",  "year": 1905},
-    {"s": "δ",   "strate": 0, "from": "Dirac delta δ(x)",        "domain": "distrib",     "year": 1927},
-    {"s": "ε",   "strate": 0, "from": "Epsilon voisinage",       "domain": "topologie",   "year": 1821},
-    {"s": "θ",   "strate": 0, "from": "Angle trigonométrie",     "domain": "géométrie",   "year": -300},
-    {"s": "λ",   "strate": 0, "from": "Lambda calcul Church",    "domain": "calculabilité","year": 1936},
-    {"s": "σ",   "strate": 0, "from": "Écart-type / Boltzmann",  "domain": "stats",       "year": 1894},
-    {"s": "ρ",   "strate": 0, "from": "Densité",                 "domain": "physique",    "year": 1700},
-    {"s": "τ",   "strate": 0, "from": "Tau / couple",            "domain": "mécanique",   "year": 1700},
-    {"s": "φ",   "strate": 0, "from": "Nombre d'or (1+√5)/2",   "domain": "nb",          "year": -300},
-    {"s": "ω",   "strate": 0, "from": "Fréquence angulaire",     "domain": "physique",    "year": 1750},
-    # Opérateurs / fonctions
-    {"s": "sin", "strate": 0, "from": "Trigonométrie",           "domain": "géométrie",   "year": -300},
-    {"s": "cos", "strate": 0, "from": "Trigonométrie",           "domain": "géométrie",   "year": -300},
-    {"s": "log", "strate": 0, "from": "Logarithme Napier",       "domain": "analyse",     "year": 1614},
-    {"s": "det", "strate": 0, "from": "Déterminant matrice",     "domain": "algèbre lin", "year": 1750},
-    {"s": "√",   "strate": 0, "from": "Racine carrée",           "domain": "arithm",      "year": -1800},
-    {"s": "!",   "strate": 0, "from": "Factorielle n!",          "domain": "combinatoire","year": 1808},
-    {"s": "∞",   "strate": 0, "from": "Infini potentiel Wallis", "domain": "analyse",     "year": 1655},
-    {"s": "=",   "strate": 0, "from": "Égalité Recorde",         "domain": "fondements",  "year": 1557},
-    {"s": "+",   "strate": 0, "from": "Addition",                "domain": "arithm",      "year": 1489},
-    {"s": "×",   "strate": 0, "from": "Multiplication",          "domain": "arithm",      "year": 1631},
-    {"s": "P",   "strate": 0, "from": "Classe P (temps poly)",   "domain": "complexité",  "year": 1971},
-    {"s": "χ²",  "strate": 0, "from": "Test chi-carré Pearson",  "domain": "stats",       "year": 1900},
-    {"s": "μ₀",  "strate": 0, "from": "Perméabilité vide",       "domain": "électromagn", "year": 1865},
-    {"s": "ε₀",  "strate": 0, "from": "Permittivité vide",       "domain": "électromagn", "year": 1865},
+    # ==================================================================
+    # STRATE 0 — SOL · DÉCIDABLE · Tout ce qui se calcule
+    # ==================================================================
 
-    # -----------------------------------------------------------------------
+    # --- ARITHMÉTIQUE FONDAMENTALE ---
+    {"s": "+",    "strate": 0, "from": "Addition",                   "domain": "arithmétique"},
+    {"s": "−",    "strate": 0, "from": "Soustraction",               "domain": "arithmétique"},
+    {"s": "×",    "strate": 0, "from": "Multiplication",             "domain": "arithmétique"},
+    {"s": "÷",    "strate": 0, "from": "Division",                   "domain": "arithmétique"},
+    {"s": "=",    "strate": 0, "from": "Égalité (Recorde 1557)",     "domain": "arithmétique"},
+    {"s": "≠",    "strate": 0, "from": "Inégalité",                  "domain": "arithmétique"},
+    {"s": "<",    "strate": 0, "from": "Inférieur strict",           "domain": "arithmétique"},
+    {"s": ">",    "strate": 0, "from": "Supérieur strict",           "domain": "arithmétique"},
+    {"s": "≤",    "strate": 0, "from": "Inférieur ou égal",          "domain": "arithmétique"},
+    {"s": "≥",    "strate": 0, "from": "Supérieur ou égal",          "domain": "arithmétique"},
+    {"s": "≈",    "strate": 0, "from": "Approximativement égal",     "domain": "arithmétique"},
+    {"s": "≡",    "strate": 0, "from": "Identique / congruence",     "domain": "arithmétique"},
+    {"s": "∝",    "strate": 0, "from": "Proportionnel à",            "domain": "arithmétique"},
+    {"s": "±",    "strate": 0, "from": "Plus ou moins",              "domain": "arithmétique"},
+    {"s": "√",    "strate": 0, "from": "Racine carrée",              "domain": "arithmétique"},
+    {"s": "∛",    "strate": 0, "from": "Racine cubique",             "domain": "arithmétique"},
+    {"s": "!",    "strate": 0, "from": "Factorielle n!",             "domain": "combinatoire"},
+    {"s": "ⁿ",    "strate": 0, "from": "Puissance / exposant",       "domain": "arithmétique"},
+    {"s": "%",    "strate": 0, "from": "Pourcentage",                "domain": "arithmétique"},
+    {"s": "mod",  "strate": 0, "from": "Modulo",                     "domain": "arithmétique"},
+    {"s": "⌊x⌋",  "strate": 0, "from": "Partie entière inférieure",  "domain": "arithmétique"},
+    {"s": "⌈x⌉",  "strate": 0, "from": "Partie entière supérieure",  "domain": "arithmétique"},
+    {"s": "|x|",  "strate": 0, "from": "Valeur absolue",             "domain": "arithmétique"},
+    {"s": "∞",    "strate": 0, "from": "Infini potentiel (Wallis)",   "domain": "analyse"},
+
+    # --- ENSEMBLES DE NOMBRES ---
+    {"s": "ℕ",    "strate": 0, "from": "Nombres naturels",           "domain": "nombres"},
+    {"s": "ℤ",    "strate": 0, "from": "Entiers relatifs",           "domain": "nombres"},
+    {"s": "ℚ",    "strate": 0, "from": "Rationnels",                 "domain": "nombres"},
+    {"s": "ℝ",    "strate": 0, "from": "Réels",                      "domain": "nombres"},
+    {"s": "ℂ",    "strate": 0, "from": "Complexes",                  "domain": "nombres"},
+    {"s": "ℍ",    "strate": 0, "from": "Quaternions (Hamilton)",      "domain": "nombres"},
+    {"s": "𝕆",    "strate": 0, "from": "Octonions",                  "domain": "nombres"},
+    {"s": "ℙ",    "strate": 0, "from": "Nombres premiers",           "domain": "nombres"},
+    {"s": "𝔽ₚ",   "strate": 0, "from": "Corps fini à p éléments",    "domain": "algèbre"},
+
+    # --- CONSTANTES FONDAMENTALES ---
+    {"s": "π",    "strate": 0, "from": "Pi ~3.14159 (Archimède)",     "domain": "géométrie"},
+    {"s": "e",    "strate": 0, "from": "Euler ~2.71828",              "domain": "analyse"},
+    {"s": "i",    "strate": 0, "from": "Unité imaginaire √(-1)",      "domain": "complexes"},
+    {"s": "φ",    "strate": 0, "from": "Nombre d'or (1+√5)/2",       "domain": "nombres"},
+    {"s": "γₑ",   "strate": 0, "from": "Constante Euler-Mascheroni",  "domain": "analyse"},
+    {"s": "∞",    "strate": 0, "from": "Infini",                      "domain": "analyse"},
+    {"s": "0",    "strate": 0, "from": "Zéro (Brahmagupta 628)",      "domain": "arithmétique"},
+    {"s": "1",    "strate": 0, "from": "Unité",                       "domain": "arithmétique"},
+
+    # --- CONSTANTES PHYSIQUES ---
+    {"s": "c",    "strate": 0, "from": "Vitesse lumière 299792458 m/s","domain": "relativité"},
+    {"s": "G",    "strate": 0, "from": "Constante gravitationnelle",   "domain": "gravitation"},
+    {"s": "ℏ",    "strate": 0, "from": "Planck réduite h/2π",         "domain": "quantique"},
+    {"s": "h",    "strate": 0, "from": "Constante de Planck",         "domain": "quantique"},
+    {"s": "kB",   "strate": 0, "from": "Constante de Boltzmann",      "domain": "thermo"},
+    {"s": "NA",   "strate": 0, "from": "Nombre d'Avogadro",           "domain": "chimie"},
+    {"s": "R",    "strate": 0, "from": "Constante gaz parfaits",      "domain": "thermo"},
+    {"s": "e⁻",   "strate": 0, "from": "Charge élémentaire",          "domain": "électromagn"},
+    {"s": "μ₀",   "strate": 0, "from": "Perméabilité du vide",        "domain": "électromagn"},
+    {"s": "ε₀",   "strate": 0, "from": "Permittivité du vide",        "domain": "électromagn"},
+    {"s": "σ_SB", "strate": 0, "from": "Constante Stefan-Boltzmann",  "domain": "thermo"},
+    {"s": "α_fs", "strate": 0, "from": "Constante structure fine ~1/137","domain": "quantique"},
+    {"s": "mₑ",   "strate": 0, "from": "Masse électron",              "domain": "particules"},
+    {"s": "mₚ",   "strate": 0, "from": "Masse proton",                "domain": "particules"},
+    {"s": "mₙ",   "strate": 0, "from": "Masse neutron",               "domain": "particules"},
+    {"s": "Λ",    "strate": 0, "from": "Constante cosmologique",       "domain": "cosmologie"},
+    {"s": "H₀",   "strate": 0, "from": "Constante de Hubble",         "domain": "cosmologie"},
+    {"s": "T_CMB","strate": 0, "from": "Température CMB ~2.725K",      "domain": "cosmologie"},
+
+    # --- THÉORIE DES ENSEMBLES ---
+    {"s": "∈",    "strate": 0, "from": "Appartenance (Cantor)",       "domain": "ensembles"},
+    {"s": "∉",    "strate": 0, "from": "Non-appartenance",            "domain": "ensembles"},
+    {"s": "∅",    "strate": 0, "from": "Ensemble vide",               "domain": "ensembles"},
+    {"s": "∪",    "strate": 0, "from": "Union",                       "domain": "ensembles"},
+    {"s": "∩",    "strate": 0, "from": "Intersection",                "domain": "ensembles"},
+    {"s": "⊂",    "strate": 0, "from": "Inclusion stricte",           "domain": "ensembles"},
+    {"s": "⊆",    "strate": 0, "from": "Inclusion large",             "domain": "ensembles"},
+    {"s": "⊃",    "strate": 0, "from": "Sur-ensemble strict",         "domain": "ensembles"},
+    {"s": "⊇",    "strate": 0, "from": "Sur-ensemble large",          "domain": "ensembles"},
+    {"s": "∖",    "strate": 0, "from": "Différence ensembliste",       "domain": "ensembles"},
+    {"s": "△",    "strate": 0, "from": "Différence symétrique",        "domain": "ensembles"},
+    {"s": "𝒫(A)", "strate": 0, "from": "Ensemble des parties",        "domain": "ensembles"},
+    {"s": "A×B",  "strate": 0, "from": "Produit cartésien",           "domain": "ensembles"},
+    {"s": "|A|",  "strate": 0, "from": "Cardinal d'un ensemble",      "domain": "ensembles"},
+    {"s": "ℵ₀",   "strate": 0, "from": "Cardinal dénombrable (Cantor)","domain": "ensembles"},
+    {"s": "ℵ₁",   "strate": 0, "from": "Premier indénombrable",        "domain": "ensembles"},
+    {"s": "𝔠",    "strate": 0, "from": "Cardinal du continu",          "domain": "ensembles"},
+    {"s": "ℶ",    "strate": 0, "from": "Nombre de Beth",               "domain": "ensembles"},
+
+    # --- LOGIQUE PROPOSITIONNELLE & PRÉDICATS ---
+    {"s": "∧",    "strate": 0, "from": "ET logique (conjonction)",     "domain": "logique"},
+    {"s": "∨",    "strate": 0, "from": "OU logique (disjonction)",     "domain": "logique"},
+    {"s": "¬",    "strate": 0, "from": "Négation",                     "domain": "logique"},
+    {"s": "→",    "strate": 0, "from": "Implication",                  "domain": "logique"},
+    {"s": "↔",    "strate": 0, "from": "Bi-implication",               "domain": "logique"},
+    {"s": "⊤",    "strate": 0, "from": "Vrai (tautologie)",            "domain": "logique"},
+    {"s": "⊥₀",   "strate": 0, "from": "Faux (contradiction)",         "domain": "logique"},
+    {"s": "⊕",    "strate": 0, "from": "OU exclusif (XOR)",            "domain": "logique"},
+    {"s": "⊨",    "strate": 0, "from": "Satisfaction / modèle",        "domain": "logique"},
+    {"s": "⊩",    "strate": 0, "from": "Forcing (Cohen)",              "domain": "logique"},
+    {"s": "∴",    "strate": 0, "from": "Donc / par conséquent",        "domain": "logique"},
+    {"s": "∵",    "strate": 0, "from": "Parce que",                    "domain": "logique"},
+    {"s": "⟹",   "strate": 0, "from": "Implique (méta)",              "domain": "logique"},
+    {"s": "⟺",   "strate": 0, "from": "Ssi (si et seulement si)",     "domain": "logique"},
+
+    # --- ANALYSE / CALCUL ---
+    {"s": "∫",    "strate": 0, "from": "Intégrale (Leibniz 1675)",     "domain": "analyse"},
+    {"s": "∬",    "strate": 0, "from": "Intégrale double",             "domain": "analyse"},
+    {"s": "∭",    "strate": 0, "from": "Intégrale triple",             "domain": "analyse"},
+    {"s": "∮",    "strate": 0, "from": "Intégrale de contour",         "domain": "analyse"},
+    {"s": "∂",    "strate": 0, "from": "Dérivée partielle",            "domain": "analyse"},
+    {"s": "d/dx", "strate": 0, "from": "Dérivée totale",               "domain": "analyse"},
+    {"s": "dx",   "strate": 0, "from": "Différentielle (Leibniz)",     "domain": "analyse"},
+    {"s": "f'",   "strate": 0, "from": "Dérivée notation Lagrange",    "domain": "analyse"},
+    {"s": "ẋ",    "strate": 0, "from": "Dérivée temporelle Newton",    "domain": "analyse"},
+    {"s": "∇",    "strate": 0, "from": "Nabla / gradient (Hamilton)",  "domain": "analyse"},
+    {"s": "∇²",   "strate": 0, "from": "Laplacien",                    "domain": "analyse"},
+    {"s": "∇×",   "strate": 0, "from": "Rotationnel (curl)",           "domain": "analyse"},
+    {"s": "∇·",   "strate": 0, "from": "Divergence",                   "domain": "analyse"},
+    {"s": "Δ",    "strate": 0, "from": "Laplacien / variation",        "domain": "analyse"},
+    {"s": "δ",    "strate": 0, "from": "Dirac delta δ(x)",             "domain": "analyse"},
+    {"s": "lim",  "strate": 0, "from": "Limite (Cauchy/Weierstrass)",  "domain": "analyse"},
+    {"s": "sup",  "strate": 0, "from": "Supremum / borne supérieure",  "domain": "analyse"},
+    {"s": "inf",  "strate": 0, "from": "Infimum / borne inférieure",   "domain": "analyse"},
+    {"s": "max",  "strate": 0, "from": "Maximum",                      "domain": "analyse"},
+    {"s": "min",  "strate": 0, "from": "Minimum",                      "domain": "analyse"},
+    {"s": "Σ",    "strate": 0, "from": "Sommation finie",              "domain": "analyse"},
+    {"s": "Π",    "strate": 0, "from": "Produit fini",                 "domain": "analyse"},
+    {"s": "∏",    "strate": 0, "from": "Produit (variante)",           "domain": "analyse"},
+    {"s": "O(n)",  "strate": 0, "from": "Grand-O Landau complexité",   "domain": "analyse"},
+    {"s": "o(n)",  "strate": 0, "from": "Petit-o Landau",              "domain": "analyse"},
+    {"s": "Θ(n)",  "strate": 0, "from": "Theta Landau",                "domain": "analyse"},
+    {"s": "ε",    "strate": 0, "from": "Epsilon voisinage",            "domain": "analyse"},
+
+    # --- FONCTIONS SPÉCIALES ---
+    {"s": "sin",  "strate": 0, "from": "Sinus",                       "domain": "trigonométrie"},
+    {"s": "cos",  "strate": 0, "from": "Cosinus",                     "domain": "trigonométrie"},
+    {"s": "tan",  "strate": 0, "from": "Tangente",                    "domain": "trigonométrie"},
+    {"s": "cot",  "strate": 0, "from": "Cotangente",                  "domain": "trigonométrie"},
+    {"s": "sec",  "strate": 0, "from": "Sécante",                     "domain": "trigonométrie"},
+    {"s": "csc",  "strate": 0, "from": "Cosécante",                   "domain": "trigonométrie"},
+    {"s": "arcsin","strate": 0, "from": "Arc sinus",                   "domain": "trigonométrie"},
+    {"s": "arccos","strate": 0, "from": "Arc cosinus",                 "domain": "trigonométrie"},
+    {"s": "arctan","strate": 0, "from": "Arc tangente",                "domain": "trigonométrie"},
+    {"s": "sinh", "strate": 0, "from": "Sinus hyperbolique",          "domain": "trigonométrie"},
+    {"s": "cosh", "strate": 0, "from": "Cosinus hyperbolique",        "domain": "trigonométrie"},
+    {"s": "tanh", "strate": 0, "from": "Tangente hyperbolique",       "domain": "trigonométrie"},
+    {"s": "ln",   "strate": 0, "from": "Logarithme naturel",          "domain": "analyse"},
+    {"s": "log",  "strate": 0, "from": "Logarithme (Napier 1614)",    "domain": "analyse"},
+    {"s": "log₂", "strate": 0, "from": "Logarithme base 2",           "domain": "information"},
+    {"s": "exp",  "strate": 0, "from": "Exponentielle",               "domain": "analyse"},
+    {"s": "Γ",    "strate": 0, "from": "Fonction Gamma d'Euler",      "domain": "analyse"},
+    {"s": "B",    "strate": 0, "from": "Fonction Bêta B(x,y)",        "domain": "analyse"},
+    {"s": "ζ",    "strate": 0, "from": "Zeta de Riemann ζ(s)",        "domain": "nb premiers"},
+    {"s": "ξ",    "strate": 0, "from": "Xi — fonction de Riemann complétée", "domain": "nb premiers"},
+    {"s": "η",    "strate": 0, "from": "Eta de Dedekind / Dirichlet",  "domain": "nb premiers"},
+    {"s": "L(s,χ)","strate": 0, "from": "Fonction L de Dirichlet",     "domain": "nb premiers"},
+    {"s": "Ai",   "strate": 0, "from": "Fonction d'Airy",             "domain": "analyse"},
+    {"s": "Bi",   "strate": 0, "from": "Fonction d'Airy 2ème espèce",  "domain": "analyse"},
+    {"s": "Jₙ",   "strate": 0, "from": "Fonction de Bessel 1ère",      "domain": "analyse"},
+    {"s": "Yₙ",   "strate": 0, "from": "Fonction de Bessel 2ème",      "domain": "analyse"},
+    {"s": "Pₙ",   "strate": 0, "from": "Polynômes de Legendre",        "domain": "analyse"},
+    {"s": "Yₗₘ",  "strate": 0, "from": "Harmoniques sphériques",       "domain": "analyse"},
+    {"s": "Hₙ",   "strate": 0, "from": "Polynômes de Hermite",         "domain": "analyse"},
+    {"s": "Lₙ",   "strate": 0, "from": "Polynômes de Laguerre",        "domain": "analyse"},
+    {"s": "Tₙ",   "strate": 0, "from": "Polynômes de Tchebychev",      "domain": "analyse"},
+    {"s": "erf",  "strate": 0, "from": "Fonction d'erreur",            "domain": "probabilités"},
+    {"s": "erfc", "strate": 0, "from": "Complémentaire erreur",         "domain": "probabilités"},
+    {"s": "Φ",    "strate": 0, "from": "CDF normale standard",          "domain": "probabilités"},
+    {"s": "W(x)", "strate": 0, "from": "Fonction W de Lambert",         "domain": "analyse"},
+    {"s": "Li(x)","strate": 0, "from": "Logarithme intégral",           "domain": "nb premiers"},
+    {"s": "Si(x)","strate": 0, "from": "Sinus intégral",                "domain": "analyse"},
+    {"s": "Ci(x)","strate": 0, "from": "Cosinus intégral",              "domain": "analyse"},
+    {"s": "Ei(x)","strate": 0, "from": "Exponentielle intégrale",       "domain": "analyse"},
+
+    # --- ALGÈBRE LINÉAIRE ---
+    {"s": "det",  "strate": 0, "from": "Déterminant",                 "domain": "algèbre lin"},
+    {"s": "tr",   "strate": 0, "from": "Trace d'une matrice",         "domain": "algèbre lin"},
+    {"s": "rank", "strate": 0, "from": "Rang d'une matrice",          "domain": "algèbre lin"},
+    {"s": "dim",  "strate": 0, "from": "Dimension espace vectoriel",   "domain": "algèbre lin"},
+    {"s": "ker",  "strate": 0, "from": "Noyau (kernel)",               "domain": "algèbre lin"},
+    {"s": "im",   "strate": 0, "from": "Image d'application linéaire", "domain": "algèbre lin"},
+    {"s": "span", "strate": 0, "from": "Espace engendré",              "domain": "algèbre lin"},
+    {"s": "A⁻¹",  "strate": 0, "from": "Matrice inverse",              "domain": "algèbre lin"},
+    {"s": "Aᵀ",   "strate": 0, "from": "Transposée",                   "domain": "algèbre lin"},
+    {"s": "A†",   "strate": 0, "from": "Adjoint / conjugué transposé", "domain": "algèbre lin"},
+    {"s": "⊗",    "strate": 0, "from": "Produit tensoriel",            "domain": "algèbre lin"},
+    {"s": "⊕ₐ",   "strate": 0, "from": "Somme directe",                "domain": "algèbre lin"},
+    {"s": "‖v‖",  "strate": 0, "from": "Norme d'un vecteur",           "domain": "algèbre lin"},
+    {"s": "⟨u,v⟩","strate": 0, "from": "Produit scalaire",             "domain": "algèbre lin"},
+    {"s": "u×v",  "strate": 0, "from": "Produit vectoriel",            "domain": "algèbre lin"},
+    {"s": "λ",    "strate": 0, "from": "Valeur propre (eigenvalue)",   "domain": "algèbre lin"},
+    {"s": "Iₙ",   "strate": 0, "from": "Matrice identité n×n",         "domain": "algèbre lin"},
+    {"s": "diag", "strate": 0, "from": "Matrice diagonale",            "domain": "algèbre lin"},
+    {"s": "⊙",    "strate": 0, "from": "Produit de Hadamard",          "domain": "algèbre lin"},
+
+    # --- ALGÈBRE ABSTRAITE ---
+    {"s": "Gal",  "strate": 0, "from": "Groupe de Galois",             "domain": "algèbre"},
+    {"s": "Aut",  "strate": 0, "from": "Automorphismes",               "domain": "algèbre"},
+    {"s": "Hom",  "strate": 0, "from": "Homomorphismes",               "domain": "algèbre"},
+    {"s": "End",  "strate": 0, "from": "Endomorphismes",               "domain": "algèbre"},
+    {"s": "Ker",  "strate": 0, "from": "Noyau (groupe/anneau)",        "domain": "algèbre"},
+    {"s": "Im",   "strate": 0, "from": "Image (morphisme)",            "domain": "algèbre"},
+    {"s": "≅",    "strate": 0, "from": "Isomorphe",                    "domain": "algèbre"},
+    {"s": "⊲",    "strate": 0, "from": "Sous-groupe normal",           "domain": "algèbre"},
+    {"s": "G/H",  "strate": 0, "from": "Groupe quotient",              "domain": "algèbre"},
+    {"s": "⋊",    "strate": 0, "from": "Produit semi-direct",          "domain": "algèbre"},
+    {"s": "GL(n)","strate": 0, "from": "Groupe linéaire général",      "domain": "algèbre"},
+    {"s": "SL(n)","strate": 0, "from": "Groupe linéaire spécial",      "domain": "algèbre"},
+    {"s": "SO(n)","strate": 0, "from": "Groupe orthogonal spécial",    "domain": "algèbre"},
+    {"s": "SU(n)","strate": 0, "from": "Groupe unitaire spécial",      "domain": "algèbre"},
+    {"s": "U(1)", "strate": 0, "from": "Groupe unitaire",              "domain": "algèbre"},
+    {"s": "SU(2)","strate": 0, "from": "Symétrie spin / isospin",      "domain": "particules"},
+    {"s": "SU(3)","strate": 0, "from": "Chromodynamique quantique",    "domain": "particules"},
+    {"s": "Sₙ",   "strate": 0, "from": "Groupe symétrique",            "domain": "algèbre"},
+    {"s": "Zₙ",   "strate": 0, "from": "Groupe cyclique ℤ/nℤ",         "domain": "algèbre"},
+    {"s": "⟨g⟩",  "strate": 0, "from": "Groupe engendré par g",        "domain": "algèbre"},
+    {"s": "[G:H]","strate": 0, "from": "Indice sous-groupe",           "domain": "algèbre"},
+    {"s": "R[x]", "strate": 0, "from": "Anneau de polynômes",          "domain": "algèbre"},
+    {"s": "I⊲R",  "strate": 0, "from": "Idéal dans anneau",            "domain": "algèbre"},
+    {"s": "F*/F", "strate": 0, "from": "Extension de corps",           "domain": "algèbre"},
+
+    # --- THÉORIE DES CATÉGORIES ---
+    {"s": "Ob(C)", "strate": 0, "from": "Objets d'une catégorie",       "domain": "catégories"},
+    {"s": "Mor",   "strate": 0, "from": "Morphismes",                   "domain": "catégories"},
+    {"s": "∘",     "strate": 0, "from": "Composition morphismes",       "domain": "catégories"},
+    {"s": "Funct", "strate": 0, "from": "Foncteur",                     "domain": "catégories"},
+    {"s": "Nat",   "strate": 0, "from": "Transformation naturelle",     "domain": "catégories"},
+    {"s": "≃",     "strate": 0, "from": "Équivalence catégorielle",     "domain": "catégories"},
+    {"s": "lim←",  "strate": 0, "from": "Limite projective",            "domain": "catégories"},
+    {"s": "colim→","strate": 0, "from": "Colimite / limite inductive",  "domain": "catégories"},
+    {"s": "Yoneda","strate": 0, "from": "Lemme de Yoneda",              "domain": "catégories"},
+    {"s": "Adj",   "strate": 0, "from": "Adjonction foncteurs",         "domain": "catégories"},
+    {"s": "Set",   "strate": 0, "from": "Catégorie des ensembles",      "domain": "catégories"},
+    {"s": "Top",   "strate": 0, "from": "Catégorie espaces topologiques","domain": "catégories"},
+    {"s": "Grp",   "strate": 0, "from": "Catégorie des groupes",        "domain": "catégories"},
+    {"s": "Ab",    "strate": 0, "from": "Catégorie groupes abéliens",   "domain": "catégories"},
+    {"s": "Vect",  "strate": 0, "from": "Catégorie espaces vectoriels", "domain": "catégories"},
+
+    # --- TOPOLOGIE ---
+    {"s": "τ_top","strate": 0, "from": "Topologie sur X",              "domain": "topologie"},
+    {"s": "π₁",   "strate": 0, "from": "Groupe fondamental",           "domain": "topologie"},
+    {"s": "πₙ",   "strate": 0, "from": "n-ième groupe d'homotopie",    "domain": "topologie"},
+    {"s": "Hₙ_top","strate": 0, "from": "n-ième groupe d'homologie",    "domain": "topologie"},
+    {"s": "Hⁿ",   "strate": 0, "from": "n-ième groupe cohomologie",    "domain": "topologie"},
+    {"s": "χ",     "strate": 0, "from": "Caractéristique d'Euler",      "domain": "topologie"},
+    {"s": "g_top", "strate": 0, "from": "Genre d'une surface",          "domain": "topologie"},
+    {"s": "∼",     "strate": 0, "from": "Homotopie / équivalence",      "domain": "topologie"},
+    {"s": "S¹",    "strate": 0, "from": "Cercle (1-sphère)",            "domain": "topologie"},
+    {"s": "Sⁿ",    "strate": 0, "from": "n-sphère",                     "domain": "topologie"},
+    {"s": "T²",    "strate": 0, "from": "Tore",                         "domain": "topologie"},
+    {"s": "RP²",   "strate": 0, "from": "Plan projectif réel",          "domain": "topologie"},
+    {"s": "K_bot", "strate": 0, "from": "Bouteille de Klein",           "domain": "topologie"},
+
+    # --- GÉOMÉTRIE DIFFÉRENTIELLE ---
+    {"s": "gμν",   "strate": 0, "from": "Tenseur métrique (Einstein)",   "domain": "géom diff"},
+    {"s": "Rμν",   "strate": 0, "from": "Tenseur de Ricci",              "domain": "géom diff"},
+    {"s": "Rμνρσ", "strate": 0, "from": "Tenseur de Riemann",            "domain": "géom diff"},
+    {"s": "R_sc",  "strate": 0, "from": "Courbure scalaire",             "domain": "géom diff"},
+    {"s": "Tμν",   "strate": 0, "from": "Tenseur énergie-impulsion",     "domain": "géom diff"},
+    {"s": "Γᵢⱼₖ",  "strate": 0, "from": "Symboles de Christoffel",      "domain": "géom diff"},
+    {"s": "∧",     "strate": 0, "from": "Produit extérieur (formes diff)","domain": "géom diff"},
+    {"s": "dω",    "strate": 0, "from": "Dérivée extérieure",            "domain": "géom diff"},
+    {"s": "★",     "strate": 0, "from": "Opérateur de Hodge",            "domain": "géom diff"},
+    {"s": "£_X",   "strate": 0, "from": "Dérivée de Lie",                "domain": "géom diff"},
+    {"s": "ωₐ",    "strate": 0, "from": "Forme de connexion",            "domain": "géom diff"},
+    {"s": "Fₐᵦ",   "strate": 0, "from": "Tenseur de courbure (jauge)",   "domain": "géom diff"},
+
+    # --- THÉORIE DES NOMBRES ---
+    {"s": "≡_mod","strate": 0, "from": "Congruence modulo n",          "domain": "nb théorie"},
+    {"s": "gcd",  "strate": 0, "from": "Plus grand commun diviseur",   "domain": "nb théorie"},
+    {"s": "lcm",  "strate": 0, "from": "Plus petit commun multiple",   "domain": "nb théorie"},
+    {"s": "φ_Eul","strate": 0, "from": "Indicatrice d'Euler φ(n)",     "domain": "nb théorie"},
+    {"s": "μ_Mob","strate": 0, "from": "Fonction de Möbius μ(n)",      "domain": "nb théorie"},
+    {"s": "π(x)", "strate": 0, "from": "Fonction de comptage premiers","domain": "nb théorie"},
+    {"s": "σ(n)", "strate": 0, "from": "Somme des diviseurs",          "domain": "nb théorie"},
+    {"s": "τ(n)", "strate": 0, "from": "Nombre de diviseurs",          "domain": "nb théorie"},
+    {"s": "Λ(n)", "strate": 0, "from": "Fonction de von Mangoldt",     "domain": "nb théorie"},
+    {"s": "(a/p)","strate": 0, "from": "Symbole de Legendre",          "domain": "nb théorie"},
+    {"s": "ℓ-adic","strate": 0, "from": "Nombres ℓ-adiques",           "domain": "nb théorie"},
+    {"s": "ℤₚ",   "strate": 0, "from": "Entiers p-adiques",            "domain": "nb théorie"},
+    {"s": "Fₙ",   "strate": 0, "from": "Nombre de Fibonacci",          "domain": "nb théorie"},
+    {"s": "Bₙ",   "strate": 0, "from": "Nombre de Bernoulli",          "domain": "nb théorie"},
+    {"s": "Cₙ",   "strate": 0, "from": "Nombre de Catalan",            "domain": "combinatoire"},
+    {"s": "C(n,k)","strate": 0, "from": "Coefficient binomial",         "domain": "combinatoire"},
+    {"s": "n!",   "strate": 0, "from": "Factorielle",                  "domain": "combinatoire"},
+
+    # --- PROBABILITÉS & STATISTIQUES ---
+    {"s": "P(A)",  "strate": 0, "from": "Probabilité événement A",      "domain": "probabilités"},
+    {"s": "E[X]",  "strate": 0, "from": "Espérance",                    "domain": "probabilités"},
+    {"s": "Var",   "strate": 0, "from": "Variance",                     "domain": "probabilités"},
+    {"s": "σ_std", "strate": 0, "from": "Écart-type",                   "domain": "probabilités"},
+    {"s": "Cov",   "strate": 0, "from": "Covariance",                   "domain": "probabilités"},
+    {"s": "Cor",   "strate": 0, "from": "Corrélation",                  "domain": "probabilités"},
+    {"s": "μ_moy", "strate": 0, "from": "Moyenne",                      "domain": "probabilités"},
+    {"s": "σ²",    "strate": 0, "from": "Variance (notation)",          "domain": "probabilités"},
+    {"s": "χ²",    "strate": 0, "from": "Test chi-carré Pearson",       "domain": "statistiques"},
+    {"s": "t",     "strate": 0, "from": "Distribution de Student",      "domain": "statistiques"},
+    {"s": "F_dist","strate": 0, "from": "Distribution de Fisher",       "domain": "statistiques"},
+    {"s": "N(μ,σ²)","strate":0, "from": "Distribution normale",         "domain": "probabilités"},
+    {"s": "Bin",   "strate": 0, "from": "Distribution binomiale",       "domain": "probabilités"},
+    {"s": "Poi",   "strate": 0, "from": "Distribution de Poisson",      "domain": "probabilités"},
+    {"s": "Exp_d", "strate": 0, "from": "Distribution exponentielle",   "domain": "probabilités"},
+    {"s": "Bayes", "strate": 0, "from": "Théorème Bayes P(A|B)",        "domain": "probabilités"},
+    {"s": "𝟙",     "strate": 0, "from": "Indicatrice / caractéristique","domain": "probabilités"},
+
+    # --- THÉORIE DE L'INFORMATION ---
+    {"s": "H(X)",  "strate": 0, "from": "Entropie Shannon",             "domain": "information"},
+    {"s": "I(X;Y)","strate": 0, "from": "Information mutuelle",         "domain": "information"},
+    {"s": "D_KL",  "strate": 0, "from": "Divergence Kullback-Leibler",  "domain": "information"},
+    {"s": "C_Sh",  "strate": 0, "from": "Capacité canal Shannon",       "domain": "information"},
+    {"s": "H_Ren", "strate": 0, "from": "Entropie de Rényi",            "domain": "information"},
+
+    # --- PHYSIQUE CLASSIQUE ---
+    {"s": "F",     "strate": 0, "from": "Force Newton F=ma",            "domain": "mécanique"},
+    {"s": "m",     "strate": 0, "from": "Masse",                        "domain": "mécanique"},
+    {"s": "a_acc", "strate": 0, "from": "Accélération",                 "domain": "mécanique"},
+    {"s": "v",     "strate": 0, "from": "Vitesse",                      "domain": "mécanique"},
+    {"s": "p_mom", "strate": 0, "from": "Quantité de mouvement p=mv",   "domain": "mécanique"},
+    {"s": "E_cin", "strate": 0, "from": "Énergie cinétique ½mv²",       "domain": "mécanique"},
+    {"s": "V_pot", "strate": 0, "from": "Énergie potentielle",          "domain": "mécanique"},
+    {"s": "W_trav","strate": 0, "from": "Travail W=F·d",                "domain": "mécanique"},
+    {"s": "P_puis","strate": 0, "from": "Puissance P=W/t",              "domain": "mécanique"},
+    {"s": "τ_couple","strate":0,"from": "Couple / torque τ=r×F",        "domain": "mécanique"},
+    {"s": "L_ang", "strate": 0, "from": "Moment angulaire L=r×p",       "domain": "mécanique"},
+    {"s": "I_iner","strate": 0, "from": "Moment d'inertie",             "domain": "mécanique"},
+    {"s": "ω_ang", "strate": 0, "from": "Vitesse angulaire",            "domain": "mécanique"},
+    {"s": "θ",     "strate": 0, "from": "Angle",                        "domain": "géométrie"},
+    {"s": "g_grav","strate": 0, "from": "Accélération gravité ~9.81",   "domain": "gravitation"},
+    {"s": "ρ_dens","strate": 0, "from": "Densité volumique",            "domain": "mécanique"},
+    {"s": "P_pres","strate": 0, "from": "Pression",                     "domain": "fluides"},
+
+    # --- LAGRANGIEN / HAMILTONIEN CLASSIQUE ---
+    {"s": "ℒ",     "strate": 0, "from": "Lagrangien L=T-V",             "domain": "mécanique analytique"},
+    {"s": "ℋ",     "strate": 0, "from": "Hamiltonien classique",        "domain": "mécanique analytique"},
+    {"s": "S_act", "strate": 0, "from": "Action S=∫ℒdt",                "domain": "mécanique analytique"},
+    {"s": "δS=0",  "strate": 0, "from": "Principe moindre action",      "domain": "mécanique analytique"},
+    {"s": "{f,g}", "strate": 0, "from": "Crochet de Poisson",           "domain": "mécanique analytique"},
+    {"s": "q",     "strate": 0, "from": "Coordonnée généralisée",       "domain": "mécanique analytique"},
+    {"s": "p_gen", "strate": 0, "from": "Impulsion généralisée",        "domain": "mécanique analytique"},
+
+    # --- ÉLECTROMAGNÉTISME ---
+    {"s": "E_em",  "strate": 0, "from": "Champ électrique E",           "domain": "électromagn"},
+    {"s": "B_em",  "strate": 0, "from": "Champ magnétique B",           "domain": "électromagn"},
+    {"s": "V_pot_em","strate":0,"from": "Potentiel électrique V",       "domain": "électromagn"},
+    {"s": "A_em",  "strate": 0, "from": "Potentiel vecteur A",          "domain": "électromagn"},
+    {"s": "J_em",  "strate": 0, "from": "Densité de courant J",         "domain": "électromagn"},
+    {"s": "ρ_ch",  "strate": 0, "from": "Densité de charge ρ",          "domain": "électromagn"},
+    {"s": "Φ_B",   "strate": 0, "from": "Flux magnétique",              "domain": "électromagn"},
+    {"s": "Fμν",   "strate": 0, "from": "Tenseur électromagnétique",    "domain": "électromagn"},
+    {"s": "Aμ",    "strate": 0, "from": "Quadri-potentiel",             "domain": "électromagn"},
+
+    # --- THERMODYNAMIQUE ---
+    {"s": "S_ent", "strate": 0, "from": "Entropie S=k·ln(W)",          "domain": "thermo"},
+    {"s": "T_temp","strate": 0, "from": "Température",                  "domain": "thermo"},
+    {"s": "U_int", "strate": 0, "from": "Énergie interne",              "domain": "thermo"},
+    {"s": "Q_chal","strate": 0, "from": "Chaleur",                      "domain": "thermo"},
+    {"s": "W_therm","strate":0, "from": "Travail thermodynamique",      "domain": "thermo"},
+    {"s": "F_helm","strate": 0, "from": "Énergie libre Helmholtz F=U-TS","domain": "thermo"},
+    {"s": "G_gibb","strate": 0, "from": "Enthalpie libre Gibbs G=H-TS","domain": "thermo"},
+    {"s": "H_enth","strate": 0, "from": "Enthalpie H=U+PV",            "domain": "thermo"},
+    {"s": "Z_part","strate": 0, "from": "Fonction de partition Z",      "domain": "mécanique stat"},
+    {"s": "β_inv", "strate": 0, "from": "Température inverse 1/kT",     "domain": "mécanique stat"},
+
+    # --- RELATIVITÉ ---
+    {"s": "ds²",   "strate": 0, "from": "Intervalle espace-temps",      "domain": "relativité"},
+    {"s": "γ_lor", "strate": 0, "from": "Facteur Lorentz 1/√(1-v²/c²)","domain": "relativité"},
+    {"s": "η_μν",  "strate": 0, "from": "Métrique de Minkowski",        "domain": "relativité"},
+    {"s": "Gμν",   "strate": 0, "from": "Tenseur d'Einstein Gμν=Rμν-½gμνR","domain": "relativité"},
+    {"s": "Λ_cos", "strate": 0, "from": "Constante cosmologique",       "domain": "relativité"},
+    {"s": "rs",    "strate": 0, "from": "Rayon de Schwarzschild",       "domain": "relativité"},
+
+    # --- MÉCANIQUE QUANTIQUE ---
+    {"s": "ψ",     "strate": 0, "from": "Fonction d'onde",              "domain": "quantique"},
+    {"s": "Ĥ",     "strate": 0, "from": "Opérateur hamiltonien",        "domain": "quantique"},
+    {"s": "⟨ψ|",   "strate": 0, "from": "Bra (Dirac)",                  "domain": "quantique"},
+    {"s": "|ψ⟩",   "strate": 0, "from": "Ket (Dirac)",                  "domain": "quantique"},
+    {"s": "⟨ψ|ψ⟩", "strate": 0, "from": "Produit scalaire bra-ket",     "domain": "quantique"},
+    {"s": "⟨Â⟩",   "strate": 0, "from": "Valeur moyenne observable",    "domain": "quantique"},
+    {"s": "ΔxΔp",  "strate": 0, "from": "Heisenberg ΔxΔp≥ℏ/2",         "domain": "quantique"},
+    {"s": "[Â,B̂]", "strate": 0, "from": "Commutateur quantique",        "domain": "quantique"},
+    {"s": "ρ_dm",  "strate": 0, "from": "Matrice densité",              "domain": "quantique"},
+    {"s": "Û",     "strate": 0, "from": "Opérateur unitaire évolution", "domain": "quantique"},
+    {"s": "σₓ",    "strate": 0, "from": "Matrice Pauli σx",             "domain": "quantique"},
+    {"s": "σᵧ",    "strate": 0, "from": "Matrice Pauli σy",             "domain": "quantique"},
+    {"s": "σ_z",   "strate": 0, "from": "Matrice Pauli σz",             "domain": "quantique"},
+    {"s": "|0⟩",   "strate": 0, "from": "Qubit état 0",                 "domain": "quantique"},
+    {"s": "|1⟩",   "strate": 0, "from": "Qubit état 1",                 "domain": "quantique"},
+    {"s": "H_gate","strate": 0, "from": "Porte Hadamard",               "domain": "quantique"},
+    {"s": "CNOT",  "strate": 0, "from": "Porte CNOT",                   "domain": "quantique"},
+
+    # --- QFT / MODÈLE STANDARD ---
+    {"s": "ℒ_QFT","strate": 0, "from": "Lagrangien densité QFT",       "domain": "QFT"},
+    {"s": "ψ̄",    "strate": 0, "from": "Spineur adjoint de Dirac",     "domain": "QFT"},
+    {"s": "γμ",   "strate": 0, "from": "Matrices gamma Dirac",         "domain": "QFT"},
+    {"s": "Dμ",   "strate": 0, "from": "Dérivée covariante jauge",     "domain": "QFT"},
+    {"s": "Aμ_YM","strate": 0, "from": "Champ de jauge Yang-Mills",    "domain": "QFT"},
+    {"s": "φ_Higgs","strate":0,"from": "Champ de Higgs",                "domain": "QFT"},
+    {"s": "v_Higgs","strate":0,"from": "VEV Higgs ~246 GeV",            "domain": "QFT"},
+    {"s": "αₛ",   "strate": 0, "from": "Constante couplage fort",      "domain": "QFT"},
+    {"s": "g_w",  "strate": 0, "from": "Couplage faible",               "domain": "QFT"},
+    {"s": "θ_W",  "strate": 0, "from": "Angle de Weinberg",             "domain": "QFT"},
+    {"s": "CKM",  "strate": 0, "from": "Matrice CKM (quarks)",          "domain": "QFT"},
+    {"s": "PMNS", "strate": 0, "from": "Matrice PMNS (neutrinos)",      "domain": "QFT"},
+
+    # --- NAVIER-STOKES / FLUIDES ---
+    {"s": "ν_visc","strate": 0, "from": "Viscosité cinématique",        "domain": "fluides"},
+    {"s": "η_visc","strate": 0, "from": "Viscosité dynamique",          "domain": "fluides"},
+    {"s": "Re",    "strate": 0, "from": "Nombre de Reynolds",           "domain": "fluides"},
+    {"s": "Ma",    "strate": 0, "from": "Nombre de Mach",               "domain": "fluides"},
+    {"s": "Fr",    "strate": 0, "from": "Nombre de Froude",             "domain": "fluides"},
+    {"s": "NS",    "strate": 0, "from": "Équations Navier-Stokes",      "domain": "fluides"},
+
+    # --- CHIMIE ---
+    {"s": "mol",   "strate": 0, "from": "Mole (unité)",                 "domain": "chimie"},
+    {"s": "pH",    "strate": 0, "from": "Potentiel hydrogène -log[H+]", "domain": "chimie"},
+    {"s": "Kₑq",   "strate": 0, "from": "Constante d'équilibre",        "domain": "chimie"},
+    {"s": "ΔG",    "strate": 0, "from": "Enthalpie libre réaction",     "domain": "chimie"},
+    {"s": "ΔH",    "strate": 0, "from": "Enthalpie réaction",           "domain": "chimie"},
+    {"s": "E°",    "strate": 0, "from": "Potentiel standard Nernst",    "domain": "chimie"},
+
+    # --- ÉLÉMENTS FORMULES CÉLÈBRES ---
+    {"s": "E=mc²", "strate": 0, "from": "Einstein 1905",                "domain": "relativité"},
+    {"s": "F=ma",  "strate": 0, "from": "Newton 1687",                  "domain": "mécanique"},
+    {"s": "eⁱᵖ+1=0","strate":0,"from": "Identité d'Euler",             "domain": "analyse"},
+    {"s": "a²+b²=c²","strate":0,"from":"Pythagore",                     "domain": "géométrie"},
+    {"s": "S=kln W","strate":0, "from": "Boltzmann",                    "domain": "thermo"},
+    {"s": "Hψ=Eψ","strate": 0, "from": "Schrödinger",                  "domain": "quantique"},
+    {"s": "Gμν=8πGTμν","strate":0,"from":"Einstein field equations",    "domain": "relativité"},
+    {"s": "∇·E=ρ/ε₀","strate":0,"from":"Maxwell (Gauss)",              "domain": "électromagn"},
+    {"s": "∇·B=0","strate": 0, "from": "Maxwell (pas de monopôle)",    "domain": "électromagn"},
+    {"s": "PV=nRT","strate": 0, "from": "Loi gaz parfaits",            "domain": "thermo"},
+
+    # --- COMPLEXITÉ (décidable) ---
+    {"s": "P",     "strate": 0, "from": "Classe P temps poly",          "domain": "complexité"},
+    {"s": "L_log", "strate": 0, "from": "Espace logarithmique",         "domain": "complexité"},
+    {"s": "NC",    "strate": 0, "from": "Nick's Class (parallélisme)",   "domain": "complexité"},
+    {"s": "AC",    "strate": 0, "from": "Circuit complexity",            "domain": "complexité"},
+    {"s": "SC",    "strate": 0, "from": "Steve's Class",                 "domain": "complexité"},
+
+    # --- CRYPTOGRAPHIE ---
+    {"s": "RSA",   "strate": 0, "from": "Rivest-Shamir-Adleman",        "domain": "crypto"},
+    {"s": "AES",   "strate": 0, "from": "Advanced Encryption Standard",  "domain": "crypto"},
+    {"s": "ECC",   "strate": 0, "from": "Elliptic Curve Cryptography",   "domain": "crypto"},
+    {"s": "SHA",   "strate": 0, "from": "Secure Hash Algorithm",         "domain": "crypto"},
+    {"s": "ZKP",   "strate": 0, "from": "Zero-Knowledge Proof",          "domain": "crypto"},
+
+    # --- GÉOMÉTRIE EUCLIDIENNE / REPÈRES ---
+    {"s": "x",     "strate": 0, "from": "Coordonnée x",                 "domain": "géométrie"},
+    {"s": "y",     "strate": 0, "from": "Coordonnée y",                 "domain": "géométrie"},
+    {"s": "z",     "strate": 0, "from": "Coordonnée z",                 "domain": "géométrie"},
+    {"s": "r",     "strate": 0, "from": "Rayon polaire/sphérique",      "domain": "géométrie"},
+    {"s": "∠",     "strate": 0, "from": "Angle",                        "domain": "géométrie"},
+    {"s": "⊥_geom","strate": 0, "from": "Perpendiculaire",              "domain": "géométrie"},
+    {"s": "∥",     "strate": 0, "from": "Parallèle",                    "domain": "géométrie"},
+    {"s": "≅_geom","strate": 0, "from": "Congruence géométrique",       "domain": "géométrie"},
+    {"s": "∼_geom","strate": 0, "from": "Similitude",                   "domain": "géométrie"},
+
+    # ==================================================================
     # STRATE 1 — Σ⁰₁ · Récursivement énumérable
-    # -----------------------------------------------------------------------
-    {"s": "∃",    "strate": 1, "from": "Quantificateur existentiel",   "domain": "logique",     "year": 1897},
-    {"s": "K",    "strate": 1, "from": "Halting set K={e:φₑ(e)↓}",    "domain": "calculabilité","year": 1936},
-    {"s": "φₑ",   "strate": 1, "from": "e-ième fonction partielle",   "domain": "calculabilité","year": 1936},
-    {"s": "↓",    "strate": 1, "from": "Converge (s'arrête)",         "domain": "calculabilité","year": 1936},
-    {"s": "↑",    "strate": 1, "from": "Diverge (boucle infinie)",    "domain": "calculabilité","year": 1936},
-    {"s": "Wₑ",   "strate": 1, "from": "e-ième ensemble r.e.",        "domain": "calculabilité","year": 1944},
-    {"s": "μy",   "strate": 1, "from": "Opérateur μ recherche",       "domain": "calculabilité","year": 1936},
-    {"s": "≤ₘ",   "strate": 1, "from": "Réduction many-one",         "domain": "calculabilité","year": 1944},
-    {"s": "≤ₜ",   "strate": 1, "from": "Réduction Turing",           "domain": "calculabilité","year": 1939},
-    {"s": "NP",   "strate": 1, "from": "Non-déterministe poly",       "domain": "complexité",  "year": 1971},
-    {"s": "coNP", "strate": 1, "from": "Complément de NP",            "domain": "complexité",  "year": 1971},
-    {"s": "RE",   "strate": 1, "from": "Récursivement énumérable",    "domain": "calculabilité","year": 1936},
-    {"s": "coRE", "strate": 1, "from": "Complément de RE",            "domain": "calculabilité","year": 1936},
-    {"s": "SAT",  "strate": 1, "from": "Satisfiabilité Cook 1971",    "domain": "complexité",  "year": 1971},
-    {"s": "3COL", "strate": 1, "from": "3-coloration graphe",         "domain": "complexité",  "year": 1972},
-    {"s": "TSP",  "strate": 1, "from": "Voyageur de commerce",        "domain": "complexité",  "year": 1972},
-    {"s": "BQP",  "strate": 1, "from": "Bounded-error Quantum Poly",  "domain": "quantique",   "year": 1993},
+    # ==================================================================
+    {"s": "∃",     "strate": 1, "from": "Quantificateur existentiel",    "domain": "logique"},
+    {"s": "K",     "strate": 1, "from": "Halting set K={e:φₑ(e)↓}",     "domain": "calculabilité"},
+    {"s": "φₑ",    "strate": 1, "from": "e-ième fonction partielle",    "domain": "calculabilité"},
+    {"s": "↓",     "strate": 1, "from": "Converge (s'arrête)",          "domain": "calculabilité"},
+    {"s": "↑",     "strate": 1, "from": "Diverge (boucle infinie)",     "domain": "calculabilité"},
+    {"s": "Wₑ",    "strate": 1, "from": "e-ième ensemble r.e.",         "domain": "calculabilité"},
+    {"s": "μy",    "strate": 1, "from": "Opérateur μ recherche",        "domain": "calculabilité"},
+    {"s": "≤ₘ",    "strate": 1, "from": "Réduction many-one",          "domain": "calculabilité"},
+    {"s": "≤ₜ",    "strate": 1, "from": "Réduction Turing",            "domain": "calculabilité"},
+    {"s": "RE",    "strate": 1, "from": "Récursivement énumérable",     "domain": "calculabilité"},
+    {"s": "coRE",  "strate": 1, "from": "Complément de RE",             "domain": "calculabilité"},
+    {"s": "NP",    "strate": 1, "from": "Non-déterministe polynomial",  "domain": "complexité"},
+    {"s": "coNP",  "strate": 1, "from": "Complément de NP",             "domain": "complexité"},
+    {"s": "NL",    "strate": 1, "from": "Non-det espace log",           "domain": "complexité"},
+    {"s": "SAT",   "strate": 1, "from": "Satisfiabilité Cook 1971",     "domain": "complexité"},
+    {"s": "3SAT",  "strate": 1, "from": "3-SAT NP-complet",             "domain": "complexité"},
+    {"s": "3COL",  "strate": 1, "from": "3-coloration graphe",          "domain": "complexité"},
+    {"s": "TSP",   "strate": 1, "from": "Voyageur de commerce",         "domain": "complexité"},
+    {"s": "CLIQUE","strate": 1, "from": "Problème de la clique",        "domain": "complexité"},
+    {"s": "SUBSET","strate": 1, "from": "Subset Sum",                   "domain": "complexité"},
+    {"s": "HAM",   "strate": 1, "from": "Chemin hamiltonien",           "domain": "complexité"},
+    {"s": "ILP",   "strate": 1, "from": "Integer Linear Programming",   "domain": "complexité"},
+    {"s": "BQP",   "strate": 1, "from": "Bounded-error Quantum Poly",   "domain": "quantique"},
+    {"s": "NP-C",  "strate": 1, "from": "NP-Complet",                   "domain": "complexité"},
+    {"s": "NP-H",  "strate": 1, "from": "NP-Hard",                      "domain": "complexité"},
 
-    # -----------------------------------------------------------------------
+    # ==================================================================
     # STRATE 2 — Σ⁰₂ · Limite
-    # -----------------------------------------------------------------------
-    {"s": "∀",    "strate": 2, "from": "Quantificateur universel",     "domain": "logique",     "year": 1897},
-    {"s": "∃∀",   "strate": 2, "from": "Alternance Σ⁰₂",             "domain": "calculabilité","year": 1944},
-    {"s": "TOT",  "strate": 2, "from": "{e : φₑ est totale}",         "domain": "calculabilité","year": 1944},
-    {"s": "FIN",  "strate": 2, "from": "{e : Wₑ est fini}",           "domain": "calculabilité","year": 1944},
-    {"s": "COF",  "strate": 2, "from": "{e : Wₑ est cofini}",         "domain": "calculabilité","year": 1944},
-    {"s": "REC",  "strate": 2, "from": "{e : Wₑ est récursif}",       "domain": "calculabilité","year": 1944},
-    {"s": "∅'",   "strate": 2, "from": "Turing jump premier saut",    "domain": "calculabilité","year": 1939},
-    {"s": "∅''",  "strate": 2, "from": "Double saut de Turing",       "domain": "calculabilité","year": 1944},
-    {"s": "Δ⁰₂",  "strate": 2, "from": "Intersection Σ⁰₂ ∩ Π⁰₂",    "domain": "calculabilité","year": 1944},
-    {"s": "BPP",  "strate": 2, "from": "Bounded-error probabiliste",  "domain": "complexité",  "year": 1977},
-    {"s": "IP",   "strate": 2, "from": "Interactive Proof",           "domain": "complexité",  "year": 1985},
-    {"s": "SZK",  "strate": 2, "from": "Statistical Zero Knowledge",  "domain": "crypto",      "year": 1986},
+    # ==================================================================
+    {"s": "∀",     "strate": 2, "from": "Quantificateur universel",     "domain": "logique"},
+    {"s": "∃∀",    "strate": 2, "from": "Alternance Σ⁰₂",              "domain": "calculabilité"},
+    {"s": "TOT",   "strate": 2, "from": "{e : φₑ totale}",              "domain": "calculabilité"},
+    {"s": "FIN",   "strate": 2, "from": "{e : Wₑ fini}",                "domain": "calculabilité"},
+    {"s": "COF",   "strate": 2, "from": "{e : Wₑ cofini}",              "domain": "calculabilité"},
+    {"s": "REC",   "strate": 2, "from": "{e : Wₑ récursif}",            "domain": "calculabilité"},
+    {"s": "∅'",    "strate": 2, "from": "Turing jump ∅'",               "domain": "calculabilité"},
+    {"s": "∅''",   "strate": 2, "from": "Double saut ∅''",              "domain": "calculabilité"},
+    {"s": "Δ⁰₂",   "strate": 2, "from": "Σ⁰₂ ∩ Π⁰₂",                  "domain": "calculabilité"},
+    {"s": "BPP",   "strate": 2, "from": "Bounded-error Probabilistic",  "domain": "complexité"},
+    {"s": "IP",    "strate": 2, "from": "Interactive Proof",            "domain": "complexité"},
+    {"s": "SZK",   "strate": 2, "from": "Statistical Zero Knowledge",   "domain": "crypto"},
+    {"s": "RP",    "strate": 2, "from": "Randomized Polynomial",        "domain": "complexité"},
+    {"s": "coRP",  "strate": 2, "from": "Complement RP",                "domain": "complexité"},
+    {"s": "ZPP",   "strate": 2, "from": "Zero-error Probabilistic Poly","domain": "complexité"},
 
-    # -----------------------------------------------------------------------
+    # ==================================================================
     # STRATE 3 — Σ⁰ₙ · Motif
-    # -----------------------------------------------------------------------
-    {"s": "Σ⁰ₙ",   "strate": 3, "from": "n-ième existentiel",         "domain": "calculabilité","year": 1944},
-    {"s": "Π⁰ₙ",   "strate": 3, "from": "n-ième universel",           "domain": "calculabilité","year": 1944},
-    {"s": "Δ⁰ₙ",   "strate": 3, "from": "Intersection Σ⁰ₙ ∩ Π⁰ₙ",    "domain": "calculabilité","year": 1944},
-    {"s": "∅⁽ⁿ⁾",  "strate": 3, "from": "n-ième saut de Turing",      "domain": "calculabilité","year": 1944},
-    {"s": "ΣₖP",   "strate": 3, "from": "k-ième niveau PH",           "domain": "complexité",  "year": 1977},
-    {"s": "ΠₖP",   "strate": 3, "from": "k-ième niveau PH",           "domain": "complexité",  "year": 1977},
-    {"s": "PH",    "strate": 3, "from": "Polynomial Hierarchy ∪ₖΣₖP", "domain": "complexité",  "year": 1977},
-    {"s": "#P",    "strate": 3, "from": "Comptage — Toda 1991",        "domain": "complexité",  "year": 1979},
-    {"s": "MA",    "strate": 3, "from": "Merlin-Arthur",               "domain": "complexité",  "year": 1988},
-    {"s": "AM",    "strate": 3, "from": "Arthur-Merlin",               "domain": "complexité",  "year": 1986},
-    {"s": "PP",    "strate": 3, "from": "Probabilistic Polynomial",    "domain": "complexité",  "year": 1977},
-    {"s": "⊕P",    "strate": 3, "from": "Parité — Parity-P",          "domain": "complexité",  "year": 1986},
+    # ==================================================================
+    {"s": "Σ⁰ₙ",   "strate": 3, "from": "n-ième existentiel",          "domain": "calculabilité"},
+    {"s": "Π⁰ₙ",   "strate": 3, "from": "n-ième universel",            "domain": "calculabilité"},
+    {"s": "Δ⁰ₙ",   "strate": 3, "from": "Σ⁰ₙ ∩ Π⁰ₙ",                  "domain": "calculabilité"},
+    {"s": "∅⁽ⁿ⁾",  "strate": 3, "from": "n-ième saut Turing",          "domain": "calculabilité"},
+    {"s": "ΣₖP",   "strate": 3, "from": "k-ième niveau PH existentiel","domain": "complexité"},
+    {"s": "ΠₖP",   "strate": 3, "from": "k-ième niveau PH universel",  "domain": "complexité"},
+    {"s": "PH",    "strate": 3, "from": "Polynomial Hierarchy ∪ₖΣₖP",  "domain": "complexité"},
+    {"s": "#P",    "strate": 3, "from": "Comptage — Valiant/Toda",      "domain": "complexité"},
+    {"s": "MA",    "strate": 3, "from": "Merlin-Arthur",                "domain": "complexité"},
+    {"s": "AM",    "strate": 3, "from": "Arthur-Merlin",                "domain": "complexité"},
+    {"s": "PP",    "strate": 3, "from": "Probabilistic Polynomial",     "domain": "complexité"},
+    {"s": "⊕P",    "strate": 3, "from": "Parité — Parity-P",           "domain": "complexité"},
+    {"s": "Σ₂P",   "strate": 3, "from": "2ème niveau existentiel PH",   "domain": "complexité"},
+    {"s": "Π₂P",   "strate": 3, "from": "2ème niveau universel PH",     "domain": "complexité"},
 
-    # -----------------------------------------------------------------------
+    # ==================================================================
     # STRATE 4 — CIEL · AH
-    # -----------------------------------------------------------------------
-    {"s": "AH",      "strate": 4, "from": "Hiérarchie arithmétique",    "domain": "calculabilité","year": 1944},
-    {"s": "∪ₙ",      "strate": 4, "from": "Union tous niveaux",         "domain": "ensembles",   "year": 1944},
-    {"s": "Th(ℕ)",   "strate": 4, "from": "Théorie complète de ℕ",      "domain": "logique",     "year": 1931},
-    {"s": "∅⁽ω⁾",    "strate": 4, "from": "ω-ième saut (au-dessus AH)", "domain": "calculabilité","year": 1955},
-    {"s": "PSPACE",  "strate": 4, "from": "Espace poly — attracteur",   "domain": "complexité",  "year": 1972},
-    {"s": "QIP",     "strate": 4, "from": "Quantum Interactive Proof",   "domain": "quantique",   "year": 2011},
-    {"s": "EXPTIME", "strate": 4, "from": "Temps exponentiel",          "domain": "complexité",  "year": 1972},
-    {"s": "NEXP",    "strate": 4, "from": "Non-det exponentiel",        "domain": "complexité",  "year": 1972},
+    # ==================================================================
+    {"s": "AH",      "strate": 4, "from": "Hiérarchie arithmétique",     "domain": "calculabilité"},
+    {"s": "∪ₙ",      "strate": 4, "from": "Union tous niveaux",          "domain": "ensembles"},
+    {"s": "ω_ord",   "strate": 4, "from": "Premier ordinal infini ω",    "domain": "ordinaux"},
+    {"s": "Th(ℕ)",   "strate": 4, "from": "Théorie complète de ℕ",       "domain": "logique"},
+    {"s": "∅⁽ω⁾",    "strate": 4, "from": "ω-ième saut",                 "domain": "calculabilité"},
+    {"s": "PSPACE",  "strate": 4, "from": "Espace polynomial attracteur","domain": "complexité"},
+    {"s": "QIP",     "strate": 4, "from": "Quantum Interactive Proof",    "domain": "quantique"},
+    {"s": "EXPTIME", "strate": 4, "from": "Temps exponentiel",           "domain": "complexité"},
+    {"s": "NEXP",    "strate": 4, "from": "Non-det exponentiel",         "domain": "complexité"},
+    {"s": "EXPSPACE","strate": 4, "from": "Espace exponentiel",          "domain": "complexité"},
 
-    # -----------------------------------------------------------------------
+    # ==================================================================
     # STRATE 5 — HYPERARITHMÉTIQUE
-    # -----------------------------------------------------------------------
-    {"s": "ω₁ᶜᵏ",   "strate": 5, "from": "Ordinal Church-Kleene",      "domain": "ordinaux",    "year": 1938},
-    {"s": "∅⁽α⁾",    "strate": 5, "from": "Saut transfinite α",         "domain": "calculabilité","year": 1955},
-    {"s": "Δ¹₁",     "strate": 5, "from": "Analytique niveau 1 intersect","domain":"descriptive", "year": 1955},
-    {"s": "Σ¹₁",     "strate": 5, "from": "Analytique existentiel",     "domain": "descriptive", "year": 1917},
-    {"s": "Π¹₁",     "strate": 5, "from": "Co-analytique",              "domain": "descriptive", "year": 1917},
-    {"s": "O",       "strate": 5, "from": "O de Kleene notations ord.", "domain": "calculabilité","year": 1938},
-    {"s": "HYP",     "strate": 5, "from": "Ensemble hyperarithmétique", "domain": "calculabilité","year": 1955},
-    {"s": "WO",      "strate": 5, "from": "Bons ordres (Π¹₁-complet)", "domain": "descriptive", "year": 1917},
+    # ==================================================================
+    {"s": "ω₁ᶜᵏ",   "strate": 5, "from": "Ordinal Church-Kleene",       "domain": "ordinaux"},
+    {"s": "∅⁽α⁾",    "strate": 5, "from": "Saut transfinite α",          "domain": "calculabilité"},
+    {"s": "Δ¹₁",     "strate": 5, "from": "Analytique Δ¹₁",              "domain": "descriptive"},
+    {"s": "Σ¹₁",     "strate": 5, "from": "Analytique existentiel",      "domain": "descriptive"},
+    {"s": "Π¹₁",     "strate": 5, "from": "Co-analytique",               "domain": "descriptive"},
+    {"s": "O_Kl",    "strate": 5, "from": "O de Kleene",                  "domain": "calculabilité"},
+    {"s": "HYP",     "strate": 5, "from": "Hyperarithmétique",            "domain": "calculabilité"},
+    {"s": "WO",      "strate": 5, "from": "Bons ordres (Π¹₁-complet)",    "domain": "descriptive"},
+    {"s": "Σ¹ₙ",     "strate": 5, "from": "Hiérarchie projective",        "domain": "descriptive"},
+    {"s": "Π¹ₙ",     "strate": 5, "from": "Hiérarchie projective dual",   "domain": "descriptive"},
+    {"s": "Det",     "strate": 5, "from": "Déterminance (Martin)",        "domain": "ensembles"},
 
-    # -----------------------------------------------------------------------
+    # ==================================================================
     # STRATE 6 — PLAFOND · Non-calculable
-    # -----------------------------------------------------------------------
-    {"s": "∄",     "strate": 6, "from": "N'existe pas (pas d'algo)",    "domain": "calculabilité","year": 1936},
-    {"s": "Ω",     "strate": 6, "from": "Constante de Chaitin",         "domain": "information", "year": 1975},
-    {"s": "BB",    "strate": 6, "from": "Busy Beaver BB(n)",            "domain": "calculabilité","year": 1962},
-    {"s": "⊥",     "strate": 6, "from": "Bottom / indécidable",         "domain": "logique",     "year": 1936},
-    {"s": "G",     "strate": 6, "from": "Phrase de Gödel auto-réf.",    "domain": "logique",     "year": 1931},
-    {"s": "⊢",     "strate": 6, "from": "Prouvabilité",                 "domain": "logique",     "year": 1879},
-    {"s": "⊬",     "strate": 6, "from": "Non-prouvable dans S",         "domain": "logique",     "year": 1931},
-    {"s": "K(x)",  "strate": 6, "from": "Complexité de Kolmogorov",     "domain": "information", "year": 1965},
-    {"s": "HALT",  "strate": 6, "from": "Problème de l'arrêt",          "domain": "calculabilité","year": 1936},
+    # ==================================================================
+    {"s": "∄",      "strate": 6, "from": "N'existe pas",                 "domain": "calculabilité"},
+    {"s": "Ω_Ch",   "strate": 6, "from": "Constante de Chaitin",          "domain": "information"},
+    {"s": "BB(n)",  "strate": 6, "from": "Busy Beaver",                   "domain": "calculabilité"},
+    {"s": "⊥",      "strate": 6, "from": "Bottom / indécidable",          "domain": "logique"},
+    {"s": "G_God",  "strate": 6, "from": "Phrase de Gödel",               "domain": "logique"},
+    {"s": "⊢",      "strate": 6, "from": "Prouvabilité",                  "domain": "logique"},
+    {"s": "⊬",      "strate": 6, "from": "Non-prouvable dans S",          "domain": "logique"},
+    {"s": "K(x)",   "strate": 6, "from": "Complexité Kolmogorov",         "domain": "information"},
+    {"s": "HALT",   "strate": 6, "from": "Problème de l'arrêt",           "domain": "calculabilité"},
+    {"s": "TOT_und","strate": 6, "from": "Totalité (Π⁰₂-complet)",        "domain": "calculabilité"},
+    {"s": "Σ(n)",   "strate": 6, "from": "Busy Beaver shifts Σ(n)",       "domain": "calculabilité"},
+    {"s": "∅⁽∞⁾",   "strate": 6, "from": "Saut au-delà de tout ordinal",  "domain": "calculabilité"},
+    {"s": "PCP",    "strate": 6, "from": "Post Correspondence Problem (Post 1946)", "domain": "calculabilité"},
+    {"s": "Rice",   "strate": 6, "from": "Théorème de Rice (propriété sémantique indécidable)", "domain": "calculabilité"},
+    {"s": "ATM",    "strate": 6, "from": "Acceptance problem {⟨M,w⟩ : M accepte w}", "domain": "calculabilité"},
+    {"s": "ETM",    "strate": 6, "from": "Emptiness {⟨M⟩ : L(M)=∅} indécidable", "domain": "calculabilité"},
+    {"s": "EQTM",   "strate": 6, "from": "Equivalence {⟨M₁,M₂⟩ : L(M₁)=L(M₂)} indécidable", "domain": "calculabilité"},
+    {"s": "S(n)",   "strate": 6, "from": "Frantic frog — max steps avant arrêt (Radó)", "domain": "calculabilité"},
+    {"s": "Entsch", "strate": 6, "from": "Entscheidungsproblem (Hilbert 1928, réfuté Turing/Church 1936)", "domain": "logique"},
+    {"s": "Diag",   "strate": 6, "from": "Argument diagonal Cantor/Turing", "domain": "calculabilité"},
+    {"s": "Kolm",   "strate": 6, "from": "Incompressibilité Kolmogorov (pas d'algo pour trouver le plus court)", "domain": "information"},
 ]
 
 
 # ============================================================================
-# FORMULES CONNUES — liens entre symboles (= mycelium)
-# ============================================================================
-# Chaque formule est un groupe de symboles qui co-apparaissent.
-# Les connexions entre eux forment les arêtes du graphe mycelium.
-
-FORMULES = [
-    {"name": "Euler Identity",          "symbols": ["e", "i", "π", "=", "+"],          "year": 1748},
-    {"name": "Einstein E=mc²",          "symbols": ["E", "m", "c", "="],               "year": 1905},
-    {"name": "Newton F=ma",             "symbols": ["F", "m", "a", "="],               "year": 1687},
-    {"name": "Pythagore",               "symbols": ["a²", "b²", "c²", "=", "+"],       "year": -530},
-    {"name": "Boltzmann entropy",       "symbols": ["S", "k", "ln", "W", "="],         "year": 1877},
-    {"name": "Schrödinger",             "symbols": ["Ĥ", "ψ", "E", "ℏ", "="],         "year": 1926},
-    {"name": "Maxwell div B",           "symbols": ["∇·", "B", "="],                   "year": 1865},
-    {"name": "Maxwell rot",             "symbols": ["∇×", "B", "E", "∂", "μ₀", "ε₀"], "year": 1865},
-    {"name": "Cauchy limit",            "symbols": ["lim", "ε", "δ"],                  "year": 1821},
-    {"name": "Integral/derivative",     "symbols": ["∫", "dx", "∂", "lim"],            "year": 1675},
-    {"name": "Riemann zeta",            "symbols": ["ζ", "Σ", "∞", "log"],             "year": 1859},
-    {"name": "Gamma function",          "symbols": ["Γ", "∫", "e", "∞"],               "year": 1729},
-    {"name": "Golden ratio",            "symbols": ["φ", "√", "+"],                    "year": -300},
-    {"name": "Set theory basics",       "symbols": ["∈", "∅", "∪", "∩", "⊆"],          "year": 1874},
-    {"name": "Number sets chain",       "symbols": ["ℕ", "ℤ", "ℚ", "ℝ", "ℂ", "⊆"],   "year": 1895},
-    {"name": "Propositional logic",     "symbols": ["∧", "∨", "¬", "→", "↔"],          "year": 1910},
-    {"name": "Lorentz factor",          "symbols": ["γ", "β", "c", "√"],               "year": 1905},
-    {"name": "Lambda calculus",         "symbols": ["λ", "→"],                         "year": 1936},
-    {"name": "Halting Problem def",     "symbols": ["K", "φₑ", "↓", "∃"],              "year": 1936},
-    {"name": "RE / coRE split",         "symbols": ["RE", "coRE", "K", "Wₑ"],          "year": 1936},
-    {"name": "Turing reductions",       "symbols": ["≤ₘ", "≤ₜ", "K"],                 "year": 1939},
-    {"name": "NP definition",           "symbols": ["NP", "∃", "P"],                   "year": 1971},
-    {"name": "Cook-Levin",              "symbols": ["SAT", "NP", "≤ₘ"],                "year": 1971},
-    {"name": "Karp 21 problems",        "symbols": ["SAT", "3COL", "TSP", "NP"],       "year": 1972},
-    {"name": "Σ⁰₂ definition",          "symbols": ["∃∀", "∀", "TOT", "FIN"],          "year": 1944},
-    {"name": "Turing jump chain",       "symbols": ["∅'", "∅''", "K", "∅⁽ⁿ⁾"],         "year": 1939},
-    {"name": "Limit lemma",             "symbols": ["Δ⁰₂", "lim", "∅'"],               "year": 1959},
-    {"name": "PH structure",            "symbols": ["PH", "ΣₖP", "ΠₖP", "NP", "coNP"],"year": 1977},
-    {"name": "Toda theorem",            "symbols": ["PH", "#P", "P"],                  "year": 1991},
-    {"name": "IP = PSPACE (Shamir)",    "symbols": ["IP", "PSPACE"],                   "year": 1992},
-    {"name": "QIP = PSPACE",            "symbols": ["QIP", "PSPACE", "BQP"],           "year": 2011},
-    {"name": "Arthur-Merlin",           "symbols": ["AM", "MA", "IP", "BPP"],          "year": 1986},
-    {"name": "Arithmetical Hierarchy",  "symbols": ["AH", "∪ₙ", "Σ⁰ₙ", "Π⁰ₙ", "Δ⁰ₙ"],"year": 1944},
-    {"name": "AH ↔ oracle chain",       "symbols": ["AH", "∅⁽ω⁾", "∅⁽ⁿ⁾", "Th(ℕ)"],   "year": 1944},
-    {"name": "Hyperarithmetic",         "symbols": ["ω₁ᶜᵏ", "∅⁽α⁾", "O", "HYP"],      "year": 1955},
-    {"name": "Analytical hierarchy",    "symbols": ["Σ¹₁", "Π¹₁", "Δ¹₁", "HYP"],      "year": 1917},
-    {"name": "Well-ordering",           "symbols": ["WO", "Π¹₁", "ω₁ᶜᵏ"],              "year": 1917},
-    {"name": "Gödel incompleteness",    "symbols": ["G", "⊢", "⊬"],                    "year": 1931},
-    {"name": "Chaitin Omega",           "symbols": ["Ω", "K(x)", "HALT"],              "year": 1975},
-    {"name": "Busy Beaver",             "symbols": ["BB", "∄", "HALT"],                "year": 1962},
-    {"name": "Undecidability trio",     "symbols": ["HALT", "⊥", "∄", "G"],            "year": 1936},
-    # Cross-strata connections (mycelium vertical!)
-    {"name": "P vs NP",                 "symbols": ["P", "NP", "SAT"],                 "year": 1971},
-    {"name": "Decidable → RE",          "symbols": ["P", "RE", "K"],                   "year": 1936},
-    {"name": "PH collapse",             "symbols": ["PH", "PSPACE", "P", "NP"],        "year": 1977},
-    {"name": "Counting power",          "symbols": ["#P", "PH", "PSPACE"],             "year": 1991},
-    {"name": "Quantum landscape",       "symbols": ["BQP", "NP", "P", "PSPACE"],       "year": 1993},
-    {"name": "Halting → Gödel",         "symbols": ["HALT", "K", "G", "⊬"],            "year": 1936},
-    {"name": "Complexity → computability","symbols": ["PSPACE", "AH", "EXPTIME"],       "year": 1972},
-]
-
-
-# ============================================================================
-# MOTEUR — Connexions, métriques, analyse
+# MOTEUR — sans liaisons, juste la carte
 # ============================================================================
 
 class StrateEngine:
-    """Moteur de cartographie symboles × strates avec analyse mycelium."""
-
     def __init__(self):
         self.strates = STRATES
         self.symboles = SYMBOLES
-        self.formules = FORMULES
-
-        # Index: symbole → données
-        self.sym_index = {}
-        for sym in self.symboles:
-            self.sym_index[sym["s"]] = sym
-
-        # Graphe d'adjacence (mycelium)
-        self.adj = defaultdict(set)
-        self.edge_weights = defaultdict(int)  # nombre de co-occurrences
-        self.edge_formulas = defaultdict(list)
-
-        self._build_graph()
-
-    def _build_graph(self):
-        """Construit le graphe de connexions depuis les formules."""
-        for f in self.formules:
-            syms = [s for s in f["symbols"] if s in self.sym_index]
-            for i, a in enumerate(syms):
-                for b in syms[i+1:]:
-                    self.adj[a].add(b)
-                    self.adj[b].add(a)
-                    edge = tuple(sorted([a, b]))
-                    self.edge_weights[edge] += 1
-                    self.edge_formulas[edge].append(f["name"])
-
-    # ------------------------------------------------------------------
-    # Métriques réseau (inspirées du tree engine v2 / Bebber 2007)
-    # ------------------------------------------------------------------
 
     def total_nodes(self):
         return len(self.symboles)
 
-    def total_edges(self):
-        return len(self.edge_weights)
-
-    def total_formules(self):
-        return len(self.formules)
-
-    def degree(self, sym):
-        """Nombre de connexions d'un symbole."""
-        return len(self.adj.get(sym, set()))
-
-    def bottleneck_nodes(self, top_n=10):
-        """Symboles avec le plus de connexions = bottleneck nodes.
-        Équivalent des problèmes NP-complets dans le réseau."""
-        degs = [(s["s"], self.degree(s["s"])) for s in self.symboles]
-        degs.sort(key=lambda x: -x[1])
-        return degs[:top_n]
-
-    def cross_strata_edges(self):
-        """Arêtes qui connectent deux strates différentes = mycelium vertical."""
-        cross = []
-        for edge, weight in self.edge_weights.items():
-            a, b = edge
-            sa = self.sym_index[a]["strate"]
-            sb = self.sym_index[b]["strate"]
-            if sa != sb:
-                cross.append({
-                    "edge": edge,
-                    "strates": (sa, sb),
-                    "weight": weight,
-                    "gap": abs(sa - sb),
-                    "formulas": self.edge_formulas[edge]
-                })
-        cross.sort(key=lambda x: -x["gap"])
-        return cross
-
     def strate_stats(self):
-        """Statistiques par strate."""
         stats = []
         for st in self.strates:
             syms = [s for s in self.symboles if s["strate"] == st["id"]]
-            internal_edges = 0
-            external_edges = 0
-            for s in syms:
-                for neighbor in self.adj.get(s["s"], set()):
-                    ns = self.sym_index.get(neighbor)
-                    if ns:
-                        if ns["strate"] == st["id"]:
-                            internal_edges += 1
-                        else:
-                            external_edges += 1
-            internal_edges //= 2  # chaque arête comptée 2x
-
-            # Domains represented
             domains = set(s["domain"] for s in syms)
-
             stats.append({
                 "strate_id": st["id"],
                 "name": st["short"],
                 "n_symbols": len(syms),
-                "n_internal_edges": internal_edges,
-                "n_external_edges": external_edges,
                 "n_domains": len(domains),
                 "domains": sorted(domains),
-                "density": (2 * internal_edges) / (len(syms) * (len(syms)-1)) if len(syms) > 1 else 0,
             })
         return stats
 
-    def meshedness(self):
-        """Meshedness du réseau global (Bebber 2007).
-        M = (E - N + 1) / (2N - 5) pour graphe planaire.
-        On utilise la version simplifiée pour graphe quelconque."""
-        n = self.total_nodes()
-        e = self.total_edges()
-        if n < 3:
-            return 0.0
-        return (e - n + 1) / (2*n - 5) if (2*n - 5) > 0 else 0.0
-
-    def isolated_symbols(self):
-        """Symboles sans aucune connexion = trous potentiels."""
-        return [s["s"] for s in self.symboles if self.degree(s["s"]) == 0]
-
-    def trous_analysis(self):
-        """Analyse des trous dans la carte.
-        Un trou = un domaine sous-représenté ou une strate faiblement connectée."""
-        trous = []
-
-        # 1. Strates faiblement connectées à leurs voisines
-        stats = self.strate_stats()
-        for st in stats:
-            if st["n_external_edges"] < st["n_symbols"] * 0.3:
-                trous.append({
-                    "type": "strate_isolée",
-                    "strate": st["name"],
-                    "detail": f"Seulement {st['n_external_edges']} liens externes pour {st['n_symbols']} symboles",
-                    "severity": "haute" if st["n_external_edges"] < 3 else "moyenne"
-                })
-
-        # 2. Domaines présents dans une seule strate
-        domain_strates = defaultdict(set)
-        for s in self.symboles:
-            domain_strates[s["domain"]].add(s["strate"])
-        for dom, strats in domain_strates.items():
-            if len(strats) == 1 and len([s for s in self.symboles if s["domain"] == dom]) > 2:
-                trous.append({
-                    "type": "domaine_confiné",
-                    "domain": dom,
-                    "strate_unique": list(strats)[0],
-                    "detail": f"Le domaine '{dom}' n'existe que dans la strate {list(strats)[0]}",
-                    "severity": "basse"
-                })
-
-        # 3. Symboles isolés
-        isolated = self.isolated_symbols()
-        if isolated:
-            trous.append({
-                "type": "symboles_isolés",
-                "symbols": isolated,
-                "detail": f"{len(isolated)} symboles sans aucune connexion",
-                "severity": "haute"
-            })
-
-        return trous
-
-    # ------------------------------------------------------------------
-    # Distribution spatiale pour le cube
-    # ------------------------------------------------------------------
-
     def distribute_on_plane(self, n, box_w=3.8, box_d=3.8, shrink=0.85):
-        """Distribue n points équidistants sur un rectangle."""
         w = box_w * shrink * 0.88
         d = box_d * shrink * 0.88
-        if n <= 0:
-            return []
-        if n == 1:
-            return [{"x": 0, "z": 0}]
-
+        if n <= 0: return []
+        if n == 1: return [{"x": 0, "z": 0}]
         aspect = w / d
         best_cols, best_rows, best_waste = 1, n, float('inf')
         for cols in range(1, n + 1):
@@ -570,10 +694,7 @@ class StrateEngine:
             cell_d = d / rows
             waste = abs(cell_w / cell_d - aspect) + (cols * rows - n) * 0.1
             if waste < best_waste:
-                best_waste = waste
-                best_cols = cols
-                best_rows = rows
-
+                best_waste = waste; best_cols = cols; best_rows = rows
         points = []
         cell_w = w / best_cols
         cell_d = d / best_rows
@@ -586,172 +707,36 @@ class StrateEngine:
             })
         return points
 
-    # ------------------------------------------------------------------
-    # Export JSON pour le cube HTML
-    # ------------------------------------------------------------------
-
     def export_json(self, path="strates_export.json"):
-        """Exporte tout en JSON pour le HTML."""
-        data = {
-            "meta": {
-                "total_symbols": self.total_nodes(),
-                "total_edges": self.total_edges(),
-                "total_formulas": self.total_formules(),
-                "meshedness": round(self.meshedness(), 4),
-            },
-            "strates": [],
-            "edges": [],
-        }
-
-        # Strates + symboles positionnés
+        data = {"meta": {"total_symbols": self.total_nodes()}, "strates": []}
         for st in self.strates:
             syms = [s for s in self.symboles if s["strate"] == st["id"]]
             positions = self.distribute_on_plane(len(syms))
-
             sym_data = []
             for i, s in enumerate(syms):
                 pos = positions[i] if i < len(positions) else {"x": 0, "z": 0}
-                sym_data.append({
-                    "s": s["s"],
-                    "from": s["from"],
-                    "domain": s["domain"],
-                    "year": s["year"],
-                    "degree": self.degree(s["s"]),
-                    "px": pos["x"],
-                    "pz": pos["z"],
-                })
-
-            data["strates"].append({
-                **st,
-                "symbols": sym_data,
-            })
-
-        # Edges (mycelium connections)
-        for edge, weight in self.edge_weights.items():
-            a, b = edge
-            sa = self.sym_index[a]["strate"]
-            sb = self.sym_index[b]["strate"]
-            data["edges"].append({
-                "a": a, "b": b,
-                "weight": weight,
-                "strate_a": sa, "strate_b": sb,
-                "cross_strata": sa != sb,
-                "formulas": self.edge_formulas[edge]
-            })
-
+                sym_data.append({"s": s["s"], "from": s["from"], "domain": s["domain"], "px": pos["x"], "pz": pos["z"]})
+            data["strates"].append({**st, "symbols": sym_data})
         with open(path, "w", encoding="utf-8") as f:
             json.dump(data, f, ensure_ascii=False, indent=2)
-
         return data
 
-    # ------------------------------------------------------------------
-    # Rapport console
-    # ------------------------------------------------------------------
-
     def print_report(self):
-        """Affiche un rapport complet en console."""
-        print("=" * 70)
-        print("  P=NP ON S'AMUSE — RAPPORT MOTEUR STRATES")
-        print("=" * 70)
-        print()
-        print(f"  Symboles:   {self.total_nodes()}")
-        print(f"  Arêtes:     {self.total_edges()}")
-        print(f"  Formules:   {self.total_formules()}")
-        print(f"  Meshedness: {self.meshedness():.4f}")
-        print()
-
-        print("─" * 70)
-        print("  STRATES")
-        print("─" * 70)
+        print("=" * 60)
+        print("  STRATES × SYMBOLES — RAPPORT")
+        print("=" * 60)
+        print(f"\n  Total: {self.total_nodes()} symboles\n")
+        print("─" * 60)
         for st in self.strate_stats():
-            print(f"  [{st['strate_id']}] {st['name']:20s} │ "
-                  f"{st['n_symbols']:3d} sym │ "
-                  f"{st['n_internal_edges']:3d} int │ "
-                  f"{st['n_external_edges']:3d} ext │ "
-                  f"d={st['density']:.3f} │ "
-                  f"{st['n_domains']} dom")
-        print()
-
-        print("─" * 70)
-        print("  TOP 15 BOTTLENECK NODES (les SAT du réseau)")
-        print("─" * 70)
-        for sym, deg in self.bottleneck_nodes(15):
-            st = self.sym_index[sym]["strate"]
-            fr = self.sym_index[sym]["from"]
-            print(f"  {sym:8s} │ degré {deg:3d} │ strate {st} │ {fr}")
-        print()
-
-        print("─" * 70)
-        print("  MYCELIUM VERTICAL (connexions cross-strata, top 15)")
-        print("─" * 70)
-        for cx in self.cross_strata_edges()[:15]:
-            a, b = cx["edge"]
-            print(f"  {a:8s} ↔ {b:8s} │ strates {cx['strates'][0]}→{cx['strates'][1]} │ "
-                  f"gap={cx['gap']} │ {', '.join(cx['formulas'][:2])}")
-        print()
-
-        print("─" * 70)
-        print("  TROUS DANS LA CARTE")
-        print("─" * 70)
-        trous = self.trous_analysis()
-        if not trous:
-            print("  Aucun trou détecté.")
-        for t in trous:
-            sev = {"haute": "🔴", "moyenne": "🟡", "basse": "🟢"}
-            print(f"  {sev.get(t['severity'], '?')} [{t['type']}] {t['detail']}")
-        print()
-
-        # Symboles isolés
-        isolated = self.isolated_symbols()
-        if isolated:
-            print("─" * 70)
-            print(f"  SYMBOLES ISOLÉS ({len(isolated)})")
-            print("─" * 70)
-            for s in isolated:
-                info = self.sym_index[s]
-                print(f"  {s:8s} │ strate {info['strate']} │ {info['from']}")
-            print()
-
-        print("=" * 70)
-        print("  Carte prête. Les trous montrent où chercher.")
-        print("=" * 70)
+            print(f"  [{st['strate_id']}] {st['name']:20s} │ {st['n_symbols']:4d} sym │ {st['n_domains']:2d} domaines")
+            print(f"      {', '.join(st['domains'][:8])}")
+            if len(st['domains']) > 8:
+                print(f"      {', '.join(st['domains'][8:])}")
+        print("=" * 60)
 
 
 # ============================================================================
-# MAIN
-# ============================================================================
-
-def main():
-    engine = StrateEngine()
-
-    # Toujours exporter le JSON
-    out_path = Path(__file__).parent / "strates_export.json"
-    data = engine.export_json(str(out_path))
-    print(f"\n✅ JSON exporté → {out_path}")
-    print(f"   {data['meta']['total_symbols']} symboles, "
-          f"{data['meta']['total_edges']} arêtes, "
-          f"meshedness={data['meta']['meshedness']}")
-
-    if "--analyse" in sys.argv or len(sys.argv) == 1:
-        print()
-        engine.print_report()
-
-    if "--html" in sys.argv:
-        html_path = Path(__file__).parent / "strates_cube_live.html"
-        generate_html(data, str(html_path))
-        print(f"\n✅ HTML exporté → {html_path}")
-
-
-def generate_html(data, path):
-    """Génère le HTML autonome avec les données injectées."""
-    json_str = json.dumps(data, ensure_ascii=False)
-    html = HTML_TEMPLATE.replace("__DATA_INJECT__", json_str)
-    with open(path, "w", encoding="utf-8") as f:
-        f.write(html)
-
-
-# ============================================================================
-# HTML TEMPLATE (autonome, données injectées)
+# HTML TEMPLATE
 # ============================================================================
 
 HTML_TEMPLATE = r"""<!DOCTYPE html>
@@ -759,7 +744,7 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>P=NP — Strates × Symboles × Mycelium</title>
+<title>P=NP — Tous les Symboles × Strates</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Instrument+Serif:ital@0;1&display=swap');
 *{margin:0;padding:0;box-sizing:border-box}
@@ -769,12 +754,12 @@ body::after{content:'';position:fixed;top:0;left:0;right:0;bottom:0;background-i
 #hud{position:fixed;top:18px;left:22px;z-index:10;pointer-events:none}
 #hud h1{font-family:'Instrument Serif',serif;font-size:24px;font-weight:400;color:#e8e8f0;margin-bottom:2px}
 #hud .sub{font-size:9px;color:#3a3a4a;letter-spacing:2.5px;text-transform:uppercase}
-#hud .meta{font-size:9px;color:#334;margin-top:8px;line-height:1.7}
+#hud .meta{font-size:9px;color:#334;margin-top:8px}
 #info{position:fixed;bottom:24px;left:24px;z-index:10;pointer-events:none;max-width:520px}
 #info .sn{font-family:'Instrument Serif',serif;font-size:19px;color:#fff;margin-bottom:2px;transition:color 0.3s}
 #info .sf{font-size:12px;color:#8af;margin-bottom:5px}
 #info .sd{font-size:10.5px;color:#445;line-height:1.5}
-#info .sl{font-size:9.5px;color:#445;margin-top:6px;line-height:1.6}
+#info .sl{font-size:9px;color:#3a3a4a;margin-top:6px;line-height:1.6;max-height:60px;overflow:hidden}
 #legend{position:fixed;top:50%;right:20px;transform:translateY(-50%);z-index:10;display:flex;flex-direction:column;gap:1px;pointer-events:all}
 .li{display:flex;align-items:center;gap:8px;padding:4px 10px 4px 6px;border-radius:3px;cursor:pointer;transition:all 0.25s;border:1px solid transparent}
 .li:hover{background:rgba(255,255,255,0.03);border-color:rgba(255,255,255,0.06)}
@@ -785,16 +770,13 @@ body::after{content:'';position:fixed;top:0;left:0;right:0;bottom:0;background-i
 .lc{font-size:8px;color:#334;margin-left:2px}
 #hint{position:fixed;bottom:20px;right:20px;z-index:10;font-size:9px;color:#222;letter-spacing:1px;text-align:right;line-height:1.9}
 #hint kbd{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:2px;padding:1px 4px;font-family:inherit;font-size:8px}
-#toggle-myc{position:fixed;top:18px;right:20px;z-index:10;font-size:9px;color:#445;cursor:pointer;padding:4px 10px;border:1px solid #222;border-radius:3px;background:rgba(0,0,0,0.3);transition:all 0.2s}
-#toggle-myc:hover{border-color:#555;color:#889}
-#toggle-myc.on{border-color:rgba(140,100,255,0.4);color:rgba(140,100,255,0.7)}
 </style>
 </head>
 <body>
 <canvas id="c"></canvas>
 <div id="hud">
-  <h1>Symboles × Strates × Mycelium</h1>
-  <div class="sub">Chaque symbole mathématique · placé où il vit · connecté par les formules</div>
+  <h1>Carte des Symboles</h1>
+  <div class="sub">Tous les symboles scientifiques du monde · placés sur leur strate de calculabilité</div>
   <div class="meta" id="meta"></div>
 </div>
 <div id="info">
@@ -804,178 +786,86 @@ body::after{content:'';position:fixed;top:0;left:0;right:0;bottom:0;background-i
   <div class="sl" id="sl"></div>
 </div>
 <div id="legend"></div>
-<div id="toggle-myc" onclick="toggleMyc()">MYCELIUM</div>
-<div id="hint"><kbd>drag</kbd> rotation · <kbd>scroll</kbd> zoom · <kbd>légende</kbd> focus · <kbd>mycelium</kbd> connexions</div>
+<div id="hint"><kbd>drag</kbd> rotation · <kbd>scroll</kbd> zoom · <kbd>légende</kbd> focus</div>
 <script>
-const DATA = __DATA_INJECT__;
-const ST = DATA.strates;
-const EDGES = DATA.edges;
-
+const DATA=__DATA_INJECT__;
+const ST=DATA.strates;
 const cv=document.getElementById('c');const ctx=cv.getContext('2d');
 let W,H;function resize(){W=cv.width=innerWidth;H=cv.height=innerHeight}resize();addEventListener('resize',resize);
-
-const BOX={w:3.8,h:3.8,d:3.8};const CAM={dist:7.0,scale:420,persp:0.18};const SHRINK=0.85;
-let yaw=0,yawSpd=0.006,tiltX=-0.32,activeS=-1,showMyc=false,zoom=1.0;
+const BOX={w:3.8,h:3.8,d:3.8},CAM={dist:7.0,scale:420,persp:0.18},SHRINK=0.85;
+let yaw=0,yawSpd=0.005,tiltX=-0.32,activeS=-1,zoom=1.0;
 let dragging=false,pm={x:0,y:0},autoRot=true,autoT=null,mouseX=0,mouseY=0;
-
 cv.addEventListener('mousedown',e=>{dragging=true;pm={x:e.clientX,y:e.clientY};autoRot=false;clearTimeout(autoT)});
 addEventListener('mousemove',e=>{mouseX=e.clientX;mouseY=e.clientY;if(!dragging)return;yaw+=(e.clientX-pm.x)*0.005;tiltX+=(e.clientY-pm.y)*0.004;tiltX=Math.max(-1.3,Math.min(1.3,tiltX));pm={x:e.clientX,y:e.clientY}});
 addEventListener('mouseup',()=>{dragging=false;autoT=setTimeout(()=>autoRot=true,3000)});
-cv.addEventListener('wheel',e=>{e.preventDefault();zoom*=e.deltaY>0?0.95:1.05;zoom=Math.max(0.35,Math.min(2.8,zoom))},{passive:false});
+cv.addEventListener('wheel',e=>{e.preventDefault();zoom*=e.deltaY>0?0.95:1.05;zoom=Math.max(0.3,Math.min(3,zoom))},{passive:false});
 cv.addEventListener('touchstart',e=>{if(e.touches.length===1){dragging=true;pm={x:e.touches[0].clientX,y:e.touches[0].clientY};autoRot=false;clearTimeout(autoT)}});
 cv.addEventListener('touchmove',e=>{if(!dragging||e.touches.length!==1)return;e.preventDefault();yaw+=(e.touches[0].clientX-pm.x)*0.005;tiltX+=(e.touches[0].clientY-pm.y)*0.004;tiltX=Math.max(-1.3,Math.min(1.3,tiltX));pm={x:e.touches[0].clientX,y:e.touches[0].clientY}},{passive:false});
 cv.addEventListener('touchend',()=>{dragging=false;autoT=setTimeout(()=>autoRot=true,3000)});
-
-function project(x,y,z){
-  const cy=Math.cos(yaw),sy=Math.sin(yaw),x1=x*cy+z*sy,z1=-x*sy+z*cy;
-  const cx=Math.cos(tiltX),sx=Math.sin(tiltX),y2=y*cx-z1*sx,z2=y*sx+z1*cx;
-  const sc=CAM.scale*zoom,den=Math.max(0.001,CAM.dist-z2),pf=sc/den,of=sc/CAM.dist,f=of+(pf-of)*CAM.persp;
-  return{x:x1*f+W/2,y:-y2*f+H/2,z:z2,f};
-}
+function project(x,y,z){const cy=Math.cos(yaw),sy=Math.sin(yaw),x1=x*cy+z*sy,z1=-x*sy+z*cy;const cx=Math.cos(tiltX),sx=Math.sin(tiltX),y2=y*cx-z1*sx,z2=y*sx+z1*cx;const sc=CAM.scale*zoom,den=Math.max(0.001,CAM.dist-z2),pf=sc/den,of=sc/CAM.dist,f=of+(pf-of)*CAM.persp;return{x:x1*f+W/2,y:-y2*f+H/2,z:z2,f}}
 function rgba(c,a){return`rgba(${c[0]},${c[1]},${c[2]},${a})`}
-const CUBE_EDGES=[[0,1],[1,2],[2,3],[3,0],[4,5],[5,6],[6,7],[7,4],[0,4],[1,5],[2,6],[3,7]];
-function boxVerts(){const h=BOX.w/2,hy=BOX.h/2,hz=BOX.d/2;return[[-h,-hy,-hz],[h,-hy,-hz],[h,hy,-hz],[-h,hy,-hz],[-h,-hy,hz],[h,-hy,hz],[h,hy,hz],[-h,hy,hz]]}
-
-// Build symbol position lookup
-const symPos={};
-ST.forEach(st=>{
-  st.symbols.forEach(sym=>{
-    const y=st.yr*BOX.h;
-    symPos[sym.s]={x:sym.px, y, z:sym.pz, strate:st.id, col:st.color};
-  });
-});
-
-// Meta
-document.getElementById('meta').innerHTML=
-  `${DATA.meta.total_symbols} symboles · ${DATA.meta.total_edges} arêtes · ${DATA.meta.total_formulas} formules · meshedness ${DATA.meta.meshedness}`;
-
-// Legend
+const CE=[[0,1],[1,2],[2,3],[3,0],[4,5],[5,6],[6,7],[7,4],[0,4],[1,5],[2,6],[3,7]];
+function bv(){const h=BOX.w/2,hy=BOX.h/2,hz=BOX.d/2;return[[-h,-hy,-hz],[h,-hy,-hz],[h,hy,-hz],[-h,hy,-hz],[-h,-hy,hz],[h,-hy,hz],[h,hy,hz],[-h,hy,hz]]}
+document.getElementById('meta').textContent=`${DATA.meta.total_symbols} symboles · 7 strates`;
 const legEl=document.getElementById('legend');
-ST.forEach((s,i)=>{
-  const d=document.createElement('div');d.className='li';
-  d.innerHTML=`<div class="ld" style="color:rgb(${s.color});background:rgb(${s.color})"></div><div class="ll">${s.short}</div><div class="lc">${s.symbols.length}</div>`;
-  d.addEventListener('click',()=>{activeS=activeS===i?-1:i;document.querySelectorAll('.li').forEach((el,j)=>el.classList.toggle('act',j===activeS));if(activeS>=0)showInfo(activeS)});
-  d.addEventListener('mouseenter',()=>showInfo(i));
-  legEl.appendChild(d);
-});
-
-function showInfo(i){
-  const s=ST[i];
-  document.getElementById('sn').textContent=s.name;
-  document.getElementById('sn').style.color=`rgb(${s.color})`;
-  document.getElementById('sf').textContent=s.formula;
-  document.getElementById('sd').textContent=s.desc;
-  document.getElementById('sl').textContent=`[${s.symbols.length} symboles]  ${s.symbols.map(x=>x.s).join('  ')}`;
-}
-
-function toggleMyc(){showMyc=!showMyc;document.getElementById('toggle-myc').classList.toggle('on',showMyc)}
-
+ST.forEach((s,i)=>{const d=document.createElement('div');d.className='li';d.innerHTML=`<div class="ld" style="color:rgb(${s.color});background:rgb(${s.color})"></div><div class="ll">${s.short}</div><div class="lc">${s.symbols.length}</div>`;d.addEventListener('click',()=>{activeS=activeS===i?-1:i;document.querySelectorAll('.li').forEach((el,j)=>el.classList.toggle('act',j===activeS));if(activeS>=0)showInfo(activeS)});d.addEventListener('mouseenter',()=>showInfo(i));legEl.appendChild(d)});
+function showInfo(i){const s=ST[i];document.getElementById('sn').textContent=s.name;document.getElementById('sn').style.color=`rgb(${s.color})`;document.getElementById('sf').textContent=s.formula;document.getElementById('sd').textContent=s.desc;const doms=[...new Set(s.symbols.map(x=>x.domain))];document.getElementById('sl').textContent=`[${s.symbols.length} sym · ${doms.length} domaines] ${doms.join(' · ')}`}
 function frame(){
-  requestAnimationFrame(frame);
-  ctx.clearRect(0,0,W,H);
-  const gr=ctx.createRadialGradient(W/2,H/2,0,W/2,H/2,W*0.7);
-  gr.addColorStop(0,'#0d0d14');gr.addColorStop(1,'#050508');
-  ctx.fillStyle=gr;ctx.fillRect(0,0,W,H);
+  requestAnimationFrame(frame);ctx.clearRect(0,0,W,H);
+  const gr=ctx.createRadialGradient(W/2,H/2,0,W/2,H/2,W*0.7);gr.addColorStop(0,'#0d0d14');gr.addColorStop(1,'#050508');ctx.fillStyle=gr;ctx.fillRect(0,0,W,H);
   if(autoRot)yaw+=yawSpd;
-
   const items=[];
-
-  // Strate planes
   ST.forEach((st,si)=>{
-    const y=st.yr*BOX.h;
-    const sh=SHRINK,hw=BOX.w*sh/2,hd=BOX.d*sh/2;
+    const y=st.yr*BOX.h,sh=SHRINK,hw=BOX.w*sh/2,hd=BOX.d*sh/2;
     const qv=[[-hw,y,-hd],[hw,y,-hd],[hw,y,hd],[-hw,y,hd]];
     const pq=qv.map(v=>project(v[0],v[1],v[2]));
     const avgZ=pq.reduce((a,p)=>a+p.z,0)/4;
-    let op=st.opacity,bop=0.5;
-    if(activeS>=0){if(si===activeS){op=0.35;bop=0.9}else{op=0.02;bop=0.06}}
-    items.push({type:'plane',z:avgZ-0.01,si,pts:pq,col:st.color,op,bop});
-
-    // Symbols
-    st.symbols.forEach(sym=>{
-      const pp=project(sym.px,y,sym.pz);
-      let sop=0.85;if(activeS>=0){sop=si===activeS?1.0:0.06}
-      items.push({type:'sym',z:pp.z,si,sym,px:pp.x,py:pp.y,pf:pp.f,col:st.color,sop,deg:sym.degree});
-    });
+    let op=st.opacity,bop=0.5,sop=0.8;
+    if(activeS>=0){if(si===activeS){op=0.3;bop=0.85;sop=1}else{op=0.015;bop=0.04;sop=0.04}}
+    items.push({type:'p',z:avgZ-0.01,si,pts:pq,col:st.color,op,bop});
+    st.symbols.forEach(sym=>{const pp=project(sym.px,y,sym.pz);items.push({type:'s',z:pp.z,si,sym,px:pp.x,py:pp.y,pf:pp.f,col:st.color,sop})});
   });
-
   items.sort((a,b)=>a.z-b.z);
-
-  let nearSym=null,nearD=22;
-
+  let ns=null,nd=22;
   items.forEach(it=>{
-    if(it.type==='plane'){
-      ctx.beginPath();ctx.moveTo(it.pts[0].x,it.pts[0].y);
-      for(let i=1;i<4;i++)ctx.lineTo(it.pts[i].x,it.pts[i].y);
-      ctx.closePath();ctx.fillStyle=rgba(it.col,it.op);ctx.fill();
-      ctx.strokeStyle=rgba(it.col,it.bop);ctx.lineWidth=1.2;ctx.stroke();
-    }
-    if(it.type==='sym'){
-      const bs=Math.max(7,Math.min(14,9*(it.pf/(CAM.scale*zoom/CAM.dist))));
-      // Scale by degree (more connected = slightly bigger)
-      const degScale = 1 + Math.min(it.deg * 0.02, 0.4);
-      ctx.font=`600 ${bs*degScale}px "JetBrains Mono",monospace`;
-      ctx.textAlign='center';ctx.textBaseline='middle';
+    if(it.type==='p'){ctx.beginPath();ctx.moveTo(it.pts[0].x,it.pts[0].y);for(let i=1;i<4;i++)ctx.lineTo(it.pts[i].x,it.pts[i].y);ctx.closePath();ctx.fillStyle=rgba(it.col,it.op);ctx.fill();ctx.strokeStyle=rgba(it.col,it.bop);ctx.lineWidth=1;ctx.stroke()}
+    if(it.type==='s'){
+      const sc=CAM.scale*zoom/CAM.dist;const bs=Math.max(5,Math.min(11,7.5*(it.pf/sc)));
+      ctx.font=`600 ${bs}px "JetBrains Mono",monospace`;ctx.textAlign='center';ctx.textBaseline='middle';
       const dx=mouseX-it.px,dy=mouseY-it.py,dist=Math.sqrt(dx*dx+dy*dy);
-      if(dist<20&&dist<nearD){nearD=dist;nearSym=it}
-      if(dist<20){ctx.shadowColor=`rgb(${it.col})`;ctx.shadowBlur=14}
-      ctx.fillStyle=rgba(it.col,it.sop);ctx.fillText(it.sym.s,it.px,it.py);
-      ctx.shadowBlur=0;
-    }
+      if(dist<18&&dist<nd){nd=dist;ns=it}
+      if(dist<18){ctx.shadowColor=`rgb(${it.col})`;ctx.shadowBlur=12}
+      ctx.fillStyle=rgba(it.col,it.sop);ctx.fillText(it.sym.s,it.px,it.py);ctx.shadowBlur=0}
   });
-
-  // Mycelium edges
-  if(showMyc){
-    EDGES.forEach(e=>{
-      const a=symPos[e.a],b=symPos[e.b];
-      if(!a||!b)return;
-      if(activeS>=0&&a.strate!==activeS&&b.strate!==activeS)return;
-      const pa=project(a.x,a.y,a.z),pb=project(b.x,b.y,b.z);
-      const isCross=e.cross_strata;
-      ctx.beginPath();ctx.moveTo(pa.x,pa.y);
-      // Curved line for cross-strata
-      if(isCross){
-        const mx=(pa.x+pb.x)/2+Math.sin(yaw*2)*15,my=(pa.y+pb.y)/2;
-        ctx.quadraticCurveTo(mx,my,pb.x,pb.y);
-      }else{ctx.lineTo(pb.x,pb.y)}
-      ctx.strokeStyle=isCross?'rgba(180,100,255,0.12)':'rgba(100,180,100,0.06)';
-      ctx.lineWidth=Math.min(e.weight*0.6,2.5);ctx.stroke();
-    });
-  }
-
-  // Tooltip
-  if(nearSym){
-    const s=nearSym;const tx=s.px+16,ty=s.py-14;
-    ctx.font='500 10px "JetBrains Mono",monospace';
-    const txt=`${s.sym.s} ← ${s.sym.from} [deg:${s.sym.degree}]`;
-    const m=ctx.measureText(txt);
-    ctx.fillStyle='rgba(0,0,0,0.8)';ctx.fillRect(tx-4,ty-10,m.width+8,16);
-    ctx.strokeStyle=rgba(s.col,0.4);ctx.lineWidth=0.8;ctx.strokeRect(tx-4,ty-10,m.width+8,16);
-    ctx.fillStyle=rgba(s.col,0.9);ctx.textAlign='left';ctx.textBaseline='middle';ctx.fillText(txt,tx,ty-2);
-  }
-
-  // Cube wireframe
-  const bv=boxVerts(),pv=bv.map(v=>project(v[0],v[1],v[2]));
-  CUBE_EDGES.forEach(e=>{
-    ctx.beginPath();ctx.moveTo(pv[e[0]].x,pv[e[0]].y);ctx.lineTo(pv[e[1]].x,pv[e[1]].y);
-    ctx.strokeStyle='rgba(60,200,100,0.35)';ctx.lineWidth=1.8;ctx.stroke();
-  });
-  pv.forEach(p=>{ctx.beginPath();ctx.arc(p.x,p.y,2,0,Math.PI*2);ctx.fillStyle='rgba(74,222,128,0.3)';ctx.fill()});
-
-  // Labels
+  if(ns){const tx=ns.px+14,ty=ns.py-12;ctx.font='500 9.5px "JetBrains Mono",monospace';const txt=`${ns.sym.s} ← ${ns.sym.from}`;const m=ctx.measureText(txt);ctx.fillStyle='rgba(0,0,0,0.8)';ctx.fillRect(tx-4,ty-9,m.width+8,15);ctx.strokeStyle=rgba(ns.col,0.4);ctx.lineWidth=0.7;ctx.strokeRect(tx-4,ty-9,m.width+8,15);ctx.fillStyle=rgba(ns.col,0.9);ctx.textAlign='left';ctx.textBaseline='middle';ctx.fillText(txt,tx,ty-1.5)}
+  const pv2=bv().map(v=>project(v[0],v[1],v[2]));CE.forEach(e=>{ctx.beginPath();ctx.moveTo(pv2[e[0]].x,pv2[e[0]].y);ctx.lineTo(pv2[e[1]].x,pv2[e[1]].y);ctx.strokeStyle='rgba(60,200,100,0.3)';ctx.lineWidth=1.5;ctx.stroke()});
+  pv2.forEach(p=>{ctx.beginPath();ctx.arc(p.x,p.y,1.8,0,Math.PI*2);ctx.fillStyle='rgba(74,222,128,0.25)';ctx.fill()});
   const bot=project(0,-BOX.h/2-0.35,0),top2=project(0,BOX.h/2+0.35,0);
-  ctx.font='500 9px "JetBrains Mono",monospace';ctx.textAlign='center';
-  ctx.fillStyle='rgba(74,222,128,0.35)';ctx.fillText('▼ PLANCHER — Axiomes',bot.x,bot.y);
-  ctx.fillStyle='rgba(239,68,68,0.35)';ctx.fillText('▲ PLAFOND — Turing 1936',top2.x,top2.y);
-
-  ctx.font='400 9px "JetBrains Mono",monospace';ctx.textAlign='left';
-  ctx.fillStyle='rgba(80,80,100,0.3)';
-  ctx.fillText(`${DATA.meta.total_symbols} sym · ${DATA.meta.total_edges} edges · mesh=${DATA.meta.meshedness}`,12,H-14);
+  ctx.font='500 8.5px "JetBrains Mono",monospace';ctx.textAlign='center';
+  ctx.fillStyle='rgba(74,222,128,0.3)';ctx.fillText('▼ PLANCHER — Axiomes',bot.x,bot.y);
+  ctx.fillStyle='rgba(239,68,68,0.3)';ctx.fillText('▲ PLAFOND — Turing 1936',top2.x,top2.y);
+  ctx.font='400 8.5px "JetBrains Mono",monospace';ctx.textAlign='left';ctx.fillStyle='rgba(80,80,100,0.25)';
+  ctx.fillText(`${DATA.meta.total_symbols} symboles · 7 strates`,12,H-14);
 }
 showInfo(0);frame();
 </script>
 </body>
 </html>"""
+
+
+def main():
+    engine = StrateEngine()
+    out_path = Path(__file__).parent / "strates_export.json"
+    data = engine.export_json(str(out_path))
+    print(f"\n✅ JSON → {out_path} ({data['meta']['total_symbols']} symboles)")
+    engine.print_report()
+    if "--html" in sys.argv or True:
+        html_path = Path(__file__).parent / "strates_cube_live.html"
+        json_str = json.dumps(data, ensure_ascii=False)
+        html = HTML_TEMPLATE.replace("__DATA_INJECT__", json_str)
+        with open(str(html_path), "w", encoding="utf-8") as f:
+            f.write(html)
+        print(f"✅ HTML → {html_path}")
 
 
 if __name__ == "__main__":
