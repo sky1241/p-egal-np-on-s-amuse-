@@ -170,6 +170,11 @@ SYMBOLES = [
     {"s": "ℵ₁",   "strate": 0, "from": "Premier indénombrable",        "domain": "ensembles"},
     {"s": "𝔠",    "strate": 0, "from": "Cardinal du continu",          "domain": "ensembles"},
     {"s": "ℶ",    "strate": 0, "from": "Nombre de Beth",               "domain": "ensembles"},
+    {"s": "Aᶜ",   "strate": 0, "from": "Complément ensemble",          "domain": "ensembles"},
+    {"s": "⊔",    "strate": 0, "from": "Union disjointe (coproduct)",   "domain": "ensembles"},
+    {"s": "κ",    "strate": 0, "from": "Cardinal inaccessible (Hausdorff 1908)", "domain": "ensembles"},
+    {"s": "cf",   "strate": 0, "from": "Cofinalité (König, théorie cardinaux)", "domain": "ensembles"},
+    {"s": "Card", "strate": 0, "from": "Classe des cardinaux",          "domain": "ensembles"},
 
     # --- LOGIQUE PROPOSITIONNELLE & PRÉDICATS ---
     {"s": "∧",    "strate": 0, "from": "ET logique (conjonction)",     "domain": "logique"},
@@ -187,6 +192,16 @@ SYMBOLES = [
     {"s": "⟹",   "strate": 0, "from": "Implique (méta)",              "domain": "logique"},
     {"s": "⟺",   "strate": 0, "from": "Ssi (si et seulement si)",     "domain": "logique"},
     {"s": "∄",    "strate": 0, "from": "N'existe pas (¬∃)",           "domain": "logique"},
+    {"s": "∃!",   "strate": 0, "from": "Quantificateur existence unique", "domain": "logique"},
+    {"s": "ZFC",  "strate": 0, "from": "Zermelo-Fraenkel + Choix (Zermelo 1908, Fraenkel 1922)", "domain": "logique"},
+    {"s": "ZF",   "strate": 0, "from": "Zermelo-Fraenkel sans Choix",  "domain": "logique"},
+    {"s": "CH",   "strate": 0, "from": "Hypothèse du Continu (Cantor 1878, indép. Cohen 1963)", "domain": "logique"},
+    {"s": "GCH",  "strate": 0, "from": "Hypothèse Continu Généralisée", "domain": "logique"},
+    {"s": "Con",  "strate": 0, "from": "Consistance Con(T) — Gödel 2ème incomplétude 1931", "domain": "logique"},
+    {"s": "V=L",  "strate": 0, "from": "Axiome Constructibilité (Gödel 1938)", "domain": "logique"},
+    {"s": "□",    "strate": 0, "from": "Nécessité (logique modale, Kripke 1963)", "domain": "logique"},
+    {"s": "◇",    "strate": 0, "from": "Possibilité (logique modale, Kripke 1963)", "domain": "logique"},
+    {"s": "⊩_forc","strate": 0, "from": "Forcing (Cohen 1963, indép. CH)", "domain": "logique"},
 
     # --- ANALYSE / CALCUL ---
     {"s": "∫",    "strate": 0, "from": "Intégrale (Leibniz 1675)",     "domain": "analyse"},
@@ -304,6 +319,7 @@ SYMBOLES = [
     {"s": "R[x]", "strate": 0, "from": "Anneau de polynômes",          "domain": "algèbre"},
     {"s": "I⊲R",  "strate": 0, "from": "Idéal dans anneau",            "domain": "algèbre"},
     {"s": "F*/F", "strate": 0, "from": "Extension de corps",           "domain": "algèbre"},
+    {"s": "Spec", "strate": 0, "from": "Spectre anneau (Grothendieck, géom algébrique)", "domain": "algèbre"},
 
     # --- THÉORIE DES CATÉGORIES ---
     {"s": "Ob(C)", "strate": 0, "from": "Objets d'une catégorie",       "domain": "catégories"},
@@ -321,6 +337,8 @@ SYMBOLES = [
     {"s": "Grp",   "strate": 0, "from": "Catégorie des groupes",        "domain": "catégories"},
     {"s": "Ab",    "strate": 0, "from": "Catégorie groupes abéliens",   "domain": "catégories"},
     {"s": "Vect",  "strate": 0, "from": "Catégorie espaces vectoriels", "domain": "catégories"},
+    {"s": "↪",    "strate": 0, "from": "Injection / monomorphisme",     "domain": "catégories"},
+    {"s": "↠",    "strate": 0, "from": "Surjection / épimorphisme",     "domain": "catégories"},
 
     # --- TOPOLOGIE ---
     {"s": "τ_top","strate": 0, "from": "Topologie sur X",              "domain": "topologie"},
@@ -336,6 +354,9 @@ SYMBOLES = [
     {"s": "T²",    "strate": 0, "from": "Tore",                         "domain": "topologie"},
     {"s": "RP²",   "strate": 0, "from": "Plan projectif réel",          "domain": "topologie"},
     {"s": "K_bot", "strate": 0, "from": "Bouteille de Klein",           "domain": "topologie"},
+    {"s": "∂X",   "strate": 0, "from": "Bord topologique",              "domain": "topologie"},
+    {"s": "cl(A)", "strate": 0, "from": "Adhérence / fermeture",        "domain": "topologie"},
+    {"s": "int(A)","strate": 0, "from": "Intérieur topologique",        "domain": "topologie"},
 
     # --- GÉOMÉTRIE DIFFÉRENTIELLE ---
     {"s": "gμν",   "strate": 0, "from": "Tenseur métrique (Einstein)",   "domain": "géom diff"},
@@ -350,6 +371,7 @@ SYMBOLES = [
     {"s": "£_X",   "strate": 0, "from": "Dérivée de Lie",                "domain": "géom diff"},
     {"s": "ωₐ",    "strate": 0, "from": "Forme de connexion",            "domain": "géom diff"},
     {"s": "Fₐᵦ",   "strate": 0, "from": "Tenseur de courbure (jauge)",   "domain": "géom diff"},
+    {"s": "d_ext","strate": 0, "from": "Dérivée extérieure (Cartan 1899)", "domain": "géom diff"},
 
     # --- THÉORIE DES NOMBRES ---
     {"s": "≡_mod","strate": 0, "from": "Congruence modulo n",          "domain": "nb théorie"},
@@ -366,8 +388,11 @@ SYMBOLES = [
     {"s": "ℤₚ",   "strate": 0, "from": "Entiers p-adiques",            "domain": "nb théorie"},
     {"s": "Fₙ",   "strate": 0, "from": "Nombre de Fibonacci",          "domain": "nb théorie"},
     {"s": "Bₙ",   "strate": 0, "from": "Nombre de Bernoulli",          "domain": "nb théorie"},
+    {"s": "Cl(K)","strate": 0, "from": "Groupe de classes idéales (Dedekind)", "domain": "nb théorie"},
     {"s": "Cₙ",   "strate": 0, "from": "Nombre de Catalan",            "domain": "combinatoire"},
     {"s": "C(n,k)","strate": 0, "from": "Coefficient binomial",         "domain": "combinatoire"},
+    {"s": "χ_chrom","strate": 0, "from": "Nombre chromatique (coloration graphe)", "domain": "combinatoire"},
+    {"s": "Kₙ",   "strate": 0, "from": "Graphe complet à n sommets",    "domain": "combinatoire"},
 
 
     # --- PROBABILITÉS & STATISTIQUES ---
@@ -388,6 +413,7 @@ SYMBOLES = [
     {"s": "Exp_d", "strate": 0, "from": "Distribution exponentielle",   "domain": "probabilités"},
     {"s": "Bayes", "strate": 0, "from": "Théorème Bayes P(A|B)",        "domain": "probabilités"},
     {"s": "𝟙",     "strate": 0, "from": "Indicatrice / caractéristique","domain": "probabilités"},
+    {"s": "⊥_ind","strate": 0, "from": "Indépendance stochastique (X⊥Y)", "domain": "probabilités"},
 
     # --- THÉORIE DE L'INFORMATION ---
     {"s": "H(X)",  "strate": 0, "from": "Entropie Shannon",             "domain": "information"},
@@ -508,6 +534,7 @@ SYMBOLES = [
     {"s": "E=mc²", "strate": 0, "from": "Einstein 1905",                "domain": "relativité"},
     {"s": "F=ma",  "strate": 0, "from": "Newton 1687",                  "domain": "mécanique"},
     {"s": "eⁱᵖ+1=0","strate":0,"from": "Identité d'Euler",             "domain": "analyse"},
+    {"s": "Res",  "strate": 0, "from": "Résidu analyse complexe (Cauchy 1825)", "domain": "analyse"},
     {"s": "a²+b²=c²","strate":0,"from":"Pythagore",                     "domain": "géométrie"},
     {"s": "S=kln W","strate":0, "from": "Boltzmann",                    "domain": "thermo"},
     {"s": "Hψ=Eψ","strate": 0, "from": "Schrödinger",                  "domain": "quantique"},
@@ -519,7 +546,7 @@ SYMBOLES = [
     # --- COMPLEXITÉ (décidable) ---
     {"s": "P",     "strate": 0, "from": "Classe P temps poly",          "domain": "complexité"},
     {"s": "L_log", "strate": 0, "from": "Espace logarithmique",         "domain": "complexité"},
-    {"s": "NC",    "strate": 0, "from": "Nick's Class (parallélisme)",   "domain": "complexité"},
+    {"s": "NC",    "strate": 0, "from": "Nick's Class — parallélisme efficace (NC⊆P)", "domain": "complexité"},
     {"s": "AC",    "strate": 0, "from": "Circuit complexity",            "domain": "complexité"},
     {"s": "SC",    "strate": 0, "from": "Steve's Class",                 "domain": "complexité"},
 
@@ -614,6 +641,7 @@ SYMBOLES = [
     {"s": "λ_wave","strate": 0, "from": "Longueur d'onde",               "domain": "optique"},
     {"s": "ν_freq","strate": 0, "from": "Fréquence",                     "domain": "optique"},
     {"s": "E=hν",  "strate": 0, "from": "Énergie photon (Planck 1900)",  "domain": "quantique"},
+    {"s": "Ψ_wav","strate": 0, "from": "Fonction d'onde (Schrödinger 1926)", "domain": "quantique"},
 
     # --- ASTRONOMIE / COSMOLOGIE ---
     {"s": "M☉",    "strate": 0, "from": "Masse solaire ~2×10³⁰ kg",      "domain": "astronomie"},
@@ -642,6 +670,8 @@ SYMBOLES = [
     {"s": "Reg",   "strate": 0, "from": "Langages réguliers (Kleene)",   "domain": "automates"},
     {"s": "CFL",   "strate": 0, "from": "Langages hors-contexte",        "domain": "automates"},
     {"s": "Chom",  "strate": 0, "from": "Hiérarchie de Chomsky (4 niveaux)", "domain": "automates"},
+    {"s": "PR",   "strate": 0, "from": "Fonctions primitives récursives (Gödel-Herbrand 1934)", "domain": "calculabilité"},
+    {"s": "Ack",  "strate": 0, "from": "Fonction Ackermann (non PR, totale récursive, 1928)", "domain": "calculabilité"},
 
     # --- Théorie de la mesure (Lebesgue 1902) ---
     {"s": "μ_mes", "strate": 0, "from": "Mesure abstraite",                "domain": "mesure"},
@@ -675,6 +705,8 @@ SYMBOLES = [
     {"s": "X*",    "strate": 0, "from": "Dual topologique",               "domain": "analyse fonctionnelle"},
     {"s": "L²",    "strate": 0, "from": "Espace L² (carré intégrable)",   "domain": "analyse fonctionnelle"},
     {"s": "HB",    "strate": 0, "from": "Hahn-Banach (1929)",             "domain": "analyse fonctionnelle"},
+    {"s": "ℓ²",   "strate": 0, "from": "Espace suites carré-sommables", "domain": "analyse fonctionnelle"},
+    {"s": "W^k,p","strate": 0, "from": "Espace Sobolev (Sobolev 1938, PDE)", "domain": "analyse fonctionnelle"},
     # STRATE 1 — Σ⁰₁ · Récursivement énumérable
     # ==================================================================
     {"s": "∃",     "strate": 1, "from": "Quantificateur existentiel",    "domain": "logique"},
@@ -691,6 +723,14 @@ SYMBOLES = [
     {"s": "NP",    "strate": 1, "from": "Non-déterministe polynomial",  "domain": "complexité"},
     {"s": "coNP",  "strate": 1, "from": "Complément de NP",             "domain": "complexité"},
     {"s": "NL",    "strate": 0, "from": "Non-det espace log (NL⊆P, Savitch)", "domain": "complexité"},
+    {"s": "L_lang","strate": 0, "from": "Classe L espace log déterministe (L⊆NL⊆P)", "domain": "complexité"},
+    {"s": "DTIME","strate": 0, "from": "Temps déterministe DTIME(f(n))", "domain": "complexité"},
+    {"s": "NTIME","strate": 0, "from": "Temps non-déterministe NTIME(f(n))", "domain": "complexité"},
+    {"s": "DSPACE","strate": 0, "from": "Espace déterministe DSPACE(f(n))", "domain": "complexité"},
+    {"s": "NSPACE","strate": 0, "from": "Espace non-déterministe NSPACE(f(n))", "domain": "complexité"},
+
+    {"s": "AC⁰",  "strate": 0, "from": "Circuits profondeur constante taille poly", "domain": "complexité"},
+    {"s": "TC⁰",  "strate": 0, "from": "Threshold circuits (majorité)", "domain": "complexité"},
     {"s": "SAT",   "strate": 1, "from": "Satisfiabilité Cook 1971",     "domain": "complexité"},
     {"s": "3SAT",  "strate": 1, "from": "3-SAT NP-complet",             "domain": "complexité"},
     {"s": "3COL",  "strate": 1, "from": "3-coloration graphe",          "domain": "complexité"},
@@ -786,6 +826,7 @@ SYMBOLES = [
     {"s": "NE",      "strate": 4, "from": "NTIME(2^O(n))",               "domain": "complexité"},
     {"s": "Tarski",  "strate": 4, "from": "Indéfinissabilité vérité (Tarski 1936)", "domain": "logique"},
     {"s": "ε₀_ord",  "strate": 4, "from": "Ordinal ε₀ = ω^ω^ω^… (Gentzen)", "domain": "ordinaux"},
+    {"s": "Ord",  "strate": 0, "from": "Classe des ordinaux (von Neumann)", "domain": "ordinaux"},
 
     # ==================================================================
     # STRATE 5 — HYPERARITHMÉTIQUE
