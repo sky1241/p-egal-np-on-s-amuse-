@@ -627,6 +627,14 @@ SYMBOLES = [
     {"s": "Σ¹ₙ",     "strate": 5, "from": "Hiérarchie projective",        "domain": "descriptive"},
     {"s": "Π¹ₙ",     "strate": 5, "from": "Hiérarchie projective dual",   "domain": "descriptive"},
     {"s": "Det",     "strate": 5, "from": "Déterminance (Martin)",        "domain": "ensembles"},
+    {"s": "²E",     "strate": 5, "from": "Fonctionnel type-2 Kleene (caractérise HYP)", "domain": "calculabilité"},
+    {"s": "KP",     "strate": 5, "from": "Kripke-Platek set theory",      "domain": "logique"},
+    {"s": "Lα",     "strate": 5, "from": "Niveaux constructibles admissibles Lω₁ᶜᵏ", "domain": "ensembles"},
+    {"s": "Borel",  "strate": 5, "from": "Hiérarchie de Borel (⊂ Δ¹₁)",  "domain": "descriptive"},
+    {"s": "AD",     "strate": 5, "from": "Axiome de Déterminance",        "domain": "ensembles"},
+    {"s": "Wadge",  "strate": 5, "from": "Degrés de Wadge (raffinement de la hiérarchie)", "domain": "descriptive"},
+    {"s": "Spect",  "strate": 5, "from": "Théorème Spector-Gandy (Π¹₁ = HYP en ω₁ᶜᵏ)", "domain": "calculabilité"},
+    {"s": "Σ⁰_α",  "strate": 5, "from": "Niveau Borel transfinite Σ⁰α", "domain": "descriptive"},
 
     # ==================================================================
     # STRATE 6 — PLAFOND · Non-calculable

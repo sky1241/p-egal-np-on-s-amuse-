@@ -1,6 +1,6 @@
 {
   "meta": {
-    "total_symbols": 494
+    "total_symbols": 502
   },
   "strates": [
     {
@@ -3335,78 +3335,134 @@
           "s": "ω₁ᶜᵏ",
           "from": "Ordinal Church-Kleene",
           "domain": "ordinaux",
-          "px": -1.0659,
-          "pz": -0.9475
+          "px": -1.137,
+          "pz": -1.0659
         },
         {
           "s": "∅⁽α⁾",
           "from": "Saut transfinite α",
           "domain": "calculabilité",
-          "px": -0.3553,
-          "pz": -0.9475
+          "px": -0.5685,
+          "pz": -1.0659
         },
         {
           "s": "Δ¹₁",
           "from": "Analytique Δ¹₁",
           "domain": "descriptive",
-          "px": 0.3553,
-          "pz": -0.9475
+          "px": 0.0,
+          "pz": -1.0659
         },
         {
           "s": "Σ¹₁",
           "from": "Analytique existentiel",
           "domain": "descriptive",
-          "px": 1.0659,
-          "pz": -0.9475
+          "px": 0.5685,
+          "pz": -1.0659
         },
         {
           "s": "Π¹₁",
           "from": "Co-analytique",
           "domain": "descriptive",
-          "px": -1.0659,
-          "pz": 0.0
+          "px": 1.137,
+          "pz": -1.0659
         },
         {
           "s": "O_Kl",
           "from": "O de Kleene",
           "domain": "calculabilité",
-          "px": -0.3553,
-          "pz": 0.0
+          "px": -1.137,
+          "pz": -0.3553
         },
         {
           "s": "HYP",
           "from": "Hyperarithmétique",
           "domain": "calculabilité",
-          "px": 0.3553,
-          "pz": 0.0
+          "px": -0.5685,
+          "pz": -0.3553
         },
         {
           "s": "WO",
           "from": "Bons ordres (Π¹₁-complet)",
           "domain": "descriptive",
-          "px": 1.0659,
-          "pz": 0.0
+          "px": 0.0,
+          "pz": -0.3553
         },
         {
           "s": "Σ¹ₙ",
           "from": "Hiérarchie projective",
           "domain": "descriptive",
-          "px": -1.0659,
-          "pz": 0.9475
+          "px": 0.5685,
+          "pz": -0.3553
         },
         {
           "s": "Π¹ₙ",
           "from": "Hiérarchie projective dual",
           "domain": "descriptive",
-          "px": -0.3553,
-          "pz": 0.9475
+          "px": 1.137,
+          "pz": -0.3553
         },
         {
           "s": "Det",
           "from": "Déterminance (Martin)",
           "domain": "ensembles",
-          "px": 0.3553,
-          "pz": 0.9475
+          "px": -1.137,
+          "pz": 0.3553
+        },
+        {
+          "s": "²E",
+          "from": "Fonctionnel type-2 Kleene (caractérise HYP)",
+          "domain": "calculabilité",
+          "px": -0.5685,
+          "pz": 0.3553
+        },
+        {
+          "s": "KP",
+          "from": "Kripke-Platek set theory",
+          "domain": "logique",
+          "px": 0.0,
+          "pz": 0.3553
+        },
+        {
+          "s": "Lα",
+          "from": "Niveaux constructibles admissibles Lω₁ᶜᵏ",
+          "domain": "ensembles",
+          "px": 0.5685,
+          "pz": 0.3553
+        },
+        {
+          "s": "Borel",
+          "from": "Hiérarchie de Borel (⊂ Δ¹₁)",
+          "domain": "descriptive",
+          "px": 1.137,
+          "pz": 0.3553
+        },
+        {
+          "s": "AD",
+          "from": "Axiome de Déterminance",
+          "domain": "ensembles",
+          "px": -1.137,
+          "pz": 1.0659
+        },
+        {
+          "s": "Wadge",
+          "from": "Degrés de Wadge (raffinement de la hiérarchie)",
+          "domain": "descriptive",
+          "px": -0.5685,
+          "pz": 1.0659
+        },
+        {
+          "s": "Spect",
+          "from": "Théorème Spector-Gandy (Π¹₁ = HYP en ω₁ᶜᵏ)",
+          "domain": "calculabilité",
+          "px": 0.0,
+          "pz": 1.0659
+        },
+        {
+          "s": "Σ⁰_α",
+          "from": "Niveau Borel transfinite Σ⁰α",
+          "domain": "descriptive",
+          "px": 0.5685,
+          "pz": 1.0659
         }
       ]
     },
