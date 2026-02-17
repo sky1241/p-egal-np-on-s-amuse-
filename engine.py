@@ -120,9 +120,16 @@ SYMBOLES = [
     {"s": "i",    "strate": 0, "from": "Unité imaginaire √(-1)",      "domain": "complexes"},
     {"s": "φ",    "strate": 0, "from": "Nombre d'or (1+√5)/2",       "domain": "nombres"},
     {"s": "γₑ",   "strate": 0, "from": "Constante Euler-Mascheroni",  "domain": "analyse"},
-    {"s": "∞",    "strate": 0, "from": "Infini",                      "domain": "analyse"},
     {"s": "0",    "strate": 0, "from": "Zéro (Brahmagupta 628)",      "domain": "arithmétique"},
     {"s": "1",    "strate": 0, "from": "Unité",                       "domain": "arithmétique"},
+    {"s": "2",    "strate": 0, "from": "Deux — seul premier pair",    "domain": "arithmétique"},
+    {"s": "3",    "strate": 0, "from": "Trois — plus petit premier impair", "domain": "arithmétique"},
+    {"s": "4",    "strate": 0, "from": "Quatre — premier carré >1",   "domain": "arithmétique"},
+    {"s": "5",    "strate": 0, "from": "Cinq — base pentagonale",     "domain": "arithmétique"},
+    {"s": "6",    "strate": 0, "from": "Six — premier nombre parfait (1+2+3)", "domain": "arithmétique"},
+    {"s": "7",    "strate": 0, "from": "Sept — premier mersenne (2³-1)", "domain": "arithmétique"},
+    {"s": "8",    "strate": 0, "from": "Huit — premier cube >1 (2³)", "domain": "arithmétique"},
+    {"s": "9",    "strate": 0, "from": "Neuf — premier carré impair >1 (3²)", "domain": "arithmétique"},
 
     # --- CONSTANTES PHYSIQUES ---
     {"s": "c",    "strate": 0, "from": "Vitesse lumière 299792458 m/s","domain": "relativité"},
@@ -179,6 +186,7 @@ SYMBOLES = [
     {"s": "∵",    "strate": 0, "from": "Parce que",                    "domain": "logique"},
     {"s": "⟹",   "strate": 0, "from": "Implique (méta)",              "domain": "logique"},
     {"s": "⟺",   "strate": 0, "from": "Ssi (si et seulement si)",     "domain": "logique"},
+    {"s": "∄",    "strate": 0, "from": "N'existe pas (¬∃)",           "domain": "logique"},
 
     # --- ANALYSE / CALCUL ---
     {"s": "∫",    "strate": 0, "from": "Intégrale (Leibniz 1675)",     "domain": "analyse"},
@@ -336,7 +344,7 @@ SYMBOLES = [
     {"s": "R_sc",  "strate": 0, "from": "Courbure scalaire",             "domain": "géom diff"},
     {"s": "Tμν",   "strate": 0, "from": "Tenseur énergie-impulsion",     "domain": "géom diff"},
     {"s": "Γᵢⱼₖ",  "strate": 0, "from": "Symboles de Christoffel",      "domain": "géom diff"},
-    {"s": "∧",     "strate": 0, "from": "Produit extérieur (formes diff)","domain": "géom diff"},
+    {"s": "∧_ext", "strate": 0, "from": "Produit extérieur / wedge (formes diff)","domain": "géom diff"},
     {"s": "dω",    "strate": 0, "from": "Dérivée extérieure",            "domain": "géom diff"},
     {"s": "★",     "strate": 0, "from": "Opérateur de Hodge",            "domain": "géom diff"},
     {"s": "£_X",   "strate": 0, "from": "Dérivée de Lie",                "domain": "géom diff"},
@@ -635,7 +643,38 @@ SYMBOLES = [
     {"s": "CFL",   "strate": 0, "from": "Langages hors-contexte",        "domain": "automates"},
     {"s": "Chom",  "strate": 0, "from": "Hiérarchie de Chomsky (4 niveaux)", "domain": "automates"},
 
-    # ==================================================================
+    # --- Théorie de la mesure (Lebesgue 1902) ---
+    {"s": "μ_mes", "strate": 0, "from": "Mesure abstraite",                "domain": "mesure"},
+    {"s": "σ(F)",  "strate": 0, "from": "σ-algèbre (tribu)",              "domain": "mesure"},
+    {"s": "λ_Leb", "strate": 0, "from": "Mesure de Lebesgue (1902)",      "domain": "mesure"},
+    {"s": "Lp",    "strate": 0, "from": "Espaces Lp (Riesz 1910)",        "domain": "mesure"},
+    {"s": "a.e.",  "strate": 0, "from": "Presque partout (almost everywhere)", "domain": "mesure"},
+    {"s": "dμ",    "strate": 0, "from": "Intégration par rapport à μ",    "domain": "mesure"},
+    {"s": "RN",    "strate": 0, "from": "Radon-Nikodym dν/dμ (1930)",     "domain": "mesure"},
+
+    # --- Calcul stochastique ---
+    {"s": "W(t)",  "strate": 0, "from": "Mouvement brownien (Wiener 1923)", "domain": "stochastique"},
+    {"s": "dW",    "strate": 0, "from": "Incréments browniens",           "domain": "stochastique"},
+    {"s": "Itô",   "strate": 0, "from": "Intégrale d'Itô (1944)",        "domain": "stochastique"},
+    {"s": "SDE",   "strate": 0, "from": "Équation diff. stochastique",    "domain": "stochastique"},
+    {"s": "E[·|F]","strate": 0, "from": "Espérance conditionnelle (filtration)", "domain": "stochastique"},
+    {"s": "Mart",  "strate": 0, "from": "Martingale (Doob 1953)",         "domain": "stochastique"},
+
+    # --- Optimisation ---
+    {"s": "argmin","strate": 0, "from": "Argument du minimum",            "domain": "optimisation"},
+    {"s": "argmax","strate": 0, "from": "Argument du maximum",            "domain": "optimisation"},
+    {"s": "L_lag", "strate": 0, "from": "Lagrangien (Lagrange 1788)",     "domain": "optimisation"},
+    {"s": "KKT",   "strate": 0, "from": "Conditions KKT (Karush-Kuhn-Tucker 1951)", "domain": "optimisation"},
+    {"s": "LP",    "strate": 0, "from": "Programmation linéaire (Dantzig 1947)", "domain": "optimisation"},
+    {"s": "∇f=0",  "strate": 0, "from": "Condition de stationnarité",     "domain": "optimisation"},
+
+    # --- Analyse fonctionnelle ---
+    {"s": "H_Hilb","strate": 0, "from": "Espace de Hilbert (1906)",       "domain": "analyse fonctionnelle"},
+    {"s": "B_Ban", "strate": 0, "from": "Espace de Banach (1920)",        "domain": "analyse fonctionnelle"},
+    {"s": "⟨·,·⟩_H","strate": 0,"from": "Produit scalaire Hilbert",      "domain": "analyse fonctionnelle"},
+    {"s": "X*",    "strate": 0, "from": "Dual topologique",               "domain": "analyse fonctionnelle"},
+    {"s": "L²",    "strate": 0, "from": "Espace L² (carré intégrable)",   "domain": "analyse fonctionnelle"},
+    {"s": "HB",    "strate": 0, "from": "Hahn-Banach (1929)",             "domain": "analyse fonctionnelle"},
     # STRATE 1 — Σ⁰₁ · Récursivement énumérable
     # ==================================================================
     {"s": "∃",     "strate": 1, "from": "Quantificateur existentiel",    "domain": "logique"},
@@ -774,7 +813,6 @@ SYMBOLES = [
     # ==================================================================
     # STRATE 6 — PLAFOND · Non-calculable
     # ==================================================================
-    {"s": "∄",      "strate": 6, "from": "N'existe pas",                 "domain": "calculabilité"},
     {"s": "Ω_Ch",   "strate": 6, "from": "Constante de Chaitin",          "domain": "information"},
     {"s": "BB(n)",  "strate": 6, "from": "Busy Beaver",                   "domain": "calculabilité"},
     {"s": "⊥",      "strate": 6, "from": "Bottom / indécidable",          "domain": "logique"},
@@ -783,18 +821,19 @@ SYMBOLES = [
     {"s": "⊬",      "strate": 6, "from": "Non-prouvable dans S",          "domain": "logique"},
     {"s": "K(x)",   "strate": 6, "from": "Complexité Kolmogorov",         "domain": "information"},
     {"s": "HALT",   "strate": 6, "from": "Problème de l'arrêt",           "domain": "calculabilité"},
-    {"s": "TOT_und","strate": 6, "from": "Totalité (Π⁰₂-complet)",        "domain": "calculabilité"},
-    {"s": "Σ(n)",   "strate": 6, "from": "Busy Beaver shifts Σ(n)",       "domain": "calculabilité"},
-    {"s": "∅⁽∞⁾",   "strate": 6, "from": "Saut au-delà de tout ordinal",  "domain": "calculabilité"},
+    {"s": "H10",    "strate": 6, "from": "Hilbert 10th problem indécidable (Matiyasevich 1970, DPRM)", "domain": "calculabilité"},
+    {"s": "Σ(n)",   "strate": 6, "from": "Busy Beaver score — max 1s sur bande (Radó 1962)", "domain": "calculabilité"},
+    {"s": "WP_grp", "strate": 6, "from": "Word Problem groupes (Novikov 1955, Boone 1959)", "domain": "calculabilité"},
     {"s": "PCP",    "strate": 6, "from": "Post Correspondence Problem (Post 1946)", "domain": "calculabilité"},
     {"s": "Rice",   "strate": 6, "from": "Théorème de Rice (propriété sémantique indécidable)", "domain": "calculabilité"},
     {"s": "ATM",    "strate": 6, "from": "Acceptance problem {⟨M,w⟩ : M accepte w}", "domain": "calculabilité"},
     {"s": "ETM",    "strate": 6, "from": "Emptiness {⟨M⟩ : L(M)=∅} indécidable", "domain": "calculabilité"},
     {"s": "EQTM",   "strate": 6, "from": "Equivalence {⟨M₁,M₂⟩ : L(M₁)=L(M₂)} indécidable", "domain": "calculabilité"},
-    {"s": "S(n)",   "strate": 6, "from": "Frantic frog — max steps avant arrêt (Radó)", "domain": "calculabilité"},
+    {"s": "S(n)",   "strate": 6, "from": "Maximum shifts function — max steps (Radó 1962)", "domain": "calculabilité"},
     {"s": "Entsch", "strate": 6, "from": "Entscheidungsproblem (Hilbert 1928, réfuté Turing/Church 1936)", "domain": "logique"},
     {"s": "Diag",   "strate": 6, "from": "Argument diagonal Cantor/Turing", "domain": "calculabilité"},
     {"s": "Kolm",   "strate": 6, "from": "Incompressibilité Kolmogorov (pas d'algo pour trouver le plus court)", "domain": "information"},
+    {"s": "Wang",   "strate": 6, "from": "Wang tiling problem indécidable (Berger 1966, Memoirs AMS)", "domain": "calculabilité"},
 ]
 
 
