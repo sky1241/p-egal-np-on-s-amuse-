@@ -147,7 +147,7 @@ SYMBOLES = [
     {"s": "mₑ",   "strate": 0, "from": "Masse électron",              "domain": "particules"},
     {"s": "mₚ",   "strate": 0, "from": "Masse proton",                "domain": "particules"},
     {"s": "mₙ",   "strate": 0, "from": "Masse neutron",               "domain": "particules"},
-    {"s": "Λ",    "strate": 0, "from": "Constante cosmologique",       "domain": "cosmologie"},
+
     {"s": "H₀",   "strate": 0, "from": "Constante de Hubble",         "domain": "cosmologie"},
     {"s": "T_CMB","strate": 0, "from": "Température CMB ~2.725K",      "domain": "cosmologie"},
 
@@ -211,7 +211,7 @@ SYMBOLES = [
     {"s": "min",  "strate": 0, "from": "Minimum",                      "domain": "analyse"},
     {"s": "Σ",    "strate": 0, "from": "Sommation finie",              "domain": "analyse"},
     {"s": "Π",    "strate": 0, "from": "Produit fini",                 "domain": "analyse"},
-    {"s": "∏",    "strate": 0, "from": "Produit (variante)",           "domain": "analyse"},
+
     {"s": "O(n)",  "strate": 0, "from": "Grand-O Landau complexité",   "domain": "analyse"},
     {"s": "o(n)",  "strate": 0, "from": "Petit-o Landau",              "domain": "analyse"},
     {"s": "Θ(n)",  "strate": 0, "from": "Theta Landau",                "domain": "analyse"},
@@ -368,7 +368,7 @@ SYMBOLES = [
     {"s": "Bₙ",   "strate": 0, "from": "Nombre de Bernoulli",          "domain": "nb théorie"},
     {"s": "Cₙ",   "strate": 0, "from": "Nombre de Catalan",            "domain": "combinatoire"},
     {"s": "C(n,k)","strate": 0, "from": "Coefficient binomial",         "domain": "combinatoire"},
-    {"s": "n!",   "strate": 0, "from": "Factorielle",                  "domain": "combinatoire"},
+
 
     # --- PROBABILITÉS & STATISTIQUES ---
     {"s": "P(A)",  "strate": 0, "from": "Probabilité événement A",      "domain": "probabilités"},
