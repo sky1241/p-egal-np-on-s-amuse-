@@ -1362,6 +1362,35 @@ SYMBOLES = [
     {"s": "DiffSph",  "strate": 3, "from": "1/4-pinched differentiable sphere theorem (Brendle-Schoen 2009)."},
     {"s": "FeitThomp","strate": 3, "from": "Odd order theorem — tout groupe fini d'ordre impair est résoluble (Feit-Thompson 1963, 255 pages)."},
     {"s": "Vinogr3P", "strate": 3, "from": "Vinogradov — tout impair suffisamment grand = somme de 3 premiers (1937). Méthode cercle."},
+
+    # ═══════════════════════════════════════════════════════════════
+    #  RATISSAGE PASS 5 vague 3 — classiques + percées récentes
+    # ═══════════════════════════════════════════════════════════════
+
+    # Théorie des nombres classique
+    {"s": "PNT",      "strate": 3, "from": "Prime Number Theorem — π(x)~x/ln(x) (Hadamard & de la Vallée-Poussin 1896). Preuve élémentaire Erdős-Selberg 1949."},
+    {"s": "Waring",   "strate": 3, "from": "Problème de Waring — tout entier = somme de g(k) puissances k-ièmes (Hilbert 1909)."},
+    {"s": "QRecip",   "strate": 3, "from": "Réciprocité quadratique (Gauss 1801, ~240 preuves). Généralisée Artin, Langlands."},
+    {"s": "Dirichlet","strate": 3, "from": "Théorème Dirichlet — infinité premiers en progressions arithmétiques (1837). L-fonctions."},
+
+    # Géométrie / empilement
+    {"s": "Viaz8",    "strate": 3, "from": "Sphere packing dim 8 — E₈ optimal en ℝ⁸ (Viazovska 2016, Fields Medal 2022). Formes modulaires."},
+    {"s": "Viaz24",   "strate": 3, "from": "Sphere packing dim 24 — Leech lattice optimal en ℝ²⁴ (Cohn-Kumar-Miller-Radchenko-Viazovska 2016)."},
+    {"s": "Kakeya3D", "strate": 3, "from": "Kakeya 3D — ensemble Kakeya ℝ³ dim Hausdorff = 3 (Wang-Zahl 2025, preprint). 'Once in a century'."},
+    {"s": "DblBubble","strate": 3, "from": "Double bubble — bulle standard minimise aire ℝ³ (Hutchings-Morgan-Ritoré-Ros 2002)."},
+    {"s": "Einstein", "strate": 3, "from": "Monotuile apériodique — existence tuile unique pavant plan seulement apériodiquement (Smith-Myers-Kaplan-Goodman-Strauss 2023)."},
+
+    # Algèbre
+    {"s": "BrauerH0", "strate": 3, "from": "Brauer Height Zero Conjecture (Malle-Navarro-Schaeffer Fry-Tiep 2024, Annals)."},
+    {"s": "Nagata",   "strate": 3, "from": "Conjecture Nagata — automorphisme sauvage k[x,y,z] pas apprivoisé (Shestakov-Umirbaev 2003)."},
+
+    # Géom diff / dynamique
+    {"s": "Zimmer",   "strate": 3, "from": "Conjecture Zimmer — actions réseaux rang ≥ 2 triviales en petite dim (Brown-Fisher-Hurtado 2017)."},
+
+    # Combinatoire
+    {"s": "ErdDiscrep","strate": 3, "from": "Erdős discrepancy — suite ±1 a sous-sommes non-bornées (Tao 2015)."},
+    {"s": "GuthKatz", "strate": 3, "from": "Erdős distinct distances — Ω(n/log n) distances pour n points ℝ² (Guth-Katz 2010)."},
+    {"s": "RamseyExp","strate": 3, "from": "Ramsey diagonal — R(k,k) ≤ (4-ε)^k, 1ère amélioration exponentielle depuis 1935 (Campos et al. 2023)."},
 ]
 
 

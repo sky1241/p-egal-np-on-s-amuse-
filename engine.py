@@ -898,6 +898,35 @@ SYMBOLES = [
     # Théorie des nombres (compléments)
     {"s": "Vinogr3P",  "strate": 3, "from": "Vinogradov — tout impair suffisamment grand est somme de 3 premiers (1937). Méthode cercle. Rendu effectif par Helfgott (GoldWeak).", "domain": "nb théorie"},
 
+    # --- Strate 3 vague 3 : classiques fondamentaux manquants ---
+
+    # Théorie des nombres classique
+    {"s": "PNT",       "strate": 3, "from": "Prime Number Theorem — π(x) ~ x/ln(x) (Hadamard & de la Vallée-Poussin 1896, indépendamment). Preuve élémentaire Erdős-Selberg 1949.", "domain": "nb théorie"},
+    {"s": "Waring",    "strate": 3, "from": "Problème de Waring — tout entier = somme de g(k) puissances k-ièmes (Hilbert 1909). g(2)=4 Lagrange, g(3)=9 Wieferich-Kempner.", "domain": "nb théorie"},
+    {"s": "QRecip",    "strate": 3, "from": "Loi réciprocité quadratique — (p/q)(q/p) = (-1)^{(p-1)(q-1)/4} (Gauss 1801, ~240 preuves connues). Généralisée par Artin, Langlands.", "domain": "nb théorie"},
+    {"s": "Dirichlet", "strate": 3, "from": "Théorème Dirichlet — infinité premiers dans progressions arithmétiques a+nd, pgcd(a,d)=1 (1837). Utilise L-fonctions.", "domain": "nb théorie"},
+
+    # Géométrie / empilement (compléments)
+    {"s": "Viaz8",     "strate": 3, "from": "Sphere packing dim 8 — réseau E₈ est empilement le plus dense en ℝ⁸ (Viazovska 2016, Fields Medal 2022). Formes modulaires.", "domain": "géométrie"},
+    {"s": "Viaz24",    "strate": 3, "from": "Sphere packing dim 24 — réseau de Leech est optimal en ℝ²⁴ (Cohn-Kumar-Miller-Radchenko-Viazovska 2016).", "domain": "géométrie"},
+    {"s": "Kakeya3D",  "strate": 3, "from": "Kakeya conjecture dim 3 — ensemble Kakeya dans ℝ³ a dim Hausdorff et Minkowski = 3 (Wang-Zahl 2025, preprint). Résultat 'once in a century'.", "domain": "géométrie"},
+    {"s": "DblBubble", "strate": 3, "from": "Double bubble conjecture — double bulle standard minimise l'aire dans ℝ³ (Hutchings-Morgan-Ritoré-Ros 2002).", "domain": "géométrie"},
+    {"s": "Einstein",  "strate": 3, "from": "Einstein problem / monotuile apériodique — existence d'une tuile unique pavant le plan seulement apériodiquement (Smith-Myers-Kaplan-Goodman-Strauss 2023).", "domain": "géométrie"},
+
+    # Algèbre / théorie des groupes (compléments)
+    {"s": "BrauerH0",  "strate": 3, "from": "Brauer Height Zero Conjecture — hauteur zéro des caractères dans blocs (Malle-Navarro-Schaeffer Fry-Tiep 2024, Annals of Math).", "domain": "algèbre"},
+    {"s": "Nagata",    "strate": 3, "from": "Conjecture Nagata — automorphisme sauvage de k[x,y,z] n'est pas apprivoisé (Shestakov-Umirbaev 2003).", "domain": "algèbre"},
+
+    # Géom diff / dynamique (compléments)
+    {"s": "Zimmer",    "strate": 3, "from": "Conjecture Zimmer — actions de réseaux de groupes de Lie rang ≥ 2 sur variétés de petite dimension sont triviales (Brown-Fisher-Hurtado 2017).", "domain": "géom diff"},
+
+    # Combinatoire / théorie additive (compléments)
+    {"s": "ErdDiscrep","strate": 3, "from": "Erdős discrepancy problem — toute suite ±1 a sous-sommes partielles non-bornées (Tao 2015). Utilise analyse de Fourier entropique.", "domain": "combinatoire"},
+    {"s": "GuthKatz",  "strate": 3, "from": "Erdős distinct distances — n points dans ℝ² déterminent Ω(n/log n) distances distinctes (Guth-Katz 2010). Polynomial partitioning.", "domain": "combinatoire"},
+    {"s": "RamseyExp", "strate": 3, "from": "Ramsey diagonal upper bound — R(k,k) ≤ (4-ε)^k, première amélioration exponentielle depuis 1935 (Campos-Griffiths-Morris-Sahasrabudhe 2023).", "domain": "combinatoire"},
+
+
+
     # ==================================================================
     # STRATE 4 — CIEL · AH
     # ==================================================================
