@@ -8,7 +8,8 @@
 | 8    | 23   | 14   | 26   | 21   | 125  | 619  | 2329 | 3833 | 4617 | 6277 |
 
 ## Bridge paper
-- **Miyasaka et al. 2009**: "Organometal Halide Perovskites as Visible-Light Sensitizers for Photovoltaic Cells" — **21 980 citations**
+- **Kojima, Teshima, Shirai & Miyasaka 2009** (JACS): "Organometal Halide Perovskites as Visible-Light Sensitizers for Photovoltaic Cells" — **~21 000 citations**
+- ⚠️ CORRECTION: auteur principal = Kojima (Miyasaka = PI/dernier auteur, convention japonaise)
 - Pont entre chimie des perovskites (matériaux connus depuis 1839) et cellules photovoltaïques
 - DORMANCE 3 ans post-bridge (2009-2012): ~20 papers/an. Le pont est posé mais personne ne traverse encore.
 

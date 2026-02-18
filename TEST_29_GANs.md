@@ -13,7 +13,8 @@
 | 2    | 19   | 131  | 205  | 329  | 463  |
 
 ## Bridge paper
-- **Goodfellow et al. 2014**: "Generative Adversarial Nets" — **21 728 citations**
+- **Goodfellow et al. 2014**: "Generative Adversarial Nets" — **~100 000+ citations** (Google Scholar, toutes versions) / ~2 300 (Semantic Scholar, version NeurIPS seule)
+- ⚠️ CORRECTION: le chiffre initial (21 728) provenait d'une source intermédiaire. Le vrai total Google Scholar est bien supérieur.
 - Pont entre game theory (jeu min-max) et deep learning (génération de données)
 - 2e pont vers médecine: ~2017, GAN pour augmentation de données médicales
 

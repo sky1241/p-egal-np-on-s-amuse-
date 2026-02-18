@@ -18,7 +18,8 @@
 | 16   | 85   | 402  | 936  |
 
 ## Bridge paper
-- **Kalos et al., NEJM 2011**: "Chimeric Antigen Receptor–Modified T Cells in Chronic Lymphoid Leukemia" — **3 485 citations**
+- **Porter, Levine, Kalos, Bagg & June, NEJM 2011**: "Chimeric Antigen Receptor–Modified T Cells in Chronic Lymphoid Leukemia" — **~3 500 citations**
+- ⚠️ CORRECTION: auteur principal = Porter (pas Kalos, qui est 3ème auteur)
 - Pont entre gene therapy (T cell engineering) et cancer immunology
 - Deux domaines actifs séparément depuis >15 ans
 

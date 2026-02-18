@@ -18,7 +18,8 @@
 | 20   | 24   | 40   | 80   | 689  | 2034 | 3589 |
 
 ## Bridge paper
-- **Vaswani et al. 2017**: "Attention Is All You Need" — **6 488+ citations** (OpenAlex, still climbing)
+- **Vaswani et al. 2017**: "Attention Is All You Need" — **~160 000+ citations** (Semantic Scholar) / **~204 000+ (Google Scholar)** — papier le plus cité en IA
+- ⚠️ CORRECTION: le chiffre initial (6 488) provenait d'une requête OpenAlex filtrée. Le vrai total est ~30x supérieur.
 - Pont entre sequence-to-sequence models et parallel computation
 - Puis 2e pont: Dosovitskiy et al. 2020 (ViT) = NLP→Computer Vision
 

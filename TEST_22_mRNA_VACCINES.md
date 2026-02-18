@@ -13,7 +13,8 @@
 | 7    | 18   | 58   | 91   | 146  | 167  | 356  | 653  |
 
 ## Bridge papers
-- **Karikó & Weissman 2005**: "Suppression of RNA Recognition by Toll-like Receptors: The Impact of Nucleoside Modification..." — **2 478 citations**
+- **Karikó, Buckstein, Ni & Weissman 2005** (Immunity): "Suppression of RNA Recognition by Toll-like Receptors: The Impact of Nucleoside Modification..." — **~1 840 citations** (Semantic Scholar)
+- ⚠️ CORRECTION: chiffre initial (2 478) était approximatif. Source Semantic Scholar = ~1 840.
 - Pont entre biologie de l'ARN et immunologie (résolution du problème inflammatoire)
 - mRNA×LNP = deuxième pont (delivery) construit progressivement 2010-2019
 
