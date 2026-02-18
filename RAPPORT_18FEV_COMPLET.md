@@ -339,7 +339,146 @@ Les 3 types de trous (Technique, Conceptuel, Perceptuel) sont tous des trous HOR
 **C'est pour ça que la carte des 480 symboles de S0 est la vraie carte des découvertes.** Les strates supérieures sont le CIEL où flottent les questions. Le SOL est où se trouvent les réponses. La question c'est toujours: quels outils du sol n'ont pas encore été combinés?
 
 ### Question ouverte:
-Peut-on QUANTIFIER la portée verticale d'un assemblage? C'est-à-dire: si je combine les outils X, Y, Z de S0, jusqu'à quelle strate leur assemblage peut-il atteindre? → TODO pour la suite.
+Peut-on QUANTIFIER la portée verticale d'un assemblage? C'est-à-dire: si je combine les outils X, Y, Z de S0, jusqu'à quelle strate leur assemblage peut-il atteindre? → RÉPONSE CI-DESSOUS.
+
+---
+
+# X. LES 3 SYSTÈMES DE CIRCULATION D'YGGDRASIL
+
+## L'arbre n'a pas UN chemin. Il en a TROIS.
+
+### 1. LE TRONC — Escalier principal (hiérarchie arithmétique)
+
+```
+Centre S6: BB(n)
+    ↑
+Centre S5: O_Kl
+    ↑
+Centre S4: Th(ℕ)
+    ↑
+Centre S3: PH
+    ↑
+Centre S2: ∅' (Turing jump)
+    ↑
+Centre S1: K (halting)
+    ↑
+Centre S0: = (égalité)
+```
+
+Ce sont les centres fixes de chaque strate (Post 1944, Davis 1950). C'est la COLONNE VERTÉBRALE d'Yggdrasil. Elle définit les ÉTAGES. Mais personne ne passe par là pour résoudre les problèmes — c'est l'architecture, pas l'escalier.
+
+### 2. LES LIANES — Escaliers de secours (preuves réelles)
+
+Les lianes POUSSENT du sol (outils S0 combinés) et GRIMPENT le long des branches (domaines). Chaque accroche = une combinaison d'outils qui donne un résultat nouveau, permettant d'atteindre le niveau suivant.
+
+**Exemple — Liane de Perelman (Poincaré, 2002-2003):**
+```
+S3  🌿 ATTRAPE Poincaré → le tire vers S0
+     |🌿
+     |🌿 Accroche 3: Surgery + classification κ-solutions
+     |🌿   → contrôle COMPLET des singularités
+S2   |🌿
+     |🌿 Accroche 2: W-entropie + non-effondrement
+     |🌿   → résout Little Loop Lemma (bloqué Hamilton)
+S1   |🌿
+     |🌿 Accroche 1: Ricci flow + maximum principle
+     |🌿   → convergence partielle (cas courbure positive)
+S0  🌱🌱🌱🌱 Racines: Ricci, Boltzmann, Alexandrov, Cheeger-Gromov
+```
+
+**Liane de Hamilton (bloquée):**
+```
+S2   ✗ BLOQUÉ — singularités non contrôlées
+     |🌿
+S1   |🌿 Accroche 1: Ricci flow + maximum principle
+     |🌿
+S0  🌱🌱 Racines: Ricci seul (pas d'entropie, pas d'Alexandrov)
+```
+
+**Différence:** Hamilton avait 2 racines → 1 accroche → bloqué S2. Perelman ajoute 2 racines (Boltzmann, Alexandrov) → 3 accroches → atteint S3.
+
+**La hauteur d'une liane = nombre de combinaisons successives d'outils S0.**
+
+### 3. LE MYCELIUM — Réseau souterrain (connexions invisibles)
+
+Le mycelium vit SOUS le sol. Ce sont les connexions latérales entre outils S0 de domaines différents. C'est le Mycelium Engine.
+
+```
+S0 (visible):  🌱Ricci   🌱Boltzmann   🌱Alexandrov   🌱Cheeger
+                  |            |              |             |
+MYCELIUM:     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+(invisible)    connexions latérales entre outils
+               = co-occurrences dans les papers
+               = les fils du réseau souterrain
+```
+
+**Le mycelium NOURRIT les lianes.** Sans connexion souterraine entre Ricci et Boltzmann, la liane de Perelman ne peut pas naître. Le mycelium doit d'abord connecter les racines.
+
+### Relations entre les 3 systèmes:
+
+| Système | Rôle | Analogie |
+|---------|------|----------|
+| **Tronc** | Définit les ÉTAGES (architecture fixe) | Le plan du bâtiment |
+| **Lianes** | MONTENT entre les étages (preuves réelles) | Les escaliers de secours |
+| **Mycelium** | ALIMENTE les lianes (connexions sous le sol) | Le réseau électrique |
+
+### Couplage avec les 3 types de trous:
+
+| Type de trou | Où est le problème? |
+|-------------|-------------------|
+| **TECHNIQUE (A)** | La liane EXISTE mais est CASSÉE à un endroit — il manque un outil pour l'accroche suivante |
+| **CONCEPTUEL (B)** | Le mycelium n'a PAS ENCORE connecté les racines → la liane ne peut pas NAÎTRE |
+| **PERCEPTUEL (C)** | La liane EST LÀ, elle a poussé, mais personne ne la VOIT |
+
+---
+
+# XI. GRAVITÉ — LES FORMULES DESCENDENT
+
+## Rappel: deux mouvements verticaux dans Yggdrasil
+
+### Mouvement MONTANT: les lianes (preuves)
+- Assemblage d'outils S0 → portée vers les strates supérieures
+- Chaque accroche = 1 combinaison nouvelle
+- La liane MONTE pour attraper une conjecture
+
+### Mouvement DESCENDANT: la gravité (résolution)
+- Quand la liane attrape une conjecture → elle la TIRE vers S0
+- La conjecture TOMBE de sa strate → atterrit à S0 comme théorème prouvé
+- 6/6 cas testés: toutes les conjectures résolues tombent à S0
+
+### Résidents PERMANENTS (ne tombent jamais):
+- K (halting) → S1 permanent — prouvé INDÉCIDABLE (Turing 1936)
+- TOT → S2 permanent — prouvé Π₂-complet
+- Th(ℕ) → S4 permanent — prouvé INDÉFINISSABLE (Tarski 1936)
+- BB(n) → S6 permanent — prouvé NON-CALCULABLE
+
+**Distinction clé:** Prouver quelque chose SUR un objet d'une strate haute ne le fait pas descendre. La preuve que K est indécidable vit à S0, mais K lui-même reste ancré à S1 pour toujours.
+
+### Deux populations dans Yggdrasil:
+
+| Population | Comportement | Exemples |
+|-----------|-------------|----------|
+| **Conjectures** (position inconnue) | FLOTTENT → TOMBENT quand prouvées | Poincaré, Fermat, Kepler |
+| **Résidents permanents** (position connue) | ANCRÉS à leur strate pour toujours | K, TOT, Th(ℕ), BB(n) |
+
+### Le cycle complet:
+
+```
+1. MYCELIUM connecte des outils S0 de domaines différents
+         ↓
+2. LIANE naît de cette connexion, monte accroche par accroche
+         ↓
+3. LIANE atteint la strate où FLOTTE une conjecture
+         ↓
+4. GRAVITÉ tire la conjecture vers S0
+         ↓
+5. La conjecture devient THÉORÈME (résident permanent de S0)
+         ↓
+6. Ce nouveau théorème S0 devient un OUTIL disponible
+   pour de futures lianes → retour à l'étape 1
+```
+
+**C'est un cycle auto-alimenté.** Chaque preuve crée de nouveaux outils qui permettent de futures preuves. Le sol S0 GRANDIT avec le temps — c'est pour ça que la science accélère.
 
 ---
 
