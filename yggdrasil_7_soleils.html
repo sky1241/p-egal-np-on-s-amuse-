@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>YGGDRASIL — Les 7 Systèmes Solaires</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #000; color: #fff; font-family: 'Courier New', monospace; overflow: hidden; }
+canvas { display: block; }
+#info {
+  position: fixed; top: 10px; left: 10px; z-index: 10;
+  background: rgba(0,0,0,0.85); padding: 15px; border: 1px solid #333;
+  font-size: 11px; max-width: 320px; line-height: 1.5;
+}
+#info h2 { color: #f90; margin-bottom: 5px; font-size: 14px; }
+#info .stat { color: #888; }
+#info .highlight { color: #0ff; }
+#hover-info {
+  position: fixed; bottom: 10px; left: 10px; z-index: 10;
+  background: rgba(0,0,0,0.9); padding: 12px; border: 1px solid #f90;
+  font-size: 12px; max-width: 400px; display: none;
+}
+#controls {
+  position: fixed; top: 10px; right: 10px; z-index: 10;
+  background: rgba(0,0,0,0.85); padding: 10px; border: 1px solid #333;
+  font-size: 11px;
+}
+#controls button {
+  background: #222; color: #fff; border: 1px solid #555;
+  padding: 4px 10px; margin: 2px; cursor: pointer; font-family: inherit;
+}
+#controls button:hover { background: #444; }
+#controls button.active { background: #f90; color: #000; }
+#total-bar {
+  position: fixed; bottom: 10px; right: 10px; z-index: 10;
+  background: rgba(0,0,0,0.85); padding: 12px; border: 1px solid #333;
+  font-size: 11px; width: 280px;
+}
+.bar-row { margin: 3px 0; display: flex; align-items: center; }
+.bar-label { width: 30px; color: #888; }
+.bar-bg { flex: 1; height: 10px; background: #111; margin: 0 5px; position: relative; }
+.bar-fill { height: 100%; position: absolute; left: 0; top: 0; }
+.bar-pct { width: 55px; text-align: right; font-size: 10px; }
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+
+<div id="info">
+  <h2>☀️ YGGDRASIL — 7 SYSTÈMES SOLAIRES</h2>
+  <div class="stat">730 symboles connus / 148 338 estimés</div>
+  <div class="highlight">0.49% de la carte explorée</div>
+  <br>
+  <div class="stat">Chaque strate = 1 soleil + planètes + lunes</div>
+  <div class="stat">Taille orbite = espace ESTIMÉ (pas juste le connu)</div>
+  <div class="stat">Points brillants = connu. Vide = inconnu.</div>
+  <br>
+  <div style="color:#f90">Sky × Claude — 18 Fév 2026, Versoix</div>
+</div>
+
+<div id="controls">
+  <div style="margin-bottom:5px; color:#888;">VUE:</div>
+  <button class="active" onclick="setView('all')">TOUT</button>
+  <button onclick="setView(0)">S0</button>
+  <button onclick="setView(1)">S1</button>
+  <button onclick="setView(2)">S2</button>
+  <button onclick="setView(3)">S3</button>
+  <button onclick="setView(4)">S4</button>
+  <button onclick="setView(5)">S5</button>
+  <button onclick="setView(6)">S6</button>
+  <br><br>
+  <div style="color:#888;">VITESSE:</div>
+  <button onclick="speed*=0.5">−</button>
+  <button onclick="speed*=2">+</button>
+  <button onclick="showEstimated=!showEstimated">TOGGLE ESTIMÉ</button>
+</div>
+
+<div id="total-bar">
+  <div style="color:#f90; margin-bottom:8px; font-weight:bold;">% EXPLORÉ PAR STRATE</div>
+</div>
+
+<div id="hover-info"></div>
+
+<script>
+const canvas = document.getElementById('c');
+const ctx = canvas.getContext('2d');
+let W, H;
+
+function resize() {
+  W = canvas.width = window.innerWidth;
+  H = canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener('resize', resize);
+
+let speed = 1;
+let showEstimated = true;
+let currentView = 'all';
+let time = 0;
+
+function setView(v) {
+  currentView = v;
+  document.querySelectorAll('#controls button').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+}
+
+// === DATA ===
+const strates = [
+  {
+    id: 0, name: "S0 — SOL", center: "=", centerName: "Égalité",
+    color: "#4CAF50", known: 480, estimated: 1170, provable: 100,
+    planets: [
+      { name: "Fondements", moons: 97, domains: ["calculabilité(51)", "logique(24)", "ensembles(22)"] },
+      { name: "Algèbre", moons: 75, domains: ["algèbre(23)", "alg.lin(19)", "catégories(15)", "nb.théorie(14)", "combin(4)"] },
+      { name: "Analyse", moons: 72, domains: ["analyse(50)", "trigo(12)", "signal(10)"] },
+      { name: "Complexité", moons: 68, domains: ["complexité(58)", "automates(10)"] },
+      { name: "Phys.Mod", moons: 62, domains: ["quantique(25)", "QFT(13)", "relativité(9)", "cosmo(8)", "nucléaire(7)"] },
+      { name: "Applications", moons: 58, domains: ["proba(17)", "ML(11)", "bio(10)", "chimie(7)", "crypto(6)", "finance(4)"] },
+      { name: "Phys.Class", moons: 49, domains: ["méca(15)", "EM(14)", "thermo(13)", "fluides(7)"] },
+      { name: "Géométrie", moons: 37, domains: ["topo(13)", "géom(12)", "géom.diff(12)"] },
+    ]
+  },
+  {
+    id: 1, name: "S1 — HALTING", center: "K", centerName: "Problème arrêt",
+    color: "#2196F3", known: 37, estimated: 2336, provable: 20,
+    planets: [
+      { name: "NP-complets", moons: 14, domains: ["SAT,3COL,TSP,CLIQUE..."] },
+      { name: "Calculabilité", moons: 12, domains: ["K,φₑ,Wₑ,RE,coRE,Σ⁰₁"] },
+      { name: "Classes NP", moons: 8, domains: ["NP,coNP,BQP,GI,NP-H"] },
+      { name: "Théorèmes", moons: 3, domains: ["Cook,Ladner,NL"] },
+    ]
+  },
+  {
+    id: 2, name: "S2 — LIMITE", center: "FIN", centerName: "Σ₂-complet",
+    color: "#9C27B0", known: 19, estimated: 4672, provable: 4,
+    planets: [
+      { name: "Hiérarchie", moons: 8, domains: ["TOT,FIN,INF,∅',∅''"] },
+      { name: "Probabiliste", moons: 7, domains: ["BPP,RP,coRP,ZPP,SZK"] },
+      { name: "Quantificateurs", moons: 4, domains: ["∃∀,Δ⁰₂,Σ⁰₂,Π⁰₂"] },
+    ]
+  },
+  {
+    id: 3, name: "S3 — MOTIF", center: "COF", centerName: "Σₙ-complet",
+    color: "#FF5722", known: 135, estimated: 9344, provable: 0.8,
+    planets: [
+      { name: "Hiérarchie poly", moons: 35, domains: ["PH,ΣₖP,ΠₖP,ΔₖP"] },
+      { name: "Comptage", moons: 25, domains: ["#P,Toda,PP,⊕P,GapP"] },
+      { name: "Barrières", moons: 25, domains: ["BGS,NatProof,Algebriz,ImpWig..."] },
+      { name: "Quantique", moons: 15, domains: ["QMA,MA,AM"] },
+      { name: "Arithmétique", moons: 20, domains: ["Σ⁰ₙ,Π⁰ₙ,Δ⁰ₙ,∅⁽ⁿ⁾"] },
+      { name: "Probabilités", moons: 15, domains: ["BirkErg,CLT,SLLN,LDP..."] },
+    ]
+  },
+  {
+    id: 4, name: "S4 — CIEL", center: "Th(ℕ)", centerName: "0^(ω) Davis 1950",
+    color: "#FF9800", known: 19, estimated: 18688, provable: 0.16,
+    planets: [
+      { name: "SPACE/TIME", moons: 7, domains: ["PSPACE,EXPTIME,NEXP"] },
+      { name: "Alternation", moons: 5, domains: ["AP=PSPACE,TQBF,IP"] },
+      { name: "Ordinaux", moons: 4, domains: ["ω,ε₀,Gentzen,Tarski"] },
+      { name: "Au-delà", moons: 3, domains: ["2-EXP,ELEM,QIP"] },
+    ]
+  },
+  {
+    id: 5, name: "S5 — HYPER", center: "O", centerName: "Kleene O",
+    color: "#E91E63", known: 19, estimated: 37376, provable: 0.032,
+    planets: [
+      { name: "Analytique", moons: 6, domains: ["Δ¹₁,Σ¹₁,Π¹₁,WO"] },
+      { name: "Descriptive", moons: 5, domains: ["Borel,Wadge,Σ⁰α"] },
+      { name: "Constructible", moons: 4, domains: ["Lα,KP,AD,Det"] },
+      { name: "Transfinite", moons: 4, domains: ["ω₁ᶜᵏ,O,HYP,∅⁽α⁾"] },
+    ]
+  },
+  {
+    id: 6, name: "S6 — PLAFOND", center: "∅", centerName: "Incomparabilité",
+    color: "#F44336", known: 21, estimated: 74752, provable: 0.01,
+    planets: [
+      { name: "Non-calculable", moons: 7, domains: ["BB,Σ(n),Ω,K(x)"] },
+      { name: "Indécidable", moons: 6, domains: ["HALT,PCP,Rice,ATM,ETM"] },
+      { name: "Incomplétude", moons: 5, domains: ["Gödel,⊢,⊬,⊥,Diag"] },
+      { name: "Au-delà", moons: 3, domains: ["Entsch,TOT_und,∅⁽∞⁾"] },
+    ]
+  },
+];
+
+// Build bar chart
+const barDiv = document.getElementById('total-bar');
+strates.forEach(s => {
+  const pct = (s.known / s.estimated * 100);
+  const realPct = pct * s.provable / 100;
+  const row = document.createElement('div');
+  row.className = 'bar-row';
+  row.innerHTML = `
+    <span class="bar-label" style="color:${s.color}">S${s.id}</span>
+    <div class="bar-bg">
+      <div class="bar-fill" style="width:${Math.max(0.5, pct)}%; background:${s.color};"></div>
+    </div>
+    <span class="bar-pct" style="color:${s.color}">${pct < 0.1 ? pct.toFixed(3) : pct.toFixed(1)}%</span>
+  `;
+  barDiv.appendChild(row);
+});
+
+// === RENDERING ===
+const mousePos = { x: 0, y: 0 };
+canvas.addEventListener('mousemove', e => { mousePos.x = e.clientX; mousePos.y = e.clientY; });
+
+function drawSystem(s, cx, cy, maxRadius, t) {
+  const numPlanets = s.planets.length;
+  
+  // Draw estimated space (dark ring)
+  if (showEstimated) {
+    ctx.beginPath();
+    ctx.arc(cx, cy, maxRadius, 0, Math.PI * 2);
+    ctx.strokeStyle = s.color + '15';
+    ctx.lineWidth = maxRadius * 0.8;
+    ctx.stroke();
+  }
+  
+  // Draw orbit rings
+  for (let i = 0; i < numPlanets; i++) {
+    const orbitR = maxRadius * (0.2 + 0.8 * (i + 1) / numPlanets);
+    ctx.beginPath();
+    ctx.arc(cx, cy, orbitR, 0, Math.PI * 2);
+    ctx.strokeStyle = s.color + '30';
+    ctx.lineWidth = 0.5;
+    ctx.stroke();
+  }
+  
+  // Draw center (sun)
+  const sunSize = Math.max(3, maxRadius * 0.08);
+  const pulse = 1 + 0.2 * Math.sin(t * 2);
+  
+  // Sun glow
+  const glow = ctx.createRadialGradient(cx, cy, 0, cx, cy, sunSize * 3 * pulse);
+  glow.addColorStop(0, s.color);
+  glow.addColorStop(0.5, s.color + '40');
+  glow.addColorStop(1, 'transparent');
+  ctx.beginPath();
+  ctx.arc(cx, cy, sunSize * 3 * pulse, 0, Math.PI * 2);
+  ctx.fillStyle = glow;
+  ctx.fill();
+  
+  // Sun core
+  ctx.beginPath();
+  ctx.arc(cx, cy, sunSize, 0, Math.PI * 2);
+  ctx.fillStyle = '#fff';
+  ctx.fill();
+  
+  // Center label
+  ctx.fillStyle = s.color;
+  ctx.font = `bold ${Math.max(9, maxRadius * 0.07)}px Courier New`;
+  ctx.textAlign = 'center';
+  ctx.fillText(s.center, cx, cy - sunSize - 4);
+  
+  // Draw planets and moons
+  for (let i = 0; i < numPlanets; i++) {
+    const p = s.planets[i];
+    const orbitR = maxRadius * (0.2 + 0.8 * (i + 1) / numPlanets);
+    const orbitSpeed = (0.3 + 0.2 * (numPlanets - i) / numPlanets) * speed;
+    const angle = t * orbitSpeed + (i * Math.PI * 2 / numPlanets);
+    
+    const px = cx + Math.cos(angle) * orbitR;
+    const py = cy + Math.sin(angle) * orbitR;
+    
+    // Planet size proportional to moons
+    const planetSize = Math.max(2, maxRadius * 0.02 + p.moons * maxRadius * 0.0005);
+    
+    // Planet
+    ctx.beginPath();
+    ctx.arc(px, py, planetSize, 0, Math.PI * 2);
+    ctx.fillStyle = s.color;
+    ctx.fill();
+    
+    // Planet label
+    if (maxRadius > 60) {
+      ctx.fillStyle = s.color + 'CC';
+      ctx.font = `${Math.max(7, maxRadius * 0.04)}px Courier New`;
+      ctx.textAlign = 'center';
+      ctx.fillText(p.name, px, py - planetSize - 3);
+      ctx.fillStyle = '#888';
+      ctx.font = `${Math.max(6, maxRadius * 0.03)}px Courier New`;
+      ctx.fillText(`${p.moons}`, px, py + planetSize + 10);
+    }
+    
+    // Moons orbiting planet
+    const moonOrbitR = planetSize * 2.5;
+    const numMoonDots = Math.min(p.moons, 20);
+    for (let m = 0; m < numMoonDots; m++) {
+      const moonAngle = t * (1 + i * 0.3) * speed * 2 + m * Math.PI * 2 / numMoonDots;
+      const mx = px + Math.cos(moonAngle) * moonOrbitR;
+      const my = py + Math.sin(moonAngle) * moonOrbitR;
+      ctx.beginPath();
+      ctx.arc(mx, my, 1, 0, Math.PI * 2);
+      ctx.fillStyle = s.color + '80';
+      ctx.fill();
+    }
+    
+    // Estimated unknown moons (dim)
+    if (showEstimated) {
+      const unknownRatio = s.estimated / s.known;
+      const numGhost = Math.min(30, Math.floor(numMoonDots * unknownRatio * 0.1));
+      for (let m = 0; m < numGhost; m++) {
+        const moonAngle = t * 0.1 + m * Math.PI * 2 / numGhost + i;
+        const ghostR = moonOrbitR * (1.5 + Math.random() * 0.5);
+        const mx = px + Math.cos(moonAngle) * ghostR;
+        const my = py + Math.sin(moonAngle) * ghostR;
+        ctx.beginPath();
+        ctx.arc(mx, my, 0.5, 0, Math.PI * 2);
+        ctx.fillStyle = s.color + '20';
+        ctx.fill();
+      }
+    }
+  }
+  
+  // Strate label
+  ctx.fillStyle = s.color;
+  ctx.font = `bold ${Math.max(10, maxRadius * 0.06)}px Courier New`;
+  ctx.textAlign = 'center';
+  ctx.fillText(s.name, cx, cy + maxRadius + 15);
+  
+  // Known/estimated
+  const pct = (s.known / s.estimated * 100).toFixed(1);
+  ctx.fillStyle = '#888';
+  ctx.font = `${Math.max(8, maxRadius * 0.04)}px Courier New`;
+  ctx.fillText(`${s.known}/${s.estimated.toLocaleString()} (${pct}%)`, cx, cy + maxRadius + 28);
+}
+
+function draw() {
+  time += 0.008;
+  ctx.fillStyle = 'rgba(0,0,0,0.15)';
+  ctx.fillRect(0, 0, W, H);
+  
+  if (currentView === 'all') {
+    // Layout: 7 systems in a meaningful pattern
+    // S0 big in center, others orbiting around it
+    const centerX = W * 0.45;
+    const centerY = H * 0.48;
+    const bigR = Math.min(W, H) * 0.22;
+    
+    // S0 — the big one
+    drawSystem(strates[0], centerX, centerY, bigR, time);
+    
+    // S1-S6 orbiting around S0
+    const outerR = Math.min(W, H) * 0.38;
+    const smallR = Math.min(W, H) * 0.09;
+    for (let i = 1; i <= 6; i++) {
+      const angle = -Math.PI/2 + (i - 1) * Math.PI * 2 / 6 + time * 0.02 * speed;
+      const sx = centerX + Math.cos(angle) * outerR;
+      const sy = centerY + Math.sin(angle) * outerR;
+      drawSystem(strates[i], sx, sy, smallR, time);
+      
+      // Connection line to S0
+      ctx.beginPath();
+      ctx.moveTo(centerX, centerY);
+      ctx.lineTo(sx, sy);
+      ctx.strokeStyle = strates[i].color + '15';
+      ctx.lineWidth = 1;
+      ctx.setLineDash([3, 6]);
+      ctx.stroke();
+      ctx.setLineDash([]);
+    }
+    
+    // Grand total
+    ctx.fillStyle = '#f90';
+    ctx.font = 'bold 12px Courier New';
+    ctx.textAlign = 'left';
+    ctx.fillText('TOTAL: 730 / 148,338 = 0.49%', 10, H - 10);
+    
+  } else {
+    // Single strate view — full screen
+    const s = strates[currentView];
+    const maxR = Math.min(W, H) * 0.38;
+    drawSystem(s, W/2, H/2, maxR, time);
+    
+    // Detail panel
+    ctx.fillStyle = s.color;
+    ctx.font = 'bold 14px Courier New';
+    ctx.textAlign = 'left';
+    let y = H/2 - maxR;
+    ctx.fillText(`${s.name}`, W/2 + maxR + 20, y);
+    ctx.fillStyle = '#fff';
+    ctx.font = '12px Courier New';
+    y += 20;
+    ctx.fillText(`Centre: ${s.center} (${s.centerName})`, W/2 + maxR + 20, y);
+    y += 18;
+    ctx.fillText(`Connu: ${s.known} symboles`, W/2 + maxR + 20, y);
+    y += 18;
+    ctx.fillText(`Estimé: ${s.estimated.toLocaleString()} symboles`, W/2 + maxR + 20, y);
+    y += 18;
+    ctx.fillText(`Exploré: ${(s.known/s.estimated*100).toFixed(2)}%`, W/2 + maxR + 20, y);
+    y += 18;
+    ctx.fillText(`Prouvable: ${s.provable}%`, W/2 + maxR + 20, y);
+    y += 18;
+    const real = (s.known/s.estimated*100) * s.provable / 100;
+    ctx.fillStyle = '#f90';
+    ctx.fillText(`ON SAIT: ${real < 0.01 ? real.toFixed(5) : real.toFixed(2)}%`, W/2 + maxR + 20, y);
+    y += 30;
+    
+    ctx.fillStyle = '#888';
+    ctx.font = '11px Courier New';
+    s.planets.forEach((p, i) => {
+      ctx.fillStyle = s.color;
+      ctx.fillText(`🪐 ${p.name} (${p.moons} lunes)`, W/2 + maxR + 20, y);
+      y += 14;
+      ctx.fillStyle = '#666';
+      p.domains.forEach(d => {
+        ctx.fillText(`   ${d}`, W/2 + maxR + 20, y);
+        y += 13;
+      });
+      y += 4;
+    });
+  }
+  
+  requestAnimationFrame(draw);
+}
+
+draw();
+</script>
+</body>
+</html>
