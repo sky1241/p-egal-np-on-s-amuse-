@@ -279,6 +279,70 @@ C'est exactement ce que le Mycelium Engine fait.
 | Théorie gravitationnelle | ✅ Testée 6/6 | RAPPORT_18FEV_MATIN.md |
 | Visualisations 3D | ✅ 2 fichiers | yggdrasil_*.html |
 
+---
+
+# IX. MÉCANIQUE VERTICALE: LES OUTILS MONTENT, LES CONJECTURES TOMBENT
+
+## Découverte clé (18 fév, post-rapport)
+
+### Question: quand une conjecture descend de S3 à S0, par où passe-t-elle?
+
+**Réponse empirique (testée sur 6 cas):** Elle ne DESCEND PAS par le tronc. Elle TOMBE directement.
+
+### Pourquoi? Parce que TOUS les outils de preuve sont à S0.
+
+**Test Poincaré — outils de Perelman:**
+| Outil | Strate |
+|-------|--------|
+| Ricci flow (Hamilton 1982) | S0 — prouvé, calculable |
+| W-entropie (Boltzmann) | S0 — prouvé |
+| Espaces d'Alexandrov | S0 — prouvé |
+| Compacité Cheeger-Gromov | S0 — prouvé |
+| Chirurgie (surgery) | S0 — prouvé |
+| Maximum principle | S0 — prouvé |
+
+→ **100% des outils sont à S0. Aucun outil de S1, S2, ou S3.**
+
+Même résultat pour Fermat (courbes elliptiques, formes modulaires, Galois → tout S0) et Four Color (graphes, algorithmes → tout S0).
+
+### Le mécanisme: ASSEMBLAGE S0 = PORTÉE VERTICALE
+
+Les outils sont au sol. Mais leur ASSEMBLAGE crée une PORTÉE qui monte dans les strates:
+
+```
+S3  ☁️ [Conjecture flotte ici]
+     |
+     |  ← Assemblage Perelman ATTEINT ce niveau
+     |     (Ricci + Entropie + Alexandrov + Surgery)
+S2   |
+     |  ← Assemblage Hamilton BLOQUÉ ici
+     |     (Ricci flow seul — singularités non contrôlées)
+S1   |
+     |
+S0  🔧🔧🔧🔧🔧 TOUS les outils sont au SOL
+```
+
+**Analogie exacte avec la hiérarchie arithmétique:**
+- S0 (décidable) = outils bruts
+- S0 + 1 assemblage = portée S1 (on peut CHERCHER)
+- S0 + 2 assemblages = portée S2 (on peut VÉRIFIER PARTOUT)
+- S0 + 3 assemblages = portée S3 (on peut chercher dans les vérifications)
+
+Chaque COMBINAISON d'outils S0 ajoute un "quantificateur" — une couche de portée supplémentaire.
+
+### Conséquence pour le Mycelium Engine:
+
+Le trou n'est JAMAIS vertical (entre strates). Le trou est TOUJOURS horizontal (entre outils S0 qui ne se parlent pas).
+
+Les 3 types de trous (Technique, Conceptuel, Perceptuel) sont tous des trous HORIZONTAUX au niveau S0. La hauteur que l'assemblage atteint dépend de QUELS outils S0 sont combinés.
+
+**C'est pour ça que la carte des 480 symboles de S0 est la vraie carte des découvertes.** Les strates supérieures sont le CIEL où flottent les questions. Le SOL est où se trouvent les réponses. La question c'est toujours: quels outils du sol n'ont pas encore été combinés?
+
+### Question ouverte:
+Peut-on QUANTIFIER la portée verticale d'un assemblage? C'est-à-dire: si je combine les outils X, Y, Z de S0, jusqu'à quelle strate leur assemblage peut-il atteindre? → TODO pour la suite.
+
+---
+
 ## Ce qui reste à construire:
 - [ ] Pipeline OpenAlex → co-occurrences symboles (la PLUIE)
 - [ ] Implémentation des 3 scores de détection (A, B, C)
