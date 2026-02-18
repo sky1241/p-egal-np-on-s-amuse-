@@ -2,26 +2,21 @@
 P=NP ON S'AMUSE — MOTEUR STRATES × SYMBOLES v2
 =================================================
 Sky × Claude — 17 Février 2026
-
 Tous les symboles scientifiques et mathématiques connus,
 placés sur leur strate de calculabilité.
 Pas de liaisons — juste la carte pure.
-
 Usage:
     python engine.py          → génère JSON + rapport
     python engine.py --html   → génère aussi le HTML autonome
 """
-
 import json
 import math
 import sys
 from collections import defaultdict
 from pathlib import Path
-
 # ============================================================================
 # STRATES — 7 niveaux
 # ============================================================================
-
 STRATES = [
     {
         "id": 0, "name": "SOL · Δ⁰₀ · Décidable", "short": "Δ⁰₀ SOL",
@@ -66,17 +61,13 @@ STRATES = [
         "color": [239, 68, 68], "yr": 0.46, "opacity": 0.24,
     },
 ]
-
-
 # ============================================================================
 # TOUS LES SYMBOLES SCIENTIFIQUES ET MATHÉMATIQUES CONNUS
 # ============================================================================
-
 SYMBOLES = [
     # ==================================================================
     # STRATE 0 — SOL · DÉCIDABLE · Tout ce qui se calcule
     # ==================================================================
-
     # --- ARITHMÉTIQUE FONDAMENTALE ---
     {"s": "+",    "strate": 0, "from": "Addition",                   "domain": "arithmétique"},
     {"s": "−",    "strate": 0, "from": "Soustraction",               "domain": "arithmétique"},
@@ -102,7 +93,6 @@ SYMBOLES = [
     {"s": "⌈x⌉",  "strate": 0, "from": "Partie entière supérieure",  "domain": "arithmétique"},
     {"s": "|x|",  "strate": 0, "from": "Valeur absolue",             "domain": "arithmétique"},
     {"s": "∞",    "strate": 0, "from": "Infini potentiel (Wallis)",   "domain": "analyse"},
-
     # --- ENSEMBLES DE NOMBRES ---
     {"s": "ℕ",    "strate": 0, "from": "Nombres naturels",           "domain": "nombres"},
     {"s": "ℤ",    "strate": 0, "from": "Entiers relatifs",           "domain": "nombres"},
@@ -113,7 +103,6 @@ SYMBOLES = [
     {"s": "𝕆",    "strate": 0, "from": "Octonions",                  "domain": "nombres"},
     {"s": "ℙ",    "strate": 0, "from": "Nombres premiers",           "domain": "nombres"},
     {"s": "𝔽ₚ",   "strate": 0, "from": "Corps fini à p éléments",    "domain": "algèbre"},
-
     # --- CONSTANTES FONDAMENTALES ---
     {"s": "π",    "strate": 0, "from": "Pi ~3.14159 (Archimède)",     "domain": "géométrie"},
     {"s": "e",    "strate": 0, "from": "Euler ~2.71828",              "domain": "analyse"},
@@ -130,7 +119,6 @@ SYMBOLES = [
     {"s": "7",    "strate": 0, "from": "Sept — premier mersenne (2³-1)", "domain": "arithmétique"},
     {"s": "8",    "strate": 0, "from": "Huit — premier cube >1 (2³)", "domain": "arithmétique"},
     {"s": "9",    "strate": 0, "from": "Neuf — premier carré impair >1 (3²)", "domain": "arithmétique"},
-
     # --- CONSTANTES PHYSIQUES ---
     {"s": "c",    "strate": 0, "from": "Vitesse lumière 299792458 m/s","domain": "relativité"},
     {"s": "G",    "strate": 0, "from": "Constante gravitationnelle",   "domain": "gravitation"},
@@ -147,10 +135,8 @@ SYMBOLES = [
     {"s": "mₑ",   "strate": 0, "from": "Masse électron",              "domain": "particules"},
     {"s": "mₚ",   "strate": 0, "from": "Masse proton",                "domain": "particules"},
     {"s": "mₙ",   "strate": 0, "from": "Masse neutron",               "domain": "particules"},
-
     {"s": "H₀",   "strate": 0, "from": "Constante de Hubble",         "domain": "cosmologie"},
     {"s": "T_CMB","strate": 0, "from": "Température CMB ~2.725K",      "domain": "cosmologie"},
-
     # --- THÉORIE DES ENSEMBLES ---
     {"s": "∈",    "strate": 0, "from": "Appartenance (Cantor)",       "domain": "ensembles"},
     {"s": "∉",    "strate": 0, "from": "Non-appartenance",            "domain": "ensembles"},
@@ -175,7 +161,6 @@ SYMBOLES = [
     {"s": "κ",    "strate": 0, "from": "Cardinal inaccessible (Hausdorff 1908)", "domain": "ensembles"},
     {"s": "cf",   "strate": 0, "from": "Cofinalité (König, théorie cardinaux)", "domain": "ensembles"},
     {"s": "Card", "strate": 0, "from": "Classe des cardinaux",          "domain": "ensembles"},
-
     # --- LOGIQUE PROPOSITIONNELLE & PRÉDICATS ---
     {"s": "∧",    "strate": 0, "from": "ET logique (conjonction)",     "domain": "logique"},
     {"s": "∨",    "strate": 0, "from": "OU logique (disjonction)",     "domain": "logique"},
@@ -202,7 +187,6 @@ SYMBOLES = [
     {"s": "□",    "strate": 0, "from": "Nécessité (logique modale, Kripke 1963)", "domain": "logique"},
     {"s": "◇",    "strate": 0, "from": "Possibilité (logique modale, Kripke 1963)", "domain": "logique"},
     {"s": "⊩_forc","strate": 0, "from": "Forcing (Cohen 1963, indép. CH)", "domain": "logique"},
-
     # --- ANALYSE / CALCUL ---
     {"s": "∫",    "strate": 0, "from": "Intégrale (Leibniz 1675)",     "domain": "analyse"},
     {"s": "∬",    "strate": 0, "from": "Intégrale double",             "domain": "analyse"},
@@ -226,12 +210,10 @@ SYMBOLES = [
     {"s": "min",  "strate": 0, "from": "Minimum",                      "domain": "analyse"},
     {"s": "Σ",    "strate": 0, "from": "Sommation finie",              "domain": "analyse"},
     {"s": "Π",    "strate": 0, "from": "Produit fini",                 "domain": "analyse"},
-
     {"s": "O(n)",  "strate": 0, "from": "Grand-O Landau complexité",   "domain": "analyse"},
     {"s": "o(n)",  "strate": 0, "from": "Petit-o Landau",              "domain": "analyse"},
     {"s": "Θ(n)",  "strate": 0, "from": "Theta Landau",                "domain": "analyse"},
     {"s": "ε",    "strate": 0, "from": "Epsilon voisinage",            "domain": "analyse"},
-
     # --- FONCTIONS SPÉCIALES ---
     {"s": "sin",  "strate": 0, "from": "Sinus",                       "domain": "trigonométrie"},
     {"s": "cos",  "strate": 0, "from": "Cosinus",                     "domain": "trigonométrie"},
@@ -272,14 +254,11 @@ SYMBOLES = [
     {"s": "Si(x)","strate": 0, "from": "Sinus intégral",                "domain": "analyse"},
     {"s": "Ci(x)","strate": 0, "from": "Cosinus intégral",              "domain": "analyse"},
     {"s": "Ei(x)","strate": 0, "from": "Exponentielle intégrale",       "domain": "analyse"},
-
     # --- ALGÈBRE LINÉAIRE ---
     {"s": "det",  "strate": 0, "from": "Déterminant",                 "domain": "algèbre lin"},
     {"s": "tr",   "strate": 0, "from": "Trace d'une matrice",         "domain": "algèbre lin"},
     {"s": "rank", "strate": 0, "from": "Rang d'une matrice",          "domain": "algèbre lin"},
     {"s": "dim",  "strate": 0, "from": "Dimension espace vectoriel",   "domain": "algèbre lin"},
-
-
     {"s": "span", "strate": 0, "from": "Espace engendré",              "domain": "algèbre lin"},
     {"s": "A⁻¹",  "strate": 0, "from": "Matrice inverse",              "domain": "algèbre lin"},
     {"s": "Aᵀ",   "strate": 0, "from": "Transposée",                   "domain": "algèbre lin"},
@@ -293,7 +272,6 @@ SYMBOLES = [
     {"s": "Iₙ",   "strate": 0, "from": "Matrice identité n×n",         "domain": "algèbre lin"},
     {"s": "diag", "strate": 0, "from": "Matrice diagonale",            "domain": "algèbre lin"},
     {"s": "⊙",    "strate": 0, "from": "Produit de Hadamard",          "domain": "algèbre lin"},
-
     # --- ALGÈBRE ABSTRAITE ---
     {"s": "Gal",  "strate": 0, "from": "Groupe de Galois",             "domain": "algèbre"},
     {"s": "Aut",  "strate": 0, "from": "Automorphismes",               "domain": "algèbre"},
@@ -320,7 +298,6 @@ SYMBOLES = [
     {"s": "I⊲R",  "strate": 0, "from": "Idéal dans anneau",            "domain": "algèbre"},
     {"s": "F*/F", "strate": 0, "from": "Extension de corps",           "domain": "algèbre"},
     {"s": "Spec", "strate": 0, "from": "Spectre anneau (Grothendieck, géom algébrique)", "domain": "algèbre"},
-
     # --- THÉORIE DES CATÉGORIES ---
     {"s": "Ob(C)", "strate": 0, "from": "Objets d'une catégorie",       "domain": "catégories"},
     {"s": "Mor",   "strate": 0, "from": "Morphismes",                   "domain": "catégories"},
@@ -339,7 +316,6 @@ SYMBOLES = [
     {"s": "Vect",  "strate": 0, "from": "Catégorie espaces vectoriels", "domain": "catégories"},
     {"s": "↪",    "strate": 0, "from": "Injection / monomorphisme",     "domain": "catégories"},
     {"s": "↠",    "strate": 0, "from": "Surjection / épimorphisme",     "domain": "catégories"},
-
     # --- TOPOLOGIE ---
     {"s": "τ_top","strate": 0, "from": "Topologie sur X",              "domain": "topologie"},
     {"s": "π₁",   "strate": 0, "from": "Groupe fondamental",           "domain": "topologie"},
@@ -357,7 +333,6 @@ SYMBOLES = [
     {"s": "∂X",   "strate": 0, "from": "Bord topologique",              "domain": "topologie"},
     {"s": "cl(A)", "strate": 0, "from": "Adhérence / fermeture",        "domain": "topologie"},
     {"s": "int(A)","strate": 0, "from": "Intérieur topologique",        "domain": "topologie"},
-
     # --- GÉOMÉTRIE DIFFÉRENTIELLE ---
     {"s": "gμν",   "strate": 0, "from": "Tenseur métrique (Einstein)",   "domain": "géom diff"},
     {"s": "Rμν",   "strate": 0, "from": "Tenseur de Ricci",              "domain": "géom diff"},
@@ -372,7 +347,6 @@ SYMBOLES = [
     {"s": "ωₐ",    "strate": 0, "from": "Forme de connexion",            "domain": "géom diff"},
     {"s": "Fₐᵦ",   "strate": 0, "from": "Tenseur de courbure (jauge)",   "domain": "géom diff"},
     {"s": "d_ext","strate": 0, "from": "Dérivée extérieure (Cartan 1899)", "domain": "géom diff"},
-
     # --- THÉORIE DES NOMBRES ---
     {"s": "≡_mod","strate": 0, "from": "Congruence modulo n",          "domain": "nb théorie"},
     {"s": "gcd",  "strate": 0, "from": "Plus grand commun diviseur",   "domain": "nb théorie"},
@@ -393,8 +367,6 @@ SYMBOLES = [
     {"s": "C(n,k)","strate": 0, "from": "Coefficient binomial",         "domain": "combinatoire"},
     {"s": "χ_chrom","strate": 0, "from": "Nombre chromatique (coloration graphe)", "domain": "combinatoire"},
     {"s": "Kₙ",   "strate": 0, "from": "Graphe complet à n sommets",    "domain": "combinatoire"},
-
-
     # --- PROBABILITÉS & STATISTIQUES ---
     {"s": "P(A)",  "strate": 0, "from": "Probabilité événement A",      "domain": "probabilités"},
     {"s": "E[X]",  "strate": 0, "from": "Espérance",                    "domain": "probabilités"},
@@ -414,14 +386,12 @@ SYMBOLES = [
     {"s": "Bayes", "strate": 0, "from": "Théorème Bayes P(A|B)",        "domain": "probabilités"},
     {"s": "𝟙",     "strate": 0, "from": "Indicatrice / caractéristique","domain": "probabilités"},
     {"s": "⊥_ind","strate": 0, "from": "Indépendance stochastique (X⊥Y)", "domain": "probabilités"},
-
     # --- THÉORIE DE L'INFORMATION ---
     {"s": "H(X)",  "strate": 0, "from": "Entropie Shannon",             "domain": "information"},
     {"s": "I(X;Y)","strate": 0, "from": "Information mutuelle",         "domain": "information"},
     {"s": "D_KL",  "strate": 0, "from": "Divergence Kullback-Leibler",  "domain": "information"},
     {"s": "C_Sh",  "strate": 0, "from": "Capacité canal Shannon",       "domain": "information"},
     {"s": "H_Ren", "strate": 0, "from": "Entropie de Rényi",            "domain": "information"},
-
     # --- PHYSIQUE CLASSIQUE ---
     {"s": "F",     "strate": 0, "from": "Force Newton F=ma",            "domain": "mécanique"},
     {"s": "m",     "strate": 0, "from": "Masse",                        "domain": "mécanique"},
@@ -440,7 +410,6 @@ SYMBOLES = [
     {"s": "g_grav","strate": 0, "from": "Accélération gravité ~9.81",   "domain": "gravitation"},
     {"s": "ρ_dens","strate": 0, "from": "Densité volumique",            "domain": "mécanique"},
     {"s": "P_pres","strate": 0, "from": "Pression",                     "domain": "fluides"},
-
     # --- LAGRANGIEN / HAMILTONIEN CLASSIQUE ---
     {"s": "ℒ",     "strate": 0, "from": "Lagrangien L=T-V",             "domain": "mécanique analytique"},
     {"s": "ℋ",     "strate": 0, "from": "Hamiltonien classique",        "domain": "mécanique analytique"},
@@ -449,7 +418,6 @@ SYMBOLES = [
     {"s": "{f,g}", "strate": 0, "from": "Crochet de Poisson",           "domain": "mécanique analytique"},
     {"s": "q",     "strate": 0, "from": "Coordonnée généralisée",       "domain": "mécanique analytique"},
     {"s": "p_gen", "strate": 0, "from": "Impulsion généralisée",        "domain": "mécanique analytique"},
-
     # --- ÉLECTROMAGNÉTISME ---
     {"s": "E_em",  "strate": 0, "from": "Champ électrique E",           "domain": "électromagn"},
     {"s": "B_em",  "strate": 0, "from": "Champ magnétique B",           "domain": "électromagn"},
@@ -460,7 +428,6 @@ SYMBOLES = [
     {"s": "Φ_B",   "strate": 0, "from": "Flux magnétique",              "domain": "électromagn"},
     {"s": "Fμν",   "strate": 0, "from": "Tenseur électromagnétique",    "domain": "électromagn"},
     {"s": "Aμ",    "strate": 0, "from": "Quadri-potentiel",             "domain": "électromagn"},
-
     # --- THERMODYNAMIQUE ---
     {"s": "S_ent", "strate": 0, "from": "Entropie S=k·ln(W)",          "domain": "thermo"},
     {"s": "T_temp","strate": 0, "from": "Température",                  "domain": "thermo"},
@@ -472,7 +439,6 @@ SYMBOLES = [
     {"s": "H_enth","strate": 0, "from": "Enthalpie H=U+PV",            "domain": "thermo"},
     {"s": "Z_part","strate": 0, "from": "Fonction de partition Z",      "domain": "mécanique stat"},
     {"s": "β_inv", "strate": 0, "from": "Température inverse 1/kT",     "domain": "mécanique stat"},
-
     # --- RELATIVITÉ ---
     {"s": "ds²",   "strate": 0, "from": "Intervalle espace-temps",      "domain": "relativité"},
     {"s": "γ_lor", "strate": 0, "from": "Facteur Lorentz 1/√(1-v²/c²)","domain": "relativité"},
@@ -480,7 +446,6 @@ SYMBOLES = [
     {"s": "Gμν",   "strate": 0, "from": "Tenseur d'Einstein Gμν=Rμν-½gμνR","domain": "relativité"},
     {"s": "Λ_cos", "strate": 0, "from": "Constante cosmologique",       "domain": "relativité"},
     {"s": "rs",    "strate": 0, "from": "Rayon de Schwarzschild",       "domain": "relativité"},
-
     # --- MÉCANIQUE QUANTIQUE ---
     {"s": "ψ",     "strate": 0, "from": "Fonction d'onde",              "domain": "quantique"},
     {"s": "Ĥ",     "strate": 0, "from": "Opérateur hamiltonien",        "domain": "quantique"},
@@ -499,7 +464,6 @@ SYMBOLES = [
     {"s": "|1⟩",   "strate": 0, "from": "Qubit état 1",                 "domain": "quantique"},
     {"s": "H_gate","strate": 0, "from": "Porte Hadamard",               "domain": "quantique"},
     {"s": "CNOT",  "strate": 0, "from": "Porte CNOT",                   "domain": "quantique"},
-
     # --- QFT / MODÈLE STANDARD ---
     {"s": "ℒ_QFT","strate": 0, "from": "Lagrangien densité QFT",       "domain": "QFT"},
     {"s": "ψ̄",    "strate": 0, "from": "Spineur adjoint de Dirac",     "domain": "QFT"},
@@ -513,7 +477,6 @@ SYMBOLES = [
     {"s": "θ_W",  "strate": 0, "from": "Angle de Weinberg",             "domain": "QFT"},
     {"s": "CKM",  "strate": 0, "from": "Matrice CKM (quarks)",          "domain": "QFT"},
     {"s": "PMNS", "strate": 0, "from": "Matrice PMNS (neutrinos)",      "domain": "QFT"},
-
     # --- NAVIER-STOKES / FLUIDES ---
     {"s": "ν_visc","strate": 0, "from": "Viscosité cinématique",        "domain": "fluides"},
     {"s": "η_visc","strate": 0, "from": "Viscosité dynamique",          "domain": "fluides"},
@@ -521,7 +484,6 @@ SYMBOLES = [
     {"s": "Ma",    "strate": 0, "from": "Nombre de Mach",               "domain": "fluides"},
     {"s": "Fr",    "strate": 0, "from": "Nombre de Froude",             "domain": "fluides"},
     {"s": "NS",    "strate": 0, "from": "Équations Navier-Stokes",      "domain": "fluides"},
-
     # --- CHIMIE ---
     {"s": "mol",   "strate": 0, "from": "Mole (unité)",                 "domain": "chimie"},
     {"s": "pH",    "strate": 0, "from": "Potentiel hydrogène -log[H+]", "domain": "chimie"},
@@ -529,7 +491,6 @@ SYMBOLES = [
     {"s": "ΔG",    "strate": 0, "from": "Enthalpie libre réaction",     "domain": "chimie"},
     {"s": "ΔH",    "strate": 0, "from": "Enthalpie réaction",           "domain": "chimie"},
     {"s": "E°",    "strate": 0, "from": "Potentiel standard Nernst",    "domain": "chimie"},
-
     # --- ÉLÉMENTS FORMULES CÉLÈBRES ---
     {"s": "E=mc²", "strate": 0, "from": "Einstein 1905",                "domain": "relativité"},
     {"s": "F=ma",  "strate": 0, "from": "Newton 1687",                  "domain": "mécanique"},
@@ -542,21 +503,18 @@ SYMBOLES = [
     {"s": "∇·E=ρ/ε₀","strate":0,"from":"Maxwell (Gauss)",              "domain": "électromagn"},
     {"s": "∇·B=0","strate": 0, "from": "Maxwell (pas de monopôle)",    "domain": "électromagn"},
     {"s": "PV=nRT","strate": 0, "from": "Loi gaz parfaits",            "domain": "thermo"},
-
     # --- COMPLEXITÉ (décidable) ---
     {"s": "P",     "strate": 0, "from": "Classe P temps poly",          "domain": "complexité"},
     {"s": "L_log", "strate": 0, "from": "Espace logarithmique",         "domain": "complexité"},
     {"s": "NC",    "strate": 0, "from": "Nick's Class — parallélisme efficace (NC⊆P)", "domain": "complexité"},
     {"s": "AC",    "strate": 0, "from": "Circuit complexity",            "domain": "complexité"},
     {"s": "SC",    "strate": 0, "from": "Steve's Class",                 "domain": "complexité"},
-
     # --- CRYPTOGRAPHIE ---
     {"s": "RSA",   "strate": 0, "from": "Rivest-Shamir-Adleman",        "domain": "crypto"},
     {"s": "AES",   "strate": 0, "from": "Advanced Encryption Standard",  "domain": "crypto"},
     {"s": "ECC",   "strate": 0, "from": "Elliptic Curve Cryptography",   "domain": "crypto"},
     {"s": "SHA",   "strate": 0, "from": "Secure Hash Algorithm",         "domain": "crypto"},
     {"s": "ZKP",   "strate": 0, "from": "Zero-Knowledge Proof",          "domain": "crypto"},
-
     # --- GÉOMÉTRIE EUCLIDIENNE / REPÈRES ---
     {"s": "x",     "strate": 0, "from": "Coordonnée x",                 "domain": "géométrie"},
     {"s": "y",     "strate": 0, "from": "Coordonnée y",                 "domain": "géométrie"},
@@ -567,7 +525,6 @@ SYMBOLES = [
     {"s": "∥",     "strate": 0, "from": "Parallèle",                    "domain": "géométrie"},
     {"s": "≅_geom","strate": 0, "from": "Congruence géométrique",       "domain": "géométrie"},
     {"s": "∼_geom","strate": 0, "from": "Similitude",                   "domain": "géométrie"},
-
     # --- TRANSFORMÉES & TRAITEMENT DU SIGNAL ---
     {"s": "ℱ",     "strate": 0, "from": "Transformée de Fourier",        "domain": "signal"},
     {"s": "ℱ⁻¹",   "strate": 0, "from": "Transformée inverse Fourier",   "domain": "signal"},
@@ -579,7 +536,6 @@ SYMBOLES = [
     {"s": "⊛",     "strate": 0, "from": "Corrélation croisée",          "domain": "signal"},
     {"s": "δ_Dir", "strate": 0, "from": "Peigne de Dirac (échantillonnage)", "domain": "signal"},
     {"s": "Nyquist","strate":0, "from": "Critère Nyquist-Shannon fₛ≥2B", "domain": "signal"},
-
     # --- ÉQUATIONS DIFFÉRENTIELLES ---
     {"s": "ODE",   "strate": 0, "from": "Équation diff ordinaire dy/dx=f(x,y)", "domain": "EDP"},
     {"s": "PDE",   "strate": 0, "from": "Équation aux dérivées partielles", "domain": "EDP"},
@@ -587,7 +543,6 @@ SYMBOLES = [
     {"s": "∂²u/∂t²","strate":0,"from": "Équation des ondes",            "domain": "EDP"},
     {"s": "∂u/∂t", "strate": 0, "from": "Équation de la chaleur",       "domain": "EDP"},
     {"s": "Sturm", "strate": 0, "from": "Problème Sturm-Liouville",     "domain": "EDP"},
-
     # --- BIOLOGIE & GÉNÉTIQUE ---
     {"s": "DNA",   "strate": 0, "from": "Acide désoxyribonucléique (Watson-Crick 1953)", "domain": "biologie"},
     {"s": "RNA",   "strate": 0, "from": "Acide ribonucléique",          "domain": "biologie"},
@@ -599,7 +554,6 @@ SYMBOLES = [
     {"s": "R₀",    "strate": 0, "from": "Taux reproduction base (épidémiologie)", "domain": "biologie"},
     {"s": "SIR",   "strate": 0, "from": "Modèle SIR (Susceptible-Infecté-Rétabli)", "domain": "biologie"},
     {"s": "logist","strate": 0, "from": "Équation logistique dN/dt=rN(1-N/K)", "domain": "biologie"},
-
     # --- ÉCONOMIE & THÉORIE DES JEUX ---
     {"s": "U_util","strate": 0, "from": "Fonction d'utilité",            "domain": "économie"},
     {"s": "S_D",   "strate": 0, "from": "Offre et demande (Marshall)",   "domain": "économie"},
@@ -611,7 +565,6 @@ SYMBOLES = [
     {"s": "VaR",   "strate": 0, "from": "Value at Risk",                 "domain": "finance"},
     {"s": "CAPM",  "strate": 0, "from": "Capital Asset Pricing Model (Sharpe)", "domain": "finance"},
     {"s": "GDP",   "strate": 0, "from": "Produit intérieur brut Y=C+I+G+NX", "domain": "économie"},
-
     # --- MACHINE LEARNING / IA ---
     {"s": "∇L",    "strate": 0, "from": "Gradient de la loss (descente de gradient)", "domain": "ML"},
     {"s": "σ_sigm","strate": 0, "from": "Sigmoïde σ(x)=1/(1+e⁻ˣ)",     "domain": "ML"},
@@ -624,7 +577,6 @@ SYMBOLES = [
     {"s": "GAN",   "strate": 0, "from": "Generative Adversarial Network (Goodfellow 2014)", "domain": "ML"},
     {"s": "VC_dim","strate": 0, "from": "Dimension VC (Vapnik-Chervonenkis)", "domain": "ML"},
     {"s": "PAC",   "strate": 0, "from": "Probably Approximately Correct (Valiant 1984)", "domain": "ML"},
-
     # --- PHYSIQUE NUCLÉAIRE & PARTICULES ---
     {"s": "σ_xs",  "strate": 0, "from": "Section efficace (barn)",       "domain": "nucléaire"},
     {"s": "τ_decay","strate":0, "from": "Temps de vie demi-vie",         "domain": "nucléaire"},
@@ -634,7 +586,6 @@ SYMBOLES = [
     {"s": "β_decay","strate":0, "from": "Désintégration bêta",           "domain": "nucléaire"},
     {"s": "α_decay","strate":0, "from": "Désintégration alpha",          "domain": "nucléaire"},
     {"s": "Feyn",  "strate": 0, "from": "Diagrammes de Feynman (propagateur)", "domain": "QFT"},
-
     # --- OPTIQUE ---
     {"s": "n_refr","strate": 0, "from": "Indice de réfraction",          "domain": "optique"},
     {"s": "Snell", "strate": 0, "from": "Loi Snell-Descartes n₁sinθ₁=n₂sinθ₂", "domain": "optique"},
@@ -642,7 +593,6 @@ SYMBOLES = [
     {"s": "ν_freq","strate": 0, "from": "Fréquence",                     "domain": "optique"},
     {"s": "E=hν",  "strate": 0, "from": "Énergie photon (Planck 1900)",  "domain": "quantique"},
     {"s": "Ψ_wav","strate": 0, "from": "Fonction d'onde (Schrödinger 1926)", "domain": "quantique"},
-
     # --- ASTRONOMIE / COSMOLOGIE ---
     {"s": "M☉",    "strate": 0, "from": "Masse solaire ~2×10³⁰ kg",      "domain": "astronomie"},
     {"s": "L☉",    "strate": 0, "from": "Luminosité solaire ~3.8×10²⁶ W","domain": "astronomie"},
@@ -652,13 +602,11 @@ SYMBOLES = [
     {"s": "Ω_Λ",   "strate": 0, "from": "Densité énergie noire ΩΛ~0.7", "domain": "cosmologie"},
     {"s": "FLRW",  "strate": 0, "from": "Métrique Friedmann-Lemaître-Robertson-Walker", "domain": "cosmologie"},
     {"s": "a(t)",  "strate": 0, "from": "Facteur d'échelle cosmologique", "domain": "cosmologie"},
-
     # --- THÉORIE DU CONTRÔLE ---
     {"s": "H(s)",  "strate": 0, "from": "Fonction de transfert",         "domain": "contrôle"},
     {"s": "PID",   "strate": 0, "from": "Contrôleur Proportionnel-Intégral-Dérivé", "domain": "contrôle"},
     {"s": "Bode",  "strate": 0, "from": "Diagramme de Bode (gain/phase)", "domain": "contrôle"},
     {"s": "Nyq_st","strate": 0, "from": "Critère stabilité Nyquist",     "domain": "contrôle"},
-
     # --- AUTOMATES & LANGAGES FORMELS ---
     {"s": "DFA",   "strate": 0, "from": "Automate fini déterministe",    "domain": "automates"},
     {"s": "NFA",   "strate": 0, "from": "Automate fini non-déterministe","domain": "automates"},
@@ -672,7 +620,6 @@ SYMBOLES = [
     {"s": "Chom",  "strate": 0, "from": "Hiérarchie de Chomsky (4 niveaux)", "domain": "automates"},
     {"s": "PR",   "strate": 0, "from": "Fonctions primitives récursives (Gödel-Herbrand 1934)", "domain": "calculabilité"},
     {"s": "Ack",  "strate": 0, "from": "Fonction Ackermann (non PR, totale récursive, 1928)", "domain": "calculabilité"},
-
     # --- Théorie de la mesure (Lebesgue 1902) ---
     {"s": "μ_mes", "strate": 0, "from": "Mesure abstraite",                "domain": "mesure"},
     {"s": "σ(F)",  "strate": 0, "from": "σ-algèbre (tribu)",              "domain": "mesure"},
@@ -681,7 +628,6 @@ SYMBOLES = [
     {"s": "a.e.",  "strate": 0, "from": "Presque partout (almost everywhere)", "domain": "mesure"},
     {"s": "dμ",    "strate": 0, "from": "Intégration par rapport à μ",    "domain": "mesure"},
     {"s": "RN",    "strate": 0, "from": "Radon-Nikodym dν/dμ (1930)",     "domain": "mesure"},
-
     # --- Calcul stochastique ---
     {"s": "W(t)",  "strate": 0, "from": "Mouvement brownien (Wiener 1923)", "domain": "stochastique"},
     {"s": "dW",    "strate": 0, "from": "Incréments browniens",           "domain": "stochastique"},
@@ -689,7 +635,6 @@ SYMBOLES = [
     {"s": "SDE",   "strate": 0, "from": "Équation diff. stochastique",    "domain": "stochastique"},
     {"s": "E[·|F]","strate": 0, "from": "Espérance conditionnelle (filtration)", "domain": "stochastique"},
     {"s": "Mart",  "strate": 0, "from": "Martingale (Doob 1953)",         "domain": "stochastique"},
-
     # --- Optimisation ---
     {"s": "argmin","strate": 0, "from": "Argument du minimum",            "domain": "optimisation"},
     {"s": "argmax","strate": 0, "from": "Argument du maximum",            "domain": "optimisation"},
@@ -697,7 +642,6 @@ SYMBOLES = [
     {"s": "KKT",   "strate": 0, "from": "Conditions KKT (Karush-Kuhn-Tucker 1951)", "domain": "optimisation"},
     {"s": "LP",    "strate": 0, "from": "Programmation linéaire (Dantzig 1947)", "domain": "optimisation"},
     {"s": "∇f=0",  "strate": 0, "from": "Condition de stationnarité",     "domain": "optimisation"},
-
     # --- Analyse fonctionnelle ---
     {"s": "H_Hilb","strate": 0, "from": "Espace de Hilbert (1906)",       "domain": "analyse fonctionnelle"},
     {"s": "B_Ban", "strate": 0, "from": "Espace de Banach (1920)",        "domain": "analyse fonctionnelle"},
@@ -728,7 +672,6 @@ SYMBOLES = [
     {"s": "NTIME","strate": 0, "from": "Temps non-déterministe NTIME(f(n))", "domain": "complexité"},
     {"s": "DSPACE","strate": 0, "from": "Espace déterministe DSPACE(f(n))", "domain": "complexité"},
     {"s": "NSPACE","strate": 0, "from": "Espace non-déterministe NSPACE(f(n))", "domain": "complexité"},
-
     {"s": "AC⁰",  "strate": 0, "from": "Circuits profondeur constante taille poly", "domain": "complexité"},
     {"s": "TC⁰",  "strate": 0, "from": "Threshold circuits (majorité)", "domain": "complexité"},
     {"s": "SAT",   "strate": 1, "from": "Satisfiabilité Cook 1971",     "domain": "complexité"},
@@ -754,7 +697,6 @@ SYMBOLES = [
     {"s": "Σ⁰₁",   "strate": 1, "from": "Classe Σ⁰₁ (r.e.) de la hiérarchie", "domain": "calculabilité"},
     {"s": "Π⁰₁",   "strate": 1, "from": "Classe Π⁰₁ (co-r.e.)",       "domain": "calculabilité"},
     {"s": "P/poly","strate": 1, "from": "P avec conseil polynomial (circuits)", "domain": "complexité"},
-
     # ==================================================================
     # STRATE 2 — Σ⁰₂ · Limite
     # ==================================================================
@@ -777,7 +719,6 @@ SYMBOLES = [
     {"s": "INF",   "strate": 2, "from": "{e : Wₑ infini} Π₂-complet",  "domain": "calculabilité"},
     {"s": "Σ⁰₂",   "strate": 2, "from": "Classe Σ⁰₂ de la hiérarchie", "domain": "calculabilité"},
     {"s": "Π⁰₂",   "strate": 2, "from": "Classe Π⁰₂ de la hiérarchie", "domain": "calculabilité"},
-
     # ==================================================================
     # STRATE 3 — Σ⁰ₙ · Motif
     # ==================================================================
@@ -803,7 +744,6 @@ SYMBOLES = [
     {"s": "C₌P",   "strate": 3, "from": "Exact counting complexity",    "domain": "complexité"},
     {"s": "COF",   "strate": 3, "from": "{e : Wₑ cofini} Σ₃-complet",  "domain": "calculabilité"},
     {"s": "REC",   "strate": 3, "from": "{e : Wₑ récursif} Σ₃-complet","domain": "calculabilité"},
-
     # --- Strate 3 : grandes conjectures résolues (théorèmes) ---
     {"s": "FermatWiles","strate": 3, "from": "Dernier théorème Fermat / modularité (Wiles 1995, BCDT 2001)", "domain": "nb théorie"},
     {"s": "Milnor_K",  "strate": 3, "from": "Conjecture Milnor K-théorie — K^M_n(F)/2 ≅ H^n(F,ℤ/2) (Voevodsky 2003)", "domain": "algèbre"},
@@ -814,8 +754,6 @@ SYMBOLES = [
     {"s": "VirtHaken", "strate": 3, "from": "Virtual Haken — 3-variétés hyperboliques (Agol 2012, Wise, Kahn-Markovic)", "domain": "topologie"},
     {"s": "KakeyaFin", "strate": 3, "from": "Kakeya corps finis — Besicovitch sets F_q^n (Dvir 2008, méthode polynomiale)", "domain": "combinatoire"},
     {"s": "Onsager_c", "strate": 3, "from": "Conjecture Onsager — Euler C^α conservation énergie ssi α>1/3 (Isett 2018, BDSV 2019)", "domain": "analyse"},
-    {"s": "GeomLang",  "strate": 3, "from": "Langlands géométrique catégorique unramified (Gaitsgory-Raskin et al. 2024)", "domain": "géom algébrique"},
-
     # --- Strate 3 : TOPOLOGIE — grands théorèmes résolus ---
     {"s": "Poinc3",    "strate": 3, "from": "Conjecture Poincaré dim 3 — toute 3-variété simplement connexe fermée ≅ S³ (Perelman 2003, flot de Ricci)", "domain": "topologie"},
     {"s": "Geomtrz",   "strate": 3, "from": "Géométrisation Thurston — toute 3-variété se décompose en 8 géométries (Perelman 2003)", "domain": "topologie"},
@@ -824,7 +762,6 @@ SYMBOLES = [
     {"s": "SmithConj", "strate": 3, "from": "Smith conjecture — action Zₚ sur S³ a point fixe = nœud trivial (Morgan-Bass 1984)", "domain": "topologie"},
     {"s": "ExoticS7",  "strate": 3, "from": "Sphères exotiques Milnor — S⁷ admet 28 structures diff. non-standard (Milnor 1956, Kervaire-Milnor 1963)", "domain": "topologie"},
     {"s": "Surgery",   "strate": 3, "from": "Théorie chirurgie — classification variétés dim ≥ 5 (Browder-Novikov-Sullivan-Wall 1960s)", "domain": "topologie"},
-
     # --- Strate 3 : THÉORIE DES NOMBRES — grands théorèmes résolus ---
     {"s": "Mordell",   "strate": 3, "from": "Conjecture Mordell — courbe genre ≥ 2 sur ℚ a nombre fini de points rationnels (Faltings 1983, Fields Medal)", "domain": "nb théorie"},
     {"s": "WeilConj",  "strate": 3, "from": "Conjectures Weil — fonctions zêta variétés /F_q: rationalité (Dwork), fonctionnalité, RH (Deligne 1974, Fields Medal)", "domain": "nb théorie"},
@@ -836,97 +773,73 @@ SYMBOLES = [
     {"s": "IwasMain",  "strate": 3, "from": "Iwasawa Main Conjecture — structure Λ-modules sur tours cyclotomiques (Mazur-Wiles 1984)", "domain": "nb théorie"},
     {"s": "SerreMod",  "strate": 3, "from": "Conjecture Serre modularité — repr. Galois irréd. impaires mod p sont modulaires (Khare-Wintenberger 2009)", "domain": "nb théorie"},
     {"s": "LaffFnF",   "strate": 3, "from": "Langlands pour corps de fonctions GL_n (Laurent Lafforgue 2002, Fields Medal)", "domain": "nb théorie"},
-
     # --- Strate 3 : ALGÈBRE — grands théorèmes résolus ---
     {"s": "CFSG",      "strate": 3, "from": "Classification groupes finis simples — 18 familles + 26 sporadiques (~1983, ~10000 pages, Gorenstein program)", "domain": "algèbre"},
     {"s": "Moonshine", "strate": 3, "from": "Monstrous Moonshine — j(τ) et Monster group (Conway-Norton 1979, prouvé Borcherds 1992, Fields Medal)", "domain": "algèbre"},
     {"s": "QuilSusl",  "strate": 3, "from": "Conjecture Serre (Quillen-Suslin) — modules proj. sur k[x₁..xₙ] sont libres (Quillen, Suslin 1976)", "domain": "algèbre"},
-
     # --- Strate 3 : ANALYSE — grands théorèmes résolus ---
-    {"s": "Bieberbach","strate": 3, "from": "Conjecture Bieberbach — |aₙ| ≤ n pour fonctions univalentes (de Branges 1985)", "domain": "analyse"},
-    {"s": "CarlesonL2","strate": 3, "from": "Convergence p.p. séries Fourier L² — (Carleson 1966, Fields Medal). Étendu Lᵖ p>1 (Hunt 1968).", "domain": "analyse"},
+    {"s": "Bieberbach","strate": 3, "from": "Théorème de Branges (ex-conj. Bieberbach) — |aₙ| ≤ n pour fonctions univalentes (De Branges 1985, Acta Math)", "domain": "analyse"},
+    {"s": "CarlesonL2","strate": 3, "from": "Convergence p.p. séries Fourier L² — (Carleson 1966, Abel Prize 2006). Étendu Lᵖ p>1 (Hunt 1968).", "domain": "analyse"},
     {"s": "KatoSqrt",  "strate": 3, "from": "Conjecture Kato racine carrée — √(div A grad) a domaine H¹ (Auscher-Hofmann-Lacey-McIntosh-Tchamitchian 2001)", "domain": "analyse"},
     {"s": "CoronaTh",  "strate": 3, "from": "Théorème Corona — Spec maximal H^∞ dense dans le spectre (Carleson 1962)", "domain": "analyse"},
-
     # --- Strate 3 : GÉOMÉTRIE — grands théorèmes résolus ---
     {"s": "CalabiYau", "strate": 3, "from": "Conjecture Calabi — existence métrique Kähler Ricci-plate si c₁=0 (Yau 1978, Fields Medal)", "domain": "géom diff"},
     {"s": "PosMass",   "strate": 3, "from": "Positive mass theorem — masse ADM ≥ 0 (Schoen-Yau 1979, Witten 1981). Fondamental en RG.", "domain": "géom diff"},
     {"s": "Kepler",    "strate": 3, "from": "Conjecture Kepler — empilement sphères densité max π/(3√2) = FCC/HCP (Hales 2005, Flyspeck 2014 vérifié formellement)", "domain": "géométrie"},
     {"s": "Willmore",  "strate": 3, "from": "Conjecture Willmore — min ∫H²dA pour tores immergés = 2π² (Marques-Neves 2014, min-max)", "domain": "géom diff"},
     {"s": "AtiyahSing","strate": 3, "from": "Théorème index Atiyah-Singer — ind(D) = ∫ch(σ)Td(M) (1963, généralisé K-théorie). Pont analyse↔topologie.", "domain": "géom diff"},
-
     # --- Strate 3 : COMBINATOIRE — grands théorèmes résolus ---
     {"s": "FourColor", "strate": 3, "from": "Théorème 4 couleurs — tout graphe planaire 4-coloriable (Appel-Haken 1976, Robertson et al. 1997, Gonthier 2005 Coq)", "domain": "combinatoire"},
     {"s": "RobSeym",   "strate": 3, "from": "Graph Minor Theorem — tout ensemble infini de graphes a mineur (Robertson-Seymour 1983-2004, 20 papers)", "domain": "combinatoire"},
     {"s": "GreenTao",  "strate": 3, "from": "Green-Tao — les premiers contiennent des PA de longueur arbitraire (2004). Utilise Szemerédi + transference.", "domain": "combinatoire"},
     {"s": "DensHJ",    "strate": 3, "from": "Density Hales-Jewett — version densité du théorème HJ (Polymath1, 2009/2012)", "domain": "combinatoire"},
     {"s": "Kneser",    "strate": 3, "from": "Conjecture Kneser — χ(KG(n,k)) = n-2k+2 (Lovász 1978, topologie de Borsuk-Ulam appliquée aux graphes)", "domain": "combinatoire"},
-
     # --- Strate 3 : PROBABILITÉS — grands théorèmes résolus ---
     {"s": "SLE_thm",   "strate": 3, "from": "SLE/percolation — invariance conforme percolation critique sur réseau triangulaire (Smirnov 2001, Fields Medal 2010)", "domain": "probabilités"},
-
     # --- Strate 3 : LOGIQUE/INDÉPENDANCE — résultats prouvés ---
     {"s": "ParisHarr", "strate": 3, "from": "Paris-Harrington — variante Ramsey indépendante de PA (1977). Premier exemple 'naturel' d'indépendance.", "domain": "logique"},
     {"s": "DPRM",      "strate": 3, "from": "Théorème DPRM — ensembles r.e. = ensembles diophantiens (Davis-Putnam-Robinson 1961, Matiyasevich 1970). H10 négatif.", "domain": "logique"},
-
     # --- Strate 3 vague 2 : grands théorèmes prouvés (suite) ---
-
     # Géom algébrique / algèbre commutative
     {"s": "Hironaka",  "strate": 3, "from": "Résolution des singularités en car. 0 — tout variété admet désingularisation (Hironaka 1964, Fields Medal)", "domain": "géom algébrique"},
     {"s": "FundLemma", "strate": 3, "from": "Lemme fondamental Langlands-Shelstad — identité orbitale pour endoscopie (Ngô Bảo Châu 2008, Fields Medal 2010)", "domain": "nb théorie"},
-
     # Combinatoire additive / théorie ergodique
-    {"s": "Szemer",    "strate": 3, "from": "Théorème Szemerédi — tout ensemble de densité positive dans ℕ contient des PA de longueur k (1975, Fields Medal). Preuve ergodique Furstenberg 1977.", "domain": "combinatoire"},
+    {"s": "Szemer",    "strate": 3, "from": "Théorème Szemerédi — tout ensemble de densité positive dans ℕ contient des PA de longueur k (1975, Abel Prize 2012). Preuve ergodique Furstenberg 1977.", "domain": "combinatoire"},
     {"s": "RothAP",    "strate": 3, "from": "Théorème Roth — tout ensemble dense dans ℕ contient des 3-AP (1953, Fields Medal). Méthode cercle de Hardy-Littlewood.", "domain": "combinatoire"},
-
     # Rigidité géométrique
     {"s": "MostowRig", "strate": 3, "from": "Mostow rigidity — variétés hyperboliques fermées dim ≥ 3 isométriques ssi π₁ isomorphes (1968)", "domain": "géom diff"},
     {"s": "MargSup",   "strate": 3, "from": "Margulis superrigidité — réseaux dans groupes de Lie rang ≥ 2 sont arithmétiques (1975, Fields Medal)", "domain": "géom diff"},
     {"s": "Oppenh",    "strate": 3, "from": "Conjecture Oppenheim — forme quadratique irrationnelle indéfinie ≥3 var. prend valeurs denses (Margulis 1987, flots unipotents)", "domain": "nb théorie"},
     {"s": "Ratner",    "strate": 3, "from": "Théorèmes Ratner — classification mesures/orbites invariantes unipotentes sur espaces homogènes (1990-91)", "domain": "géom diff"},
-
     # Topologie 3-variétés (compléments)
     {"s": "Tameness",  "strate": 3, "from": "Marden Tameness — variétés hyperboliques de volume infini sont topologiquement apprivoisées (Agol 2004, Calegari-Gabai 2004)", "domain": "topologie"},
     {"s": "EndLam",    "strate": 3, "from": "Ending Lamination — 3-var. hyperbolique déterminée par end invariants (Brock-Canary-Minsky 2012, Thurston conjecture)", "domain": "topologie"},
-
     # Géom diff (compléments)
     {"s": "DiffSph",   "strate": 3, "from": "1/4-pinched differentiable sphere theorem — variété courbure 1/4-pincée est difféomorphe à Sⁿ (Brendle-Schoen 2009)", "domain": "géom diff"},
-
     # Algèbre (compléments)
     {"s": "FeitThomp", "strate": 3, "from": "Odd order theorem — tout groupe fini d'ordre impair est résoluble (Feit-Thompson 1963, 255 pages). Premier pas vers CFSG.", "domain": "algèbre"},
-
     # Théorie des nombres (compléments)
     {"s": "Vinogr3P",  "strate": 3, "from": "Vinogradov — tout impair suffisamment grand est somme de 3 premiers (1937). Méthode cercle. Rendu effectif par Helfgott (GoldWeak).", "domain": "nb théorie"},
-
     # --- Strate 3 vague 3 : classiques fondamentaux manquants ---
-
     # Théorie des nombres classique
     {"s": "PNT",       "strate": 3, "from": "Prime Number Theorem — π(x) ~ x/ln(x) (Hadamard & de la Vallée-Poussin 1896, indépendamment). Preuve élémentaire Erdős-Selberg 1949.", "domain": "nb théorie"},
     {"s": "Waring",    "strate": 3, "from": "Problème de Waring — tout entier = somme de g(k) puissances k-ièmes (Hilbert 1909). g(2)=4 Lagrange, g(3)=9 Wieferich-Kempner.", "domain": "nb théorie"},
     {"s": "QRecip",    "strate": 3, "from": "Loi réciprocité quadratique — (p/q)(q/p) = (-1)^{(p-1)(q-1)/4} (Gauss 1801, ~240 preuves connues). Généralisée par Artin, Langlands.", "domain": "nb théorie"},
     {"s": "Dirichlet", "strate": 3, "from": "Théorème Dirichlet — infinité premiers dans progressions arithmétiques a+nd, pgcd(a,d)=1 (1837). Utilise L-fonctions.", "domain": "nb théorie"},
-
     # Géométrie / empilement (compléments)
     {"s": "Viaz8",     "strate": 3, "from": "Sphere packing dim 8 — réseau E₈ est empilement le plus dense en ℝ⁸ (Viazovska 2016, Fields Medal 2022). Formes modulaires.", "domain": "géométrie"},
     {"s": "Viaz24",    "strate": 3, "from": "Sphere packing dim 24 — réseau de Leech est optimal en ℝ²⁴ (Cohn-Kumar-Miller-Radchenko-Viazovska 2016).", "domain": "géométrie"},
-    {"s": "Kakeya3D",  "strate": 3, "from": "Kakeya conjecture dim 3 — ensemble Kakeya dans ℝ³ a dim Hausdorff et Minkowski = 3 (Wang-Zahl 2025, preprint). Résultat 'once in a century'.", "domain": "géométrie"},
     {"s": "DblBubble", "strate": 3, "from": "Double bubble conjecture — double bulle standard minimise l'aire dans ℝ³ (Hutchings-Morgan-Ritoré-Ros 2002).", "domain": "géométrie"},
     {"s": "Einstein",  "strate": 3, "from": "Einstein problem / monotuile apériodique — existence d'une tuile unique pavant le plan seulement apériodiquement (Smith-Myers-Kaplan-Goodman-Strauss 2023).", "domain": "géométrie"},
-
     # Algèbre / théorie des groupes (compléments)
     {"s": "BrauerH0",  "strate": 3, "from": "Brauer Height Zero Conjecture — hauteur zéro des caractères dans blocs (Malle-Navarro-Schaeffer Fry-Tiep 2024, Annals of Math).", "domain": "algèbre"},
     {"s": "Nagata",    "strate": 3, "from": "Conjecture Nagata — automorphisme sauvage de k[x,y,z] n'est pas apprivoisé (Shestakov-Umirbaev 2003).", "domain": "algèbre"},
-
     # Géom diff / dynamique (compléments)
-    {"s": "Zimmer",    "strate": 3, "from": "Conjecture Zimmer — actions de réseaux de groupes de Lie rang ≥ 2 sur variétés de petite dimension sont triviales (Brown-Fisher-Hurtado 2017).", "domain": "géom diff"},
-
     # Combinatoire / théorie additive (compléments)
     {"s": "ErdDiscrep","strate": 3, "from": "Erdős discrepancy problem — toute suite ±1 a sous-sommes partielles non-bornées (Tao 2015). Utilise analyse de Fourier entropique.", "domain": "combinatoire"},
     {"s": "GuthKatz",  "strate": 3, "from": "Erdős distinct distances — n points dans ℝ² déterminent Ω(n/log n) distances distinctes (Guth-Katz 2010). Polynomial partitioning.", "domain": "combinatoire"},
     {"s": "RamseyExp", "strate": 3, "from": "Ramsey diagonal upper bound — R(k,k) ≤ (4-ε)^k, première amélioration exponentielle depuis 1935 (Campos-Griffiths-Morris-Sahasrabudhe 2023).", "domain": "combinatoire"},
-
     # --- Strate 3 vague 4 : barrières complexité + probabilités + EDP + topo alg + classiques ---
-
     # ⚠️ BARRIÈRES COMPLEXITÉ — fondamentaux pour P=NP ⚠️
     {"s": "BGS",       "strate": 3, "from": "Baker-Gill-Solovay — ∃ oracle A: P^A=NP^A, ∃ oracle B: P^B≠NP^B (1975). Relativisation ne peut séparer P de NP.", "domain": "complexité"},
     {"s": "NatProof",  "strate": 3, "from": "Razborov-Rudich Natural Proofs barrier — si OWF existent, pas de preuve 'naturelle' de P≠NP (1997). Combinatorialisation bloquée.", "domain": "complexité"},
@@ -934,9 +847,8 @@ SYMBOLES = [
     {"s": "ImmSzel",   "strate": 3, "from": "Immerman-Szelepcsényi — NL = co-NL (1987). Non-déterminisme spatial fermé sous complémentation.", "domain": "complexité"},
     {"s": "SipLaut",   "strate": 3, "from": "Sipser-Lautemann — BPP ⊆ Σ₂P ∩ Π₂P (1983). Randomisation contenue dans PH niveau 2.", "domain": "complexité"},
     {"s": "Perm#P",    "strate": 3, "from": "Valiant permanent — Permanent est #P-complet (1979). Comptage ≠ décision, lien matrices/complexité.", "domain": "complexité"},
-    {"s": "RazWid",    "strate": 3, "from": "Razborov-Widgerson — si NEXP ⊄ P/poly alors dérandomisation : P = BPP (2004). Dureté → dérandomisation.", "domain": "complexité"},
+    {"s": "ImpWig",    "strate": 3, "from": "Impagliazzo-Wigderson — P = BPP si E requiert circuits expo (STOC 1997). Dureté → dérandomisation.", "domain": "complexité"},
     {"s": "ImpPad",    "strate": 3, "from": "Impagliazzo-Paturi SETH — ETH: 3-SAT pas en 2^{o(n)}, SETH: k-SAT pas en 2^{(1-ε)n} (1999). Base complexité fine.", "domain": "complexité"},
-
     # Probabilités / Stochastique (domaine quasi-vide !)
     {"s": "BirkErg",   "strate": 3, "from": "Birkhoff ergodic theorem — moyenne temporelle = moyenne spatiale p.p. (1931). Fondement théorie ergodique.", "domain": "probabilités"},
     {"s": "CLT",       "strate": 3, "from": "Central Limit Theorem — (Sₙ-nμ)/σ√n → N(0,1) (Lindeberg 1922, Lévy, Feller). Universalité gaussienne.", "domain": "probabilités"},
@@ -944,63 +856,45 @@ SYMBOLES = [
     {"s": "Donsker",   "strate": 3, "from": "Donsker invariance principle — marche aléatoire renormalisée → mouvement brownien (1951). CLT fonctionnel.", "domain": "probabilités"},
     {"s": "LDP",       "strate": 3, "from": "Large Deviations Principle — P(S̄ₙ∈A) ~ e^{-nI(A)} (Cramér 1938, Varadhan 1966). Taux exponentiels.", "domain": "probabilités"},
     {"s": "OrnIsm",    "strate": 3, "from": "Ornstein isomorphism — shifts de Bernoulli isomorphes ssi même entropie (Ornstein 1970). Classification systèmes aléatoires.", "domain": "probabilités"},
-
     # EDP (domaine vide !)
     {"s": "DeGNM",     "strate": 3, "from": "De Giorgi-Nash-Moser — solutions équations elliptiques div-forme à coefficients L^∞ sont Hölder (1957-58-60). Résout Hilbert 19ème.", "domain": "EDP"},
     {"s": "NashEmb",   "strate": 3, "from": "Nash embedding theorem — toute variété riemannienne se plonge isométriquement dans ℝ^N (1956). Schéma itératif Nash-Moser.", "domain": "géom diff"},
     {"s": "KAM",       "strate": 3, "from": "KAM theorem — tores quasi-périodiques persistent sous petites perturbations hamiltoniennes (Kolmogorov 1954, Arnold 1963, Moser 1962).", "domain": "mécanique analytique"},
-
     # Topologie algébrique (manquante)
     {"s": "deRham",    "strate": 3, "from": "de Rham theorem — cohomologie de de Rham ≅ cohomologie singulière (1931). Pont analyse ↔ topologie.", "domain": "topologie"},
     {"s": "BottPer",   "strate": 3, "from": "Bott periodicity — K-théorie topologique est périodique: π_{n+2}(U) ≅ π_n(U), π_{n+8}(O) ≅ π_n(O) (1959).", "domain": "topologie"},
-
     # Géométrie/Analyse complexe
     {"s": "Uniformiz", "strate": 3, "from": "Uniformization theorem — toute surface de Riemann simplement connexe ≅ S², ℂ ou 𝔻 (Koebe-Poincaré 1907).", "domain": "analyse"},
     {"s": "GrotRR",    "strate": 3, "from": "Grothendieck-Riemann-Roch — ch(f_!(F)) = f_*(ch(F)·Td(T_f)) en K-théorie (1957). Généralise Hirzebruch-RR.", "domain": "géom algébrique"},
-
     # Théorie des nombres (classiques manquants)
     {"s": "ClassFT",   "strate": 3, "from": "Class Field Theory — abélianisation Gal(K^ab/K) ≅ C_K (Takagi 1920, Artin 1927). Réciprocité non-abélienne = Langlands.", "domain": "nb théorie"},
-
     # Logique (compléments)
     {"s": "GodelInc",  "strate": 3, "from": "Gödel incompleteness — (1) toute théorie cohérente contenant PA a énoncés indécidables, (2) ne peut prouver sa propre cohérence (1931).", "domain": "logique"},
-
     # Algèbre classique
     {"s": "NoetherSy", "strate": 3, "from": "Noether theorem — toute symétrie continue d'un lagrangien donne une loi de conservation (1918). Pont algèbre ↔ physique.", "domain": "algèbre"},
-
     # Information
     {"s": "Shannon2",  "strate": 3, "from": "Shannon coding theorems — (1) source coding: H(X) bits suffisent, (2) channel: capacité C atteignable (1948). Fondement théorie info.", "domain": "information"},
-
     # --- Strate 3 vague 5 : trous finaux — quantique, circuits, descriptive, automates, stochastique ---
-
     # ⚠️ COMPLEXITÉ QUANTIQUE — résultat du siècle ⚠️
     {"s": "MIP*RE",    "strate": 3, "from": "MIP* = RE — prouveurs quantiques intriqués = langages r.e. (Ji-Natarajan-Vidick-Wright-Yuen 2020). Réfute Connes embedding, résout Tsirelson.", "domain": "quantique"},
-
     # Circuit lower bounds (complexité prouvée, pas barrières)
     {"s": "WillACC",   "strate": 3, "from": "Williams — NEXP ⊄ ACC⁰ circuits de taille poly (2011). Première borne inférieure circuits avec portes MODm depuis Razborov-Smolensky 87.", "domain": "complexité"},
     {"s": "RazMono",   "strate": 3, "from": "Razborov — circuits monotones pour CLIQUE exigent taille super-polynomiale 2^{Ω(n^{1/6})} (1985). Méthode d'approximation.", "domain": "complexité"},
     {"s": "RazSmol",   "strate": 3, "from": "Razborov-Smolensky — AC⁰[p] ne contient pas MOD_q pour p≠q premiers (1987). Bornes inférieures circuits à profondeur constante.", "domain": "complexité"},
     {"s": "HasAC0",    "strate": 3, "from": "Håstad switching lemma — PARITY ∉ AC⁰, circuits profondeur d taille 2^{Ω(n^{1/(d-1)})} nécessaires (1987). Tight pour AC⁰.", "domain": "complexité"},
-
     # Descriptive set theory (domaine vide !)
     {"s": "BorelDet",  "strate": 3, "from": "Borel determinacy — tout jeu de Gale-Stewart à gain Borel est déterminé (Martin 1975). Nécessite remplacement (Friedman 71).", "domain": "descriptive"},
-
     # Ensembles / Logique (résultats-événements)
     {"s": "CohenInd",  "strate": 3, "from": "Cohen forcing — CH est indépendant de ZFC: ni prouvable ni réfutable (Cohen 1963, Fields 1966). Méthode du forcing.", "domain": "ensembles"},
-
     # Automates (domaine vide !)
     {"s": "BuchiMSO",  "strate": 3, "from": "Büchi theorem — L est ω-régulier ssi définissable en MSO sur ω (Büchi 1962). Pont logique ↔ automates sur mots infinis.", "domain": "automates"},
     {"s": "MyhNer",    "strate": 3, "from": "Myhill-Nerode — L régulier ssi nombre fini de classes d'équivalence (Myhill 1957, Nerode 1958). Caractérisation algébrique réguliers.", "domain": "automates"},
     {"s": "RabinS2S",  "strate": 3, "from": "Rabin theorem — S2S (théorie monadique 2 successeurs) est décidable (Rabin 1969). Automates d'arbres, implique de nombreux résultats.", "domain": "automates"},
-
     # Stochastique (domaine vide !)
     {"s": "DoobMart",  "strate": 3, "from": "Doob martingale convergence — toute surmartingale bornée dans L¹ converge p.s. (Doob 1953). Fondement probabilités modernes.", "domain": "stochastique"},
-
     # Analyse fonctionnelle (presque vide)
     {"s": "BaireCat",  "strate": 3, "from": "Baire category theorem — espace métrique complet n'est pas union dénombrable de fermés d'intérieur vide (Baire 1899). Base Banach-Steinhaus/open mapping.", "domain": "analyse fonctionnelle"},
     {"s": "BanOpen",   "strate": 3, "from": "Banach open mapping + closed graph — surjection continue entre Banach est ouverte; graphe fermé implique continuité (Banach 1932).", "domain": "analyse fonctionnelle"},
-
-
-
     # ==================================================================
     # STRATE 4 — CIEL · AH
     # ==================================================================
@@ -1024,7 +918,6 @@ SYMBOLES = [
     {"s": "Tarski",  "strate": 4, "from": "Indéfinissabilité vérité (Tarski 1936)", "domain": "logique"},
     {"s": "ε₀_ord",  "strate": 4, "from": "Ordinal ε₀ = ω^ω^ω^… (Gentzen)", "domain": "ordinaux"},
     {"s": "Ord",  "strate": 0, "from": "Classe des ordinaux (von Neumann)", "domain": "ordinaux"},
-
     # ==================================================================
     # STRATE 5 — HYPERARITHMÉTIQUE
     # ==================================================================
@@ -1047,7 +940,6 @@ SYMBOLES = [
     {"s": "Wadge",  "strate": 5, "from": "Degrés de Wadge (raffinement de la hiérarchie)", "domain": "descriptive"},
     {"s": "Spect",  "strate": 5, "from": "Théorème Spector-Gandy (Π¹₁ = HYP en ω₁ᶜᵏ)", "domain": "calculabilité"},
     {"s": "Σ⁰_α",  "strate": 5, "from": "Niveau Borel transfinite Σ⁰α", "domain": "descriptive"},
-
     # ==================================================================
     # STRATE 6 — PLAFOND · Non-calculable
     # ==================================================================
@@ -1064,7 +956,6 @@ SYMBOLES = [
     {"s": "WP_grp", "strate": 6, "from": "Word Problem groupes (Novikov 1955, Boone 1959)", "domain": "calculabilité"},
     {"s": "PCP",    "strate": 6, "from": "Post Correspondence Problem (Post 1946)", "domain": "calculabilité"},
     {"s": "Rice",   "strate": 6, "from": "Théorème de Rice (propriété sémantique indécidable)", "domain": "calculabilité"},
-
     {"s": "ETM",    "strate": 6, "from": "Emptiness {⟨M⟩ : L(M)=∅} indécidable", "domain": "calculabilité"},
     {"s": "EQTM",   "strate": 6, "from": "Equivalence {⟨M₁,M₂⟩ : L(M₁)=L(M₂)} indécidable", "domain": "calculabilité"},
     {"s": "S(n)",   "strate": 6, "from": "Maximum shifts function — max steps (Radó 1962)", "domain": "calculabilité"},
@@ -1073,20 +964,15 @@ SYMBOLES = [
     {"s": "Kolm",   "strate": 6, "from": "Incompressibilité Kolmogorov (pas d'algo pour trouver le plus court)", "domain": "information"},
     {"s": "Wang",   "strate": 6, "from": "Wang tiling problem indécidable (Berger 1966, Memoirs AMS)", "domain": "calculabilité"},
 ]
-
-
 # ============================================================================
 # MOTEUR — sans liaisons, juste la carte
 # ============================================================================
-
 class StrateEngine:
     def __init__(self):
         self.strates = STRATES
         self.symboles = SYMBOLES
-
     def total_nodes(self):
         return len(self.symboles)
-
     def strate_stats(self):
         stats = []
         for st in self.strates:
@@ -1100,7 +986,6 @@ class StrateEngine:
                 "domains": sorted(domains),
             })
         return stats
-
     def distribute_on_plane(self, n, box_w=3.8, box_d=3.8, shrink=0.85):
         w = box_w * shrink * 0.88
         d = box_d * shrink * 0.88
@@ -1126,7 +1011,6 @@ class StrateEngine:
                 "z": round(-d/2 + cell_d/2 + row * cell_d, 4)
             })
         return points
-
     def export_json(self, path="strates_export.json"):
         data = {"meta": {"total_symbols": self.total_nodes()}, "strates": []}
         for st in self.strates:
@@ -1140,7 +1024,6 @@ class StrateEngine:
         with open(path, "w", encoding="utf-8") as f:
             json.dump(data, f, ensure_ascii=False, indent=2)
         return data
-
     def print_report(self):
         print("=" * 60)
         print("  STRATES × SYMBOLES — RAPPORT")
@@ -1153,12 +1036,9 @@ class StrateEngine:
             if len(st['domains']) > 8:
                 print(f"      {', '.join(st['domains'][8:])}")
         print("=" * 60)
-
-
 # ============================================================================
 # HTML TEMPLATE
 # ============================================================================
-
 HTML_TEMPLATE = r"""<!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -1271,8 +1151,6 @@ showInfo(0);frame();
 </script>
 </body>
 </html>"""
-
-
 def main():
     engine = StrateEngine()
     out_path = Path(__file__).parent / "strates_export.json"
@@ -1286,7 +1164,5 @@ def main():
         with open(str(html_path), "w", encoding="utf-8") as f:
             f.write(html)
         print(f"✅ HTML → {html_path}")
-
-
 if __name__ == "__main__":
     main()
