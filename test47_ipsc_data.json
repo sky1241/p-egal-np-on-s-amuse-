@@ -1,0 +1,281 @@
+[
+  {
+    "year": 1995,
+    "ipsc": 88,
+    "stem_cell": 4002,
+    "transcription_factor": 7973,
+    "tf_sc": 108,
+    "ipsc_regen": 1,
+    "ipsc_esc": 88
+  },
+  {
+    "year": 1996,
+    "ipsc": 105,
+    "stem_cell": 4698,
+    "transcription_factor": 8509,
+    "tf_sc": 121,
+    "ipsc_regen": 1,
+    "ipsc_esc": 105
+  },
+  {
+    "year": 1997,
+    "ipsc": 131,
+    "stem_cell": 4931,
+    "transcription_factor": 9196,
+    "tf_sc": 126,
+    "ipsc_regen": 1,
+    "ipsc_esc": 129
+  },
+  {
+    "year": 1998,
+    "ipsc": 137,
+    "stem_cell": 5361,
+    "transcription_factor": 10039,
+    "tf_sc": 184,
+    "ipsc_regen": 0,
+    "ipsc_esc": 137
+  },
+  {
+    "year": 1999,
+    "ipsc": 160,
+    "stem_cell": 5528,
+    "transcription_factor": 10684,
+    "tf_sc": 214,
+    "ipsc_regen": 3,
+    "ipsc_esc": 159
+  },
+  {
+    "year": 2000,
+    "ipsc": 178,
+    "stem_cell": 6514,
+    "transcription_factor": 12143,
+    "tf_sc": 262,
+    "ipsc_regen": 4,
+    "ipsc_esc": 178
+  },
+  {
+    "year": 2001,
+    "ipsc": 220,
+    "stem_cell": 6529,
+    "transcription_factor": 12831,
+    "tf_sc": 254,
+    "ipsc_regen": 8,
+    "ipsc_esc": 218
+  },
+  {
+    "year": 2002,
+    "ipsc": 235,
+    "stem_cell": 7740,
+    "transcription_factor": 15129,
+    "tf_sc": 282,
+    "ipsc_regen": 12,
+    "ipsc_esc": 234
+  },
+  {
+    "year": 2003,
+    "ipsc": 330,
+    "stem_cell": 9801,
+    "transcription_factor": 15758,
+    "tf_sc": 338,
+    "ipsc_regen": 10,
+    "ipsc_esc": 329
+  },
+  {
+    "year": 2004,
+    "ipsc": 428,
+    "stem_cell": 12198,
+    "transcription_factor": 16281,
+    "tf_sc": 456,
+    "ipsc_regen": 30,
+    "ipsc_esc": 428
+  },
+  {
+    "year": 2005,
+    "ipsc": 490,
+    "stem_cell": 13411,
+    "transcription_factor": 17084,
+    "tf_sc": 579,
+    "ipsc_regen": 24,
+    "ipsc_esc": 490
+  },
+  {
+    "year": 2006,
+    "ipsc": 586,
+    "stem_cell": 15571,
+    "transcription_factor": 18615,
+    "tf_sc": 606,
+    "ipsc_regen": 26,
+    "ipsc_esc": 586
+  },
+  {
+    "year": 2007,
+    "ipsc": 716,
+    "stem_cell": 17191,
+    "transcription_factor": 19767,
+    "tf_sc": 678,
+    "ipsc_regen": 51,
+    "ipsc_esc": 715
+  },
+  {
+    "year": 2008,
+    "ipsc": 1115,
+    "stem_cell": 18956,
+    "transcription_factor": 20895,
+    "tf_sc": 772,
+    "ipsc_regen": 132,
+    "ipsc_esc": 1114
+  },
+  {
+    "year": 2009,
+    "ipsc": 1649,
+    "stem_cell": 20517,
+    "transcription_factor": 22033,
+    "tf_sc": 893,
+    "ipsc_regen": 181,
+    "ipsc_esc": 1649
+  },
+  {
+    "year": 2010,
+    "ipsc": 2090,
+    "stem_cell": 22212,
+    "transcription_factor": 23370,
+    "tf_sc": 971,
+    "ipsc_regen": 282,
+    "ipsc_esc": 2089
+  },
+  {
+    "year": 2011,
+    "ipsc": 2764,
+    "stem_cell": 24245,
+    "transcription_factor": 24237,
+    "tf_sc": 1099,
+    "ipsc_regen": 372,
+    "ipsc_esc": 2762
+  },
+  {
+    "year": 2012,
+    "ipsc": 3097,
+    "stem_cell": 25269,
+    "transcription_factor": 24580,
+    "tf_sc": 1161,
+    "ipsc_regen": 373,
+    "ipsc_esc": 3087
+  },
+  {
+    "year": 2013,
+    "ipsc": 3324,
+    "stem_cell": 26803,
+    "transcription_factor": 25769,
+    "tf_sc": 1299,
+    "ipsc_regen": 429,
+    "ipsc_esc": 3321
+  },
+  {
+    "year": 2014,
+    "ipsc": 3678,
+    "stem_cell": 26890,
+    "transcription_factor": 25631,
+    "tf_sc": 1350,
+    "ipsc_regen": 449,
+    "ipsc_esc": 3673
+  },
+  {
+    "year": 2015,
+    "ipsc": 3632,
+    "stem_cell": 27024,
+    "transcription_factor": 25727,
+    "tf_sc": 1277,
+    "ipsc_regen": 437,
+    "ipsc_esc": 3620
+  },
+  {
+    "year": 2016,
+    "ipsc": 4061,
+    "stem_cell": 27109,
+    "transcription_factor": 25695,
+    "tf_sc": 1270,
+    "ipsc_regen": 472,
+    "ipsc_esc": 4048
+  },
+  {
+    "year": 2017,
+    "ipsc": 4036,
+    "stem_cell": 26218,
+    "transcription_factor": 25884,
+    "tf_sc": 1360,
+    "ipsc_regen": 398,
+    "ipsc_esc": 4032
+  },
+  {
+    "year": 2018,
+    "ipsc": 4059,
+    "stem_cell": 26322,
+    "transcription_factor": 26764,
+    "tf_sc": 1320,
+    "ipsc_regen": 357,
+    "ipsc_esc": 4050
+  },
+  {
+    "year": 2019,
+    "ipsc": 4293,
+    "stem_cell": 26937,
+    "transcription_factor": 28035,
+    "tf_sc": 1270,
+    "ipsc_regen": 347,
+    "ipsc_esc": 4281
+  },
+  {
+    "year": 2020,
+    "ipsc": 4674,
+    "stem_cell": 28196,
+    "transcription_factor": 30784,
+    "tf_sc": 1343,
+    "ipsc_regen": 409,
+    "ipsc_esc": 4662
+  },
+  {
+    "year": 2021,
+    "ipsc": 4989,
+    "stem_cell": 27269,
+    "transcription_factor": 30831,
+    "tf_sc": 1364,
+    "ipsc_regen": 461,
+    "ipsc_esc": 4974
+  },
+  {
+    "year": 2022,
+    "ipsc": 4590,
+    "stem_cell": 26156,
+    "transcription_factor": 30639,
+    "tf_sc": 1272,
+    "ipsc_regen": 352,
+    "ipsc_esc": 4567
+  },
+  {
+    "year": 2023,
+    "ipsc": 4589,
+    "stem_cell": 32519,
+    "transcription_factor": 38683,
+    "tf_sc": 1481,
+    "ipsc_regen": 390,
+    "ipsc_esc": 4561
+  },
+  {
+    "year": 2024,
+    "ipsc": 3413,
+    "stem_cell": 23980,
+    "transcription_factor": 23431,
+    "tf_sc": 797,
+    "ipsc_regen": 279,
+    "ipsc_esc": 3373
+  },
+  {
+    "year": 2025,
+    "ipsc": 2803,
+    "stem_cell": 18974,
+    "transcription_factor": 18979,
+    "tf_sc": 701,
+    "ipsc_regen": 340,
+    "ipsc_esc": 2104
+  }
+]
