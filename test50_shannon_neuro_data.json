@@ -1,0 +1,458 @@
+[
+  {
+    "year": 1950,
+    "info_theory": 2,
+    "neuroscience": 2831,
+    "it_neu": 0
+  },
+  {
+    "year": 1951,
+    "info_theory": 8,
+    "neuroscience": 3262,
+    "it_neu": 1
+  },
+  {
+    "year": 1952,
+    "info_theory": 7,
+    "neuroscience": 3568,
+    "it_neu": 0
+  },
+  {
+    "year": 1953,
+    "info_theory": 20,
+    "neuroscience": 3937,
+    "it_neu": 2
+  },
+  {
+    "year": 1954,
+    "info_theory": 20,
+    "neuroscience": 4163,
+    "it_neu": 0
+  },
+  {
+    "year": 1955,
+    "info_theory": 8,
+    "neuroscience": 4024,
+    "it_neu": 0
+  },
+  {
+    "year": 1956,
+    "info_theory": 13,
+    "neuroscience": 4281,
+    "it_neu": 0
+  },
+  {
+    "year": 1957,
+    "info_theory": 16,
+    "neuroscience": 4652,
+    "it_neu": 1
+  },
+  {
+    "year": 1958,
+    "info_theory": 8,
+    "neuroscience": 4959,
+    "it_neu": 0
+  },
+  {
+    "year": 1959,
+    "info_theory": 19,
+    "neuroscience": 5483,
+    "it_neu": 0
+  },
+  {
+    "year": 1960,
+    "info_theory": 18,
+    "neuroscience": 5984,
+    "it_neu": 1
+  },
+  {
+    "year": 1961,
+    "info_theory": 21,
+    "neuroscience": 6681,
+    "it_neu": 1
+  },
+  {
+    "year": 1962,
+    "info_theory": 19,
+    "neuroscience": 6755,
+    "it_neu": 0
+  },
+  {
+    "year": 1963,
+    "info_theory": 23,
+    "neuroscience": 7567,
+    "it_neu": 1
+  },
+  {
+    "year": 1964,
+    "info_theory": 17,
+    "neuroscience": 8709,
+    "it_neu": 1
+  },
+  {
+    "year": 1965,
+    "info_theory": 25,
+    "neuroscience": 9422,
+    "it_neu": 3
+  },
+  {
+    "year": 1966,
+    "info_theory": 30,
+    "neuroscience": 11026,
+    "it_neu": 2
+  },
+  {
+    "year": 1967,
+    "info_theory": 23,
+    "neuroscience": 12270,
+    "it_neu": 2
+  },
+  {
+    "year": 1968,
+    "info_theory": 31,
+    "neuroscience": 13309,
+    "it_neu": 3
+  },
+  {
+    "year": 1969,
+    "info_theory": 42,
+    "neuroscience": 14853,
+    "it_neu": 3
+  },
+  {
+    "year": 1970,
+    "info_theory": 52,
+    "neuroscience": 16285,
+    "it_neu": 1
+  },
+  {
+    "year": 1971,
+    "info_theory": 24,
+    "neuroscience": 16117,
+    "it_neu": 1
+  },
+  {
+    "year": 1972,
+    "info_theory": 33,
+    "neuroscience": 16701,
+    "it_neu": 3
+  },
+  {
+    "year": 1973,
+    "info_theory": 54,
+    "neuroscience": 17714,
+    "it_neu": 4
+  },
+  {
+    "year": 1974,
+    "info_theory": 45,
+    "neuroscience": 18679,
+    "it_neu": 4
+  },
+  {
+    "year": 1975,
+    "info_theory": 53,
+    "neuroscience": 20111,
+    "it_neu": 3
+  },
+  {
+    "year": 1976,
+    "info_theory": 38,
+    "neuroscience": 21189,
+    "it_neu": 1
+  },
+  {
+    "year": 1977,
+    "info_theory": 50,
+    "neuroscience": 22455,
+    "it_neu": 5
+  },
+  {
+    "year": 1978,
+    "info_theory": 38,
+    "neuroscience": 24678,
+    "it_neu": 0
+  },
+  {
+    "year": 1979,
+    "info_theory": 52,
+    "neuroscience": 24724,
+    "it_neu": 4
+  },
+  {
+    "year": 1980,
+    "info_theory": 43,
+    "neuroscience": 26124,
+    "it_neu": 0
+  },
+  {
+    "year": 1981,
+    "info_theory": 47,
+    "neuroscience": 27937,
+    "it_neu": 1
+  },
+  {
+    "year": 1982,
+    "info_theory": 62,
+    "neuroscience": 28227,
+    "it_neu": 5
+  },
+  {
+    "year": 1983,
+    "info_theory": 32,
+    "neuroscience": 28989,
+    "it_neu": 1
+  },
+  {
+    "year": 1984,
+    "info_theory": 55,
+    "neuroscience": 30493,
+    "it_neu": 2
+  },
+  {
+    "year": 1985,
+    "info_theory": 47,
+    "neuroscience": 32656,
+    "it_neu": 2
+  },
+  {
+    "year": 1986,
+    "info_theory": 52,
+    "neuroscience": 33883,
+    "it_neu": 3
+  },
+  {
+    "year": 1987,
+    "info_theory": 65,
+    "neuroscience": 35861,
+    "it_neu": 2
+  },
+  {
+    "year": 1988,
+    "info_theory": 59,
+    "neuroscience": 37482,
+    "it_neu": 5
+  },
+  {
+    "year": 1989,
+    "info_theory": 88,
+    "neuroscience": 39644,
+    "it_neu": 3
+  },
+  {
+    "year": 1990,
+    "info_theory": 81,
+    "neuroscience": 45133,
+    "it_neu": 4
+  },
+  {
+    "year": 1991,
+    "info_theory": 86,
+    "neuroscience": 43510,
+    "it_neu": 8
+  },
+  {
+    "year": 1992,
+    "info_theory": 63,
+    "neuroscience": 46797,
+    "it_neu": 8
+  },
+  {
+    "year": 1993,
+    "info_theory": 95,
+    "neuroscience": 46705,
+    "it_neu": 9
+  },
+  {
+    "year": 1994,
+    "info_theory": 91,
+    "neuroscience": 49000,
+    "it_neu": 6
+  },
+  {
+    "year": 1995,
+    "info_theory": 84,
+    "neuroscience": 52421,
+    "it_neu": 4
+  },
+  {
+    "year": 1996,
+    "info_theory": 121,
+    "neuroscience": 59279,
+    "it_neu": 7
+  },
+  {
+    "year": 1997,
+    "info_theory": 120,
+    "neuroscience": 60462,
+    "it_neu": 9
+  },
+  {
+    "year": 1998,
+    "info_theory": 135,
+    "neuroscience": 63228,
+    "it_neu": 9
+  },
+  {
+    "year": 1999,
+    "info_theory": 122,
+    "neuroscience": 62620,
+    "it_neu": 11
+  },
+  {
+    "year": 2000,
+    "info_theory": 124,
+    "neuroscience": 73400,
+    "it_neu": 9
+  },
+  {
+    "year": 2001,
+    "info_theory": 196,
+    "neuroscience": 73115,
+    "it_neu": 21
+  },
+  {
+    "year": 2002,
+    "info_theory": 357,
+    "neuroscience": 83503,
+    "it_neu": 25
+  },
+  {
+    "year": 2003,
+    "info_theory": 321,
+    "neuroscience": 90811,
+    "it_neu": 25
+  },
+  {
+    "year": 2004,
+    "info_theory": 362,
+    "neuroscience": 96766,
+    "it_neu": 16
+  },
+  {
+    "year": 2005,
+    "info_theory": 464,
+    "neuroscience": 101849,
+    "it_neu": 24
+  },
+  {
+    "year": 2006,
+    "info_theory": 404,
+    "neuroscience": 114295,
+    "it_neu": 17
+  },
+  {
+    "year": 2007,
+    "info_theory": 424,
+    "neuroscience": 121349,
+    "it_neu": 23
+  },
+  {
+    "year": 2008,
+    "info_theory": 474,
+    "neuroscience": 132947,
+    "it_neu": 26
+  },
+  {
+    "year": 2009,
+    "info_theory": 528,
+    "neuroscience": 146712,
+    "it_neu": 34
+  },
+  {
+    "year": 2010,
+    "info_theory": 559,
+    "neuroscience": 161183,
+    "it_neu": 41
+  },
+  {
+    "year": 2011,
+    "info_theory": 562,
+    "neuroscience": 169917,
+    "it_neu": 38
+  },
+  {
+    "year": 2012,
+    "info_theory": 518,
+    "neuroscience": 179430,
+    "it_neu": 29
+  },
+  {
+    "year": 2013,
+    "info_theory": 458,
+    "neuroscience": 190800,
+    "it_neu": 34
+  },
+  {
+    "year": 2014,
+    "info_theory": 540,
+    "neuroscience": 196784,
+    "it_neu": 40
+  },
+  {
+    "year": 2015,
+    "info_theory": 499,
+    "neuroscience": 207096,
+    "it_neu": 39
+  },
+  {
+    "year": 2016,
+    "info_theory": 526,
+    "neuroscience": 205643,
+    "it_neu": 39
+  },
+  {
+    "year": 2017,
+    "info_theory": 551,
+    "neuroscience": 214279,
+    "it_neu": 39
+  },
+  {
+    "year": 2018,
+    "info_theory": 545,
+    "neuroscience": 222623,
+    "it_neu": 46
+  },
+  {
+    "year": 2019,
+    "info_theory": 587,
+    "neuroscience": 236636,
+    "it_neu": 47
+  },
+  {
+    "year": 2020,
+    "info_theory": 541,
+    "neuroscience": 259298,
+    "it_neu": 40
+  },
+  {
+    "year": 2021,
+    "info_theory": 601,
+    "neuroscience": 250723,
+    "it_neu": 37
+  },
+  {
+    "year": 2022,
+    "info_theory": 556,
+    "neuroscience": 237291,
+    "it_neu": 45
+  },
+  {
+    "year": 2023,
+    "info_theory": 605,
+    "neuroscience": 258068,
+    "it_neu": 42
+  },
+  {
+    "year": 2024,
+    "info_theory": 386,
+    "neuroscience": 249499,
+    "it_neu": 28
+  },
+  {
+    "year": 2025,
+    "info_theory": 3276,
+    "neuroscience": 186692,
+    "it_neu": 57
+  }
+]
