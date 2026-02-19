@@ -1,0 +1,426 @@
+[
+  {
+    "title": "Deep Residual Learning for Image Recognition",
+    "year": 2016,
+    "cit": 213713,
+    "auth": "Kaiming He, Xiangyu Zhang",
+    "domain": "Machine Learning",
+    "concepts": [
+      "Residual",
+      "Computer science",
+      "Coco",
+      "Artificial intelligence",
+      "Object detection",
+      "Deep learning",
+      "Segmentation",
+      "Pattern recognition (psychology)"
+    ],
+    "n_concepts": 21
+  },
+  {
+    "title": "U-Net: Convolutional Networks for Biomedical Image Segmentation",
+    "year": 2015,
+    "cit": 84869,
+    "auth": "Olaf Ronneberger, Philipp Fischer",
+    "domain": "Machine Learning",
+    "concepts": [
+      "Computer science",
+      "Artificial intelligence",
+      "Segmentation",
+      "Margin (machine learning)",
+      "Sliding window protocol",
+      "Context (archaeology)",
+      "Path (computing)",
+      "Image segmentation"
+    ],
+    "n_concepts": 19
+  },
+  {
+    "title": "Adam: A Method for Stochastic Optimization",
+    "year": 2014,
+    "cit": 84454,
+    "auth": "Diederik P. Kingma, Jimmy Ba",
+    "domain": "Machine Learning",
+    "concepts": [
+      "Regret",
+      "Mathematical optimization",
+      "Computer science",
+      "Diagonal",
+      "Convergence (economics)",
+      "Stochastic optimization",
+      "Rate of convergence",
+      "Optimization problem"
+    ],
+    "n_concepts": 15
+  },
+  {
+    "title": "U-Net: Convolutional Networks for Biomedical Image Segmentation",
+    "year": 2015,
+    "cit": 84869,
+    "auth": "Olaf Ronneberger, Philipp Fischer",
+    "domain": "Computer Vision",
+    "concepts": [
+      "Computer science",
+      "Artificial intelligence",
+      "Segmentation",
+      "Margin (machine learning)",
+      "Sliding window protocol",
+      "Context (archaeology)",
+      "Path (computing)",
+      "Image segmentation"
+    ],
+    "n_concepts": 19
+  },
+  {
+    "title": "A Mathematical Theory of Communication",
+    "year": 1948,
+    "cit": 78284,
+    "auth": "Claude E. Shannon",
+    "domain": "Computer Vision",
+    "concepts": [
+      "Bandwidth (computing)",
+      "Computer science",
+      "Nyquist\u2013Shannon sampling theorem",
+      "Channel (broadcasting)",
+      "Communication theory",
+      "Mathematics",
+      "Algorithm",
+      "Theoretical computer science"
+    ],
+    "n_concepts": 11
+  },
+  {
+    "title": "Very Deep Convolutional Networks for Large-Scale Image Recognition",
+    "year": 2014,
+    "cit": 75398,
+    "auth": "Karen Simonyan, Andrew Zisserman",
+    "domain": "Computer Vision",
+    "concepts": [
+      "Computer science",
+      "Convolution (computer science)",
+      "Convolutional neural network",
+      "Artificial intelligence",
+      "Deep learning",
+      "Image (mathematics)",
+      "Scale (ratio)",
+      "Architecture"
+    ],
+    "n_concepts": 17
+  },
+  {
+    "title": "PROTEIN MEASUREMENT WITH THE FOLIN PHENOL REAGENT",
+    "year": 1951,
+    "cit": 317383,
+    "auth": "OliverH. Lowry, NiraJ. Rosebrough",
+    "domain": "Organic chemistry",
+    "concepts": [
+      "Reagent",
+      "Chemistry",
+      "Phenol",
+      "Chromatography",
+      "Organic chemistry"
+    ],
+    "n_concepts": 5
+  },
+  {
+    "title": "A Rapid and Sensitive Method for the Quantitation of Microgram Quantities of Protein Utili",
+    "year": 1976,
+    "cit": 225252,
+    "auth": "Mark A. Bradford",
+    "domain": "Organic chemistry",
+    "concepts": [
+      "Chemistry",
+      "Coomassie Brilliant Blue",
+      "Chromatography",
+      "Bradford protein assay",
+      "Sodium dodecyl sulfate",
+      "Sodium",
+      "Absorption (acoustics)",
+      "Organic chemistry"
+    ],
+    "n_concepts": 13
+  },
+  {
+    "title": "Deep Residual Learning for Image Recognition",
+    "year": 2016,
+    "cit": 213713,
+    "auth": "Kaiming He, Xiangyu Zhang",
+    "domain": "Organic chemistry",
+    "concepts": [
+      "Residual",
+      "Computer science",
+      "Coco",
+      "Artificial intelligence",
+      "Object detection",
+      "Deep learning",
+      "Segmentation",
+      "Pattern recognition (psychology)"
+    ],
+    "n_concepts": 21
+  },
+  {
+    "title": "Analysis of Relative Gene Expression Data Using Real-Time Quantitative PCR and the 2\u2212\u0394\u0394CT ",
+    "year": 2001,
+    "cit": 176681,
+    "auth": "Kenneth J. Livak, Thomas D. Schmittgen",
+    "domain": "Genetics",
+    "concepts": [
+      "Real-time polymerase chain reaction",
+      "Quantitative analysis (chemistry)",
+      "Delta",
+      "Computational biology",
+      "Sample (material)",
+      "Biology",
+      "Biological system",
+      "Computer science"
+    ],
+    "n_concepts": 15
+  },
+  {
+    "title": "Molecular Cloning: A Laboratory Manual",
+    "year": 1989,
+    "cit": 129980,
+    "auth": "Joseph Sambrook, Elisabeth Fritsch",
+    "domain": "Genetics",
+    "concepts": [
+      "Cloning (programming)",
+      "Computational biology",
+      "Chromatin",
+      "CLARITY",
+      "Computer science",
+      "Data science",
+      "Biology",
+      "DNA"
+    ],
+    "n_concepts": 11
+  },
+  {
+    "title": "Moderated estimation of fold change and dispersion for RNA-seq data with DESeq2",
+    "year": 2014,
+    "cit": 94397,
+    "auth": "Michael I. Love, Wolfgang Huber",
+    "domain": "Genetics",
+    "concepts": [
+      "Biology",
+      "Computational biology",
+      "Genome Biology",
+      "RNA-Seq",
+      "Genomics",
+      "Evolutionary biology",
+      "Genetics",
+      "Transcriptome"
+    ],
+    "n_concepts": 11
+  },
+  {
+    "title": "Generalized Gradient Approximation Made Simple",
+    "year": 1996,
+    "cit": 203430,
+    "auth": "John P. Perdew, Kieron Burke",
+    "domain": "Quantum mechanics",
+    "concepts": [
+      "Simple (philosophy)",
+      "Scaling",
+      "Statistical physics",
+      "Linear scale",
+      "Physics",
+      "Spin density",
+      "Spin (aerodynamics)",
+      "Local-density approximation"
+    ],
+    "n_concepts": 20
+  },
+  {
+    "title": "Ya\u015fl\u0131 Kad\u0131nlarda \u00dcreme Sa\u011fl\u0131\u011f\u0131",
+    "year": null,
+    "cit": 169599,
+    "auth": "M. N\u00fa\u00f1ez\u2010Regueiro, Engin \u00dcst\u00fcn, Yaprak",
+    "domain": "Quantum mechanics",
+    "concepts": [
+      "Superconductivity",
+      "Physics",
+      "Condensed matter physics",
+      "Quantum",
+      "Charge (physics)",
+      "Quantum mechanics",
+      "Charge density wave"
+    ],
+    "n_concepts": 7
+  },
+  {
+    "title": "Efficient iterative schemes for<i>ab initio</i>total-energy calculations using a plane-wav",
+    "year": 1996,
+    "cit": 115863,
+    "auth": "Georg Kresse, J. Furthm\u00fcller",
+    "domain": "Quantum mechanics",
+    "concepts": [
+      "Scaling",
+      "Physics",
+      "Ab initio",
+      "Basis set",
+      "Basis (linear algebra)",
+      "Subspace topology",
+      "Plane wave",
+      "Statistical physics"
+    ],
+    "n_concepts": 13
+  },
+  {
+    "title": "Long Short-Term Memory",
+    "year": 1997,
+    "cit": 93304,
+    "auth": "Sepp Hochreiter, J\u00fcrgen Schmidhuber",
+    "domain": "Neuroscience",
+    "concepts": [
+      "Term (time)",
+      "Short-term memory",
+      "Computer science",
+      "Mathematics",
+      "Psychology",
+      "Neuroscience",
+      "Cognition",
+      "Working memory"
+    ],
+    "n_concepts": 10
+  },
+  {
+    "title": "The theory of planned behavior",
+    "year": 1991,
+    "cit": 81010,
+    "auth": "Icek Ajzen",
+    "domain": "Neuroscience",
+    "concepts": [
+      "Theory of planned behavior",
+      "Psychology",
+      "Expectancy theory",
+      "Normative",
+      "Variance (accounting)",
+      "Social psychology",
+      "Perception",
+      "Control (management)"
+    ],
+    "n_concepts": 19
+  },
+  {
+    "title": "Common method biases in behavioral research: A critical review of the literature and recom",
+    "year": 2003,
+    "cit": 72284,
+    "auth": "Philip M. Podsakoff, Scott MacKenzie",
+    "domain": "Neuroscience",
+    "concepts": [
+      "Psychology",
+      "Cognitive psychology",
+      "Cognitive bias",
+      "Cognition",
+      "Behavioural sciences",
+      "Control (management)",
+      "Management science",
+      "Computer science"
+    ],
+    "n_concepts": 12
+  },
+  {
+    "title": "Generalized Gradient Approximation Made Simple",
+    "year": 1996,
+    "cit": 203430,
+    "auth": "John P. Perdew, Kieron Burke",
+    "domain": "Statistical physics",
+    "concepts": [
+      "Simple (philosophy)",
+      "Scaling",
+      "Statistical physics",
+      "Linear scale",
+      "Physics",
+      "Spin density",
+      "Spin (aerodynamics)",
+      "Local-density approximation"
+    ],
+    "n_concepts": 20
+  },
+  {
+    "title": "Efficient iterative schemes for<i>ab initio</i>total-energy calculations using a plane-wav",
+    "year": 1996,
+    "cit": 115863,
+    "auth": "Georg Kresse, J. Furthm\u00fcller",
+    "domain": "Statistical physics",
+    "concepts": [
+      "Scaling",
+      "Physics",
+      "Ab initio",
+      "Basis set",
+      "Basis (linear algebra)",
+      "Subspace topology",
+      "Plane wave",
+      "Statistical physics"
+    ],
+    "n_concepts": 13
+  },
+  {
+    "title": "Efficiency of ab-initio total energy calculations for metals and semiconductors using a pl",
+    "year": 1996,
+    "cit": 71903,
+    "auth": "Georg Kresse, J. Furthm\u00fcller",
+    "domain": "Statistical physics",
+    "concepts": [
+      "Ab initio",
+      "Hamiltonian (control theory)",
+      "Basis set",
+      "Plane wave",
+      "Statistical physics",
+      "Ab initio quantum chemistry methods",
+      "Density functional theory",
+      "Electronic structure"
+    ],
+    "n_concepts": 18
+  },
+  {
+    "title": "The Pricing of Options and Corporate Liabilities",
+    "year": 1973,
+    "cit": 29108,
+    "auth": "Fischer Black, Myron S. Scholes",
+    "domain": "Financial economics",
+    "concepts": [
+      "Business",
+      "Economics",
+      "Financial economics",
+      "Actuarial science"
+    ],
+    "n_concepts": 4
+  },
+  {
+    "title": "Common risk factors in the returns on stocks and bonds",
+    "year": 1993,
+    "cit": 27196,
+    "auth": "Eugene F. Fama, Kenneth R. French",
+    "domain": "Financial economics",
+    "concepts": [
+      "Bond",
+      "Bond market",
+      "Stock (firearms)",
+      "Bond market index",
+      "Equity (law)",
+      "Financial economics",
+      "Economics",
+      "Stock market"
+    ],
+    "n_concepts": 19
+  },
+  {
+    "title": "CAPITAL ASSET PRICES: A THEORY OF MARKET EQUILIBRIUM UNDER CONDITIONS OF RISK*",
+    "year": 1964,
+    "cit": 17292,
+    "auth": "William F. Sharpe",
+    "domain": "Financial economics",
+    "concepts": [
+      "Economics",
+      "Diversification (marketing strategy)",
+      "Interest rate",
+      "Security market line",
+      "Capital asset pricing model",
+      "Asset (computer security)",
+      "Financial economics",
+      "Capital market"
+    ],
+    "n_concepts": 21
+  }
+]
