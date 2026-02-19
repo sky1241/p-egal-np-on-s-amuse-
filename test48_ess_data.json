@@ -1,0 +1,338 @@
+[
+  {
+    "year": 1970,
+    "game_theory": 91,
+    "evol_bio": 6791,
+    "gt_evb": 4
+  },
+  {
+    "year": 1971,
+    "game_theory": 95,
+    "evol_bio": 6646,
+    "gt_evb": 5
+  },
+  {
+    "year": 1972,
+    "game_theory": 101,
+    "evol_bio": 7160,
+    "gt_evb": 9
+  },
+  {
+    "year": 1973,
+    "game_theory": 118,
+    "evol_bio": 7114,
+    "gt_evb": 12
+  },
+  {
+    "year": 1974,
+    "game_theory": 144,
+    "evol_bio": 7527,
+    "gt_evb": 13
+  },
+  {
+    "year": 1975,
+    "game_theory": 139,
+    "evol_bio": 7868,
+    "gt_evb": 11
+  },
+  {
+    "year": 1976,
+    "game_theory": 153,
+    "evol_bio": 7708,
+    "gt_evb": 9
+  },
+  {
+    "year": 1977,
+    "game_theory": 163,
+    "evol_bio": 8220,
+    "gt_evb": 12
+  },
+  {
+    "year": 1978,
+    "game_theory": 161,
+    "evol_bio": 8523,
+    "gt_evb": 13
+  },
+  {
+    "year": 1979,
+    "game_theory": 154,
+    "evol_bio": 8717,
+    "gt_evb": 19
+  },
+  {
+    "year": 1980,
+    "game_theory": 195,
+    "evol_bio": 9513,
+    "gt_evb": 35
+  },
+  {
+    "year": 1981,
+    "game_theory": 186,
+    "evol_bio": 9558,
+    "gt_evb": 19
+  },
+  {
+    "year": 1982,
+    "game_theory": 258,
+    "evol_bio": 9838,
+    "gt_evb": 30
+  },
+  {
+    "year": 1983,
+    "game_theory": 206,
+    "evol_bio": 10130,
+    "gt_evb": 22
+  },
+  {
+    "year": 1984,
+    "game_theory": 209,
+    "evol_bio": 10704,
+    "gt_evb": 17
+  },
+  {
+    "year": 1985,
+    "game_theory": 240,
+    "evol_bio": 10948,
+    "gt_evb": 14
+  },
+  {
+    "year": 1986,
+    "game_theory": 284,
+    "evol_bio": 11638,
+    "gt_evb": 20
+  },
+  {
+    "year": 1987,
+    "game_theory": 330,
+    "evol_bio": 12310,
+    "gt_evb": 23
+  },
+  {
+    "year": 1988,
+    "game_theory": 337,
+    "evol_bio": 12543,
+    "gt_evb": 21
+  },
+  {
+    "year": 1989,
+    "game_theory": 362,
+    "evol_bio": 13591,
+    "gt_evb": 28
+  },
+  {
+    "year": 1990,
+    "game_theory": 412,
+    "evol_bio": 14596,
+    "gt_evb": 30
+  },
+  {
+    "year": 1991,
+    "game_theory": 431,
+    "evol_bio": 15497,
+    "gt_evb": 25
+  },
+  {
+    "year": 1992,
+    "game_theory": 519,
+    "evol_bio": 16405,
+    "gt_evb": 31
+  },
+  {
+    "year": 1993,
+    "game_theory": 461,
+    "evol_bio": 16938,
+    "gt_evb": 22
+  },
+  {
+    "year": 1994,
+    "game_theory": 528,
+    "evol_bio": 17979,
+    "gt_evb": 31
+  },
+  {
+    "year": 1995,
+    "game_theory": 548,
+    "evol_bio": 18448,
+    "gt_evb": 33
+  },
+  {
+    "year": 1996,
+    "game_theory": 659,
+    "evol_bio": 20171,
+    "gt_evb": 32
+  },
+  {
+    "year": 1997,
+    "game_theory": 778,
+    "evol_bio": 20476,
+    "gt_evb": 48
+  },
+  {
+    "year": 1998,
+    "game_theory": 700,
+    "evol_bio": 21712,
+    "gt_evb": 52
+  },
+  {
+    "year": 1999,
+    "game_theory": 787,
+    "evol_bio": 23073,
+    "gt_evb": 57
+  },
+  {
+    "year": 2000,
+    "game_theory": 956,
+    "evol_bio": 28659,
+    "gt_evb": 51
+  },
+  {
+    "year": 2001,
+    "game_theory": 1092,
+    "evol_bio": 31179,
+    "gt_evb": 53
+  },
+  {
+    "year": 2002,
+    "game_theory": 1506,
+    "evol_bio": 40482,
+    "gt_evb": 82
+  },
+  {
+    "year": 2003,
+    "game_theory": 1644,
+    "evol_bio": 40940,
+    "gt_evb": 80
+  },
+  {
+    "year": 2004,
+    "game_theory": 1850,
+    "evol_bio": 43462,
+    "gt_evb": 102
+  },
+  {
+    "year": 2005,
+    "game_theory": 2049,
+    "evol_bio": 47585,
+    "gt_evb": 102
+  },
+  {
+    "year": 2006,
+    "game_theory": 2526,
+    "evol_bio": 53507,
+    "gt_evb": 141
+  },
+  {
+    "year": 2007,
+    "game_theory": 3051,
+    "evol_bio": 56377,
+    "gt_evb": 150
+  },
+  {
+    "year": 2008,
+    "game_theory": 3394,
+    "evol_bio": 65499,
+    "gt_evb": 165
+  },
+  {
+    "year": 2009,
+    "game_theory": 3713,
+    "evol_bio": 64276,
+    "gt_evb": 200
+  },
+  {
+    "year": 2010,
+    "game_theory": 4037,
+    "evol_bio": 65083,
+    "gt_evb": 194
+  },
+  {
+    "year": 2011,
+    "game_theory": 4204,
+    "evol_bio": 67029,
+    "gt_evb": 192
+  },
+  {
+    "year": 2012,
+    "game_theory": 4149,
+    "evol_bio": 66045,
+    "gt_evb": 177
+  },
+  {
+    "year": 2013,
+    "game_theory": 4243,
+    "evol_bio": 69604,
+    "gt_evb": 190
+  },
+  {
+    "year": 2014,
+    "game_theory": 4336,
+    "evol_bio": 68262,
+    "gt_evb": 203
+  },
+  {
+    "year": 2015,
+    "game_theory": 4098,
+    "evol_bio": 68689,
+    "gt_evb": 198
+  },
+  {
+    "year": 2016,
+    "game_theory": 4090,
+    "evol_bio": 69086,
+    "gt_evb": 152
+  },
+  {
+    "year": 2017,
+    "game_theory": 3993,
+    "evol_bio": 68526,
+    "gt_evb": 168
+  },
+  {
+    "year": 2018,
+    "game_theory": 4293,
+    "evol_bio": 74186,
+    "gt_evb": 181
+  },
+  {
+    "year": 2019,
+    "game_theory": 4222,
+    "evol_bio": 76953,
+    "gt_evb": 161
+  },
+  {
+    "year": 2020,
+    "game_theory": 4242,
+    "evol_bio": 82552,
+    "gt_evb": 185
+  },
+  {
+    "year": 2021,
+    "game_theory": 4375,
+    "evol_bio": 83866,
+    "gt_evb": 157
+  },
+  {
+    "year": 2022,
+    "game_theory": 4281,
+    "evol_bio": 77684,
+    "gt_evb": 199
+  },
+  {
+    "year": 2023,
+    "game_theory": 4647,
+    "evol_bio": 78051,
+    "gt_evb": 214
+  },
+  {
+    "year": 2024,
+    "game_theory": 3810,
+    "evol_bio": 59926,
+    "gt_evb": 64
+  },
+  {
+    "year": 2025,
+    "game_theory": 4101,
+    "evol_bio": 66941,
+    "gt_evb": 24
+  }
+]
