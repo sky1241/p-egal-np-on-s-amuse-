@@ -1,0 +1,149 @@
+[
+  {
+    "year": 2005,
+    "neuro": 62,
+    "dl": 103,
+    "neuro_dl": 0,
+    "neuro_ml": 5
+  },
+  {
+    "year": 2006,
+    "neuro": 76,
+    "dl": 114,
+    "neuro_dl": 0,
+    "neuro_ml": 10
+  },
+  {
+    "year": 2007,
+    "neuro": 98,
+    "dl": 127,
+    "neuro_dl": 0,
+    "neuro_ml": 11
+  },
+  {
+    "year": 2008,
+    "neuro": 83,
+    "dl": 125,
+    "neuro_dl": 0,
+    "neuro_ml": 10
+  },
+  {
+    "year": 2009,
+    "neuro": 110,
+    "dl": 194,
+    "neuro_dl": 0,
+    "neuro_ml": 15
+  },
+  {
+    "year": 2010,
+    "neuro": 127,
+    "dl": 271,
+    "neuro_dl": 0,
+    "neuro_ml": 19
+  },
+  {
+    "year": 2011,
+    "neuro": 187,
+    "dl": 290,
+    "neuro_dl": 0,
+    "neuro_ml": 26
+  },
+  {
+    "year": 2012,
+    "neuro": 230,
+    "dl": 375,
+    "neuro_dl": 0,
+    "neuro_ml": 32
+  },
+  {
+    "year": 2013,
+    "neuro": 289,
+    "dl": 583,
+    "neuro_dl": 2,
+    "neuro_ml": 33
+  },
+  {
+    "year": 2014,
+    "neuro": 363,
+    "dl": 1139,
+    "neuro_dl": 5,
+    "neuro_ml": 75
+  },
+  {
+    "year": 2015,
+    "neuro": 462,
+    "dl": 2505,
+    "neuro_dl": 14,
+    "neuro_ml": 51
+  },
+  {
+    "year": 2016,
+    "neuro": 571,
+    "dl": 4890,
+    "neuro_dl": 23,
+    "neuro_ml": 78
+  },
+  {
+    "year": 2017,
+    "neuro": 797,
+    "dl": 10478,
+    "neuro_dl": 33,
+    "neuro_ml": 138
+  },
+  {
+    "year": 2018,
+    "neuro": 1023,
+    "dl": 18841,
+    "neuro_dl": 67,
+    "neuro_ml": 204
+  },
+  {
+    "year": 2019,
+    "neuro": 1357,
+    "dl": 28620,
+    "neuro_dl": 67,
+    "neuro_ml": 280
+  },
+  {
+    "year": 2020,
+    "neuro": 1710,
+    "dl": 37252,
+    "neuro_dl": 83,
+    "neuro_ml": 395
+  },
+  {
+    "year": 2021,
+    "neuro": 1966,
+    "dl": 46824,
+    "neuro_dl": 83,
+    "neuro_ml": 463
+  },
+  {
+    "year": 2022,
+    "neuro": 2546,
+    "dl": 52935,
+    "neuro_dl": 111,
+    "neuro_ml": 534
+  },
+  {
+    "year": 2023,
+    "neuro": 2976,
+    "dl": 62134,
+    "neuro_dl": 107,
+    "neuro_ml": 669
+  },
+  {
+    "year": 2024,
+    "neuro": 2499,
+    "dl": 47740,
+    "neuro_dl": 51,
+    "neuro_ml": 324
+  },
+  {
+    "year": 2025,
+    "neuro": 2633,
+    "dl": 52590,
+    "neuro_dl": 147,
+    "neuro_ml": 286
+  }
+]

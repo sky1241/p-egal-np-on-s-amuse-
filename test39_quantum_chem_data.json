@@ -1,0 +1,158 @@
+[
+  {
+    "year": 2000,
+    "qc": 513,
+    "qchem": 1812,
+    "qc_qchem": 0
+  },
+  {
+    "year": 2001,
+    "qc": 593,
+    "qchem": 1673,
+    "qc_qchem": 0
+  },
+  {
+    "year": 2002,
+    "qc": 885,
+    "qchem": 1657,
+    "qc_qchem": 1
+  },
+  {
+    "year": 2003,
+    "qc": 945,
+    "qchem": 1844,
+    "qc_qchem": 2
+  },
+  {
+    "year": 2004,
+    "qc": 1026,
+    "qchem": 1719,
+    "qc_qchem": 1
+  },
+  {
+    "year": 2005,
+    "qc": 1120,
+    "qchem": 1745,
+    "qc_qchem": 0
+  },
+  {
+    "year": 2006,
+    "qc": 1251,
+    "qchem": 1755,
+    "qc_qchem": 0
+  },
+  {
+    "year": 2007,
+    "qc": 1282,
+    "qchem": 1673,
+    "qc_qchem": 0
+  },
+  {
+    "year": 2008,
+    "qc": 1240,
+    "qchem": 1641,
+    "qc_qchem": 0
+  },
+  {
+    "year": 2009,
+    "qc": 1288,
+    "qchem": 1588,
+    "qc_qchem": 1
+  },
+  {
+    "year": 2010,
+    "qc": 1299,
+    "qchem": 1475,
+    "qc_qchem": 2
+  },
+  {
+    "year": 2011,
+    "qc": 1482,
+    "qchem": 1536,
+    "qc_qchem": 0
+  },
+  {
+    "year": 2012,
+    "qc": 1578,
+    "qchem": 1444,
+    "qc_qchem": 0
+  },
+  {
+    "year": 2013,
+    "qc": 1717,
+    "qchem": 1405,
+    "qc_qchem": 0
+  },
+  {
+    "year": 2014,
+    "qc": 1849,
+    "qchem": 1434,
+    "qc_qchem": 1
+  },
+  {
+    "year": 2015,
+    "qc": 1870,
+    "qchem": 1435,
+    "qc_qchem": 1
+  },
+  {
+    "year": 2016,
+    "qc": 1996,
+    "qchem": 1400,
+    "qc_qchem": 0
+  },
+  {
+    "year": 2017,
+    "qc": 2154,
+    "qchem": 1249,
+    "qc_qchem": 0
+  },
+  {
+    "year": 2018,
+    "qc": 2550,
+    "qchem": 1234,
+    "qc_qchem": 1
+  },
+  {
+    "year": 2019,
+    "qc": 3121,
+    "qchem": 1271,
+    "qc_qchem": 2
+  },
+  {
+    "year": 2020,
+    "qc": 3781,
+    "qchem": 1125,
+    "qc_qchem": 1
+  },
+  {
+    "year": 2021,
+    "qc": 5256,
+    "qchem": 1122,
+    "qc_qchem": 1
+  },
+  {
+    "year": 2022,
+    "qc": 6578,
+    "qchem": 1104,
+    "qc_qchem": 1
+  },
+  {
+    "year": 2023,
+    "qc": 8022,
+    "qchem": 1110,
+    "qc_qchem": 1
+  },
+  {
+    "year": 2024,
+    "qc": 5086,
+    "qchem": 895,
+    "qc_qchem": 1
+  },
+  {
+    "year": 2025,
+    "qc": 9191,
+    "qchem": 1569,
+    "qc_qchem": 17
+  }
+]

@@ -1,0 +1,128 @@
+[
+  {
+    "year": 2005,
+    "rl": 907,
+    "robotics": 14077,
+    "rl_rob": 175
+  },
+  {
+    "year": 2006,
+    "rl": 1063,
+    "robotics": 16314,
+    "rl_rob": 201
+  },
+  {
+    "year": 2007,
+    "rl": 1071,
+    "robotics": 15853,
+    "rl_rob": 183
+  },
+  {
+    "year": 2008,
+    "rl": 1223,
+    "robotics": 17406,
+    "rl_rob": 182
+  },
+  {
+    "year": 2009,
+    "rl": 1353,
+    "robotics": 19267,
+    "rl_rob": 226
+  },
+  {
+    "year": 2010,
+    "rl": 1372,
+    "robotics": 20806,
+    "rl_rob": 169
+  },
+  {
+    "year": 2011,
+    "rl": 1455,
+    "robotics": 22217,
+    "rl_rob": 234
+  },
+  {
+    "year": 2012,
+    "rl": 1519,
+    "robotics": 22705,
+    "rl_rob": 224
+  },
+  {
+    "year": 2013,
+    "rl": 1417,
+    "robotics": 23584,
+    "rl_rob": 219
+  },
+  {
+    "year": 2014,
+    "rl": 1499,
+    "robotics": 23560,
+    "rl_rob": 188
+  },
+  {
+    "year": 2015,
+    "rl": 1442,
+    "robotics": 24439,
+    "rl_rob": 198
+  },
+  {
+    "year": 2016,
+    "rl": 1783,
+    "robotics": 25094,
+    "rl_rob": 227
+  },
+  {
+    "year": 2017,
+    "rl": 2843,
+    "robotics": 26740,
+    "rl_rob": 365
+  },
+  {
+    "year": 2018,
+    "rl": 4947,
+    "robotics": 30080,
+    "rl_rob": 617
+  },
+  {
+    "year": 2019,
+    "rl": 7925,
+    "robotics": 33346,
+    "rl_rob": 945
+  },
+  {
+    "year": 2020,
+    "rl": 10656,
+    "robotics": 33807,
+    "rl_rob": 1264
+  },
+  {
+    "year": 2021,
+    "rl": 13471,
+    "robotics": 36196,
+    "rl_rob": 1587
+  },
+  {
+    "year": 2022,
+    "rl": 15173,
+    "robotics": 37614,
+    "rl_rob": 1823
+  },
+  {
+    "year": 2023,
+    "rl": 19040,
+    "robotics": 42138,
+    "rl_rob": 2251
+  },
+  {
+    "year": 2024,
+    "rl": 17190,
+    "robotics": 39434,
+    "rl_rob": 1391
+  },
+  {
+    "year": 2025,
+    "rl": 16982,
+    "robotics": 30694,
+    "rl_rob": 1328
+  }
+]
