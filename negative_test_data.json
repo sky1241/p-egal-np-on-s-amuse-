@@ -1,0 +1,419 @@
+{
+  "ponts": [
+    {
+      "title": "Sentence-BERT: Sentence Embeddings using Siamese BERT-Networ",
+      "year": 2019,
+      "cit": 9726,
+      "n_l0": 1,
+      "n_l1": 2,
+      "n_l2": 1,
+      "n_total": 4,
+      "l0": [
+        "Computer science"
+      ],
+      "l1": [
+        "Artificial intelligence",
+        "Natural language processing"
+      ]
+    },
+    {
+      "title": "Mastering the game of Go with deep neural networks and tree ",
+      "year": 2016,
+      "cit": 15446,
+      "n_l0": 3,
+      "n_l1": 7,
+      "n_l2": 8,
+      "n_total": 22,
+      "l0": [
+        "Computer science",
+        "Mathematics",
+        "Political science"
+      ],
+      "l1": [
+        "Algorithm",
+        "Artificial intelligence",
+        "Law",
+        "Machine learning",
+        "Mathematical analysis",
+        "Mathematical economics",
+        "Statistics"
+      ]
+    },
+    {
+      "title": "A survey on Image Data Augmentation for Deep Learning",
+      "year": 2019,
+      "cit": 11533,
+      "n_l0": 2,
+      "n_l1": 5,
+      "n_l2": 6,
+      "n_total": 14,
+      "l0": [
+        "Computer science",
+        "Geography"
+      ],
+      "l1": [
+        "Artificial intelligence",
+        "Data mining",
+        "Data science",
+        "Geodesy",
+        "Machine learning"
+      ]
+    },
+    {
+      "title": "Highly accurate protein structure prediction with AlphaFold",
+      "year": 2021,
+      "cit": 41796,
+      "n_l0": 2,
+      "n_l1": 6,
+      "n_l2": 5,
+      "n_total": 18,
+      "l0": [
+        "Biology",
+        "Computer science"
+      ],
+      "l1": [
+        "Artificial intelligence",
+        "Biochemistry",
+        "Computational biology",
+        "Evolutionary biology",
+        "Genetics",
+        "Machine learning"
+      ]
+    },
+    {
+      "title": "Natural products in drug discovery: advances and opportuniti",
+      "year": 2021,
+      "cit": 4594,
+      "n_l0": 4,
+      "n_l1": 7,
+      "n_l2": 5,
+      "n_total": 16,
+      "l0": [
+        "Biology",
+        "Business",
+        "Computer science",
+        "Engineering"
+      ],
+      "l1": [
+        "Biochemical engineering",
+        "Biochemistry",
+        "Bioinformatics",
+        "Biotechnology",
+        "Data science",
+        "Paleontology",
+        "Risk analysis (engineering)"
+      ]
+    },
+    {
+      "title": "The role of artificial intelligence in achieving the Sustain",
+      "year": 2020,
+      "cit": 2666,
+      "n_l0": 5,
+      "n_l1": 6,
+      "n_l2": 4,
+      "n_total": 15,
+      "l0": [
+        "Business",
+        "Computer science",
+        "Economics",
+        "Engineering",
+        "Political science"
+      ],
+      "l1": [
+        "Computer security",
+        "Economic growth",
+        "Engineering ethics",
+        "Law",
+        "Process management",
+        "Risk analysis (engineering)"
+      ]
+    },
+    {
+      "title": "Using PLS path modeling in new technology research: updated ",
+      "year": 2016,
+      "cit": 6175,
+      "n_l0": 4,
+      "n_l1": 8,
+      "n_l2": 6,
+      "n_total": 21,
+      "l0": [
+        "Business",
+        "Computer science",
+        "Engineering",
+        "Psychology"
+      ],
+      "l1": [
+        "Accounting",
+        "Artificial intelligence",
+        "Data mining",
+        "Industrial engineering",
+        "Machine learning",
+        "Management science",
+        "Programming language",
+        "Social psychology"
+      ]
+    },
+    {
+      "title": "Dynamic Graph CNN for Learning on Point Clouds",
+      "year": 2019,
+      "cit": 6370,
+      "n_l0": 4,
+      "n_l1": 8,
+      "n_l2": 13,
+      "n_total": 26,
+      "l0": [
+        "Computer science",
+        "Mathematics",
+        "Philosophy",
+        "Political science"
+      ],
+      "l1": [
+        "Artificial intelligence",
+        "Combinatorics",
+        "Computer graphics (images)",
+        "Geometry",
+        "Law",
+        "Linguistics",
+        "Mathematical analysis",
+        "Theoretical computer science"
+      ]
+    },
+    {
+      "title": "The Multimodal Brain Tumor Image Segmentation Benchmark (BRA",
+      "year": 2014,
+      "cit": 6147,
+      "n_l0": 3,
+      "n_l1": 4,
+      "n_l2": 6,
+      "n_total": 14,
+      "l0": [
+        "Computer science",
+        "Geography",
+        "Psychology"
+      ],
+      "l1": [
+        "Artificial intelligence",
+        "Computer vision",
+        "Geodesy",
+        "Psychiatry"
+      ]
+    },
+    {
+      "title": "ON THE PRICING OF CORPORATE DEBT: THE RISK STRUCTURE OF INTE",
+      "year": 1974,
+      "cit": 10987,
+      "n_l0": 2,
+      "n_l1": 6,
+      "n_l2": 8,
+      "n_total": 22,
+      "l0": [
+        "Economics",
+        "Political science"
+      ],
+      "l1": [
+        "Actuarial science",
+        "Econometrics",
+        "Finance",
+        "Financial economics",
+        "Law",
+        "Monetary economics"
+      ]
+    }
+  ],
+  "intra": [
+    {
+      "title": "Density-functional thermochemistry. III. The role of exact e",
+      "year": 1993,
+      "cit": 101018,
+      "n_l0": 2,
+      "n_l1": 6,
+      "n_l2": 5,
+      "n_total": 17,
+      "l0": [
+        "Chemistry",
+        "Physics"
+      ],
+      "l1": [
+        "Atomic physics",
+        "Computational chemistry",
+        "Condensed matter physics",
+        "Organic chemistry",
+        "Physical chemistry",
+        "Quantum mechanics"
+      ]
+    },
+    {
+      "title": "From molecular to modular cell biology",
+      "year": 1999,
+      "cit": 3639,
+      "n_l0": 3,
+      "n_l1": 3,
+      "n_l2": 3,
+      "n_total": 9,
+      "l0": [
+        "Biology",
+        "Computer science",
+        "Psychology"
+      ],
+      "l1": [
+        "Cognitive science",
+        "Computational biology",
+        "Programming language"
+      ]
+    },
+    {
+      "title": "Molecular Structure of Nucleic Acids: A Structure for Deoxyr",
+      "year": 1953,
+      "cit": 13000,
+      "n_l0": 2,
+      "n_l1": 2,
+      "n_l2": 3,
+      "n_total": 12,
+      "l0": [
+        "Biology",
+        "Chemistry"
+      ],
+      "l1": [
+        "Biochemistry",
+        "Polymer science"
+      ]
+    },
+    {
+      "title": "A variational eigenvalue solver on a photonic quantum proces",
+      "year": 2014,
+      "cit": 4234,
+      "n_l0": 3,
+      "n_l1": 5,
+      "n_l2": 6,
+      "n_total": 16,
+      "l0": [
+        "Computer science",
+        "Mathematics",
+        "Physics"
+      ],
+      "l1": [
+        "Computational science",
+        "Mathematical optimization",
+        "Programming language",
+        "Pure mathematics",
+        "Quantum mechanics"
+      ]
+    },
+    {
+      "title": "Artificial Intelligence (AI): Multidisciplinary perspectives",
+      "year": 2019,
+      "cit": 3684,
+      "n_l0": 6,
+      "n_l1": 6,
+      "n_l2": 5,
+      "n_total": 17,
+      "l0": [
+        "Business",
+        "Computer science",
+        "Engineering",
+        "Geography",
+        "Philosophy",
+        "Sociology"
+      ],
+      "l1": [
+        "Geodesy",
+        "Knowledge management",
+        "Linguistics",
+        "Marketing",
+        "Pedagogy",
+        "Social science"
+      ]
+    },
+    {
+      "title": "Head-driven phrase structure grammar",
+      "year": 1994,
+      "cit": 3973,
+      "n_l0": 2,
+      "n_l1": 3,
+      "n_l2": 5,
+      "n_total": 17,
+      "l0": [
+        "Computer science",
+        "Philosophy"
+      ],
+      "l1": [
+        "Artificial intelligence",
+        "Linguistics",
+        "Natural language processing"
+      ]
+    },
+    {
+      "title": "A Mathematical Theory of Communication",
+      "year": 1948,
+      "cit": 9724,
+      "n_l0": 4,
+      "n_l1": 4,
+      "n_l2": 2,
+      "n_total": 10,
+      "l0": [
+        "Computer science",
+        "Geography",
+        "History",
+        "Sociology"
+      ],
+      "l1": [
+        "Artificial intelligence",
+        "Classics",
+        "Geodesy",
+        "Media studies"
+      ]
+    },
+    {
+      "title": "Third-party punishment and social norms",
+      "year": 2004,
+      "cit": 2274,
+      "n_l0": 4,
+      "n_l1": 5,
+      "n_l2": 8,
+      "n_total": 19,
+      "l0": [
+        "Computer science",
+        "Economics",
+        "Political science",
+        "Psychology"
+      ],
+      "l1": [
+        "Internet privacy",
+        "Law",
+        "Law and economics",
+        "Microeconomics",
+        "Social psychology"
+      ]
+    },
+    {
+      "title": "Quantum supremacy using a programmable superconducting proce",
+      "year": 2019,
+      "cit": 6572,
+      "n_l0": 0,
+      "n_l1": 0,
+      "n_l2": 0,
+      "n_total": 0,
+      "l0": [],
+      "l1": []
+    },
+    {
+      "title": "Circos: An information aesthetic for comparative genomics",
+      "year": 2009,
+      "cit": 11499,
+      "n_l0": 2,
+      "n_l1": 4,
+      "n_l2": 3,
+      "n_total": 15,
+      "l0": [
+        "Biology",
+        "Computer science"
+      ],
+      "l1": [
+        "Artificial intelligence",
+        "Computational biology",
+        "Data mining",
+        "Genetics"
+      ]
+    }
+  ]
+}
