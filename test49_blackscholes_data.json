@@ -1,0 +1,450 @@
+[
+  {
+    "year": 1970,
+    "stoch_proc": 157,
+    "fin_econ": 1048,
+    "brownian": 70,
+    "sp_fe": 2,
+    "bm_fe": 1
+  },
+  {
+    "year": 1971,
+    "stoch_proc": 155,
+    "fin_econ": 1017,
+    "brownian": 94,
+    "sp_fe": 0,
+    "bm_fe": 0
+  },
+  {
+    "year": 1972,
+    "stoch_proc": 174,
+    "fin_econ": 1161,
+    "brownian": 111,
+    "sp_fe": 5,
+    "bm_fe": 0
+  },
+  {
+    "year": 1973,
+    "stoch_proc": 160,
+    "fin_econ": 1258,
+    "brownian": 114,
+    "sp_fe": 1,
+    "bm_fe": 0
+  },
+  {
+    "year": 1974,
+    "stoch_proc": 196,
+    "fin_econ": 1339,
+    "brownian": 114,
+    "sp_fe": 1,
+    "bm_fe": 0
+  },
+  {
+    "year": 1975,
+    "stoch_proc": 229,
+    "fin_econ": 1392,
+    "brownian": 151,
+    "sp_fe": 2,
+    "bm_fe": 0
+  },
+  {
+    "year": 1976,
+    "stoch_proc": 210,
+    "fin_econ": 1543,
+    "brownian": 149,
+    "sp_fe": 1,
+    "bm_fe": 1
+  },
+  {
+    "year": 1977,
+    "stoch_proc": 251,
+    "fin_econ": 1554,
+    "brownian": 157,
+    "sp_fe": 1,
+    "bm_fe": 0
+  },
+  {
+    "year": 1978,
+    "stoch_proc": 241,
+    "fin_econ": 1651,
+    "brownian": 191,
+    "sp_fe": 1,
+    "bm_fe": 0
+  },
+  {
+    "year": 1979,
+    "stoch_proc": 231,
+    "fin_econ": 1773,
+    "brownian": 186,
+    "sp_fe": 0,
+    "bm_fe": 0
+  },
+  {
+    "year": 1980,
+    "stoch_proc": 263,
+    "fin_econ": 2004,
+    "brownian": 218,
+    "sp_fe": 0,
+    "bm_fe": 0
+  },
+  {
+    "year": 1981,
+    "stoch_proc": 296,
+    "fin_econ": 2028,
+    "brownian": 216,
+    "sp_fe": 0,
+    "bm_fe": 0
+  },
+  {
+    "year": 1982,
+    "stoch_proc": 295,
+    "fin_econ": 2134,
+    "brownian": 256,
+    "sp_fe": 3,
+    "bm_fe": 0
+  },
+  {
+    "year": 1983,
+    "stoch_proc": 348,
+    "fin_econ": 2321,
+    "brownian": 255,
+    "sp_fe": 0,
+    "bm_fe": 0
+  },
+  {
+    "year": 1984,
+    "stoch_proc": 346,
+    "fin_econ": 2495,
+    "brownian": 274,
+    "sp_fe": 2,
+    "bm_fe": 1
+  },
+  {
+    "year": 1985,
+    "stoch_proc": 324,
+    "fin_econ": 2667,
+    "brownian": 283,
+    "sp_fe": 1,
+    "bm_fe": 1
+  },
+  {
+    "year": 1986,
+    "stoch_proc": 418,
+    "fin_econ": 2947,
+    "brownian": 337,
+    "sp_fe": 13,
+    "bm_fe": 10
+  },
+  {
+    "year": 1987,
+    "stoch_proc": 416,
+    "fin_econ": 3261,
+    "brownian": 322,
+    "sp_fe": 11,
+    "bm_fe": 6
+  },
+  {
+    "year": 1988,
+    "stoch_proc": 426,
+    "fin_econ": 3458,
+    "brownian": 355,
+    "sp_fe": 13,
+    "bm_fe": 8
+  },
+  {
+    "year": 1989,
+    "stoch_proc": 392,
+    "fin_econ": 3708,
+    "brownian": 361,
+    "sp_fe": 14,
+    "bm_fe": 6
+  },
+  {
+    "year": 1990,
+    "stoch_proc": 477,
+    "fin_econ": 3882,
+    "brownian": 392,
+    "sp_fe": 14,
+    "bm_fe": 9
+  },
+  {
+    "year": 1991,
+    "stoch_proc": 572,
+    "fin_econ": 3781,
+    "brownian": 427,
+    "sp_fe": 10,
+    "bm_fe": 9
+  },
+  {
+    "year": 1992,
+    "stoch_proc": 539,
+    "fin_econ": 3894,
+    "brownian": 420,
+    "sp_fe": 4,
+    "bm_fe": 11
+  },
+  {
+    "year": 1993,
+    "stoch_proc": 523,
+    "fin_econ": 4272,
+    "brownian": 502,
+    "sp_fe": 9,
+    "bm_fe": 9
+  },
+  {
+    "year": 1994,
+    "stoch_proc": 533,
+    "fin_econ": 4468,
+    "brownian": 517,
+    "sp_fe": 13,
+    "bm_fe": 9
+  },
+  {
+    "year": 1995,
+    "stoch_proc": 547,
+    "fin_econ": 4761,
+    "brownian": 595,
+    "sp_fe": 6,
+    "bm_fe": 17
+  },
+  {
+    "year": 1996,
+    "stoch_proc": 608,
+    "fin_econ": 5275,
+    "brownian": 634,
+    "sp_fe": 12,
+    "bm_fe": 14
+  },
+  {
+    "year": 1997,
+    "stoch_proc": 571,
+    "fin_econ": 5650,
+    "brownian": 606,
+    "sp_fe": 8,
+    "bm_fe": 13
+  },
+  {
+    "year": 1998,
+    "stoch_proc": 608,
+    "fin_econ": 6328,
+    "brownian": 690,
+    "sp_fe": 8,
+    "bm_fe": 13
+  },
+  {
+    "year": 1999,
+    "stoch_proc": 631,
+    "fin_econ": 6886,
+    "brownian": 725,
+    "sp_fe": 13,
+    "bm_fe": 14
+  },
+  {
+    "year": 2000,
+    "stoch_proc": 710,
+    "fin_econ": 7935,
+    "brownian": 800,
+    "sp_fe": 23,
+    "bm_fe": 16
+  },
+  {
+    "year": 2001,
+    "stoch_proc": 733,
+    "fin_econ": 8910,
+    "brownian": 829,
+    "sp_fe": 15,
+    "bm_fe": 29
+  },
+  {
+    "year": 2002,
+    "stoch_proc": 1526,
+    "fin_econ": 10511,
+    "brownian": 1010,
+    "sp_fe": 26,
+    "bm_fe": 33
+  },
+  {
+    "year": 2003,
+    "stoch_proc": 1221,
+    "fin_econ": 11382,
+    "brownian": 1050,
+    "sp_fe": 22,
+    "bm_fe": 41
+  },
+  {
+    "year": 2004,
+    "stoch_proc": 1106,
+    "fin_econ": 11991,
+    "brownian": 1172,
+    "sp_fe": 30,
+    "bm_fe": 40
+  },
+  {
+    "year": 2005,
+    "stoch_proc": 1238,
+    "fin_econ": 12926,
+    "brownian": 1280,
+    "sp_fe": 19,
+    "bm_fe": 28
+  },
+  {
+    "year": 2006,
+    "stoch_proc": 1421,
+    "fin_econ": 14117,
+    "brownian": 1317,
+    "sp_fe": 34,
+    "bm_fe": 35
+  },
+  {
+    "year": 2007,
+    "stoch_proc": 1423,
+    "fin_econ": 15430,
+    "brownian": 1426,
+    "sp_fe": 24,
+    "bm_fe": 40
+  },
+  {
+    "year": 2008,
+    "stoch_proc": 1500,
+    "fin_econ": 17208,
+    "brownian": 1566,
+    "sp_fe": 25,
+    "bm_fe": 55
+  },
+  {
+    "year": 2009,
+    "stoch_proc": 1619,
+    "fin_econ": 18755,
+    "brownian": 1593,
+    "sp_fe": 31,
+    "bm_fe": 62
+  },
+  {
+    "year": 2010,
+    "stoch_proc": 1702,
+    "fin_econ": 19850,
+    "brownian": 1706,
+    "sp_fe": 35,
+    "bm_fe": 58
+  },
+  {
+    "year": 2011,
+    "stoch_proc": 1891,
+    "fin_econ": 22379,
+    "brownian": 1870,
+    "sp_fe": 25,
+    "bm_fe": 80
+  },
+  {
+    "year": 2012,
+    "stoch_proc": 1747,
+    "fin_econ": 25969,
+    "brownian": 1874,
+    "sp_fe": 35,
+    "bm_fe": 57
+  },
+  {
+    "year": 2013,
+    "stoch_proc": 1883,
+    "fin_econ": 23418,
+    "brownian": 2051,
+    "sp_fe": 29,
+    "bm_fe": 52
+  },
+  {
+    "year": 2014,
+    "stoch_proc": 1958,
+    "fin_econ": 24141,
+    "brownian": 1984,
+    "sp_fe": 42,
+    "bm_fe": 49
+  },
+  {
+    "year": 2015,
+    "stoch_proc": 1921,
+    "fin_econ": 24170,
+    "brownian": 2035,
+    "sp_fe": 32,
+    "bm_fe": 69
+  },
+  {
+    "year": 2016,
+    "stoch_proc": 1858,
+    "fin_econ": 23455,
+    "brownian": 2034,
+    "sp_fe": 23,
+    "bm_fe": 58
+  },
+  {
+    "year": 2017,
+    "stoch_proc": 1906,
+    "fin_econ": 23896,
+    "brownian": 2017,
+    "sp_fe": 38,
+    "bm_fe": 55
+  },
+  {
+    "year": 2018,
+    "stoch_proc": 1850,
+    "fin_econ": 23811,
+    "brownian": 1938,
+    "sp_fe": 38,
+    "bm_fe": 62
+  },
+  {
+    "year": 2019,
+    "stoch_proc": 2024,
+    "fin_econ": 23940,
+    "brownian": 2114,
+    "sp_fe": 39,
+    "bm_fe": 53
+  },
+  {
+    "year": 2020,
+    "stoch_proc": 1892,
+    "fin_econ": 25483,
+    "brownian": 2392,
+    "sp_fe": 25,
+    "bm_fe": 60
+  },
+  {
+    "year": 2021,
+    "stoch_proc": 1822,
+    "fin_econ": 24734,
+    "brownian": 2325,
+    "sp_fe": 37,
+    "bm_fe": 71
+  },
+  {
+    "year": 2022,
+    "stoch_proc": 1875,
+    "fin_econ": 23292,
+    "brownian": 2384,
+    "sp_fe": 36,
+    "bm_fe": 44
+  },
+  {
+    "year": 2023,
+    "stoch_proc": 1916,
+    "fin_econ": 24991,
+    "brownian": 2348,
+    "sp_fe": 41,
+    "bm_fe": 58
+  },
+  {
+    "year": 2024,
+    "stoch_proc": 1083,
+    "fin_econ": 21531,
+    "brownian": 1455,
+    "sp_fe": 20,
+    "bm_fe": 37
+  },
+  {
+    "year": 2025,
+    "stoch_proc": 5046,
+    "fin_econ": 16666,
+    "brownian": 1285,
+    "sp_fe": 40,
+    "bm_fe": 27
+  }
+]
