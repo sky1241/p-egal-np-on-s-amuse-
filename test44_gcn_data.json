@@ -1,0 +1,149 @@
+[
+  {
+    "year": 2005,
+    "graph_theory": 9438,
+    "dl": 103,
+    "gt_dl": 0,
+    "gt_cnn": 6
+  },
+  {
+    "year": 2006,
+    "graph_theory": 10622,
+    "dl": 114,
+    "gt_dl": 2,
+    "gt_cnn": 9
+  },
+  {
+    "year": 2007,
+    "graph_theory": 11621,
+    "dl": 127,
+    "gt_dl": 1,
+    "gt_cnn": 13
+  },
+  {
+    "year": 2008,
+    "graph_theory": 13088,
+    "dl": 125,
+    "gt_dl": 0,
+    "gt_cnn": 13
+  },
+  {
+    "year": 2009,
+    "graph_theory": 14426,
+    "dl": 194,
+    "gt_dl": 2,
+    "gt_cnn": 20
+  },
+  {
+    "year": 2010,
+    "graph_theory": 15170,
+    "dl": 271,
+    "gt_dl": 9,
+    "gt_cnn": 20
+  },
+  {
+    "year": 2011,
+    "graph_theory": 16603,
+    "dl": 290,
+    "gt_dl": 3,
+    "gt_cnn": 19
+  },
+  {
+    "year": 2012,
+    "graph_theory": 17808,
+    "dl": 375,
+    "gt_dl": 2,
+    "gt_cnn": 19
+  },
+  {
+    "year": 2013,
+    "graph_theory": 18412,
+    "dl": 583,
+    "gt_dl": 11,
+    "gt_cnn": 20
+  },
+  {
+    "year": 2014,
+    "graph_theory": 19086,
+    "dl": 1139,
+    "gt_dl": 13,
+    "gt_cnn": 16
+  },
+  {
+    "year": 2015,
+    "graph_theory": 19779,
+    "dl": 2505,
+    "gt_dl": 29,
+    "gt_cnn": 17
+  },
+  {
+    "year": 2016,
+    "graph_theory": 19825,
+    "dl": 4890,
+    "gt_dl": 55,
+    "gt_cnn": 13
+  },
+  {
+    "year": 2017,
+    "graph_theory": 20633,
+    "dl": 10478,
+    "gt_dl": 117,
+    "gt_cnn": 20
+  },
+  {
+    "year": 2018,
+    "graph_theory": 22927,
+    "dl": 18841,
+    "gt_dl": 265,
+    "gt_cnn": 26
+  },
+  {
+    "year": 2019,
+    "graph_theory": 25152,
+    "dl": 28620,
+    "gt_dl": 421,
+    "gt_cnn": 19
+  },
+  {
+    "year": 2020,
+    "graph_theory": 28703,
+    "dl": 37252,
+    "gt_dl": 713,
+    "gt_cnn": 28
+  },
+  {
+    "year": 2021,
+    "graph_theory": 33659,
+    "dl": 46824,
+    "gt_dl": 982,
+    "gt_cnn": 19
+  },
+  {
+    "year": 2022,
+    "graph_theory": 35917,
+    "dl": 52935,
+    "gt_dl": 1160,
+    "gt_cnn": 11
+  },
+  {
+    "year": 2023,
+    "graph_theory": 40317,
+    "dl": 62134,
+    "gt_dl": 1400,
+    "gt_cnn": 21
+  },
+  {
+    "year": 2024,
+    "graph_theory": 31036,
+    "dl": 47740,
+    "gt_dl": 710,
+    "gt_cnn": 36
+  },
+  {
+    "year": 2025,
+    "graph_theory": 28159,
+    "dl": 52590,
+    "gt_dl": 1492,
+    "gt_cnn": 89
+  }
+]
