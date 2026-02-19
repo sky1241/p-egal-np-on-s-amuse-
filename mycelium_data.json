@@ -1,0 +1,891 @@
+{
+  "meta": {
+    "title": "Yggdrasil Mycelium — Réseau souterrain",
+    "date": "2026-02-19",
+    "n_symbols_s0": 549,
+    "n_lianes_multi": 69,
+    "type_counts": {
+      "local": 480,
+      "universal": 5,
+      "major": 29,
+      "liane": 26,
+      "bridge": 9
+    }
+  },
+  "metrics": {
+    "meshedness_alpha": 1.6667,
+    "global_efficiency": 1.0,
+    "root_efficiency": 1.0,
+    "volume_mst_ratio": 2.3026,
+    "robustness_30pct": 0.5714,
+    "strategy": {
+      "alpha": 1.6667,
+      "e_global": 1.0,
+      "e_root": 1.0,
+      "type": "PHALANX",
+      "pattern": "P2 Dense",
+      "desc": "Réseau dense — ascenseur central",
+      "rob30": 0.5714
+    }
+  },
+  "nodes": [
+    {
+      "id": "Mathématiques Pures",
+      "color": "#1e3a8a",
+      "n_domains": 19,
+      "efficiency": 1.0,
+      "betweenness": 0.0
+    },
+    {
+      "id": "Physique Fondamentale",
+      "color": "#7c3aed",
+      "n_domains": 12,
+      "efficiency": 1.0,
+      "betweenness": 0.0
+    },
+    {
+      "id": "Ingénierie & Électricité",
+      "color": "#ea580c",
+      "n_domains": 7,
+      "efficiency": 1.0,
+      "betweenness": 0.0
+    },
+    {
+      "id": "Informatique & IA",
+      "color": "#06b6d4",
+      "n_domains": 6,
+      "efficiency": 1.0,
+      "betweenness": 0.0
+    },
+    {
+      "id": "Finance & Économie",
+      "color": "#eab308",
+      "n_domains": 6,
+      "efficiency": 1.0,
+      "betweenness": 0.0
+    },
+    {
+      "id": "Biologie & Médecine",
+      "color": "#84cc16",
+      "n_domains": 1,
+      "efficiency": 1.0,
+      "betweenness": 0.0
+    },
+    {
+      "id": "Chimie",
+      "color": "#f43f5e",
+      "n_domains": 1,
+      "efficiency": 1.0,
+      "betweenness": 0.0
+    }
+  ],
+  "edges": [
+    {
+      "source": "Mathématiques Pures",
+      "target": "Physique Fondamentale",
+      "weight": 38,
+      "lianes": [
+        "=",
+        "∞",
+        "π",
+        "e",
+        "i",
+        "∫",
+        "∬",
+        "∮",
+        "∂",
+        "d/dx",
+        "∇",
+        "∇²",
+        "∇×",
+        "∇·",
+        "δ",
+        "lim",
+        "Σ",
+        "Π",
+        "ε",
+        "sin",
+        "cos",
+        "ln",
+        "exp",
+        "Γ",
+        "ζ",
+        "det",
+        "λ",
+        "σ_std",
+        "χ²",
+        "N(μ,σ²)",
+        "ℒ",
+        "ℋ",
+        "ℱ",
+        "∗_conv",
+        "BS",
+        "TM",
+        "W(t)",
+        "Itô"
+      ],
+      "physarum_conductivity": 0.1702
+    },
+    {
+      "source": "Mathématiques Pures",
+      "target": "Ingénierie & Électricité",
+      "weight": 24,
+      "lianes": [
+        "=",
+        "π",
+        "i",
+        "∫",
+        "∬",
+        "∮",
+        "∂",
+        "d/dx",
+        "∇",
+        "∇²",
+        "∇×",
+        "∇·",
+        "δ",
+        "lim",
+        "Σ",
+        "O(n)",
+        "ε",
+        "sin",
+        "cos",
+        "Γ",
+        "det",
+        "ℒ",
+        "ℱ",
+        "∗_conv"
+      ],
+      "physarum_conductivity": 0.1672
+    },
+    {
+      "source": "Mathématiques Pures",
+      "target": "Informatique & IA",
+      "weight": 26,
+      "lianes": [
+        "=",
+        "∞",
+        "π",
+        "e",
+        "∇",
+        "Σ",
+        "Π",
+        "O(n)",
+        "sin",
+        "cos",
+        "ln",
+        "log",
+        "exp",
+        "det",
+        "λ",
+        "P(A)",
+        "E[X]",
+        "Var",
+        "Bayes",
+        "ℋ",
+        "ℱ",
+        "∗_conv",
+        "∇L",
+        "TM",
+        "argmin",
+        "argmax"
+      ],
+      "physarum_conductivity": 0.1676
+    },
+    {
+      "source": "Mathématiques Pures",
+      "target": "Finance & Économie",
+      "weight": 31,
+      "lianes": [
+        "=",
+        "∞",
+        "e",
+        "∫",
+        "∂",
+        "d/dx",
+        "δ",
+        "lim",
+        "Σ",
+        "Π",
+        "O(n)",
+        "ε",
+        "ln",
+        "log",
+        "exp",
+        "ζ",
+        "λ",
+        "P(A)",
+        "E[X]",
+        "Var",
+        "σ_std",
+        "χ²",
+        "N(μ,σ²)",
+        "Bayes",
+        "R₀",
+        "BS",
+        "∇L",
+        "W(t)",
+        "Itô",
+        "argmin",
+        "argmax"
+      ],
+      "physarum_conductivity": 0.1685
+    },
+    {
+      "source": "Mathématiques Pures",
+      "target": "Biologie & Médecine",
+      "weight": 16,
+      "lianes": [
+        "=",
+        "e",
+        "∫",
+        "∂",
+        "Σ",
+        "ln",
+        "log",
+        "exp",
+        "P(A)",
+        "E[X]",
+        "Var",
+        "σ_std",
+        "χ²",
+        "N(μ,σ²)",
+        "Bayes",
+        "R₀"
+      ],
+      "physarum_conductivity": 0.1658
+    },
+    {
+      "source": "Mathématiques Pures",
+      "target": "Chimie",
+      "weight": 7,
+      "lianes": [
+        "=",
+        "∫",
+        "∬",
+        "∮",
+        "∇²",
+        "ln",
+        "exp"
+      ],
+      "physarum_conductivity": 0.1644
+    },
+    {
+      "source": "Physique Fondamentale",
+      "target": "Ingénierie & Électricité",
+      "weight": 27,
+      "lianes": [
+        "=",
+        "π",
+        "i",
+        "∫",
+        "∬",
+        "∮",
+        "∂",
+        "d/dx",
+        "∇",
+        "∇²",
+        "∇×",
+        "∇·",
+        "δ",
+        "lim",
+        "Σ",
+        "ε",
+        "sin",
+        "cos",
+        "Γ",
+        "det",
+        "ℒ",
+        "Re",
+        "F=ma",
+        "PV=nRT",
+        "ℱ",
+        "FFT",
+        "∗_conv"
+      ],
+      "physarum_conductivity": 0.0012
+    },
+    {
+      "source": "Physique Fondamentale",
+      "target": "Informatique & IA",
+      "weight": 21,
+      "lianes": [
+        "=",
+        "∞",
+        "π",
+        "e",
+        "∇",
+        "Σ",
+        "Π",
+        "sin",
+        "cos",
+        "ln",
+        "exp",
+        "det",
+        "λ",
+        "H(X)",
+        "D_KL",
+        "ℋ",
+        "S_ent",
+        "ℱ",
+        "FFT",
+        "∗_conv",
+        "TM"
+      ],
+      "physarum_conductivity": 0.0008
+    },
+    {
+      "source": "Physique Fondamentale",
+      "target": "Finance & Économie",
+      "weight": 25,
+      "lianes": [
+        "=",
+        "∞",
+        "e",
+        "∫",
+        "∂",
+        "d/dx",
+        "δ",
+        "lim",
+        "Σ",
+        "Π",
+        "ε",
+        "ln",
+        "exp",
+        "ζ",
+        "λ",
+        "σ_std",
+        "χ²",
+        "N(μ,σ²)",
+        "H(X)",
+        "D_KL",
+        "FFT",
+        "BS",
+        "W(t)",
+        "Itô",
+        "SDE"
+      ],
+      "physarum_conductivity": 0.0008
+    },
+    {
+      "source": "Physique Fondamentale",
+      "target": "Biologie & Médecine",
+      "weight": 13,
+      "lianes": [
+        "=",
+        "e",
+        "∫",
+        "∂",
+        "Σ",
+        "ln",
+        "exp",
+        "σ_std",
+        "χ²",
+        "N(μ,σ²)",
+        "Re",
+        "F=ma",
+        "SDE"
+      ],
+      "physarum_conductivity": 0.0009
+    },
+    {
+      "source": "Physique Fondamentale",
+      "target": "Chimie",
+      "weight": 9,
+      "lianes": [
+        "=",
+        "∫",
+        "∬",
+        "∮",
+        "∇²",
+        "ln",
+        "exp",
+        "S_ent",
+        "PV=nRT"
+      ],
+      "physarum_conductivity": 0.0014
+    },
+    {
+      "source": "Ingénierie & Électricité",
+      "target": "Informatique & IA",
+      "weight": 20,
+      "lianes": [
+        "=",
+        "π",
+        "∇",
+        "Σ",
+        "O(n)",
+        "sin",
+        "cos",
+        "det",
+        "ℱ",
+        "FFT",
+        "∗_conv",
+        "DFA",
+        "NFA",
+        "CFG",
+        "PDA",
+        "UTM",
+        "λ_calc",
+        "Reg",
+        "CFL",
+        "Chom"
+      ],
+      "physarum_conductivity": 0.0006
+    },
+    {
+      "source": "Ingénierie & Électricité",
+      "target": "Finance & Économie",
+      "weight": 10,
+      "lianes": [
+        "=",
+        "∫",
+        "∂",
+        "d/dx",
+        "δ",
+        "lim",
+        "Σ",
+        "O(n)",
+        "ε",
+        "FFT"
+      ],
+      "physarum_conductivity": 0.0003
+    },
+    {
+      "source": "Ingénierie & Électricité",
+      "target": "Biologie & Médecine",
+      "weight": 6,
+      "lianes": [
+        "=",
+        "∫",
+        "∂",
+        "Σ",
+        "Re",
+        "F=ma"
+      ],
+      "physarum_conductivity": 0.0002
+    },
+    {
+      "source": "Ingénierie & Électricité",
+      "target": "Chimie",
+      "weight": 6,
+      "lianes": [
+        "=",
+        "∫",
+        "∬",
+        "∮",
+        "∇²",
+        "PV=nRT"
+      ],
+      "physarum_conductivity": 0.0006
+    },
+    {
+      "source": "Informatique & IA",
+      "target": "Finance & Économie",
+      "weight": 24,
+      "lianes": [
+        "=",
+        "∞",
+        "e",
+        "Σ",
+        "Π",
+        "O(n)",
+        "ln",
+        "log",
+        "exp",
+        "λ",
+        "P(A)",
+        "E[X]",
+        "Var",
+        "Bayes",
+        "H(X)",
+        "D_KL",
+        "FFT",
+        "Nash",
+        "∇L",
+        "SGD",
+        "Attn",
+        "GAN",
+        "argmin",
+        "argmax"
+      ],
+      "physarum_conductivity": 0.0008
+    },
+    {
+      "source": "Informatique & IA",
+      "target": "Biologie & Médecine",
+      "weight": 14,
+      "lianes": [
+        "=",
+        "e",
+        "Σ",
+        "ln",
+        "log",
+        "exp",
+        "P(A)",
+        "E[X]",
+        "Var",
+        "Bayes",
+        "Nash",
+        "SGD",
+        "Attn",
+        "GAN"
+      ],
+      "physarum_conductivity": 0.0006
+    },
+    {
+      "source": "Informatique & IA",
+      "target": "Chimie",
+      "weight": 4,
+      "lianes": [
+        "=",
+        "ln",
+        "exp",
+        "S_ent"
+      ],
+      "physarum_conductivity": 0.0004
+    },
+    {
+      "source": "Finance & Économie",
+      "target": "Biologie & Médecine",
+      "weight": 21,
+      "lianes": [
+        "=",
+        "e",
+        "∫",
+        "∂",
+        "Σ",
+        "ln",
+        "log",
+        "exp",
+        "P(A)",
+        "E[X]",
+        "Var",
+        "σ_std",
+        "χ²",
+        "N(μ,σ²)",
+        "Bayes",
+        "R₀",
+        "Nash",
+        "SGD",
+        "Attn",
+        "GAN",
+        "SDE"
+      ],
+      "physarum_conductivity": 0.0011
+    },
+    {
+      "source": "Finance & Économie",
+      "target": "Chimie",
+      "weight": 4,
+      "lianes": [
+        "=",
+        "∫",
+        "ln",
+        "exp"
+      ],
+      "physarum_conductivity": 0.0005
+    },
+    {
+      "source": "Biologie & Médecine",
+      "target": "Chimie",
+      "weight": 4,
+      "lianes": [
+        "=",
+        "∫",
+        "ln",
+        "exp"
+      ],
+      "physarum_conductivity": 0.0003
+    }
+  ],
+  "physarum": {
+    "arteries": [
+      {
+        "from": "Mathématiques Pures",
+        "to": "Physique Fondamentale",
+        "conductivity": 0.1702
+      },
+      {
+        "from": "Mathématiques Pures",
+        "to": "Finance & Économie",
+        "conductivity": 0.1685
+      },
+      {
+        "from": "Mathématiques Pures",
+        "to": "Informatique & IA",
+        "conductivity": 0.1676
+      },
+      {
+        "from": "Mathématiques Pures",
+        "to": "Ingénierie & Électricité",
+        "conductivity": 0.1672
+      },
+      {
+        "from": "Mathématiques Pures",
+        "to": "Biologie & Médecine",
+        "conductivity": 0.1658
+      },
+      {
+        "from": "Mathématiques Pures",
+        "to": "Chimie",
+        "conductivity": 0.1644
+      },
+      {
+        "from": "Physique Fondamentale",
+        "to": "Chimie",
+        "conductivity": 0.0014
+      },
+      {
+        "from": "Physique Fondamentale",
+        "to": "Ingénierie & Électricité",
+        "conductivity": 0.0012
+      },
+      {
+        "from": "Finance & Économie",
+        "to": "Biologie & Médecine",
+        "conductivity": 0.0011
+      },
+      {
+        "from": "Physique Fondamentale",
+        "to": "Biologie & Médecine",
+        "conductivity": 0.0009
+      },
+      {
+        "from": "Physique Fondamentale",
+        "to": "Informatique & IA",
+        "conductivity": 0.0008
+      },
+      {
+        "from": "Physique Fondamentale",
+        "to": "Finance & Économie",
+        "conductivity": 0.0008
+      },
+      {
+        "from": "Informatique & IA",
+        "to": "Finance & Économie",
+        "conductivity": 0.0008
+      },
+      {
+        "from": "Informatique & IA",
+        "to": "Biologie & Médecine",
+        "conductivity": 0.0006
+      },
+      {
+        "from": "Ingénierie & Électricité",
+        "to": "Chimie",
+        "conductivity": 0.0006
+      }
+    ],
+    "dead": [],
+    "converged": false,
+    "steps": 100
+  },
+  "liane_impact": [
+    {
+      "symbol": "=",
+      "delta_eff": 0.0,
+      "delta_alpha": 0.0,
+      "fragmented": false,
+      "edges_killed": 0
+    },
+    {
+      "symbol": "exp",
+      "delta_eff": 0.0,
+      "delta_alpha": 0.0,
+      "fragmented": false,
+      "edges_killed": 0
+    },
+    {
+      "symbol": "ln",
+      "delta_eff": 0.0,
+      "delta_alpha": 0.0,
+      "fragmented": false,
+      "edges_killed": 0
+    },
+    {
+      "symbol": "Σ",
+      "delta_eff": 0.0,
+      "delta_alpha": 0.0,
+      "fragmented": false,
+      "edges_killed": 0
+    },
+    {
+      "symbol": "∫",
+      "delta_eff": 0.0,
+      "delta_alpha": 0.0,
+      "fragmented": false,
+      "edges_killed": 0
+    },
+    {
+      "symbol": "∂",
+      "delta_eff": 0.0,
+      "delta_alpha": 0.0,
+      "fragmented": false,
+      "edges_killed": 0
+    },
+    {
+      "symbol": "e",
+      "delta_eff": 0.0,
+      "delta_alpha": 0.0,
+      "fragmented": false,
+      "edges_killed": 0
+    },
+    {
+      "symbol": "∇",
+      "delta_eff": 0.0,
+      "delta_alpha": 0.0,
+      "fragmented": false,
+      "edges_killed": 0
+    },
+    {
+      "symbol": "sin",
+      "delta_eff": 0.0,
+      "delta_alpha": 0.0,
+      "fragmented": false,
+      "edges_killed": 0
+    },
+    {
+      "symbol": "cos",
+      "delta_eff": 0.0,
+      "delta_alpha": 0.0,
+      "fragmented": false,
+      "edges_killed": 0
+    },
+    {
+      "symbol": "Bayes",
+      "delta_eff": 0.0,
+      "delta_alpha": 0.0,
+      "fragmented": false,
+      "edges_killed": 0
+    },
+    {
+      "symbol": "P(A)",
+      "delta_eff": 0.0,
+      "delta_alpha": 0.0,
+      "fragmented": false,
+      "edges_killed": 0
+    },
+    {
+      "symbol": "E[X]",
+      "delta_eff": 0.0,
+      "delta_alpha": 0.0,
+      "fragmented": false,
+      "edges_killed": 0
+    },
+    {
+      "symbol": "Nash",
+      "delta_eff": 0.0,
+      "delta_alpha": 0.0,
+      "fragmented": false,
+      "edges_killed": 0
+    },
+    {
+      "symbol": "S_ent",
+      "delta_eff": 0.0,
+      "delta_alpha": 0.0,
+      "fragmented": false,
+      "edges_killed": 0
+    },
+    {
+      "symbol": "FFT",
+      "delta_eff": 0.0,
+      "delta_alpha": 0.0,
+      "fragmented": false,
+      "edges_killed": 0
+    },
+    {
+      "symbol": "Attn",
+      "delta_eff": 0.0,
+      "delta_alpha": 0.0,
+      "fragmented": false,
+      "edges_killed": 0
+    },
+    {
+      "symbol": "H(X)",
+      "delta_eff": 0.0,
+      "delta_alpha": 0.0,
+      "fragmented": false,
+      "edges_killed": 0
+    },
+    {
+      "symbol": "R₀",
+      "delta_eff": 0.0,
+      "delta_alpha": 0.0,
+      "fragmented": false,
+      "edges_killed": 0
+    },
+    {
+      "symbol": "λ",
+      "delta_eff": 0.0,
+      "delta_alpha": 0.0,
+      "fragmented": false,
+      "edges_killed": 0
+    },
+    {
+      "symbol": "GAN",
+      "delta_eff": 0.0,
+      "delta_alpha": 0.0,
+      "fragmented": false,
+      "edges_killed": 0
+    },
+    {
+      "symbol": "W(t)",
+      "delta_eff": 0.0,
+      "delta_alpha": 0.0,
+      "fragmented": false,
+      "edges_killed": 0
+    },
+    {
+      "symbol": "ζ",
+      "delta_eff": 0.0,
+      "delta_alpha": 0.0,
+      "fragmented": false,
+      "edges_killed": 0
+    },
+    {
+      "symbol": "ℒ",
+      "delta_eff": 0.0,
+      "delta_alpha": 0.0,
+      "fragmented": false,
+      "edges_killed": 0
+    },
+    {
+      "symbol": "χ²",
+      "delta_eff": 0.0,
+      "delta_alpha": 0.0,
+      "fragmented": false,
+      "edges_killed": 0
+    }
+  ],
+  "robustness_curve": [
+    [
+      0.0,
+      1.0
+    ],
+    [
+      0.143,
+      0.857
+    ],
+    [
+      0.286,
+      0.714
+    ],
+    [
+      0.429,
+      0.571
+    ],
+    [
+      0.571,
+      0.429
+    ],
+    [
+      0.714,
+      0.286
+    ],
+    [
+      0.857,
+      0.143
+    ]
+  ]
+}

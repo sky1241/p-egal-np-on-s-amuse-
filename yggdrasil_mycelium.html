@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Yggdrasil Mycelium — Le Réseau Souterrain</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #0a0a0f; color: #c8c8d0; font-family: 'Courier New', monospace; overflow: hidden; }
+canvas { display: block; }
+
+#ui { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; }
+#ui > * { pointer-events: auto; }
+
+#title {
+    position: absolute; top: 20px; left: 50%; transform: translateX(-50%);
+    text-align: center; pointer-events: none;
+}
+#title h1 {
+    font-size: 22px; color: #e8e8f0; letter-spacing: 4px;
+    text-shadow: 0 0 20px rgba(120,100,255,0.5);
+}
+#title h2 { font-size: 12px; color: #888; letter-spacing: 6px; margin-top: 4px; }
+
+#metrics {
+    position: absolute; bottom: 20px; left: 20px;
+    background: rgba(10,10,20,0.85); border: 1px solid rgba(120,100,255,0.2);
+    border-radius: 8px; padding: 16px; font-size: 11px; min-width: 280px;
+    backdrop-filter: blur(10px);
+}
+#metrics h3 { color: #a78bfa; font-size: 13px; margin-bottom: 10px; letter-spacing: 2px; }
+.metric-row { display: flex; justify-content: space-between; padding: 3px 0; }
+.metric-label { color: #888; }
+.metric-value { color: #e8e8f0; font-weight: bold; }
+.metric-bar { height: 3px; background: rgba(120,100,255,0.15); margin-top: 2px; border-radius: 2px; }
+.metric-bar-fill { height: 100%; border-radius: 2px; }
+.section-divider { border-top: 1px solid rgba(120,100,255,0.15); margin: 8px 0; }
+
+#legend {
+    position: absolute; top: 80px; right: 20px;
+    background: rgba(10,10,20,0.85); border: 1px solid rgba(120,100,255,0.2);
+    border-radius: 8px; padding: 14px; font-size: 11px;
+    backdrop-filter: blur(10px);
+}
+#legend h3 { color: #a78bfa; font-size: 12px; margin-bottom: 8px; letter-spacing: 2px; }
+.legend-item { display: flex; align-items: center; padding: 3px 0; cursor: pointer; }
+.legend-dot { width: 10px; height: 10px; border-radius: 50%; margin-right: 8px; flex-shrink: 0; }
+.legend-name { color: #c8c8d0; }
+.legend-count { color: #666; margin-left: auto; padding-left: 12px; }
+
+#tooltip {
+    position: absolute; display: none;
+    background: rgba(10,10,20,0.95); border: 1px solid rgba(120,100,255,0.4);
+    border-radius: 6px; padding: 12px; font-size: 11px;
+    max-width: 320px; backdrop-filter: blur(10px);
+    box-shadow: 0 0 30px rgba(100,80,255,0.2);
+}
+#tooltip h4 { color: #a78bfa; margin-bottom: 6px; }
+#tooltip .lianes-list { color: #06b6d4; margin-top: 6px; word-break: break-all; }
+
+#physarum-panel {
+    position: absolute; bottom: 20px; right: 20px;
+    background: rgba(10,10,20,0.85); border: 1px solid rgba(120,100,255,0.2);
+    border-radius: 8px; padding: 14px; font-size: 11px; min-width: 260px;
+    backdrop-filter: blur(10px);
+}
+#physarum-panel h3 { color: #f43f5e; font-size: 12px; margin-bottom: 8px; letter-spacing: 2px; }
+.artery-row { display: flex; justify-content: space-between; padding: 2px 0; }
+.artery-from { color: #888; }
+.artery-to { color: #c8c8d0; }
+.artery-cond { color: #f43f5e; font-weight: bold; }
+
+#controls {
+    position: absolute; top: 80px; left: 20px;
+    font-size: 10px; color: #555;
+}
+</style>
+</head>
+<body>
+
+<div id="ui">
+    <div id="title">
+        <h1>YGGDRASIL — MYCELIUM</h1>
+        <h2>LE RÉSEAU SOUTERRAIN DES CONNEXIONS SCIENTIFIQUES</h2>
+    </div>
+
+    <div id="controls">
+        ⟳ Drag to rotate · Scroll to zoom · Click node for details
+    </div>
+
+    <div id="metrics"></div>
+    <div id="legend"></div>
+    <div id="physarum-panel"></div>
+    <div id="tooltip"></div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+// ═══════════════════════════════════════════════════════════════
+// DATA (inline from mycelium_data.json)
+// ═══════════════════════════════════════════════════════════════
+const DATA = {"meta": {"title": "Yggdrasil Mycelium — Réseau souterrain", "date": "2026-02-19", "n_symbols_s0": 549, "n_lianes_multi": 69, "type_counts": {"local": 480, "universal": 5, "major": 29, "liane": 26, "bridge": 9}}, "metrics": {"meshedness_alpha": 1.6667, "global_efficiency": 1.0, "root_efficiency": 1.0, "volume_mst_ratio": 2.3026, "robustness_30pct": 0.5714, "strategy": {"alpha": 1.6667, "e_global": 1.0, "e_root": 1.0, "type": "PHALANX", "pattern": "P2 Dense", "desc": "Réseau dense — ascenseur central", "rob30": 0.5714}}, "nodes": [{"id": "Mathématiques Pures", "color": "#1e3a8a", "n_domains": 19, "efficiency": 1.0, "betweenness": 0.0}, {"id": "Physique Fondamentale", "color": "#7c3aed", "n_domains": 12, "efficiency": 1.0, "betweenness": 0.0}, {"id": "Ingénierie & Électricité", "color": "#ea580c", "n_domains": 7, "efficiency": 1.0, "betweenness": 0.0}, {"id": "Informatique & IA", "color": "#06b6d4", "n_domains": 6, "efficiency": 1.0, "betweenness": 0.0}, {"id": "Finance & Économie", "color": "#eab308", "n_domains": 6, "efficiency": 1.0, "betweenness": 0.0}, {"id": "Biologie & Médecine", "color": "#84cc16", "n_domains": 1, "efficiency": 1.0, "betweenness": 0.0}, {"id": "Chimie", "color": "#f43f5e", "n_domains": 1, "efficiency": 1.0, "betweenness": 0.0}], "edges": [{"source": "Mathématiques Pures", "target": "Physique Fondamentale", "weight": 38, "lianes": ["=", "∞", "π", "e", "i", "∫", "∬", "∮", "∂", "d/dx", "∇", "∇²", "∇×", "∇·", "δ", "lim", "Σ", "Π", "ε", "sin", "cos", "ln", "exp", "Γ", "ζ", "det", "λ", "σ_std", "χ²", "N(μ,σ²)", "ℒ", "ℋ", "ℱ", "∗_conv", "BS", "TM", "W(t)", "Itô"], "physarum_conductivity": 0.1702}, {"source": "Mathématiques Pures", "target": "Ingénierie & Électricité", "weight": 24, "lianes": ["=", "π", "i", "∫", "∬", "∮", "∂", "d/dx", "∇", "∇²", "∇×", "∇·", "δ", "lim", "Σ", "O(n)", "ε", "sin", "cos", "Γ", "det", "ℒ", "ℱ", "∗_conv"], "physarum_conductivity": 0.1672}, {"source": "Mathématiques Pures", "target": "Informatique & IA", "weight": 26, "lianes": ["=", "∞", "π", "e", "∇", "Σ", "Π", "O(n)", "sin", "cos", "ln", "log", "exp", "det", "λ", "P(A)", "E[X]", "Var", "Bayes", "ℋ", "ℱ", "∗_conv", "∇L", "TM", "argmin", "argmax"], "physarum_conductivity": 0.1676}, {"source": "Mathématiques Pures", "target": "Finance & Économie", "weight": 31, "lianes": ["=", "∞", "e", "∫", "∂", "d/dx", "δ", "lim", "Σ", "Π", "O(n)", "ε", "ln", "log", "exp", "ζ", "λ", "P(A)", "E[X]", "Var", "σ_std", "χ²", "N(μ,σ²)", "Bayes", "R₀", "BS", "∇L", "W(t)", "Itô", "argmin", "argmax"], "physarum_conductivity": 0.1685}, {"source": "Mathématiques Pures", "target": "Biologie & Médecine", "weight": 16, "lianes": ["=", "e", "∫", "∂", "Σ", "ln", "log", "exp", "P(A)", "E[X]", "Var", "σ_std", "χ²", "N(μ,σ²)", "Bayes", "R₀"], "physarum_conductivity": 0.1658}, {"source": "Mathématiques Pures", "target": "Chimie", "weight": 7, "lianes": ["=", "∫", "∬", "∮", "∇²", "ln", "exp"], "physarum_conductivity": 0.1644}, {"source": "Physique Fondamentale", "target": "Ingénierie & Électricité", "weight": 27, "lianes": ["=", "π", "i", "∫", "∬", "∮", "∂", "d/dx", "∇", "∇²", "∇×", "∇·", "δ", "lim", "Σ", "ε", "sin", "cos", "Γ", "det", "ℒ", "Re", "F=ma", "PV=nRT", "ℱ", "FFT", "∗_conv"], "physarum_conductivity": 0.0012}, {"source": "Physique Fondamentale", "target": "Informatique & IA", "weight": 21, "lianes": ["=", "∞", "π", "e", "∇", "Σ", "Π", "sin", "cos", "ln", "exp", "det", "λ", "H(X)", "D_KL", "ℋ", "S_ent", "ℱ", "FFT", "∗_conv", "TM"], "physarum_conductivity": 0.0008}, {"source": "Physique Fondamentale", "target": "Finance & Économie", "weight": 25, "lianes": ["=", "∞", "e", "∫", "∂", "d/dx", "δ", "lim", "Σ", "Π", "ε", "ln", "exp", "ζ", "λ", "σ_std", "χ²", "N(μ,σ²)", "H(X)", "D_KL", "FFT", "BS", "W(t)", "Itô", "SDE"], "physarum_conductivity": 0.0008}, {"source": "Physique Fondamentale", "target": "Biologie & Médecine", "weight": 13, "lianes": ["=", "e", "∫", "∂", "Σ", "ln", "exp", "σ_std", "χ²", "N(μ,σ²)", "Re", "F=ma", "SDE"], "physarum_conductivity": 0.0009}, {"source": "Physique Fondamentale", "target": "Chimie", "weight": 9, "lianes": ["=", "∫", "∬", "∮", "∇²", "ln", "exp", "S_ent", "PV=nRT"], "physarum_conductivity": 0.0014}, {"source": "Ingénierie & Électricité", "target": "Informatique & IA", "weight": 20, "lianes": ["=", "π", "∇", "Σ", "O(n)", "sin", "cos", "det", "ℱ", "FFT", "∗_conv", "DFA", "NFA", "CFG", "PDA", "UTM", "λ_calc", "Reg", "CFL", "Chom"], "physarum_conductivity": 0.0006}, {"source": "Ingénierie & Électricité", "target": "Finance & Économie", "weight": 10, "lianes": ["=", "∫", "∂", "d/dx", "δ", "lim", "Σ", "O(n)", "ε", "FFT"], "physarum_conductivity": 0.0003}, {"source": "Ingénierie & Électricité", "target": "Biologie & Médecine", "weight": 6, "lianes": ["=", "∫", "∂", "Σ", "Re", "F=ma"], "physarum_conductivity": 0.0002}, {"source": "Ingénierie & Électricité", "target": "Chimie", "weight": 6, "lianes": ["=", "∫", "∬", "∮", "∇²", "PV=nRT"], "physarum_conductivity": 0.0006}, {"source": "Informatique & IA", "target": "Finance & Économie", "weight": 24, "lianes": ["=", "∞", "e", "Σ", "Π", "O(n)", "ln", "log", "exp", "λ", "P(A)", "E[X]", "Var", "Bayes", "H(X)", "D_KL", "FFT", "Nash", "∇L", "SGD", "Attn", "GAN", "argmin", "argmax"], "physarum_conductivity": 0.0008}, {"source": "Informatique & IA", "target": "Biologie & Médecine", "weight": 14, "lianes": ["=", "e", "Σ", "ln", "log", "exp", "P(A)", "E[X]", "Var", "Bayes", "Nash", "SGD", "Attn", "GAN"], "physarum_conductivity": 0.0006}, {"source": "Informatique & IA", "target": "Chimie", "weight": 4, "lianes": ["=", "ln", "exp", "S_ent"], "physarum_conductivity": 0.0004}, {"source": "Finance & Économie", "target": "Biologie & Médecine", "weight": 21, "lianes": ["=", "e", "∫", "∂", "Σ", "ln", "log", "exp", "P(A)", "E[X]", "Var", "σ_std", "χ²", "N(μ,σ²)", "Bayes", "R₀", "Nash", "SGD", "Attn", "GAN", "SDE"], "physarum_conductivity": 0.0011}, {"source": "Finance & Économie", "target": "Chimie", "weight": 4, "lianes": ["=", "∫", "ln", "exp"], "physarum_conductivity": 0.0005}, {"source": "Biologie & Médecine", "target": "Chimie", "weight": 4, "lianes": ["=", "∫", "ln", "exp"], "physarum_conductivity": 0.0003}], "physarum": {"arteries": [{"from": "Mathématiques Pures", "to": "Physique Fondamentale", "conductivity": 0.1702}, {"from": "Mathématiques Pures", "to": "Finance & Économie", "conductivity": 0.1685}, {"from": "Mathématiques Pures", "to": "Informatique & IA", "conductivity": 0.1676}, {"from": "Mathématiques Pures", "to": "Ingénierie & Électricité", "conductivity": 0.1672}, {"from": "Mathématiques Pures", "to": "Biologie & Médecine", "conductivity": 0.1658}, {"from": "Mathématiques Pures", "to": "Chimie", "conductivity": 0.1644}, {"from": "Physique Fondamentale", "to": "Chimie", "conductivity": 0.0014}, {"from": "Physique Fondamentale", "to": "Ingénierie & Électricité", "conductivity": 0.0012}, {"from": "Finance & Économie", "to": "Biologie & Médecine", "conductivity": 0.0011}, {"from": "Physique Fondamentale", "to": "Biologie & Médecine", "conductivity": 0.0009}, {"from": "Physique Fondamentale", "to": "Informatique & IA", "conductivity": 0.0008}, {"from": "Physique Fondamentale", "to": "Finance & Économie", "conductivity": 0.0008}, {"from": "Informatique & IA", "to": "Finance & Économie", "conductivity": 0.0008}, {"from": "Informatique & IA", "to": "Biologie & Médecine", "conductivity": 0.0006}, {"from": "Ingénierie & Électricité", "to": "Chimie", "conductivity": 0.0006}], "dead": [], "converged": false, "steps": 100}, "liane_impact": [{"symbol": "=", "delta_eff": 0.0, "delta_alpha": 0.0, "fragmented": false, "edges_killed": 0}, {"symbol": "exp", "delta_eff": 0.0, "delta_alpha": 0.0, "fragmented": false, "edges_killed": 0}, {"symbol": "ln", "delta_eff": 0.0, "delta_alpha": 0.0, "fragmented": false, "edges_killed": 0}, {"symbol": "Σ", "delta_eff": 0.0, "delta_alpha": 0.0, "fragmented": false, "edges_killed": 0}, {"symbol": "∫", "delta_eff": 0.0, "delta_alpha": 0.0, "fragmented": false, "edges_killed": 0}, {"symbol": "∂", "delta_eff": 0.0, "delta_alpha": 0.0, "fragmented": false, "edges_killed": 0}, {"symbol": "e", "delta_eff": 0.0, "delta_alpha": 0.0, "fragmented": false, "edges_killed": 0}, {"symbol": "∇", "delta_eff": 0.0, "delta_alpha": 0.0, "fragmented": false, "edges_killed": 0}, {"symbol": "sin", "delta_eff": 0.0, "delta_alpha": 0.0, "fragmented": false, "edges_killed": 0}, {"symbol": "cos", "delta_eff": 0.0, "delta_alpha": 0.0, "fragmented": false, "edges_killed": 0}, {"symbol": "Bayes", "delta_eff": 0.0, "delta_alpha": 0.0, "fragmented": false, "edges_killed": 0}, {"symbol": "P(A)", "delta_eff": 0.0, "delta_alpha": 0.0, "fragmented": false, "edges_killed": 0}, {"symbol": "E[X]", "delta_eff": 0.0, "delta_alpha": 0.0, "fragmented": false, "edges_killed": 0}, {"symbol": "Nash", "delta_eff": 0.0, "delta_alpha": 0.0, "fragmented": false, "edges_killed": 0}, {"symbol": "S_ent", "delta_eff": 0.0, "delta_alpha": 0.0, "fragmented": false, "edges_killed": 0}, {"symbol": "FFT", "delta_eff": 0.0, "delta_alpha": 0.0, "fragmented": false, "edges_killed": 0}, {"symbol": "Attn", "delta_eff": 0.0, "delta_alpha": 0.0, "fragmented": false, "edges_killed": 0}, {"symbol": "H(X)", "delta_eff": 0.0, "delta_alpha": 0.0, "fragmented": false, "edges_killed": 0}, {"symbol": "R₀", "delta_eff": 0.0, "delta_alpha": 0.0, "fragmented": false, "edges_killed": 0}, {"symbol": "λ", "delta_eff": 0.0, "delta_alpha": 0.0, "fragmented": false, "edges_killed": 0}, {"symbol": "GAN", "delta_eff": 0.0, "delta_alpha": 0.0, "fragmented": false, "edges_killed": 0}, {"symbol": "W(t)", "delta_eff": 0.0, "delta_alpha": 0.0, "fragmented": false, "edges_killed": 0}, {"symbol": "ζ", "delta_eff": 0.0, "delta_alpha": 0.0, "fragmented": false, "edges_killed": 0}, {"symbol": "ℒ", "delta_eff": 0.0, "delta_alpha": 0.0, "fragmented": false, "edges_killed": 0}, {"symbol": "χ²", "delta_eff": 0.0, "delta_alpha": 0.0, "fragmented": false, "edges_killed": 0}], "robustness_curve": [[0.0, 1.0], [0.143, 0.857], [0.286, 0.714], [0.429, 0.571], [0.571, 0.429], [0.714, 0.286], [0.857, 0.143]]};
+
+// ═══════════════════════════════════════════════════════════════
+// THREE.JS SETUP
+// ═══════════════════════════════════════════════════════════════
+const W = window.innerWidth, H = window.innerHeight;
+const scene = new THREE.Scene();
+scene.fog = new THREE.FogExp2(0x0a0a0f, 0.015);
+
+const camera = new THREE.PerspectiveCamera(55, W/H, 0.1, 500);
+camera.position.set(0, 15, 45);
+camera.lookAt(0, 0, 0);
+
+const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+renderer.setSize(W, H);
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.setClearColor(0x0a0a0f);
+document.body.prepend(renderer.domElement);
+
+// Lights
+const ambient = new THREE.AmbientLight(0x222233, 0.6);
+scene.add(ambient);
+const point = new THREE.PointLight(0x6644ff, 1.5, 100);
+point.position.set(0, 30, 20);
+scene.add(point);
+const point2 = new THREE.PointLight(0xff4466, 0.8, 80);
+point2.position.set(-20, -10, -20);
+scene.add(point2);
+
+// ═══════════════════════════════════════════════════════════════
+// NODE LAYOUT — Heptagon + altitude by strength
+// ═══════════════════════════════════════════════════════════════
+const RADIUS = 18;
+const nodePositions = {};
+const nodeMeshes = {};
+const nodeGroup = new THREE.Group();
+scene.add(nodeGroup);
+
+// Sort by total strength for layout
+const nodeStrengths = {};
+DATA.nodes.forEach(n => {
+    const strength = DATA.edges
+        .filter(e => e.source === n.id || e.target === n.id)
+        .reduce((sum, e) => sum + e.weight, 0);
+    nodeStrengths[n.id] = strength;
+});
+
+// Place Math at top, others around
+const sortedNodes = [...DATA.nodes].sort((a, b) => (nodeStrengths[b.id] || 0) - (nodeStrengths[a.id] || 0));
+
+sortedNodes.forEach((n, i) => {
+    const angle = (i / sortedNodes.length) * Math.PI * 2 - Math.PI / 2;
+    const r = i === 0 ? 0 : RADIUS;  // First (strongest) at center
+    const x = r * Math.cos(angle);
+    const z = r * Math.sin(angle);
+    const y = (nodeStrengths[n.id] || 0) / 20 - 3;
+
+    nodePositions[n.id] = new THREE.Vector3(x, y, z);
+
+    // Sphere
+    const strength = nodeStrengths[n.id] || 1;
+    const size = 1.0 + (strength / 40);
+    const geo = new THREE.SphereGeometry(size, 32, 32);
+    const mat = new THREE.MeshPhongMaterial({
+        color: new THREE.Color(n.color),
+        emissive: new THREE.Color(n.color),
+        emissiveIntensity: 0.4,
+        transparent: true,
+        opacity: 0.9,
+    });
+    const mesh = new THREE.Mesh(geo, mat);
+    mesh.position.copy(nodePositions[n.id]);
+    mesh.userData = { nodeId: n.id, nodeData: n };
+    nodeGroup.add(mesh);
+    nodeMeshes[n.id] = mesh;
+
+    // Glow
+    const glowGeo = new THREE.SphereGeometry(size * 1.8, 16, 16);
+    const glowMat = new THREE.MeshBasicMaterial({
+        color: new THREE.Color(n.color),
+        transparent: true,
+        opacity: 0.08,
+    });
+    const glow = new THREE.Mesh(glowGeo, glowMat);
+    glow.position.copy(nodePositions[n.id]);
+    nodeGroup.add(glow);
+
+    // Label
+    const canvas = document.createElement('canvas');
+    canvas.width = 512; canvas.height = 64;
+    const ctx = canvas.getContext('2d');
+    ctx.fillStyle = n.color;
+    ctx.font = 'bold 28px Courier New';
+    ctx.textAlign = 'center';
+    // Short names
+    const SHORT = {
+        "Mathématiques Pures": "MATHS",
+        "Physique Fondamentale": "PHYSIQUE",
+        "Ingénierie & Électricité": "INGÉNIERIE",
+        "Informatique & IA": "INFO & IA",
+        "Finance & Économie": "FINANCE",
+        "Biologie & Médecine": "BIO & MÉD",
+        "Chimie": "CHIMIE",
+    };
+    ctx.fillText(SHORT[n.id] || n.id, 256, 40);
+    const tex = new THREE.CanvasTexture(canvas);
+    const labelMat = new THREE.SpriteMaterial({ map: tex, transparent: true, opacity: 0.85 });
+    const label = new THREE.Sprite(labelMat);
+    label.position.copy(nodePositions[n.id]);
+    label.position.y += size + 2;
+    label.scale.set(8, 1, 1);
+    nodeGroup.add(label);
+});
+
+// ═══════════════════════════════════════════════════════════════
+// EDGES — Tubes as mycelium filaments
+// ═══════════════════════════════════════════════════════════════
+const edgeGroup = new THREE.Group();
+scene.add(edgeGroup);
+const edgeMeshes = [];
+
+const maxWeight = Math.max(...DATA.edges.map(e => e.weight));
+
+DATA.edges.forEach(e => {
+    const p1 = nodePositions[e.source];
+    const p2 = nodePositions[e.target];
+    if (!p1 || !p2) return;
+
+    const mid = new THREE.Vector3().lerpVectors(p1, p2, 0.5);
+    // Curve below (underground feel)
+    mid.y -= 2 + (e.weight / maxWeight) * 3;
+
+    const curve = new THREE.QuadraticBezierCurve3(p1, mid, p2);
+    const thickness = 0.04 + (e.weight / maxWeight) * 0.25;
+
+    const tubeGeo = new THREE.TubeGeometry(curve, 32, thickness, 8, false);
+
+    // Color by Physarum conductivity
+    const pc = e.physarum_conductivity || 0;
+    const isArtery = pc > 0.01;
+    let color;
+    if (isArtery) {
+        // Red-orange for active arteries
+        const t = Math.min(pc / 0.2, 1);
+        color = new THREE.Color().lerpColors(
+            new THREE.Color(0x663322),
+            new THREE.Color(0xff4444),
+            t
+        );
+    } else {
+        // Dim purple for inactive
+        color = new THREE.Color(0x332244);
+    }
+
+    const tubeMat = new THREE.MeshPhongMaterial({
+        color: color,
+        emissive: isArtery ? color.clone().multiplyScalar(0.3) : new THREE.Color(0x110022),
+        emissiveIntensity: isArtery ? 0.6 : 0.2,
+        transparent: true,
+        opacity: isArtery ? 0.8 : 0.35,
+    });
+
+    const tube = new THREE.Mesh(tubeGeo, tubeMat);
+    tube.userData = { edgeData: e };
+    edgeGroup.add(tube);
+    edgeMeshes.push({ mesh: tube, curve, data: e, isArtery });
+});
+
+// ═══════════════════════════════════════════════════════════════
+// PARTICLES — Flow through arteries (Physarum)
+// ═══════════════════════════════════════════════════════════════
+const particles = [];
+const particleGroup = new THREE.Group();
+scene.add(particleGroup);
+
+edgeMeshes.forEach(em => {
+    if (!em.isArtery) return;
+    const count = Math.max(3, Math.floor(em.data.physarum_conductivity * 40));
+    for (let i = 0; i < count; i++) {
+        const geo = new THREE.SphereGeometry(0.08, 6, 6);
+        const mat = new THREE.MeshBasicMaterial({
+            color: 0xff6644,
+            transparent: true,
+            opacity: 0.7,
+        });
+        const p = new THREE.Mesh(geo, mat);
+        const t = Math.random();
+        const pos = em.curve.getPoint(t);
+        p.position.copy(pos);
+        particleGroup.add(p);
+        particles.push({
+            mesh: p, curve: em.curve,
+            t: t, speed: 0.002 + Math.random() * 0.004,
+            conductivity: em.data.physarum_conductivity,
+        });
+    }
+});
+
+// ═══════════════════════════════════════════════════════════════
+// UNDERGROUND GRID (subtle)
+// ═══════════════════════════════════════════════════════════════
+const gridGeo = new THREE.PlaneGeometry(80, 80, 20, 20);
+const gridMat = new THREE.MeshBasicMaterial({
+    color: 0x1a1a2e, wireframe: true, transparent: true, opacity: 0.15
+});
+const grid = new THREE.Mesh(gridGeo, gridMat);
+grid.rotation.x = -Math.PI / 2;
+grid.position.y = -8;
+scene.add(grid);
+
+// ═══════════════════════════════════════════════════════════════
+// SPORE DUST (ambient particles)
+// ═══════════════════════════════════════════════════════════════
+const dustCount = 200;
+const dustGeo = new THREE.BufferGeometry();
+const dustPos = new Float32Array(dustCount * 3);
+for (let i = 0; i < dustCount; i++) {
+    dustPos[i*3] = (Math.random() - 0.5) * 60;
+    dustPos[i*3+1] = (Math.random() - 0.5) * 30;
+    dustPos[i*3+2] = (Math.random() - 0.5) * 60;
+}
+dustGeo.setAttribute('position', new THREE.BufferAttribute(dustPos, 3));
+const dustMat = new THREE.PointsMaterial({
+    color: 0x6644aa, size: 0.1, transparent: true, opacity: 0.3
+});
+const dust = new THREE.Points(dustGeo, dustMat);
+scene.add(dust);
+
+// ═══════════════════════════════════════════════════════════════
+// ORBIT CONTROLS (manual)
+// ═══════════════════════════════════════════════════════════════
+let isDragging = false, prevX = 0, prevY = 0;
+let rotY = 0, rotX = 0.3, distance = 45;
+
+renderer.domElement.addEventListener('mousedown', e => { isDragging = true; prevX = e.clientX; prevY = e.clientY; });
+renderer.domElement.addEventListener('mousemove', e => {
+    if (!isDragging) return;
+    rotY += (e.clientX - prevX) * 0.005;
+    rotX += (e.clientY - prevY) * 0.005;
+    rotX = Math.max(-1.2, Math.min(1.2, rotX));
+    prevX = e.clientX; prevY = e.clientY;
+});
+renderer.domElement.addEventListener('mouseup', () => isDragging = false);
+renderer.domElement.addEventListener('wheel', e => {
+    distance += e.deltaY * 0.05;
+    distance = Math.max(15, Math.min(80, distance));
+});
+
+// ═══════════════════════════════════════════════════════════════
+// RAYCASTER (click nodes/edges)
+// ═══════════════════════════════════════════════════════════════
+const raycaster = new THREE.Raycaster();
+const mouse = new THREE.Vector2();
+const tooltip = document.getElementById('tooltip');
+
+renderer.domElement.addEventListener('click', e => {
+    mouse.x = (e.clientX / W) * 2 - 1;
+    mouse.y = -(e.clientY / H) * 2 + 1;
+    raycaster.setFromCamera(mouse, camera);
+
+    // Check nodes
+    const nodeArr = Object.values(nodeMeshes);
+    const hits = raycaster.intersectObjects(nodeArr);
+    if (hits.length > 0) {
+        const nd = hits[0].object.userData;
+        if (nd.nodeData) {
+            const n = nd.nodeData;
+            const str = nodeStrengths[n.id] || 0;
+            const edges = DATA.edges.filter(e => e.source === n.id || e.target === n.id);
+            tooltip.innerHTML = `
+                <h4 style="color:${n.color}">${n.id}</h4>
+                <div>${n.n_domains} domaines | ${str} lianes totales</div>
+                <div>Betweenness: ${n.betweenness}</div>
+                <div style="margin-top:6px">Connexions:</div>
+                ${edges.sort((a,b) => b.weight - a.weight).map(e => {
+                    const other = e.source === n.id ? e.target : e.source;
+                    return `<div style="color:#888">  ${other}: ${e.weight} lianes</div>`;
+                }).join('')}
+            `;
+            tooltip.style.display = 'block';
+            tooltip.style.left = e.clientX + 15 + 'px';
+            tooltip.style.top = e.clientY - 10 + 'px';
+            return;
+        }
+    }
+
+    // Check edges
+    const edgeArr = edgeMeshes.map(em => em.mesh);
+    const edgeHits = raycaster.intersectObjects(edgeArr);
+    if (edgeHits.length > 0) {
+        const ed = edgeHits[0].object.userData.edgeData;
+        if (ed) {
+            tooltip.innerHTML = `
+                <h4>${ed.source.split(' ')[0]} × ${ed.target.split(' ')[0]}</h4>
+                <div>${ed.weight} lianes partagées</div>
+                <div>Physarum σ: ${ed.physarum_conductivity}</div>
+                <div class="lianes-list">${ed.lianes.join('  ')}</div>
+            `;
+            tooltip.style.display = 'block';
+            tooltip.style.left = e.clientX + 15 + 'px';
+            tooltip.style.top = e.clientY - 10 + 'px';
+            return;
+        }
+    }
+
+    tooltip.style.display = 'none';
+});
+
+// ═══════════════════════════════════════════════════════════════
+// UI PANELS
+// ═══════════════════════════════════════════════════════════════
+
+// Metrics panel
+const m = DATA.metrics;
+document.getElementById('metrics').innerHTML = `
+    <h3>◆ MÉTRIQUES RÉSEAU</h3>
+    <div class="metric-row"><span class="metric-label">Meshedness α</span><span class="metric-value">${m.meshedness_alpha}</span></div>
+    <div class="metric-bar"><div class="metric-bar-fill" style="width:${Math.min(m.meshedness_alpha/2*100,100)}%;background:#a78bfa"></div></div>
+    <div class="metric-row"><span class="metric-label">Efficacité globale</span><span class="metric-value">${m.global_efficiency}</span></div>
+    <div class="metric-bar"><div class="metric-bar-fill" style="width:${m.global_efficiency*100}%;background:#06b6d4"></div></div>
+    <div class="metric-row"><span class="metric-label">Volume/MST</span><span class="metric-value">${m.volume_mst_ratio}</span></div>
+    <div class="metric-bar"><div class="metric-bar-fill" style="width:${Math.min(m.volume_mst_ratio/4*100,100)}%;background:#eab308"></div></div>
+    <div class="metric-row"><span class="metric-label">Robustesse @30%</span><span class="metric-value">${m.robustness_30pct}</span></div>
+    <div class="metric-bar"><div class="metric-bar-fill" style="width:${(m.robustness_30pct||0)*100}%;background:#84cc16"></div></div>
+    <div class="section-divider"></div>
+    <div class="metric-row"><span class="metric-label">Stratégie</span><span class="metric-value" style="color:#f43f5e">${m.strategy.type}</span></div>
+    <div class="metric-row"><span class="metric-label">Pattern</span><span class="metric-value">${m.strategy.pattern}</span></div>
+    <div class="section-divider"></div>
+    <div class="metric-row"><span class="metric-label">S0 symboles</span><span class="metric-value">${DATA.meta.n_symbols_s0}</span></div>
+    <div class="metric-row"><span class="metric-label">Lianes multi</span><span class="metric-value">${DATA.meta.n_lianes_multi}</span></div>
+    <div class="metric-row"><span class="metric-label">Universelles</span><span class="metric-value" style="color:#f43f5e">${DATA.meta.type_counts.universal || 0}</span></div>
+    <div class="metric-row"><span class="metric-label">Majeures</span><span class="metric-value" style="color:#eab308">${DATA.meta.type_counts.major || 0}</span></div>
+    <div class="metric-row"><span class="metric-label">Lianes</span><span class="metric-value" style="color:#06b6d4">${DATA.meta.type_counts.liane || 0}</span></div>
+`;
+
+// Legend panel
+document.getElementById('legend').innerHTML = `
+    <h3>◆ CONTINENTS</h3>
+    ${DATA.nodes.sort((a,b) => (nodeStrengths[b.id]||0) - (nodeStrengths[a.id]||0)).map(n => `
+        <div class="legend-item">
+            <div class="legend-dot" style="background:${n.color};box-shadow:0 0 6px ${n.color}"></div>
+            <span class="legend-name">${n.id.split(' ')[0]}</span>
+            <span class="legend-count">${nodeStrengths[n.id] || 0}</span>
+        </div>
+    `).join('')}
+`;
+
+// Physarum panel
+const arts = DATA.physarum.arteries.slice(0, 8);
+document.getElementById('physarum-panel').innerHTML = `
+    <h3>◆ ARTÈRES PHYSARUM</h3>
+    <div style="color:#666;margin-bottom:6px">Flux adaptatif (Tero 2010)</div>
+    ${arts.map(a => {
+        const barW = Math.min((a.conductivity / 0.2) * 100, 100);
+        return `
+        <div class="artery-row">
+            <span class="artery-from">${a.from.split(' ')[0]}</span>
+            <span class="artery-to">→ ${a.to.split(' ')[0]}</span>
+            <span class="artery-cond">σ=${a.conductivity}</span>
+        </div>
+        <div style="height:2px;background:rgba(244,63,94,0.15);margin:1px 0 3px">
+            <div style="height:100%;width:${barW}%;background:#f43f5e;border-radius:1px"></div>
+        </div>
+        `;
+    }).join('')}
+    <div class="section-divider"></div>
+    <div style="color:#555;font-size:10px">
+        Convergé: ${DATA.physarum.converged ? '✓' : '✗'} en ${DATA.physarum.steps} pas<br>
+        Artères: ${DATA.physarum.arteries.length} actives, ${DATA.physarum.dead.length} mortes
+    </div>
+`;
+
+// ═══════════════════════════════════════════════════════════════
+// ANIMATION LOOP
+// ═══════════════════════════════════════════════════════════════
+let time = 0;
+
+function animate() {
+    requestAnimationFrame(animate);
+    time += 0.016;
+
+    // Camera orbit
+    if (!isDragging) rotY += 0.001;
+    camera.position.x = Math.sin(rotY) * Math.cos(rotX) * distance;
+    camera.position.y = Math.sin(rotX) * distance * 0.5 + 8;
+    camera.position.z = Math.cos(rotY) * Math.cos(rotX) * distance;
+    camera.lookAt(0, 0, 0);
+
+    // Particle flow
+    particles.forEach(p => {
+        p.t += p.speed;
+        if (p.t > 1) p.t -= 1;
+        const pos = p.curve.getPoint(p.t);
+        p.mesh.position.copy(pos);
+        p.mesh.material.opacity = 0.4 + Math.sin(time * 3 + p.t * 10) * 0.3;
+    });
+
+    // Node pulse
+    Object.values(nodeMeshes).forEach(m => {
+        m.material.emissiveIntensity = 0.3 + Math.sin(time * 1.5) * 0.1;
+    });
+
+    // Dust drift
+    const dustPositions = dust.geometry.attributes.position;
+    for (let i = 0; i < dustCount; i++) {
+        dustPositions.array[i*3+1] += Math.sin(time + i) * 0.002;
+    }
+    dustPositions.needsUpdate = true;
+
+    renderer.render(scene, camera);
+}
+
+animate();
+
+// Resize
+window.addEventListener('resize', () => {
+    const w = window.innerWidth, h = window.innerHeight;
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+    renderer.setSize(w, h);
+});
+</script>
+</body>
+</html>
