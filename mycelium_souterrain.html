@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yggdrasil — Mycelium Souterrain</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;500;700&family=JetBrains+Mono:wght@300;400&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    background: #050508;
+    color: #c8c4b8;
+    font-family: 'JetBrains Mono', monospace;
+    overflow: hidden;
+    height: 100vh;
+}
+
+#canvas { position: fixed; top: 0; left: 0; z-index: 0; }
+
+/* ── Dashboard ─────────────────────────────── */
+#dashboard {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 10;
+    width: 340px;
+    background: rgba(5, 5, 8, 0.92);
+    border: 1px solid rgba(200, 196, 184, 0.08);
+    border-radius: 2px;
+    padding: 24px;
+    backdrop-filter: blur(20px);
+}
+
+#dashboard h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: 28px;
+    color: #e8e4d8;
+    letter-spacing: 2px;
+    margin-bottom: 4px;
+}
+
+#dashboard .subtitle {
+    font-size: 10px;
+    color: rgba(200, 196, 184, 0.4);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.metric-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 0;
+    border-bottom: 1px solid rgba(200, 196, 184, 0.04);
+    font-size: 11px;
+}
+
+.metric-label { color: rgba(200, 196, 184, 0.5); }
+.metric-value { color: #e8e4d8; font-weight: 400; }
+.metric-value.highlight { color: #84cc16; }
+
+.section-title {
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(200, 196, 184, 0.25);
+    margin: 16px 0 8px;
+}
+
+/* ── Tooltip ────────────────────────────── */
+#tooltip {
+    position: fixed;
+    z-index: 100;
+    background: rgba(5, 5, 8, 0.95);
+    border: 1px solid rgba(200, 196, 184, 0.12);
+    padding: 14px 18px;
+    border-radius: 2px;
+    pointer-events: none;
+    display: none;
+    max-width: 360px;
+    backdrop-filter: blur(20px);
+}
+
+#tooltip .tt-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: #e8e4d8;
+    margin-bottom: 8px;
+}
+
+#tooltip .tt-row {
+    font-size: 10px;
+    color: rgba(200, 196, 184, 0.6);
+    margin: 3px 0;
+}
+
+#tooltip .tt-lianes {
+    font-size: 11px;
+    color: rgba(200, 196, 184, 0.8);
+    margin-top: 6px;
+    line-height: 1.6;
+}
+
+/* ── Legend ──────────────────────────────── */
+#legend {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 10;
+    background: rgba(5, 5, 8, 0.88);
+    border: 1px solid rgba(200, 196, 184, 0.06);
+    padding: 16px 20px;
+    border-radius: 2px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 4px 0;
+    font-size: 10px;
+    color: rgba(200, 196, 184, 0.6);
+}
+
+.legend-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+/* ── Info panel ──────────────────────────── */
+#info {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 10;
+    width: 280px;
+    background: rgba(5, 5, 8, 0.88);
+    border: 1px solid rgba(200, 196, 184, 0.06);
+    padding: 20px;
+    border-radius: 2px;
+}
+
+#info .section-title:first-child { margin-top: 0; }
+
+.artery-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 10px;
+    padding: 3px 0;
+    color: rgba(200, 196, 184, 0.5);
+}
+
+.artery-bar {
+    height: 3px;
+    background: #84cc16;
+    border-radius: 1px;
+    margin-top: 2px;
+    opacity: 0.6;
+    transition: width 0.3s;
+}
+
+.liane-chip {
+    display: inline-block;
+    padding: 2px 6px;
+    margin: 2px;
+    font-size: 10px;
+    background: rgba(200, 196, 184, 0.06);
+    border: 1px solid rgba(200, 196, 184, 0.08);
+    border-radius: 2px;
+    color: rgba(200, 196, 184, 0.7);
+}
+
+#controls {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 10;
+    font-size: 9px;
+    color: rgba(200, 196, 184, 0.25);
+    text-align: right;
+    letter-spacing: 1px;
+}
+</style>
+</head>
+<body>
+
+<canvas id="canvas"></canvas>
+
+<div id="dashboard">
+    <h1>Mycelium</h1>
+    <div class="subtitle">réseau souterrain — yggdrasil</div>
+
+    <div class="section-title">Métriques Réseau</div>
+    <div class="metric-row"><span class="metric-label">Meshedness α</span><span class="metric-value">1.6667</span></div>
+    <div class="metric-row"><span class="metric-label">Efficacité globale</span><span class="metric-value highlight">1.0000</span></div>
+    <div class="metric-row"><span class="metric-label">Volume / MST</span><span class="metric-value">2.3026</span></div>
+    <div class="metric-row"><span class="metric-label">Robustesse @30%</span><span class="metric-value">0.5714</span></div>
+    <div class="metric-row"><span class="metric-label">Stratégie</span><span class="metric-value highlight">PHALANX — P2 Dense</span></div>
+
+    <div class="section-title">549 symboles S0 · 7 continents · 21 connexions</div>
+    <div class="metric-row"><span class="metric-label">Universelles (7 cont.)</span><span class="metric-value">5</span></div>
+    <div class="metric-row"><span class="metric-label">Majeures (4-5)</span><span class="metric-value">29</span></div>
+    <div class="metric-row"><span class="metric-label">Lianes (3)</span><span class="metric-value">26</span></div>
+    <div class="metric-row"><span class="metric-label">Ponts (2)</span><span class="metric-value">9</span></div>
+    <div class="metric-row"><span class="metric-label">Locales (1)</span><span class="metric-value">480</span></div>
+</div>
+
+<div id="info">
+    <div class="section-title">Artères Physarum (Tero 2010)</div>
+    <div id="arteries"></div>
+
+    <div class="section-title" style="margin-top:16px">Lianes Universelles</div>
+    <div id="universal-lianes">
+        <span class="liane-chip">= (7)</span>
+        <span class="liane-chip">∫ (6)</span>
+        <span class="liane-chip">exp (6)</span>
+        <span class="liane-chip">ln (6)</span>
+        <span class="liane-chip">Σ (6)</span>
+    </div>
+
+    <div class="section-title" style="margin-top:16px">Point Faible</div>
+    <div style="font-size:10px; color:rgba(200,196,184,0.5); line-height:1.5">
+        <span style="color:#f43f5e">Chimie</span> — 4 lianes max vers IA, Finance, Bio.
+        Bottleneck betweenness = 0.97
+    </div>
+</div>
+
+<div id="legend"></div>
+
+<div id="tooltip">
+    <div class="tt-title"></div>
+    <div class="tt-body"></div>
+</div>
+
+<div id="controls">
+    Clic + Drag = Rotation · Scroll = Zoom<br>
+    Hover = Détails · Physarum = flux adaptatif
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+// ═══════════════════════════════════════════════════════
+// DATA
+// ═══════════════════════════════════════════════════════
+const DATA = {
+    nodes: [
+        { id: "Mathématiques Pures",        color: "#1e3a8a", short: "MATH",     domains: 19, x:  0,   y:  0,   z: 0 },
+        { id: "Physique Fondamentale",       color: "#7c3aed", short: "PHYS",     domains: 12, x:  3.5, y:  2,   z: 0.5 },
+        { id: "Ingénierie & Électricité",    color: "#ea580c", short: "ING",      domains:  7, x:  3.5, y: -2,   z:-0.5 },
+        { id: "Informatique & IA",           color: "#06b6d4", short: "IA",       domains:  6, x: -3.5, y:  2.5, z: 0.8 },
+        { id: "Finance & Économie",          color: "#eab308", short: "FIN",      domains:  6, x: -3.5, y: -1,   z:-0.3 },
+        { id: "Biologie & Médecine",         color: "#84cc16", short: "BIO",      domains:  1, x: -1,   y: -3.5, z: 0.2 },
+        { id: "Chimie",                      color: "#f43f5e", short: "CHIM",     domains:  1, x:  1,   y:  4,   z:-0.8 },
+    ],
+    edges: [
+        { s: "Mathématiques Pures", t: "Physique Fondamentale",    w: 38, p: 0.1702, lianes: "= ∞ π e i ∫ ∂ ∇ Σ sin cos ln exp Γ ζ det λ ℒ ℋ" },
+        { s: "Mathématiques Pures", t: "Finance & Économie",       w: 31, p: 0.1685, lianes: "= e ∫ ∂ Σ Π ln log exp ζ λ P(A) E[X] Var Bayes R₀ BS W(t) Itô" },
+        { s: "Physique Fondamentale", t: "Ingénierie & Électricité", w: 27, p: 0.0012, lianes: "= π i ∫ ∂ ∇ Σ sin cos Γ det ℒ Re F=ma PV=nRT FFT" },
+        { s: "Mathématiques Pures", t: "Informatique & IA",        w: 26, p: 0.1676, lianes: "= ∞ π e ∇ Σ Π sin cos ln log exp det λ P(A) E[X] Var Bayes ℋ TM" },
+        { s: "Physique Fondamentale", t: "Finance & Économie",      w: 25, p: 0.0008, lianes: "= ∞ e ∫ ∂ Σ Π ln exp ζ λ σ_std χ² N(μ,σ²) H(X) D_KL FFT BS W(t) Itô SDE" },
+        { s: "Mathématiques Pures", t: "Ingénierie & Électricité",  w: 24, p: 0.1672, lianes: "= π i ∫ ∂ ∇ Σ O(n) sin cos Γ det ℒ ℱ" },
+        { s: "Informatique & IA", t: "Finance & Économie",          w: 24, p: 0.0008, lianes: "= ∞ e Σ Π O(n) ln log exp λ P(A) E[X] Var Bayes H(X) D_KL FFT Nash SGD Attn GAN" },
+        { s: "Physique Fondamentale", t: "Informatique & IA",       w: 21, p: 0.0008, lianes: "= ∞ π e ∇ Σ Π sin cos ln exp det λ H(X) D_KL ℋ S_ent FFT TM" },
+        { s: "Finance & Économie", t: "Biologie & Médecine",        w: 21, p: 0.0011, lianes: "= e ∫ ∂ Σ ln log exp P(A) E[X] Var σ_std χ² N(μ,σ²) Bayes R₀ Nash SGD Attn GAN SDE" },
+        { s: "Ingénierie & Électricité", t: "Informatique & IA",    w: 20, p: 0.0006, lianes: "= π ∇ Σ O(n) sin cos det ℱ FFT DFA NFA CFG PDA UTM" },
+        { s: "Mathématiques Pures", t: "Biologie & Médecine",       w: 16, p: 0.1658, lianes: "= e ∫ ∂ Σ ln log exp P(A) E[X] Var σ_std χ² N(μ,σ²) Bayes R₀" },
+        { s: "Informatique & IA", t: "Biologie & Médecine",         w: 14, p: 0.0006, lianes: "= e Σ ln log exp P(A) E[X] Var Bayes Nash SGD Attn GAN" },
+        { s: "Physique Fondamentale", t: "Biologie & Médecine",     w: 13, p: 0.0009, lianes: "= e ∫ ∂ Σ ln exp σ_std χ² N(μ,σ²) Re F=ma SDE" },
+        { s: "Ingénierie & Électricité", t: "Finance & Économie",   w: 10, p: 0.0003, lianes: "= ∫ ∂ Σ O(n) FFT" },
+        { s: "Physique Fondamentale", t: "Chimie",                   w:  9, p: 0.0014, lianes: "= ∫ ∬ ∮ ∇² ln exp S_ent PV=nRT" },
+        { s: "Mathématiques Pures", t: "Chimie",                     w:  7, p: 0.1644, lianes: "= ∫ ∬ ∮ ∇² ln exp" },
+        { s: "Ingénierie & Électricité", t: "Biologie & Médecine",  w:  6, p: 0.0002, lianes: "= ∫ ∂ Σ Re F=ma" },
+        { s: "Ingénierie & Électricité", t: "Chimie",                w:  6, p: 0.0006, lianes: "= ∫ ∬ ∮ ∇² PV=nRT" },
+        { s: "Informatique & IA", t: "Chimie",                       w:  4, p: 0.0004, lianes: "= ln exp S_ent" },
+        { s: "Finance & Économie", t: "Chimie",                      w:  4, p: 0.0005, lianes: "= ∫ ln exp" },
+        { s: "Biologie & Médecine", t: "Chimie",                     w:  4, p: 0.0003, lianes: "= ∫ ln exp" },
+    ]
+};
+
+// Node index lookup
+const nodeMap = {};
+DATA.nodes.forEach((n, i) => nodeMap[n.id] = i);
+
+// ═══════════════════════════════════════════════════════
+// LEGEND
+// ═══════════════════════════════════════════════════════
+const legendEl = document.getElementById('legend');
+DATA.nodes.forEach(n => {
+    const div = document.createElement('div');
+    div.className = 'legend-item';
+    div.innerHTML = `<div class="legend-dot" style="background:${n.color}"></div>${n.short} — ${n.id}`;
+    legendEl.appendChild(div);
+});
+
+// Arteries panel
+const arteriesEl = document.getElementById('arteries');
+const maxW = Math.max(...DATA.edges.map(e => e.w));
+DATA.edges.filter(e => e.p > 0.01).sort((a,b) => b.p - a.p).slice(0, 7).forEach(e => {
+    const sn = DATA.nodes[nodeMap[e.s]].short;
+    const tn = DATA.nodes[nodeMap[e.t]].short;
+    const pct = (e.p / 0.18 * 100).toFixed(0);
+    arteriesEl.innerHTML += `
+        <div class="artery-row">
+            <span>${sn} → ${tn}</span>
+            <span style="color:#84cc16">${e.p.toFixed(4)}</span>
+        </div>
+        <div class="artery-bar" style="width:${pct}%"></div>`;
+});
+
+// ═══════════════════════════════════════════════════════
+// THREE.JS SCENE
+// ═══════════════════════════════════════════════════════
+const canvas = document.getElementById('canvas');
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: false });
+renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.setClearColor(0x050508);
+
+const scene = new THREE.Scene();
+scene.fog = new THREE.FogExp2(0x050508, 0.03);
+
+const camera = new THREE.PerspectiveCamera(50, window.innerWidth/window.innerHeight, 0.1, 200);
+camera.position.set(0, 0, 16);
+
+// Lights
+const ambientLight = new THREE.AmbientLight(0x1a1a2e, 0.5);
+scene.add(ambientLight);
+
+const pointLight = new THREE.PointLight(0xffffff, 0.4, 50);
+pointLight.position.set(5, 5, 10);
+scene.add(pointLight);
+
+// ── Background particles (underground dust) ──
+const dustGeo = new THREE.BufferGeometry();
+const dustCount = 2000;
+const dustPos = new Float32Array(dustCount * 3);
+const dustCol = new Float32Array(dustCount * 3);
+for (let i = 0; i < dustCount; i++) {
+    dustPos[i*3]   = (Math.random() - 0.5) * 40;
+    dustPos[i*3+1] = (Math.random() - 0.5) * 40;
+    dustPos[i*3+2] = (Math.random() - 0.5) * 40;
+    const c = new THREE.Color().setHSL(0.08 + Math.random() * 0.05, 0.2, 0.15 + Math.random() * 0.1);
+    dustCol[i*3] = c.r; dustCol[i*3+1] = c.g; dustCol[i*3+2] = c.b;
+}
+dustGeo.setAttribute('position', new THREE.BufferAttribute(dustPos, 3));
+dustGeo.setAttribute('color', new THREE.BufferAttribute(dustCol, 3));
+const dustMat = new THREE.PointsMaterial({ size: 0.04, vertexColors: true, transparent: true, opacity: 0.4 });
+scene.add(new THREE.Points(dustGeo, dustMat));
+
+// ── Node spheres ──
+const nodeMeshes = [];
+const nodeGlows = [];
+const SCALE = 1.5;
+
+DATA.nodes.forEach(n => {
+    const color = new THREE.Color(n.color);
+
+    // Core sphere
+    const radius = 0.2 + n.domains * 0.025;
+    const geo = new THREE.SphereGeometry(radius, 32, 32);
+    const mat = new THREE.MeshPhongMaterial({
+        color: color.clone(),
+        emissive: color.clone().multiplyScalar(0.5),
+        shininess: 60,
+        transparent: true,
+        opacity: 0.9,
+    });
+    const mesh = new THREE.Mesh(geo, mat);
+    mesh.position.set(n.x * SCALE, n.y * SCALE, n.z * SCALE);
+    mesh.userData = n;
+    scene.add(mesh);
+    nodeMeshes.push(mesh);
+
+    // Glow
+    const glowGeo = new THREE.SphereGeometry(radius * 2.5, 16, 16);
+    const glowMat = new THREE.MeshBasicMaterial({
+        color: color.clone(),
+        transparent: true,
+        opacity: 0.06,
+        side: THREE.BackSide,
+    });
+    const glow = new THREE.Mesh(glowGeo, glowMat);
+    glow.position.copy(mesh.position);
+    scene.add(glow);
+    nodeGlows.push(glow);
+
+    // Label (sprite)
+    const labelCanvas = document.createElement('canvas');
+    labelCanvas.width = 256; labelCanvas.height = 64;
+    const ctx = labelCanvas.getContext('2d');
+    ctx.fillStyle = n.color;
+    ctx.font = 'bold 22px JetBrains Mono';
+    ctx.textAlign = 'center';
+    ctx.fillText(n.short, 128, 28);
+    ctx.fillStyle = 'rgba(200,196,184,0.4)';
+    ctx.font = '12px JetBrains Mono';
+    ctx.fillText(n.domains + ' dom', 128, 50);
+
+    const tex = new THREE.CanvasTexture(labelCanvas);
+    const spriteMat = new THREE.SpriteMaterial({ map: tex, transparent: true, opacity: 0.85 });
+    const sprite = new THREE.Sprite(spriteMat);
+    sprite.position.copy(mesh.position);
+    sprite.position.y += radius + 0.6;
+    sprite.scale.set(2, 0.5, 1);
+    scene.add(sprite);
+});
+
+// ── Edges (tubes with Physarum glow) ──
+const edgeMeshes = [];
+const flowParticles = [];
+
+DATA.edges.forEach(e => {
+    const si = nodeMap[e.s], ti = nodeMap[e.t];
+    const p1 = nodeMeshes[si].position;
+    const p2 = nodeMeshes[ti].position;
+
+    const color1 = new THREE.Color(DATA.nodes[si].color);
+    const color2 = new THREE.Color(DATA.nodes[ti].color);
+    const midColor = color1.clone().lerp(color2, 0.5);
+
+    // Thickness based on weight
+    const thickness = 0.015 + (e.w / maxW) * 0.06;
+
+    // Curved path (slight arc)
+    const mid = new THREE.Vector3().addVectors(p1, p2).multiplyScalar(0.5);
+    const dir = new THREE.Vector3().subVectors(p2, p1);
+    const perp = new THREE.Vector3(-dir.y, dir.x, dir.z * 0.5).normalize();
+    mid.add(perp.multiplyScalar(dir.length() * 0.1));
+
+    const curve = new THREE.QuadraticBezierCurve3(p1, mid, p2);
+
+    // Tube
+    const tubeGeo = new THREE.TubeGeometry(curve, 24, thickness, 8, false);
+    const isArtery = e.p > 0.01;
+    const tubeMat = new THREE.MeshPhongMaterial({
+        color: isArtery ? midColor.clone() : midColor.clone().multiplyScalar(0.3),
+        emissive: isArtery ? midColor.clone().multiplyScalar(0.4) : new THREE.Color(0x111111),
+        transparent: true,
+        opacity: isArtery ? 0.7 : 0.15 + (e.w / maxW) * 0.25,
+        shininess: 20,
+    });
+    const tube = new THREE.Mesh(tubeGeo, tubeMat);
+    tube.userData = e;
+    scene.add(tube);
+    edgeMeshes.push(tube);
+
+    // Flow particles along arteries
+    if (isArtery) {
+        const nParticles = Math.ceil(e.p * 100);
+        for (let i = 0; i < nParticles; i++) {
+            const particleGeo = new THREE.SphereGeometry(0.04, 6, 6);
+            const particleMat = new THREE.MeshBasicMaterial({
+                color: midColor.clone().multiplyScalar(2),
+                transparent: true,
+                opacity: 0.8,
+            });
+            const particle = new THREE.Mesh(particleGeo, particleMat);
+            particle.userData = {
+                curve, offset: Math.random(), speed: 0.003 + Math.random() * 0.005,
+                color: midColor.clone()
+            };
+            scene.add(particle);
+            flowParticles.push(particle);
+        }
+    }
+});
+
+// ── Orbit controls (manual) ──
+let isDragging = false;
+let prevMouse = { x: 0, y: 0 };
+let rotY = 0, rotX = 0.1;
+let targetRotY = 0, targetRotX = 0.1;
+let zoom = 16, targetZoom = 16;
+
+canvas.addEventListener('mousedown', e => { isDragging = true; prevMouse = { x: e.clientX, y: e.clientY }; });
+canvas.addEventListener('mouseup', () => isDragging = false);
+canvas.addEventListener('mouseleave', () => isDragging = false);
+canvas.addEventListener('mousemove', e => {
+    if (isDragging) {
+        targetRotY += (e.clientX - prevMouse.x) * 0.005;
+        targetRotX += (e.clientY - prevMouse.y) * 0.005;
+        targetRotX = Math.max(-1.2, Math.min(1.2, targetRotX));
+        prevMouse = { x: e.clientX, y: e.clientY };
+    }
+});
+canvas.addEventListener('wheel', e => {
+    targetZoom += e.deltaY * 0.01;
+    targetZoom = Math.max(5, Math.min(30, targetZoom));
+    e.preventDefault();
+}, { passive: false });
+
+// ── Raycasting for hover ──
+const raycaster = new THREE.Raycaster();
+const mouse = new THREE.Vector2();
+const tooltip = document.getElementById('tooltip');
+
+canvas.addEventListener('mousemove', e => {
+    if (isDragging) { tooltip.style.display = 'none'; return; }
+    mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
+    mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
+
+    raycaster.setFromCamera(mouse, camera);
+
+    // Check nodes
+    const nodeHits = raycaster.intersectObjects(nodeMeshes);
+    if (nodeHits.length > 0) {
+        const n = nodeHits[0].object.userData;
+        const ttTitle = tooltip.querySelector('.tt-title');
+        const ttBody = tooltip.querySelector('.tt-body');
+        ttTitle.textContent = n.id;
+        ttTitle.style.color = n.color;
+
+        // Find all edges connected to this node
+        const connEdges = DATA.edges.filter(e => e.s === n.id || e.t === n.id)
+            .sort((a, b) => b.w - a.w);
+        const totalLianes = connEdges.reduce((s, e) => s + e.w, 0);
+
+        ttBody.innerHTML = `
+            <div class="tt-row">${n.domains} domaines · ${connEdges.length} connexions · ${totalLianes} lianes totales</div>
+            <div class="tt-row" style="margin-top:6px">Connexions:</div>
+            ${connEdges.map(e => {
+                const other = e.s === n.id ? e.t : e.s;
+                return `<div class="tt-row">  ${other}: ${e.w} lianes</div>`;
+            }).join('')}
+        `;
+        tooltip.style.display = 'block';
+        tooltip.style.left = (e.clientX + 15) + 'px';
+        tooltip.style.top = (e.clientY + 15) + 'px';
+        return;
+    }
+
+    // Check edges
+    const edgeHits = raycaster.intersectObjects(edgeMeshes);
+    if (edgeHits.length > 0) {
+        const e2 = edgeHits[0].object.userData;
+        const sn = DATA.nodes[nodeMap[e2.s]];
+        const tn = DATA.nodes[nodeMap[e2.t]];
+        const ttTitle = tooltip.querySelector('.tt-title');
+        const ttBody = tooltip.querySelector('.tt-body');
+        ttTitle.innerHTML = `<span style="color:${sn.color}">${sn.short}</span> × <span style="color:${tn.color}">${tn.short}</span>`;
+        ttBody.innerHTML = `
+            <div class="tt-row">${e2.w} lianes partagées · Physarum: ${e2.p.toFixed(4)}</div>
+            <div class="tt-lianes">${e2.lianes}</div>
+        `;
+        tooltip.style.display = 'block';
+        tooltip.style.left = (e.clientX + 15) + 'px';
+        tooltip.style.top = (e.clientY + 15) + 'px';
+        return;
+    }
+
+    tooltip.style.display = 'none';
+});
+
+// ── Animation ──
+let time = 0;
+function animate() {
+    requestAnimationFrame(animate);
+    time += 0.016;
+
+    // Smooth camera orbit
+    rotY += (targetRotY - rotY) * 0.05;
+    rotX += (targetRotX - rotX) * 0.05;
+    zoom += (targetZoom - zoom) * 0.05;
+
+    // Auto-rotate slowly
+    targetRotY += 0.0008;
+
+    camera.position.x = Math.sin(rotY) * Math.cos(rotX) * zoom;
+    camera.position.y = Math.sin(rotX) * zoom;
+    camera.position.z = Math.cos(rotY) * Math.cos(rotX) * zoom;
+    camera.lookAt(0, 0, 0);
+
+    // Pulse node glows
+    nodeGlows.forEach((glow, i) => {
+        glow.material.opacity = 0.04 + Math.sin(time * 1.5 + i * 0.9) * 0.025;
+    });
+
+    // Pulse node emissive
+    nodeMeshes.forEach((mesh, i) => {
+        const base = new THREE.Color(DATA.nodes[i].color);
+        const pulse = 0.4 + Math.sin(time * 2 + i) * 0.15;
+        mesh.material.emissive = base.clone().multiplyScalar(pulse);
+    });
+
+    // Flow particles
+    flowParticles.forEach(p => {
+        p.userData.offset += p.userData.speed;
+        if (p.userData.offset > 1) p.userData.offset -= 1;
+        const pos = p.userData.curve.getPoint(p.userData.offset);
+        p.position.copy(pos);
+        const pulse = 0.5 + Math.sin(time * 8 + p.userData.offset * 20) * 0.3;
+        p.material.opacity = pulse;
+    });
+
+    // Pulse artery edges
+    edgeMeshes.forEach(tube => {
+        const e = tube.userData;
+        if (e.p > 0.01) {
+            const pulse = 0.6 + Math.sin(time * 2) * 0.15;
+            tube.material.opacity = pulse;
+        }
+    });
+
+    // Dust drift
+    const positions = dustGeo.attributes.position.array;
+    for (let i = 0; i < dustCount; i++) {
+        positions[i*3+1] += Math.sin(time * 0.5 + i * 0.01) * 0.001;
+    }
+    dustGeo.attributes.position.needsUpdate = true;
+
+    renderer.render(scene, camera);
+}
+
+animate();
+
+// Resize
+window.addEventListener('resize', () => {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+});
+</script>
+</body>
+</html>
