@@ -1,0 +1,146 @@
+[
+  {
+    "year": 2008,
+    "dl": 125,
+    "antibiotics": 22014,
+    "dl_ab": 0,
+    "dl_dd": 0,
+    "dl_micro": 0
+  },
+  {
+    "year": 2009,
+    "dl": 194,
+    "antibiotics": 22908,
+    "dl_ab": 0,
+    "dl_dd": 1,
+    "dl_micro": 0
+  },
+  {
+    "year": 2010,
+    "dl": 271,
+    "antibiotics": 25499,
+    "dl_ab": 0,
+    "dl_dd": 0,
+    "dl_micro": 0
+  },
+  {
+    "year": 2011,
+    "dl": 290,
+    "antibiotics": 26970,
+    "dl_ab": 0,
+    "dl_dd": 0,
+    "dl_micro": 0
+  },
+  {
+    "year": 2012,
+    "dl": 375,
+    "antibiotics": 28989,
+    "dl_ab": 0,
+    "dl_dd": 0,
+    "dl_micro": 0
+  },
+  {
+    "year": 2013,
+    "dl": 583,
+    "antibiotics": 30609,
+    "dl_ab": 0,
+    "dl_dd": 0,
+    "dl_micro": 0
+  },
+  {
+    "year": 2014,
+    "dl": 1139,
+    "antibiotics": 31974,
+    "dl_ab": 0,
+    "dl_dd": 1,
+    "dl_micro": 0
+  },
+  {
+    "year": 2015,
+    "dl": 2505,
+    "antibiotics": 31790,
+    "dl_ab": 0,
+    "dl_dd": 4,
+    "dl_micro": 0
+  },
+  {
+    "year": 2016,
+    "dl": 4890,
+    "antibiotics": 32827,
+    "dl_ab": 0,
+    "dl_dd": 12,
+    "dl_micro": 1
+  },
+  {
+    "year": 2017,
+    "dl": 10478,
+    "antibiotics": 34040,
+    "dl_ab": 0,
+    "dl_dd": 25,
+    "dl_micro": 3
+  },
+  {
+    "year": 2018,
+    "dl": 18841,
+    "antibiotics": 36205,
+    "dl_ab": 4,
+    "dl_dd": 66,
+    "dl_micro": 12
+  },
+  {
+    "year": 2019,
+    "dl": 28620,
+    "antibiotics": 39171,
+    "dl_ab": 4,
+    "dl_dd": 93,
+    "dl_micro": 12
+  },
+  {
+    "year": 2020,
+    "dl": 37252,
+    "antibiotics": 43311,
+    "dl_ab": 5,
+    "dl_dd": 149,
+    "dl_micro": 20
+  },
+  {
+    "year": 2021,
+    "dl": 46824,
+    "antibiotics": 42128,
+    "dl_ab": 5,
+    "dl_dd": 196,
+    "dl_micro": 22
+  },
+  {
+    "year": 2022,
+    "dl": 52935,
+    "antibiotics": 41397,
+    "dl_ab": 7,
+    "dl_dd": 181,
+    "dl_micro": 37
+  },
+  {
+    "year": 2023,
+    "dl": 62134,
+    "antibiotics": 42902,
+    "dl_ab": 9,
+    "dl_dd": 232,
+    "dl_micro": 37
+  },
+  {
+    "year": 2024,
+    "dl": 47740,
+    "antibiotics": 40282,
+    "dl_ab": 9,
+    "dl_dd": 151,
+    "dl_micro": 37
+  },
+  {
+    "year": 2025,
+    "dl": 52590,
+    "antibiotics": 38809,
+    "dl_ab": 8,
+    "dl_dd": 355,
+    "dl_micro": 17
+  }
+]
