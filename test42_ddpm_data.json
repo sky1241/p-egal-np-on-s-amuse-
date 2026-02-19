@@ -1,0 +1,130 @@
+[
+  {
+    "year": 2010,
+    "stat_phys": 30171,
+    "gen_model": 313,
+    "diff_proc": 746,
+    "sp_gm": 2,
+    "dp_gm": 0
+  },
+  {
+    "year": 2011,
+    "stat_phys": 32207,
+    "gen_model": 383,
+    "diff_proc": 891,
+    "sp_gm": 0,
+    "dp_gm": 0
+  },
+  {
+    "year": 2012,
+    "stat_phys": 32069,
+    "gen_model": 423,
+    "diff_proc": 834,
+    "sp_gm": 1,
+    "dp_gm": 0
+  },
+  {
+    "year": 2013,
+    "stat_phys": 33835,
+    "gen_model": 410,
+    "diff_proc": 870,
+    "sp_gm": 6,
+    "dp_gm": 0
+  },
+  {
+    "year": 2014,
+    "stat_phys": 34357,
+    "gen_model": 444,
+    "diff_proc": 852,
+    "sp_gm": 4,
+    "dp_gm": 0
+  },
+  {
+    "year": 2015,
+    "stat_phys": 34696,
+    "gen_model": 512,
+    "diff_proc": 885,
+    "sp_gm": 4,
+    "dp_gm": 1
+  },
+  {
+    "year": 2016,
+    "stat_phys": 35372,
+    "gen_model": 592,
+    "diff_proc": 772,
+    "sp_gm": 5,
+    "dp_gm": 1
+  },
+  {
+    "year": 2017,
+    "stat_phys": 34639,
+    "gen_model": 883,
+    "diff_proc": 795,
+    "sp_gm": 3,
+    "dp_gm": 0
+  },
+  {
+    "year": 2018,
+    "stat_phys": 35759,
+    "gen_model": 1314,
+    "diff_proc": 781,
+    "sp_gm": 10,
+    "dp_gm": 0
+  },
+  {
+    "year": 2019,
+    "stat_phys": 36523,
+    "gen_model": 1613,
+    "diff_proc": 852,
+    "sp_gm": 11,
+    "dp_gm": 0
+  },
+  {
+    "year": 2020,
+    "stat_phys": 37486,
+    "gen_model": 2060,
+    "diff_proc": 811,
+    "sp_gm": 26,
+    "dp_gm": 0
+  },
+  {
+    "year": 2021,
+    "stat_phys": 39470,
+    "gen_model": 2403,
+    "diff_proc": 885,
+    "sp_gm": 22,
+    "dp_gm": 3
+  },
+  {
+    "year": 2022,
+    "stat_phys": 40703,
+    "gen_model": 2562,
+    "diff_proc": 854,
+    "sp_gm": 27,
+    "dp_gm": 15
+  },
+  {
+    "year": 2023,
+    "stat_phys": 44491,
+    "gen_model": 4634,
+    "diff_proc": 969,
+    "sp_gm": 57,
+    "dp_gm": 26
+  },
+  {
+    "year": 2024,
+    "stat_phys": 49948,
+    "gen_model": 3775,
+    "diff_proc": 557,
+    "sp_gm": 66,
+    "dp_gm": 4
+  },
+  {
+    "year": 2025,
+    "stat_phys": 63792,
+    "gen_model": 8718,
+    "diff_proc": 678,
+    "sp_gm": 228,
+    "dp_gm": 45
+  }
+]
