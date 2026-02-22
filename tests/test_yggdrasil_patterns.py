@@ -9,6 +9,7 @@ reproduit-elle les mêmes patterns de "vide fertile" que les
 Sky × Claude — 18 Février 2026
 """
 import re
+from pathlib import Path
 import json
 from collections import defaultdict, Counter
 from itertools import combinations
@@ -27,8 +28,8 @@ def load_symbols(filename):
              "from": froms[i] if i < len(froms) else ""}
             for i in range(len(syms))]
 
-c1 = load_symbols("engine.py")
-c2 = load_symbols("engine_carre2.py")
+c1 = load_symbols(str(Path(__file__).parent.parent / "engine" / "engine.py"))
+c2 = load_symbols(str(Path(__file__).parent.parent / "engine" / "engine_carre2.py"))
 print(f"C1 (prouvés): {len(c1)} symboles")
 print(f"C2 (conjectures): {len(c2)} symboles")
 print(f"TOTAL: {len(c1)+len(c2)} symboles\n")

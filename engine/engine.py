@@ -1153,12 +1153,12 @@ showInfo(0);frame();
 </html>"""
 def main():
     engine = StrateEngine()
-    out_path = Path(__file__).parent / "strates_export.json"
+    out_path = Path(__file__).parent.parent / "data" / "core" / "strates_export.json"
     data = engine.export_json(str(out_path))
     print(f"\n✅ JSON → {out_path} ({data['meta']['total_symbols']} symboles)")
     engine.print_report()
     if "--html" in sys.argv or True:
-        html_path = Path(__file__).parent / "strates_cube_live.html"
+        html_path = Path(__file__).parent.parent / "viz" / "strates_cube_live.html"
         json_str = json.dumps(data, ensure_ascii=False)
         html = HTML_TEMPLATE.replace("__DATA_INJECT__", json_str)
         with open(str(html_path), "w", encoding="utf-8") as f:

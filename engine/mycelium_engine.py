@@ -569,6 +569,6 @@ def print_report(viz):
 if __name__ == "__main__":
     viz, G = full_analysis()
     print_report(viz)
-    with open("mycelium_data.json", "w", encoding="utf-8") as f:
+    with open(str(Path(__file__).parent.parent / "data" / "core" / "mycelium_data.json"), "w", encoding="utf-8") as f:
         json.dump(viz, f, ensure_ascii=False, indent=2)
     print(f"\n  → mycelium_data.json exporté")
